@@ -106,7 +106,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         presentarray = ["apple", "grape", "melon", "peach", "banana", "cherry", "diamond", "bomb", "bomb"]
 
         // 再生する audio ファイルのパスを取得
-        let countdownPath = Bundle.main.path(forResource: "Countdown", ofType: "mp3")!
+        let countdownPath = Bundle.main.path(forResource: "countdown", ofType: "mp3")!
         let countdownUrl = URL(fileURLWithPath: countdownPath)
 
         let getpointPath = Bundle.main.path(forResource: "getpoint", ofType: "mp3")!
@@ -115,8 +115,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         let bombPath = Bundle.main.path(forResource: "bomb", ofType: "mp3")!
         let bombUrl = URL(fileURLWithPath: bombPath)
 
-        let finishPath = Bundle.main.path(forResource: "finish", ofType: "mp3")!
-        let finishUrl = URL(fileURLWithPath: finishPath)
+//        let finishPath = Bundle.main.path(forResource: "finish", ofType: "mp3")!
+//        let finishUrl = URL(fileURLWithPath: finishPath)
 
         let decidePath = Bundle.main.path(forResource: "decide", ofType: "mp3")!
         let decideUrl = URL(fileURLWithPath: decidePath)
@@ -127,7 +127,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
             countdownPlayer = try AVAudioPlayer(contentsOf: countdownUrl)
             getpointPlayer = try AVAudioPlayer(contentsOf: getpointUrl)
             bombPlayer = try AVAudioPlayer(contentsOf: bombUrl)
-            finishPlayer = try AVAudioPlayer(contentsOf: finishUrl)
+//            finishPlayer = try AVAudioPlayer(contentsOf: finishUrl)
             decidePlayer = try AVAudioPlayer(contentsOf: decideUrl)
 
         } catch let error as NSError {
@@ -135,7 +135,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
             countdownPlayer = nil
             getpointPlayer = nil
             bombPlayer = nil
-            finishPlayer = nil
+//            finishPlayer = nil
             decidePlayer = nil
         }
 
@@ -148,8 +148,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         bombPlayer.delegate = self
         bombPlayer.prepareToPlay()
 
-        finishPlayer.delegate = self
-        finishPlayer.prepareToPlay()
+//        finishPlayer.delegate = self
+//        finishPlayer.prepareToPlay()
 
         decidePlayer.delegate = self
         decidePlayer.prepareToPlay()
@@ -340,7 +340,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
 
     // ゲーム終了時の挙動
     func gamefinish() {
-        finishPlayer.play()
+//        finishPlayer.play()
 
         calllabel.isHidden = false
         calllabel.text = "Finish!!"

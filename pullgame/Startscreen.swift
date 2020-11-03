@@ -50,18 +50,16 @@ class Startscreen: UIViewController, AVAudioPlayerDelegate {
         let decidePath = Bundle.main.path(forResource: "decide", ofType: "mp3")!
         let decideUrl = URL(fileURLWithPath: decidePath)
 
-        let timerPath = Bundle.main.path(forResource: "timer", ofType: "mp3")!
-        let timerUrl = URL(fileURLWithPath: timerPath)
         // auido を再生するプレイヤーを作成する
         var audioError: NSError?
         do {
             decidePlayer = try AVAudioPlayer(contentsOf: decideUrl)
-            timerupdownPlayer = try AVAudioPlayer(contentsOf: timerUrl)
+
 
         } catch let error as NSError {
             audioError = error
             decidePlayer = nil
-            timerupdownPlayer = nil
+
         }
 
         // エラーが起きたとき
@@ -71,8 +69,7 @@ class Startscreen: UIViewController, AVAudioPlayerDelegate {
 
         decidePlayer.delegate = self
         decidePlayer.prepareToPlay()
-        timerupdownPlayer.delegate = self
-        timerupdownPlayer.prepareToPlay()
+
 
         titlelabel.frame = CGRect(x: width * 1.5 / 32, y: height * 1.5 / 34, width: width * 29 / 32, height: height * 6 / 34)
         startbtn.frame = CGRect(x: width * 3.5 / 12, y: height * 29.5 / 34, width: width * 5 / 12, height: height * 3 / 34)
@@ -138,8 +135,8 @@ class Startscreen: UIViewController, AVAudioPlayerDelegate {
 
     @IBAction func timerupdown(_: Any) {
         // 音量調整の音源を0秒に戻す
-        timerupdownPlayer.currentTime = 0
-        timerupdownPlayer.play()
+        decidePlayer.currentTime = 0
+        decidePlayer.play()
     }
 
     // gameover画面に遷移する際のデータの受け渡し
