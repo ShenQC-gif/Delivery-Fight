@@ -1,0 +1,6 @@
+#以下のフォルダはignore
+image/
+
+pullgameTests/
+
+pullgameUITests/
