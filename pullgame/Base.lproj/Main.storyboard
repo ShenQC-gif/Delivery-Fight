@@ -53,7 +53,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="start:" destination="Jub-5X-46s" eventType="touchUpInside" id="LCw-au-kN6"/>
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="oYa-Dd-oCl"/>
                                 </connections>
                             </button>
@@ -140,7 +139,6 @@
                                 </state>
                                 <connections>
                                     <action selector="timeplus:" destination="Jub-5X-46s" eventType="touchUpInside" id="tDN-96-yll"/>
-                                    <action selector="timerUpDown:" destination="Jub-5X-46s" eventType="touchUpInside" id="JLN-3l-BvL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C3-uZ-R7T">
@@ -152,7 +150,6 @@
                                 </state>
                                 <connections>
                                     <action selector="timeminus:" destination="Jub-5X-46s" eventType="touchUpInside" id="Tgg-6y-6ld"/>
-                                    <action selector="timerUpDown:" destination="Jub-5X-46s" eventType="touchUpInside" id="Vvt-mL-7hP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -483,7 +480,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="makeSoundBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zpq-hv-T1b"/>
                                     <action selector="startAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pt2-P1-tFR"/>
                                 </connections>
                             </button>
@@ -496,7 +492,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="makeSoundBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XYN-OA-zbY"/>
                                     <segue destination="Jub-5X-46s" kind="presentation" identifier="toStart" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="PLO-rw-Vy4"/>
                                 </connections>
                             </button>

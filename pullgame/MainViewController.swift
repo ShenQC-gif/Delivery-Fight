@@ -10,6 +10,7 @@ import AVFoundation
 import UIKit
 
 class MainViewController: UIViewController, AVAudioPlayerDelegate {
+    
     @IBOutlet var conveyor1: UIImageView!
     @IBOutlet var conveyor2: UIImageView!
     @IBOutlet var conveyor3: UIImageView!
@@ -53,6 +54,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     @IBOutlet var againBtn: UIButton!
     @IBOutlet var homeBtn: UIButton!
+    
+    var sounds = Sounds()
 
     var present1 = UIImageView()
     var present2 = UIImageView()
@@ -62,12 +65,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
-
-    var countDownPlayer: AVAudioPlayer!
-    var getPointPlayer: AVAudioPlayer!
-    var bombPlayer: AVAudioPlayer!
-    var finishPlayer: AVAudioPlayer!
-    var decidePlayer: AVAudioPlayer!
 
     var pointNum1 = 0
     var pointNum2 = 0
@@ -104,60 +101,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 presentViewArray = [present1, present2, present3, present4, present5]
 
                 presentArray = ["apple", "grape", "melon", "peach", "banana", "cherry", "diamond", "bomb", "bomb"]
-
-                // 再生する audio ファイルのパスを取得
-                let countDownPath = Bundle.main.path(forResource: "countDown", ofType: "mp3")!
-                let countDownUrl = URL(fileURLWithPath: countDownPath)
-
-                let getPointPath = Bundle.main.path(forResource: "getPoint", ofType: "mp3")!
-                let getPointUrl = URL(fileURLWithPath: getPointPath)
-
-                let bombPath = Bundle.main.path(forResource: "bomb", ofType: "mp3")!
-                let bombUrl = URL(fileURLWithPath: bombPath)
-
-                let finishPath = Bundle.main.path(forResource: "finish", ofType: "mp3")!
-                let finishUrl = URL(fileURLWithPath: finishPath)
-
-                let decidePath = Bundle.main.path(forResource: "decide", ofType: "mp3")!
-                let decideUrl = URL(fileURLWithPath: decidePath)
-
-                // auido を再生するプレイヤーを作成する
-                var audioError: NSError?
-                do {
-                    countDownPlayer = try AVAudioPlayer(contentsOf: countDownUrl)
-                    getPointPlayer = try AVAudioPlayer(contentsOf: getPointUrl)
-                    bombPlayer = try AVAudioPlayer(contentsOf: bombUrl)
-                    finishPlayer = try AVAudioPlayer(contentsOf: finishUrl)
-                    decidePlayer = try AVAudioPlayer(contentsOf: decideUrl)
-
-                } catch let error as NSError {
-                    audioError = error
-                    countDownPlayer = nil
-                    getPointPlayer = nil
-                    bombPlayer = nil
-                    finishPlayer = nil
-                    decidePlayer = nil
-                }
-
-                countDownPlayer.delegate = self
-                countDownPlayer.prepareToPlay()
-
-                getPointPlayer.delegate = self
-                getPointPlayer.prepareToPlay()
-
-                bombPlayer.delegate = self
-                bombPlayer.prepareToPlay()
-
-                finishPlayer.delegate = self
-                finishPlayer.prepareToPlay()
-
-                decidePlayer.delegate = self
-                decidePlayer.prepareToPlay()
-
-                // エラーが起きたとき
-                if let error = audioError {
-                    print("Error \(error.localizedDescription)")
-                }
 
                 // 以下各座標を設定
                 conveyor1.frame = CGRect(x: width * 2 / 28, y: height * 11 / 32, width: width * 4 / 28, height: height * 10 / 32)
@@ -198,9 +141,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
                 pointLabel1.frame = CGRect(x: width * 11 / 28, y: height * 1.5 / 32, width: width * 6 / 28, height: height * 3 / 32)
                 pointLabel2.frame = CGRect(x: width * 11 / 28, y: height * 28.5 / 32, width: width * 6 / 28, height: height * 3 / 32)
-
-        //        winLoseLabel1.frame = CGRect(x: width*18/28, y: height*1.5/32, width: width*6/28, height: height*3/32)
-        //        winLoseLabel2.frame = CGRect(x: width*3/28, y: height*28.5/32, width: width*6/28, height: height*3/32)
 
                 winLoseLabel1.frame = CGRect(x: 0, y: height * 9 / 32, width: width, height: height * 2 / 32)
                 winLoseLabel2.frame = CGRect(x: 0, y: height * 21 / 32, width: width, height: height * 2 / 32)
@@ -276,7 +216,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 callLabel.text = "③"
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.countDownPlayer.play()
+                    self.sounds.playSound(fileName: "countDown", extentionName:  "mp3")
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.callLabel.text = "②"
@@ -340,7 +280,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
             // ゲーム終了時の挙動
             func gameFinish() {
-                finishPlayer.play()
+                sounds.playSound(fileName: "finish", extentionName: "mp3")
 
                 callLabel.isHidden = false
                 callLabel.text = "Finish!!"
@@ -399,6 +339,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
             @IBAction func startAgain(_: Any) {
                 startGame()
+                playDecideSound()
                 againBtn.isHidden = true
                 homeBtn.isHidden = true
                 callLabel.isHidden = false
@@ -508,9 +449,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 // presentがplayer1側に届いた時
                 if present.frame.origin.y < height * 10 / 32 {
                     if getPoint == -50 {
-                        bombPlayer.play()
+                        sounds.playSound(fileName: "bomb", extentionName: "mp3")
                     } else {
-                        getPointPlayer.play()
+                        sounds.playSound(fileName: "getPoint", extentionName: "mp3")
                     }
                     // 一旦Btn無効化
                     btnLineStatus(btnLine: btnLine, status: false)
@@ -532,9 +473,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 // presentがplayer2側に届いた時
                 if present.frame.origin.y > height * 20 / 32 {
                     if getPoint == -50 {
-                        bombPlayer.play()
+                        sounds.playSound(fileName: "bomb", extentionName: "mp3")
                     } else {
-                        getPointPlayer.play()
+                        sounds.playSound(fileName: "getPoint", extentionName: "mp3")
                     }
 
                     btnLineStatus(btnLine: btnLine, status: false)
@@ -568,12 +509,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 }
             }
 
-            @IBAction func makeSoundBtn(_: Any) {
-                decidePlayer.play()
-            }
+    
+    func playDecideSound(){
+        sounds.playSound(fileName: "decide", extentionName: "mp3")
+    }
 
             override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
                 if segue.identifier == "toStart" {
+                    playDecideSound()
                     let startVC = segue.destination as! StartViewController
                     startVC.settingTime = settingTime
                 }

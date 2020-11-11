@@ -35,9 +35,8 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var timePlus: UIButton!
     @IBOutlet var timeMinus: UIButton!
-
-    var decidePlayer: AVAudioPlayer!
-    var timerUpDownPlayer: AVAudioPlayer!
+    
+    var sounds = Sounds()
 
     var settingTime = 30
 
@@ -46,31 +45,6 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // 再生する audio ファイルのパスを取得
-        let decidePath = Bundle.main.path(forResource: "decide", ofType: "mp3")!
-        let decideUrl = URL(fileURLWithPath: decidePath)
-
-        // auido を再生するプレイヤーを作成する
-        var audioError: NSError?
-        do {
-            decidePlayer = try AVAudioPlayer(contentsOf: decideUrl)
-
-
-        } catch let error as NSError {
-            audioError = error
-            decidePlayer = nil
-
-        }
-
-        // エラーが起きたとき
-        if let error = audioError {
-            print("Error \(error.localizedDescription)")
-        }
-
-        decidePlayer.delegate = self
-        decidePlayer.prepareToPlay()
-
 
         titleLabel.frame = CGRect(x: width * 1.5 / 32, y: height * 1.5 / 34, width: width * 29 / 32, height: height * 6 / 34)
         
@@ -111,11 +85,13 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     @IBAction func timeplus(_: Any) {
         settingTime += 10
         checkTime()
+        playDecideSound()
     }
 
     @IBAction func timeminus(_: Any) {
         settingTime -= 10
         checkTime()
+        playDecideSound()
     }
 
     func checkTime() {
@@ -130,20 +106,15 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
             timePlus.isHidden = false
         }
     }
-
-    @IBAction func start(_: Any) {
-        decidePlayer.play()
-    }
-
-    @IBAction func timerUpDown(_: Any) {
-        // 音量調整の音源を0秒に戻す
-        decidePlayer.currentTime = 0
-        decidePlayer.play()
+    
+    func playDecideSound(){
+        sounds.playSound(fileName: "decide", extentionName: "mp3")
     }
 
     // gameover画面に遷移する際のデータの受け渡し
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toMain" {
+            playDecideSound()
             let playscreen = segue.destination as! MainViewController
             playscreen.settingTime = settingTime
         }
