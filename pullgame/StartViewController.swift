@@ -10,7 +10,6 @@ import AVFoundation
 import UIKit
 
 class StartViewController: UIViewController, AVAudioPlayerDelegate {
-    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var startBtn: UIButton!
 
@@ -35,7 +34,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var timePlus: UIButton!
     @IBOutlet var timeMinus: UIButton!
-    
+
     var sounds = Sounds()
 
     var settingTime = 30
@@ -47,7 +46,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
 
         titleLabel.frame = CGRect(x: width * 1.5 / 32, y: height * 1.5 / 34, width: width * 29 / 32, height: height * 6 / 34)
-        
+
         startBtn.frame = CGRect(x: width * 3.5 / 12, y: height * 29.5 / 34, width: width * 5 / 12, height: height * 3 / 34)
 
         timeLabel.frame = CGRect(x: 0, y: height * 25 / 34, width: width, height: height * 3 / 34)
@@ -106,8 +105,8 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
             timePlus.isHidden = false
         }
     }
-    
-    func playDecideSound(){
+
+    func playDecideSound() {
         sounds.playSound(fileName: "decide", extentionName: "mp3")
     }
 
