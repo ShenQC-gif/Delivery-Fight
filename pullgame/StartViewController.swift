@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-class StartScreen: UIViewController, AVAudioPlayerDelegate {
+class StartViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var startBtn: UIButton!
@@ -143,9 +143,9 @@ class StartScreen: UIViewController, AVAudioPlayerDelegate {
 
     // gameover画面に遷移する際のデータの受け渡し
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if segue.identifier == "toplayscreen" {
+        if segue.identifier == "toMain" {
             let playscreen = segue.destination as! MainViewController
-            playscreen.settingtime = settingTime
+            playscreen.settingTime = settingTime
         }
     }
 }
