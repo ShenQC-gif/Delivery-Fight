@@ -82,6 +82,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     var btnLine3: [UIButton] = []
     var btnLine4: [UIButton] = []
     var btnLine5: [UIButton] = []
+    
+    // btnLineを一括管理
+    var btnLineArray : [[UIButton]] = []
 
     // present名を管理
     var presentArray: [String] = []
@@ -96,6 +99,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         btnLine3 = [pullBtn13, pushBtn13, pushBtn23, pullBtn23]
         btnLine4 = [pullBtn14, pushBtn14, pushBtn24, pullBtn24]
         btnLine5 = [pullBtn15, pushBtn15, pushBtn25, pullBtn25]
+        
+        btnLineArray = [btnLine1, btnLine2, btnLine3, btnLine4, btnLine5]
 
         presentViewArray = [present1, present2, present3, present4, present5]
 
@@ -255,11 +260,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         }
 
         // Btn有効化
-        btnLineStatus(btnLine: btnLine1, status: true)
-        btnLineStatus(btnLine: btnLine2, status: true)
-        btnLineStatus(btnLine: btnLine3, status: true)
-        btnLineStatus(btnLine: btnLine4, status: true)
-        btnLineStatus(btnLine: btnLine5, status: true)
+        for btnLine in btnLineArray {
+            btnLineStatus(btnLine: btnLine, status: true)
+        }
 
         // タイマーを作動
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
@@ -290,11 +293,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         }
 
         // Btn無効化
-        btnLineStatus(btnLine: btnLine1, status: false)
-        btnLineStatus(btnLine: btnLine2, status: false)
-        btnLineStatus(btnLine: btnLine3, status: false)
-        btnLineStatus(btnLine: btnLine4, status: false)
-        btnLineStatus(btnLine: btnLine5, status: false)
+        for btnLine in btnLineArray {
+            btnLineStatus(btnLine: btnLine, status: false)
+        }
+
 
         // 結果発表
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -328,11 +330,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
             self.homeBtn.isHidden = false
 
             // 無効化漏れに備えて再度無効化
-            self.btnLineStatus(btnLine: self.btnLine1, status: false)
-            self.btnLineStatus(btnLine: self.btnLine2, status: false)
-            self.btnLineStatus(btnLine: self.btnLine3, status: false)
-            self.btnLineStatus(btnLine: self.btnLine4, status: false)
-            self.btnLineStatus(btnLine: self.btnLine5, status: false)
+            for btnLine in self.btnLineArray {
+                self.btnLineStatus(btnLine: btnLine, status: false)
+            }
+            
         }
     }
 
@@ -503,8 +504,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     // btnLineの有効化/無効化を管理
     func btnLineStatus(btnLine: [UIButton], status: Bool) {
-        for n in 0 ..< btnLine.count {
-            btnLine[n].isEnabled = status
+        for btn in btnLine {
+            btn.isEnabled = status
         }
     }
 
