@@ -10,6 +10,7 @@ import AVFoundation
 import UIKit
 
 class MainViewController: UIViewController, AVAudioPlayerDelegate {
+    
     @IBOutlet var conveyor1: UIImageView!
     @IBOutlet var conveyor2: UIImageView!
     @IBOutlet var conveyor3: UIImageView!
@@ -255,8 +256,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         setPresent(present: present4)
         setPresent(present: present5)
 
-        for n in 0 ..< presentViewArray.count {
-            presentViewArray[n].isHidden = false
+        for presentView in presentViewArray {
+            presentView.isHidden = false
         }
 
         // Btn有効化
@@ -288,8 +289,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         callLabel.text = "Finish!!"
 
         // presentを非表示
-        for n in 0 ..< presentViewArray.count {
-            presentViewArray[n].isHidden = true
+        for presentView in presentViewArray {
+            presentView.isHidden = true
         }
 
         // Btn無効化
