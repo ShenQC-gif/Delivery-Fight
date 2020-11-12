@@ -73,9 +73,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     var timer = Timer()
 
-    var transRotate1 = CGAffineTransform()
-    var transRotate2 = CGAffineTransform()
-
     // btnを1列ごとに管理
     var btnLine1: [UIButton] = []
     var btnLine2: [UIButton] = []
@@ -177,25 +174,28 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         view.addSubview(present4)
         view.addSubview(present5)
 
-        // player1側のLabelは反転する
-        let angle1 = 90 * CGFloat.pi / 180
-        transRotate1 = CGAffineTransform(rotationAngle: CGFloat(angle1))
-        present1.transform = transRotate1
-        present2.transform = transRotate1
-        present3.transform = transRotate1
-        present4.transform = transRotate1
-        present5.transform = transRotate1
+        // presentViewは90度回転させる
+        for presentView in presentViewArray {
+            tranRotate(presentView, 90)
+        }
 
-        // player1側のLabelは反転する
-        let angle2 = CGFloat.pi
-        transRotate2 = CGAffineTransform(rotationAngle: CGFloat(angle2))
-        pointLabel1.transform = transRotate2
-        timerLabel1.transform = transRotate2
-        winLoseLabel1.transform = transRotate2
+        // player1側のLabelは180度回転させる
+        tranRotate(pointLabel1, 180)
+        tranRotate(timerLabel1, 180)
+        tranRotate(winLoseLabel1, 180)
 
         // game開始
         startGame()
     }
+    
+    func tranRotate(_ UIView: UIView, _ angle: CGFloat){
+        
+        let oneDegree = CGFloat.pi/180
+        
+        UIView.transform = CGAffineTransform(rotationAngle: CGFloat(oneDegree*angle))
+        
+    }
+    
 
     // game開始時の挙動
     func startGame() {
