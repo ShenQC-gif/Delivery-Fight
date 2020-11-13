@@ -85,7 +85,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     var btnLineArray : [[UIButton]] = []
 
     // present名を管理
-    var presentArray: [String] = []
+    var presentNameArray: [String] = []
 
     var presentViewArray: [UIImageView] = []
 
@@ -102,7 +102,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
         presentViewArray = [present1, present2, present3, present4, present5]
 
-        presentArray = ["apple", "grape", "melon", "peach", "banana", "cherry", "diamond", "bomb", "bomb"]
+        presentNameArray = ["apple", "grape", "melon", "peach", "banana", "cherry", "diamond", "bomb", "bomb"]
 
         // 以下各座標を設定
         conveyor1.frame = CGRect(x: width * 2 / 28, y: height * 11 / 32, width: width * 4 / 28, height: height * 10 / 32)
@@ -169,11 +169,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         homeBtn.titleLabel?.adjustsFontSizeToFitWidth = true
 
         // 画面にimageviewを貼り付け
-        view.addSubview(present1)
-        view.addSubview(present2)
-        view.addSubview(present3)
-        view.addSubview(present4)
-        view.addSubview(present5)
+        for presentView in presentViewArray{
+            view.addSubview(presentView)
+        }
 
         // presentViewは90度回転させる
         for presentView in presentViewArray {
@@ -243,18 +241,15 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     // 画面の初期状態
     func initailState() {
         // 各presentの位置を初期位置に
-        present1.frame.origin.y = height * 15 / 32
-        present2.frame.origin.y = height * 15 / 32
-        present3.frame.origin.y = height * 15 / 32
-        present4.frame.origin.y = height * 15 / 32
-        present5.frame.origin.y = height * 15 / 32
-
+        
+        for presentView in presentViewArray {
+            presentView.frame.origin.y = height * 15 / 32
+        }
+        
         // presentをランダムにセットして表示
-        setPresent(present: present1)
-        setPresent(present: present2)
-        setPresent(present: present3)
-        setPresent(present: present4)
-        setPresent(present: present5)
+        for presentView in presentViewArray {
+            setPresent(present: presentView)
+        }
 
         for presentView in presentViewArray {
             presentView.isHidden = false
@@ -303,6 +298,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.winLoseLabel1.isHidden = false
             self.winLoseLabel2.isHidden = false
+            
+            // 無効化漏れに備えて再度無効化
+            for btnLine in self.btnLineArray {
+                self.btnLineStatus(btnLine: btnLine, status: false)
+            }
 
             if self.pointNum1 > self.pointNum2 {
                 self.winLoseLabel1.text = "Win! "
@@ -326,16 +326,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             self.callLabel.isHidden = true
-
             self.againBtn.isHidden = false
             self.homeBtn.isHidden = false
-
-            // 無効化漏れに備えて再度無効化
-            for btnLine in self.btnLineArray {
-                self.btnLineStatus(btnLine: btnLine, status: false)
-            }
-            
         }
+        
     }
 
     @IBAction func startAgain(_: Any) {
@@ -497,8 +491,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     // presentをランダムにセット
     func setPresent(present: UIImageView) {
-        let n = Int.random(in: 1 ... presentArray.count)
-        let nextPresent = presentArray[n - 1]
+        let n = Int.random(in: 1 ... presentNameArray.count)
+        let nextPresent = presentNameArray[n - 1]
         present.image = UIImage(named: nextPresent)
         present.image?.accessibilityIdentifier = nextPresent
     }
