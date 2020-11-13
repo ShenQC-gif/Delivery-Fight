@@ -177,19 +177,19 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
         // presentViewは90度回転させる
         for presentView in presentViewArray {
-            tranRotate(presentView, 90)
+            rotate(presentView, 90)
         }
 
         // player1側のLabelは180度回転させる
-        tranRotate(pointLabel1, 180)
-        tranRotate(timerLabel1, 180)
-        tranRotate(winLoseLabel1, 180)
+        rotate(pointLabel1, 180)
+        rotate(timerLabel1, 180)
+        rotate(winLoseLabel1, 180)
 
         // game開始
         startGame()
     }
     
-    func tranRotate(_ UIView: UIView, _ angle: CGFloat){
+    func rotate(_ UIView: UIView, _ angle: CGFloat){
         
         let oneDegree = CGFloat.pi/180
         
