@@ -85,8 +85,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     var btnLineArray : [[UIButton]] = []
 
     // present名を管理
-    var presentNameArray: [String] = []
-
+    var presentNameAndPoint = [String:Int]()
+    
     var presentViewArray: [UIImageView] = []
 
     override func viewDidLoad() {
@@ -102,7 +102,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
         presentViewArray = [present1, present2, present3, present4, present5]
 
-        presentNameArray = ["apple", "grape", "melon", "peach", "banana", "cherry", "diamond", "bomb", "bomb"]
+        presentNameAndPoint = ["apple":10, "grape":20, "melon":30, "peach":40, "banana":50, "cherry":60, "diamond":100, "bomb":-50]
 
         // 以下各座標を設定
         conveyor1.frame = CGRect(x: width * 2 / 28, y: height * 11 / 32, width: width * 4 / 28, height: height * 10 / 32)
@@ -410,40 +410,17 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     func whosePresent(present: UIImageView, btnLine: [UIButton]) {
         // 得点の数字を入れる箱を用意
         var getPoint = 0
+        
+        if let presentName = present.image?.accessibilityIdentifier{
 
         // presentによって得点が異なる
-        switch present.image?.accessibilityIdentifier {
-        case "apple":
-            getPoint = 10
+            getPoint = presentNameAndPoint[presentName] ?? 0
 
-        case "grape":
-            getPoint = 20
-
-        case "melon":
-            getPoint = 30
-
-        case "peach":
-            getPoint = 40
-
-        case "banana":
-            getPoint = 50
-
-        case "cherry":
-            getPoint = 60
-
-        case "diamond":
-            getPoint = 100
-
-        case "bomb":
-            getPoint = -50
-
-        default:
-            break
         }
 
         // presentがplayer1側に届いた時
         if present.frame.origin.y < height * 10 / 32 {
-            if getPoint == -50 {
+            if getPoint == presentNameAndPoint["bomb"] {
                 sounds.playSound(fileName: "bomb", extentionName: "mp3")
             } else {
                 sounds.playSound(fileName: "getPoint", extentionName: "mp3")
@@ -491,8 +468,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     // presentをランダムにセット
     func setPresent(present: UIImageView) {
+        let presentNameArray = Array(presentNameAndPoint.keys)
         let n = Int.random(in: 1 ... presentNameArray.count)
-        let nextPresent = presentNameArray[n - 1]
+        let nextPresent = presentNameArray[n-1]
         present.image = UIImage(named: nextPresent)
         present.image?.accessibilityIdentifier = nextPresent
     }
