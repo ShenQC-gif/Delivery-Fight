@@ -184,7 +184,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         rotate(winLoseLabel1, 180)
 
         // game開始
-        startGame()
+        gameStart()
     }
     
     func rotate(_ UIView: UIView, _ angle: CGFloat){
@@ -197,7 +197,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     
 
     // game開始時の挙動
-    func startGame() {
+    func gameStart() {
         
         restTime = settingTime
 
@@ -233,6 +233,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
                         // 画面を初期化
                         self.initailState()
+                        
+                        //ゲームスタート
+                        self.timerStart()
                     }
                 }
             }
@@ -253,15 +256,19 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         for btnLine in btnLineArray {
             btnLineStatus(btnLine: btnLine, status: true)
         }
-
+        
+    }
+    
+    func timerStart(){
+        
         // タイマーを作動
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
+            
             if self.restTime > 0 {
                 // 残り時間を減らしていく
                 self.restTime -= 1
-                self.timerLabel1.text = String(self.restTime)
-                self.timerLabel2.text = String(self.restTime)
-
+                self.timerLabel1.text = "\(self.restTime)"
+                self.timerLabel2.text = "\(self.restTime)"
             } else if self.restTime == 0 {
                 // タイマーを無効化にし、ゲーム終了時の挙動へ
                 timer.invalidate()
@@ -327,7 +334,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     @IBAction func startAgain(_: Any) {
-        startGame()
+        gameStart()
         playDecideSound()
         againBtn.isHidden = true
         homeBtn.isHidden = true
