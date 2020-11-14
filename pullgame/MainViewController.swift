@@ -259,6 +259,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         
     }
     
+    
     func timerStart(){
         
         // タイマーを作動
@@ -414,8 +415,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         // 得点の数字を入れる箱を用意
         var getPoint = 0
         
+        //presentの名前を取得し、それに応じて点数を計算する
         if let presentName = present.image?.accessibilityIdentifier{
-        // presentによって得点が異なる
             getPoint = presentNameAndPoint[presentName] ?? 0
         }
 
