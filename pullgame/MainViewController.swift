@@ -427,9 +427,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
             btnLineStatus(btnLine: btnLine, status: false)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                self.pointNum1 += getPoint
-
-                self.pointLabel1.text = String(self.pointNum1) + "pt"
+                
+                self.addPoint(getPoint, &self.pointNum1, self.pointLabel1)
 
                 // presentのviewを初期位置に、新しいpresentをランダムにセット
                 present.frame.origin.y = self.height * 15 / 32
@@ -448,9 +447,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
             btnLineStatus(btnLine: btnLine, status: false)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                self.pointNum2 += getPoint
-
-                self.pointLabel2.text = String(self.pointNum2) + "pt"
+                
+                self.addPoint(getPoint, &self.pointNum2, self.pointLabel2)
 
                 present.frame.origin.y = self.height * 15 / 32
 
@@ -469,6 +467,13 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         } else {
             sounds.playSound(fileName: "getPoint", extentionName: "mp3")
            }
+    }
+    
+    func addPoint(_ getPoint:Int,_ whosePoint: inout Int, _ label: UILabel){
+        
+        whosePoint += getPoint
+        label.text = "\(whosePoint)pt"
+
     }
 
     // presentをランダムにセット
