@@ -415,19 +415,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         var getPoint = 0
         
         if let presentName = present.image?.accessibilityIdentifier{
-
         // presentによって得点が異なる
             getPoint = presentNameAndPoint[presentName] ?? 0
-
         }
 
         // presentがplayer1側に届いた時
         if present.frame.origin.y < height * 10 / 32 {
-            if getPoint == presentNameAndPoint["bomb"] {
-                sounds.playSound(fileName: "bomb", extentionName: "mp3")
-            } else {
-                sounds.playSound(fileName: "getPoint", extentionName: "mp3")
-            }
+            
+            playSoundByTypeOfPresent(getPoint)
             // 一旦Btn無効化
             btnLineStatus(btnLine: btnLine, status: false)
 
@@ -447,11 +442,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
         // presentがplayer2側に届いた時
         if present.frame.origin.y > height * 20 / 32 {
-            if getPoint == -50 {
-                sounds.playSound(fileName: "bomb", extentionName: "mp3")
-            } else {
-                sounds.playSound(fileName: "getPoint", extentionName: "mp3")
-            }
+           
+            playSoundByTypeOfPresent(getPoint)
 
             btnLineStatus(btnLine: btnLine, status: false)
 
@@ -467,6 +459,16 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 self.setPresent(present: present)
             }
         }
+    }
+    
+    func playSoundByTypeOfPresent(_ getpoint: Int){
+
+        //presentが爆弾なら爆発音、それ以外なら得点
+        if getpoint == presentNameAndPoint["bomb"] {
+            sounds.playSound(fileName: "bomb", extentionName: "mp3")
+        } else {
+            sounds.playSound(fileName: "getPoint", extentionName: "mp3")
+           }
     }
 
     // presentをランダムにセット
