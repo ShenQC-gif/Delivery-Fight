@@ -279,6 +279,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     // ゲーム終了時の挙動
     func gameFinish() {
+        
         sounds.playSound(fileName: "finish", extentionName: "mp3")
 
         callLabel.isHidden = false
@@ -297,32 +298,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
         // 結果発表
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.winLoseLabel1.isHidden = false
-            self.winLoseLabel2.isHidden = false
-            
-            // 無効化漏れに備えて再度無効化
-            for btnLine in self.btnLineArray {
-                self.btnLineStatus(btnLine: btnLine, status: false)
-            }
-
-            if self.pointNum1 > self.pointNum2 {
-                self.winLoseLabel1.text = "Win! "
-                self.winLoseLabel1.textColor = UIColor.red
-                self.winLoseLabel2.text = "...Lose"
-                self.winLoseLabel2.textColor = UIColor.blue
-
-            } else if self.pointNum1 < self.pointNum2 {
-                self.winLoseLabel1.text = "...Lose"
-                self.winLoseLabel1.textColor = UIColor.blue
-                self.winLoseLabel2.text = "Win! "
-                self.winLoseLabel2.textColor = UIColor.red
-
-            } else {
-                self.winLoseLabel1.text = "Draw!"
-                self.winLoseLabel1.textColor = UIColor.black
-                self.winLoseLabel2.text = "Draw!"
-                self.winLoseLabel2.textColor = UIColor.black
-            }
+            self.comparePoint()
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
@@ -331,6 +307,32 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
             self.homeBtn.isHidden = false
         }
         
+    }
+    
+    func comparePoint(){
+        
+        winLoseLabel1.isHidden = false
+        winLoseLabel2.isHidden = false
+    
+        if pointNum1 > pointNum2 {
+            winLoseLabel1.text = "Win! "
+            winLoseLabel1.textColor = UIColor.red
+            winLoseLabel2.text = "...Lose"
+            winLoseLabel2.textColor = UIColor.blue
+            
+        } else if pointNum1 < pointNum2 {
+            winLoseLabel1.text = "...Lose"
+            winLoseLabel1.textColor = UIColor.blue
+            winLoseLabel2.text = "Win! "
+            winLoseLabel2.textColor = UIColor.red
+            
+        } else {
+            winLoseLabel1.text = "Draw!"
+            winLoseLabel1.textColor = UIColor.black
+            winLoseLabel2.text = "Draw!"
+            winLoseLabel2.textColor = UIColor.black
+        }
+ 
     }
 
     @IBAction func startAgain(_: Any) {
