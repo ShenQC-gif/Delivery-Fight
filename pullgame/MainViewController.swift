@@ -198,6 +198,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     // game開始時の挙動
     func startGame() {
+        
         restTime = settingTime
 
         // 勝ち負けLabelを非表示
@@ -240,21 +241,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     // 画面の初期状態
     func initailState() {
-        // 各presentの位置を初期位置に
         
+        // 各presentの位置を初期位置に、ランダムにセットして表示
         for presentView in presentViewArray {
             presentView.frame.origin.y = height * 15 / 32
-        }
-        
-        // presentをランダムにセットして表示
-        for presentView in presentViewArray {
             setPresent(present: presentView)
-        }
-
-        for presentView in presentViewArray {
             presentView.isHidden = false
         }
-
+       
         // Btn有効化
         for btnLine in btnLineArray {
             btnLineStatus(btnLine: btnLine, status: true)
