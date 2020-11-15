@@ -65,12 +65,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
-    
-    let widthDivision : CGFloat = 1/28
-    let hegihtDivision : CGFloat = 1/32
-    
-    var oneWidthDivison : CGFloat = 0
-    var oneHeightDivison : CGFloat = 0
 
     var conveyorTop : CGFloat = 0
     var conveyorButtom : CGFloat = 0
@@ -116,40 +110,28 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
         // 以下各座標を設定
         
-        oneWidthDivison = width * widthDivision
-        oneHeightDivison = height * hegihtDivision
-        
-        
         conveyorHeight = height*0.35
         conveyorTop = height/2 - conveyorHeight/2
         conveyorButtom = height/2 + conveyorHeight/2
         
+        //presetnは正方形で、一辺の長さはwidth*0.16
+        let presentLenght = width*0.16
         
-        
-        present1.frame = CGRect(x: width*0.05, y: 0, width:width*0.18, height: conveyorHeight/9)
-        present2.frame = CGRect(x: 7.5 * oneWidthDivison, y: 15 * oneHeightDivison, width: 3 * oneWidthDivison, height: 2 * oneHeightDivison)
-        present3.frame = CGRect(x: 12.5 * oneWidthDivison, y: 15 * oneHeightDivison, width: 3 * oneWidthDivison, height: 2 * oneHeightDivison)
-        present4.frame = CGRect(x: 17.5 * oneWidthDivison, y: 15 * oneHeightDivison, width: 3 * oneWidthDivison, height: 2 * oneHeightDivison)
-        present5.frame = CGRect(x: 22.5 * oneWidthDivison, y: 15 * oneHeightDivison, width: 3 * oneWidthDivison, height: 2 * oneHeightDivison)
-        
-        
-        let topBorder = CALayer()
-        topBorder.frame = CGRect(x: 0, y: conveyorTop , width: width, height: 2.0)
-        topBorder.backgroundColor = UIColor.black.cgColor
-        view.layer.addSublayer(topBorder)
-        
-        let bottomBorder = CALayer()
-        bottomBorder.frame = CGRect(x: 0, y: conveyorButtom , width: width, height: 2.0)
-        bottomBorder.backgroundColor = UIColor.black.cgColor
-        view.layer.addSublayer(bottomBorder)
-        
-        
+        //conveyor全体の幅はauto layoutでwidth*0.9と設定している。従いpresent1のx座標はwidth*0.1/2。
+        //presetn3の中点のx座標はwidthの中点と同じ。そこから一辺の長さの半分がそのx座標。
+        //上記二点から他のpresetnのx座標を算出。
+        present1.frame = CGRect(x: width*0.050, y: 0, width:presentLenght, height:presentLenght)
+        present2.frame = CGRect(x: width*0.235, y: 0, width:presentLenght, height:presentLenght)
+        present3.frame = CGRect(x: width*0.420, y: 0, width:presentLenght, height:presentLenght)
+        present4.frame = CGRect(x: width*0.605, y: 0, width:presentLenght, height:presentLenght)
+        present5.frame = CGRect(x: width*0.790, y: 0, width:presentLenght, height:presentLenght)
+
         // timerに丸枠線を設定
         timerLabel1.layer.borderWidth = 1
-        timerLabel1.layer.cornerRadius = 1.5 * oneWidthDivison
+        timerLabel1.layer.cornerRadius = 1.5/32
 
         timerLabel2.layer.borderWidth = 1
-        timerLabel2.layer.cornerRadius = 1.5 * oneWidthDivison
+        timerLabel2.layer.cornerRadius = 1.5/32
         // timerLabelに残り時間を反映
         timerLabel1.text = String(restTime)
         timerLabel2.text = String(restTime)
@@ -157,15 +139,13 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         againBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         homeBtn.titleLabel?.adjustsFontSizeToFitWidth = true
 
-        // 画面にimageviewを貼り付け
+        // 画面にimageviewを貼り付け、90度回転させる
         for presentView in presentViewArray{
             view.addSubview(presentView)
-        }
-
-        // presentViewは90度回転させる
-        for presentView in presentViewArray {
             rotate(presentView, 90)
         }
+
+       
 
         // player1側のLabelは180度回転させる
         rotate(pointLabel1, 180)
@@ -232,10 +212,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     // 画面の初期状態
     func initailState() {
-        
+
         // 各presentの位置を初期位置に、ランダムにセットして表示
         for presentView in presentViewArray {
-            presentView.frame.origin.y = (conveyorTop + conveyorHeight/2) - (conveyorHeight/9)/2
+            //y座標はconveyorの中点、つまりheightの中点。
+            presentView.center.y = height/2
             setPresent(present: presentView)
             presentView.isHidden = false
         }
@@ -390,11 +371,12 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     func presentUp(present: UIImageView) {
-        present.frame.origin.y -= conveyorHeight/9
+        //conveyorを9等分し、上から下まで9マスあるイメージ。初期位置はその5マス目。
+        present.center.y -= conveyorHeight/9
     }
 
     func presentDown(present: UIImageView) {
-        present.frame.origin.y += conveyorHeight/9
+        present.center.y += conveyorHeight/9
     }
 
     // どちらの得点か判定
@@ -408,7 +390,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         }
 
         // presentがplayer1側に届いた時
-        if present.frame.origin.y < conveyorTop {
+        if present.center.y < conveyorTop {
             
             playSoundByTypeOfPresent(getPoint)
             // 一旦Btn無効化
@@ -419,7 +401,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 self.addPoint(getPoint, &self.pointNum1, self.pointLabel1)
 
                 // presentのviewを初期位置に、新しいpresentをランダムにセット
-                present.frame.origin.y = (self.conveyorTop + self.conveyorHeight/2) - (self.conveyorHeight/9)/2
+                present.center.y = self.height/2
+                
                 self.setPresent(present: present)
 
                 // Btn有効化
@@ -428,7 +411,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         }
 
         // presentがplayer2側に届いた時
-        if present.frame.origin.y > conveyorButtom - conveyorHeight/9{
+        if present.center.y  > conveyorButtom {
            
             playSoundByTypeOfPresent(getPoint)
 
@@ -438,11 +421,13 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 
                 self.addPoint(getPoint, &self.pointNum2, self.pointLabel2)
 
-                present.frame.origin.y = (self.conveyorTop + self.conveyorHeight/2) - (self.conveyorHeight/9)/2
+                present.center.y = self.height/2
+                
+                self.setPresent(present: present)
 
                 self.btnLineStatus(btnLine: btnLine, status: true)
 
-                self.setPresent(present: present)
+                
             }
         }
     }

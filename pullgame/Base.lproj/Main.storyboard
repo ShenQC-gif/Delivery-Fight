@@ -254,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xW9-sr-BQk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1905.7971014492755" y="67.633928571428569"/>
+            <point key="canvasLocation" x="-2422" y="96"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -265,19 +265,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5j0-z8-fUM">
-                                <rect key="frame" x="30" y="-97.5" width="113.5" height="113.5"/>
+                                <rect key="frame" x="30" y="-114" width="41.5" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mKa-Rp-aAc">
-                                <rect key="frame" x="990" y="1153" width="113.5" height="113"/>
+                                <rect key="frame" x="342.5" y="969" width="41.5" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cd5-Az-bf7">
-                                <rect key="frame" x="340" y="335" width="453.5" height="40"/>
+                                <rect key="frame" x="124" y="246" width="166" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="zOm-Er-ujB"/>
                                 </constraints>
@@ -286,25 +286,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxU-Ya-j2h">
-                                <rect key="frame" x="340" y="794" width="453.5" height="40"/>
+                                <rect key="frame" x="124" y="610" width="166" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mx9-wu-Q58">
-                                <rect key="frame" x="396.5" y="-71" width="340" height="117"/>
+                                <rect key="frame" x="145" y="-132.5" width="124" height="89.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Tq-NQ-8uL">
-                                <rect key="frame" x="396.5" y="1123" width="340" height="116.5"/>
+                                <rect key="frame" x="145" y="939" width="124" height="89.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qZR-z9-a7T" userLabel="Player1 Btn SV">
-                                <rect key="frame" x="56.5" y="46" width="1020" height="284"/>
+                                <rect key="frame" x="-303" y="-43" width="1020" height="284"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nJD-Vv-Dey" userLabel="Pull Btn1 SV">
                                         <rect key="frame" x="0.0" y="0.0" width="1020" height="139.5"/>
@@ -419,27 +419,27 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mTa-m7-rnq" userLabel="Conveyor SV">
-                                <rect key="frame" x="56.5" y="380" width="1020" height="409"/>
+                                <rect key="frame" x="-303" y="291" width="1020" height="314"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="Xgz-5x-B6Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="409"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="314"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="eSq-qt-jqE">
-                                        <rect key="frame" x="205" y="0.0" width="200" height="409"/>
+                                        <rect key="frame" x="205" y="0.0" width="200" height="314"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="n2D-aJ-YDG">
-                                        <rect key="frame" x="410" y="0.0" width="200" height="409"/>
+                                        <rect key="frame" x="410" y="0.0" width="200" height="314"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="Wea-76-D5W">
-                                        <rect key="frame" x="615" y="0.0" width="200" height="409"/>
+                                        <rect key="frame" x="615" y="0.0" width="200" height="314"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="ojm-Nz-3tg">
-                                        <rect key="frame" x="820" y="0.0" width="200" height="409"/>
+                                        <rect key="frame" x="820" y="0.0" width="200" height="314"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aDy-IU-SUw" userLabel="Player2 Btn SV">
-                                <rect key="frame" x="56.5" y="839" width="1020" height="284"/>
+                                <rect key="frame" x="-303" y="655" width="1020" height="284"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x76-Zv-zOu" userLabel="Pull Btn2 SV">
                                         <rect key="frame" x="0.0" y="0.0" width="1020" height="139.5"/>
@@ -549,13 +549,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="③" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYW-Ga-x81">
-                                <rect key="frame" x="113.5" y="467.5" width="906.5" height="233.5"/>
+                                <rect key="frame" x="41.5" y="358.5" width="331" height="179"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="wbu-2C-RhY" userLabel="Menu SV">
-                                <rect key="frame" x="226.5" y="438" width="680" height="292.5"/>
+                                <rect key="frame" x="83" y="336" width="248" height="224"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="es3-E2-yiq">
                                         <rect key="frame" x="0.0" y="0.0" width="154" height="0.0"/>
