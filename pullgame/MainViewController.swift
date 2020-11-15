@@ -65,6 +65,12 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
+    
+    let widthDivision : CGFloat = 1/28
+    let hegihtDivision : CGFloat = 1/32
+    
+    var oneWidthDivison : CGFloat = 0
+    var oneHeightDivison : CGFloat = 0
 
     var pointNum1 = 0
     var pointNum2 = 0
@@ -105,62 +111,66 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         presentNameAndPoint = ["apple":10, "grape":20, "melon":30, "peach":40, "banana":50, "cherry":60, "diamond":100, "bomb":-50]
 
         // 以下各座標を設定
-        conveyor1.frame = CGRect(x: width * 2 / 28, y: height * 11 / 32, width: width * 4 / 28, height: height * 10 / 32)
-        conveyor2.frame = CGRect(x: width * 7 / 28, y: height * 11 / 32, width: width * 4 / 28, height: height * 10 / 32)
-        conveyor3.frame = CGRect(x: width * 12 / 28, y: height * 11 / 32, width: width * 4 / 28, height: height * 10 / 32)
-        conveyor4.frame = CGRect(x: width * 17 / 28, y: height * 11 / 32, width: width * 4 / 28, height: height * 10 / 32)
-        conveyor5.frame = CGRect(x: width * 22 / 28, y: height * 11 / 32, width: width * 4 / 28, height: height * 10 / 32)
+        
+        oneWidthDivison = width * widthDivision
+        oneHeightDivison = height * hegihtDivision
+        
+        conveyor1.frame = CGRect(x: 2 * oneWidthDivison, y: 11 * oneHeightDivison, width: 4 * oneWidthDivison, height: 10 * oneHeightDivison)
+        conveyor2.frame = CGRect(x: 7 * oneWidthDivison, y: 11 * oneHeightDivison, width: 4 * oneWidthDivison, height: 10 * oneHeightDivison)
+        conveyor3.frame = CGRect(x: 12 * oneWidthDivison, y: 11 * oneHeightDivison, width: 4 * oneWidthDivison, height: 10 * oneHeightDivison)
+        conveyor4.frame = CGRect(x: 17 * oneWidthDivison, y: 11 * oneHeightDivison, width: 4 * oneWidthDivison, height: 10 * oneHeightDivison)
+        conveyor5.frame = CGRect(x: 22 * oneWidthDivison, y: 11 * oneHeightDivison, width: 4 * oneWidthDivison, height: 10 * oneHeightDivison)
 
-        pullBtn11.frame = CGRect(x: width * 2 / 28, y: height * 4.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pullBtn12.frame = CGRect(x: width * 7 / 28, y: height * 4.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pullBtn13.frame = CGRect(x: width * 12 / 28, y: height * 4.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pullBtn14.frame = CGRect(x: width * 17 / 28, y: height * 4.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pullBtn15.frame = CGRect(x: width * 22 / 28, y: height * 4.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
+        pullBtn11.frame = CGRect(x: 2 * oneWidthDivison, y: 4.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pullBtn12.frame = CGRect(x: 7 * oneWidthDivison, y: 4.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pullBtn13.frame = CGRect(x: 12 * oneWidthDivison, y: 4.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pullBtn14.frame = CGRect(x: 17 * oneWidthDivison, y: 4.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pullBtn15.frame = CGRect(x: 22 * oneWidthDivison, y: 4.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
 
-        pushBtn11.frame = CGRect(x: width * 2 / 28, y: height * 7 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pushBtn12.frame = CGRect(x: width * 7 / 28, y: height * 7 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pushBtn13.frame = CGRect(x: width * 12 / 28, y: height * 7 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pushBtn14.frame = CGRect(x: width * 17 / 28, y: height * 7 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pushBtn15.frame = CGRect(x: width * 22 / 28, y: height * 7 / 32, width: width * 4 / 28, height: height * 2 / 32)
+        pushBtn11.frame = CGRect(x: 2 * oneWidthDivison, y: 7 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pushBtn12.frame = CGRect(x: 7 * oneWidthDivison, y: 7 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pushBtn13.frame = CGRect(x: 12 * oneWidthDivison, y: 7 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pushBtn14.frame = CGRect(x: 17 * oneWidthDivison, y: 7 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pushBtn15.frame = CGRect(x: 22 * oneWidthDivison, y: 7 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
 
-        pushBtn21.frame = CGRect(x: width * 2 / 28, y: height * 23 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pushBtn22.frame = CGRect(x: width * 7 / 28, y: height * 23 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pushBtn23.frame = CGRect(x: width * 12 / 28, y: height * 23 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pushBtn24.frame = CGRect(x: width * 17 / 28, y: height * 23 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pushBtn25.frame = CGRect(x: width * 22 / 28, y: height * 23 / 32, width: width * 4 / 28, height: height * 2 / 32)
+        pushBtn21.frame = CGRect(x: 2 * oneWidthDivison, y: 23 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pushBtn22.frame = CGRect(x: 7 * oneWidthDivison, y: 23 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pushBtn23.frame = CGRect(x: 12 * oneWidthDivison, y: 23 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pushBtn24.frame = CGRect(x: 17 * oneWidthDivison, y: 23 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pushBtn25.frame = CGRect(x: 22 * oneWidthDivison, y: 23 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
 
-        pullBtn21.frame = CGRect(x: width * 2 / 28, y: height * 25.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pullBtn22.frame = CGRect(x: width * 7 / 28, y: height * 25.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pullBtn23.frame = CGRect(x: width * 12 / 28, y: height * 25.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pullBtn24.frame = CGRect(x: width * 17 / 28, y: height * 25.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
-        pullBtn25.frame = CGRect(x: width * 22 / 28, y: height * 25.5 / 32, width: width * 4 / 28, height: height * 2 / 32)
+        pullBtn21.frame = CGRect(x: 2 * oneWidthDivison, y: 25.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pullBtn22.frame = CGRect(x: 7 * oneWidthDivison, y: 25.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pullBtn23.frame = CGRect(x: 12 * oneWidthDivison, y: 25.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pullBtn24.frame = CGRect(x: 17 * oneWidthDivison, y: 25.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
+        pullBtn25.frame = CGRect(x: 22 * oneWidthDivison, y: 25.5 * oneHeightDivison, width: 4 * oneWidthDivison, height: 2 * oneHeightDivison)
 
-        present1.frame = CGRect(x: width * 2.5 / 28, y: height * 15 / 32, width: width * 3 / 28, height: height * 2 / 32)
-        present2.frame = CGRect(x: width * 7.5 / 28, y: height * 15 / 32, width: width * 3 / 28, height: height * 2 / 32)
-        present3.frame = CGRect(x: width * 12.5 / 28, y: height * 15 / 32, width: width * 3 / 28, height: height * 2 / 32)
-        present4.frame = CGRect(x: width * 17.5 / 28, y: height * 15 / 32, width: width * 3 / 28, height: height * 2 / 32)
-        present5.frame = CGRect(x: width * 22.5 / 28, y: height * 15 / 32, width: width * 3 / 28, height: height * 2 / 32)
+        present1.frame = CGRect(x: 2.5 * oneWidthDivison, y: 15 * oneHeightDivison, width: 3 * oneWidthDivison, height: 2 * oneHeightDivison)
+        present2.frame = CGRect(x: 7.5 * oneWidthDivison, y: 15 * oneHeightDivison, width: 3 * oneWidthDivison, height: 2 * oneHeightDivison)
+        present3.frame = CGRect(x: 12.5 * oneWidthDivison, y: 15 * oneHeightDivison, width: 3 * oneWidthDivison, height: 2 * oneHeightDivison)
+        present4.frame = CGRect(x: 17.5 * oneWidthDivison, y: 15 * oneHeightDivison, width: 3 * oneWidthDivison, height: 2 * oneHeightDivison)
+        present5.frame = CGRect(x: 22.5 * oneWidthDivison, y: 15 * oneHeightDivison, width: 3 * oneWidthDivison, height: 2 * oneHeightDivison)
 
-        pointLabel1.frame = CGRect(x: width * 11 / 28, y: height * 1.5 / 32, width: width * 6 / 28, height: height * 3 / 32)
-        pointLabel2.frame = CGRect(x: width * 11 / 28, y: height * 28.5 / 32, width: width * 6 / 28, height: height * 3 / 32)
+        pointLabel1.frame = CGRect(x: 11 * oneWidthDivison, y: 1.5 * oneHeightDivison, width: 6 * oneWidthDivison, height: 3 * oneHeightDivison)
+        pointLabel2.frame = CGRect(x: 11 * oneWidthDivison, y: 28.5 * oneHeightDivison, width: 6 * oneWidthDivison, height: 3 * oneHeightDivison)
 
-        winLoseLabel1.frame = CGRect(x: 0, y: height * 9 / 32, width: width, height: height * 2 / 32)
-        winLoseLabel2.frame = CGRect(x: 0, y: height * 21 / 32, width: width, height: height * 2 / 32)
+        winLoseLabel1.frame = CGRect(x: 0, y: 9 * oneHeightDivison, width: width, height: 2 * oneHeightDivison)
+        winLoseLabel2.frame = CGRect(x: 0, y: 21 * oneHeightDivison, width: width, height: 2 * oneHeightDivison)
 
-        timerLabel1.frame = CGRect(x: width * 2.5 / 28, y: height * 1.5 / 32, width: width * 3 / 28, height: width * 3 / 28)
-        timerLabel2.frame = CGRect(x: width * 22.5 / 28, y: height * 29.5 / 32, width: width * 3 / 28, height: width * 3 / 28)
+        timerLabel1.frame = CGRect(x: 2.5 * oneWidthDivison, y: 1.5 * oneHeightDivison, width: 3 * oneWidthDivison, height: 3 * oneWidthDivison)
+        timerLabel2.frame = CGRect(x: 22.5 * oneWidthDivison, y: 29.5 * oneHeightDivison, width: 3 * oneWidthDivison, height: 3 * oneWidthDivison)
 
-        callLabel.frame = CGRect(x: 0, y: height * 11 / 32, width: width, height: height * 10 / 32)
+        callLabel.frame = CGRect(x: 0, y: 11 * oneHeightDivison, width: width, height: 10 * oneHeightDivison)
 
-        againBtn.frame = CGRect(x: width * 9 / 28, y: height * 13 / 32, width: width * 10 / 28, height: height * 2.5 / 32)
-        homeBtn.frame = CGRect(x: width * 9 / 28, y: height * 16.5 / 32, width: width * 10 / 28, height: height * 2.5 / 32)
+        againBtn.frame = CGRect(x: 9 * oneWidthDivison, y: 13 * oneHeightDivison, width: 10 * oneWidthDivison, height: 2.5 * oneHeightDivison)
+        homeBtn.frame = CGRect(x: 9 * oneWidthDivison, y: 16.5 * oneHeightDivison, width: 10 * oneWidthDivison, height: 2.5 * oneHeightDivison)
 
         // timerに丸枠線を設定
         timerLabel1.layer.borderWidth = 1
-        timerLabel1.layer.cornerRadius = width * 1.5 / 28
+        timerLabel1.layer.cornerRadius = 1.5 * oneWidthDivison
 
         timerLabel2.layer.borderWidth = 1
-        timerLabel2.layer.cornerRadius = width * 1.5 / 28
+        timerLabel2.layer.cornerRadius = 1.5 * oneWidthDivison
         // timerLabelに残り時間を反映
         timerLabel1.text = String(restTime)
         timerLabel2.text = String(restTime)
@@ -247,7 +257,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         
         // 各presentの位置を初期位置に、ランダムにセットして表示
         for presentView in presentViewArray {
-            presentView.frame.origin.y = height * 15 / 32
+            presentView.frame.origin.y = 15 * oneHeightDivison
             setPresent(present: presentView)
             presentView.isHidden = false
         }
@@ -403,11 +413,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     func presentUp(present: UIImageView) {
-        present.frame.origin.y -= height * 1 / 32
+        present.frame.origin.y -= 1 * oneHeightDivison
     }
 
     func presentDown(present: UIImageView) {
-        present.frame.origin.y += height * 1 / 32
+        present.frame.origin.y += 1 * oneHeightDivison
     }
 
     // どちらの得点か判定
@@ -421,7 +431,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         }
 
         // presentがplayer1側に届いた時
-        if present.frame.origin.y < height * 10 / 32 {
+        if present.frame.origin.y < 10 * oneHeightDivison {
             
             playSoundByTypeOfPresent(getPoint)
             // 一旦Btn無効化
@@ -432,7 +442,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 self.addPoint(getPoint, &self.pointNum1, self.pointLabel1)
 
                 // presentのviewを初期位置に、新しいpresentをランダムにセット
-                present.frame.origin.y = self.height * 15 / 32
+                present.frame.origin.y = 15 * self.oneHeightDivison
                 self.setPresent(present: present)
 
                 // Btn有効化
@@ -441,7 +451,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         }
 
         // presentがplayer2側に届いた時
-        if present.frame.origin.y > height * 20 / 32 {
+        if present.frame.origin.y > 20 * oneHeightDivison {
            
             playSoundByTypeOfPresent(getPoint)
 
@@ -451,7 +461,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 
                 self.addPoint(getPoint, &self.pointNum2, self.pointLabel2)
 
-                present.frame.origin.y = self.height * 15 / 32
+                present.frame.origin.y = 15 * self.oneHeightDivison
 
                 self.btnLineStatus(btnLine: btnLine, status: true)
 
