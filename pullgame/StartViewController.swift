@@ -50,12 +50,16 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
         timeLabel.text = String(settingTime) + "sec"
 
         if settingTime == 10 {
-            timeMinus.isHidden = true
+            timeMinus.isEnabled = false
+            timeMinus.setTitleColor(UIColor.white, for: .normal)
         } else if settingTime == 60 {
-            timePlus.isHidden = true
+            timePlus.isEnabled = false
+            timePlus.setTitleColor(UIColor.white, for: .normal)
         } else {
-            timeMinus.isHidden = false
-            timePlus.isHidden = false
+            timeMinus.isEnabled = true
+            timeMinus.setTitleColor(UIColor.black, for: .normal)
+            timePlus.isEnabled = true
+            timePlus.setTitleColor(UIColor.black, for: .normal)
         }
     }
 
