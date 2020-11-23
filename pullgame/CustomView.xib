@@ -33,7 +33,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-JF-9rV" userLabel="WinOrLose Label">
-                    <rect key="frame" x="136" y="31" width="181" height="42"/>
+                    <rect key="frame" x="136" y="41" width="181" height="42"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -153,7 +153,7 @@
                 <constraint firstItem="GYb-JF-9rV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FTw-7s-1aK"/>
                 <constraint firstItem="dD7-ps-mRz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QBx-1H-Dvt"/>
                 <constraint firstItem="v9v-BD-3Zf" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="RoA-Zd-L4n"/>
-                <constraint firstItem="v9v-BD-3Zf" firstAttribute="top" secondItem="GYb-JF-9rV" secondAttribute="bottom" constant="20" id="TeH-ri-yEk"/>
+                <constraint firstItem="v9v-BD-3Zf" firstAttribute="top" secondItem="GYb-JF-9rV" secondAttribute="bottom" constant="10" id="TeH-ri-yEk"/>
                 <constraint firstItem="dD7-ps-mRz" firstAttribute="top" secondItem="v9v-BD-3Zf" secondAttribute="bottom" constant="20" id="V9Q-ED-Lrj"/>
                 <constraint firstItem="dD7-ps-mRz" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="VtM-0k-Wbu"/>
                 <constraint firstItem="azw-Nt-h4X" firstAttribute="top" secondItem="v9v-BD-3Zf" secondAttribute="bottom" constant="30" id="Zge-0F-SbE"/>
