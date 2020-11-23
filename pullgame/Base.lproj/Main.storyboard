@@ -265,19 +265,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5j0-z8-fUM">
-                                <rect key="frame" x="30" y="-114" width="41.5" height="41"/>
+                                <rect key="frame" x="30" y="-97.5" width="113.5" height="113.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mKa-Rp-aAc">
-                                <rect key="frame" x="342.5" y="969" width="41.5" height="41"/>
+                                <rect key="frame" x="990" y="1153" width="113.5" height="113"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cd5-Az-bf7">
-                                <rect key="frame" x="124" y="246" width="166" height="40"/>
+                                <rect key="frame" x="340" y="335" width="453.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="zOm-Er-ujB"/>
                                 </constraints>
@@ -286,37 +286,37 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxU-Ya-j2h">
-                                <rect key="frame" x="124" y="610" width="166" height="40"/>
+                                <rect key="frame" x="340" y="794" width="453.5" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mx9-wu-Q58">
-                                <rect key="frame" x="145" y="-132.5" width="124" height="89.5"/>
+                                <rect key="frame" x="396.5" y="-71" width="340" height="117"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Tq-NQ-8uL">
-                                <rect key="frame" x="145" y="939" width="124" height="89.5"/>
+                                <rect key="frame" x="396.5" y="1123" width="340" height="116.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qZR-z9-a7T" userLabel="Player1 Btn SV">
-                                <rect key="frame" x="-303" y="-43" width="1020" height="284"/>
+                                <rect key="frame" x="56.5" y="46" width="1020" height="284"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nJD-Vv-Dey" userLabel="Pull Btn1 SV">
                                         <rect key="frame" x="0.0" y="0.0" width="1020" height="139.5"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h7p-uU-e7M">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h7p-uU-e7M">
                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="139.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="▲" image="upbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W8r-tR-O6y"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sei-Tg-pxL"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MoU-gW-JdD">
@@ -326,37 +326,37 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y5D-CM-Tut"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jqP-R3-cp1"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hre-Ja-cIB">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hre-Ja-cIB">
                                                 <rect key="frame" x="412" y="0.0" width="196" height="139.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="▲" image="upbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yXz-lN-Z2S"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IkV-lN-5RF"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Nkt-UL-6FG">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Nkt-UL-6FG">
                                                 <rect key="frame" x="618" y="0.0" width="196" height="139.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="▲" image="upbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Rw-eu-eoX"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g6u-6A-jQJ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Hs-zl-3uG">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Hs-zl-3uG">
                                                 <rect key="frame" x="824" y="0.0" width="196" height="139.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="▲" image="upbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4tM-jk-vP4"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T6G-Dj-Jbl"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -364,24 +364,24 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hgv-Bb-lRG" userLabel="Pull Btn1 SV">
                                         <rect key="frame" x="0.0" y="144.5" width="1020" height="139.5"/>
                                         <subviews>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVW-yh-8Zo">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVW-yh-8Zo">
                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="139.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="▼" image="downbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ssB-jh-IQM"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0dh-i7-Z3o"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCm-Og-2Ga">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCm-Og-2Ga">
                                                 <rect key="frame" x="206" y="0.0" width="196" height="139.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="▼" image="downbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1yG-ip-Tiy"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ond-ZS-0oH"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kko-Tm-XXH">
@@ -391,27 +391,27 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XJr-jA-Zp6"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EMq-Tv-SH8"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaj-oJ-gcb">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaj-oJ-gcb">
                                                 <rect key="frame" x="618" y="0.0" width="196" height="139.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="▼" image="downbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="csw-IO-gnn"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Baa-WE-S26"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyh-03-xLn">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyh-03-xLn">
                                                 <rect key="frame" x="824" y="0.0" width="196" height="139.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="▼" image="downbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Iq-ln-3BQ"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ib9-Nr-R3e"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -419,38 +419,38 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mTa-m7-rnq" userLabel="Conveyor SV">
-                                <rect key="frame" x="-303" y="291" width="1020" height="314"/>
+                                <rect key="frame" x="56.5" y="380" width="1020" height="409"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="Xgz-5x-B6Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="314"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="409"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="eSq-qt-jqE">
-                                        <rect key="frame" x="205" y="0.0" width="200" height="314"/>
+                                        <rect key="frame" x="205" y="0.0" width="200" height="409"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="n2D-aJ-YDG">
-                                        <rect key="frame" x="410" y="0.0" width="200" height="314"/>
+                                        <rect key="frame" x="410" y="0.0" width="200" height="409"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="Wea-76-D5W">
-                                        <rect key="frame" x="615" y="0.0" width="200" height="314"/>
+                                        <rect key="frame" x="615" y="0.0" width="200" height="409"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="ojm-Nz-3tg">
-                                        <rect key="frame" x="820" y="0.0" width="200" height="314"/>
+                                        <rect key="frame" x="820" y="0.0" width="200" height="409"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aDy-IU-SUw" userLabel="Player2 Btn SV">
-                                <rect key="frame" x="-303" y="655" width="1020" height="284"/>
+                                <rect key="frame" x="56.5" y="839" width="1020" height="284"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x76-Zv-zOu" userLabel="Pull Btn2 SV">
                                         <rect key="frame" x="0.0" y="0.0" width="1020" height="139.5"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vm-YY-ZxA">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vm-YY-ZxA">
                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="139.5"/>
                                                 <state key="normal" title="▲" image="upbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M8a-5W-v8P"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fbm-59-x6P"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKd-Hv-e84">
@@ -459,34 +459,34 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DSN-ZT-Jmr"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xzh-iM-Xbz"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxs-MD-kzN">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxs-MD-kzN">
                                                 <rect key="frame" x="412" y="0.0" width="196" height="139.5"/>
                                                 <state key="normal" title="▲" image="upbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Di6-Na-RU5"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Nw-QS-Dwd"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rtj-mX-RLr">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rtj-mX-RLr">
                                                 <rect key="frame" x="618" y="0.0" width="196" height="139.5"/>
                                                 <state key="normal" title="▲" image="upbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hvt-WT-9am"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TrO-6U-AL0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvG-fb-Hu8">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvG-fb-Hu8">
                                                 <rect key="frame" x="824" y="0.0" width="196" height="139.5"/>
                                                 <state key="normal" title="▲" image="upbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l2z-g9-OsB"/>
+                                                    <action selector="movePresentToUpside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X0Y-tf-JFP"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -494,24 +494,24 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Z6-y4-5nQ" userLabel="Pull Btn2 SV">
                                         <rect key="frame" x="0.0" y="144.5" width="1020" height="139.5"/>
                                         <subviews>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15h-X0-EWY">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15h-X0-EWY">
                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="139.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                                 <state key="normal" title="▼" image="downbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KvM-70-les"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vp1-pU-n91"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mb0-gD-GCs">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mb0-gD-GCs">
                                                 <rect key="frame" x="206" y="0.0" width="196" height="139.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                                 <state key="normal" title="▼" image="downbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cgb-6r-nJi"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gAl-SB-WGE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64P-em-If0">
@@ -521,27 +521,27 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xtM-Yr-VG7"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P8K-fH-tog"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqg-sj-I9N">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqg-sj-I9N">
                                                 <rect key="frame" x="618" y="0.0" width="196" height="139.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                                 <state key="normal" title="▼" image="downbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W4b-Zj-02M"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="muF-Jn-XWx"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYn-N5-jyQ">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYn-N5-jyQ">
                                                 <rect key="frame" x="824" y="0.0" width="196" height="139.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                                 <state key="normal" title="▼" image="downbtn">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="movePresent5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NfU-c4-Atq"/>
+                                                    <action selector="movePresentToDownside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UmF-61-aup"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -549,13 +549,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="③" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYW-Ga-x81">
-                                <rect key="frame" x="41.5" y="358.5" width="331" height="179"/>
+                                <rect key="frame" x="113.5" y="467.5" width="906.5" height="233.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="wbu-2C-RhY" userLabel="Menu SV">
-                                <rect key="frame" x="83" y="336" width="248" height="224"/>
+                                <rect key="frame" x="226.5" y="438" width="680" height="292.5"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="es3-E2-yiq">
                                         <rect key="frame" x="0.0" y="0.0" width="154" height="0.0"/>
@@ -669,7 +669,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1455" y="96"/>
+            <point key="canvasLocation" x="-743" y="96"/>
         </scene>
     </scenes>
     <resources>

@@ -109,9 +109,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         presentNameAndPoint = ["apple":10, "grape":20, "melon":30, "peach":40, "banana":50, "cherry":60, "diamond":100, "bomb":-50]
 
         // 以下各座標を設定
-        conveyorHeight = height*0.35  //ベルトコンベアの高さは画面の0.35
-        conveyorTop = height/2 - conveyorHeight/2  //ベルトコンベアの上端の座標
-        conveyorButtom = height/2 + conveyorHeight/2  //ベルトコンベアの下端の座標
+        conveyorHeight = height*0.35  //conveyorの高さは画面の0.35
+        conveyorTop = height/2 - conveyorHeight/2  //conveyorの上端の座標
+        conveyorButtom = height/2 + conveyorHeight/2  //conveyorの下端の座標
         
         //presetnは正方形で、一辺の長さはwidth*0.16
         let presentLenght = width*0.16
@@ -308,73 +308,34 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         homeBtn.isHidden = true
         callLabel.isHidden = false
     }
-
-    @IBAction func movePresent1(_ sender: Any) {
-        // 上向矢印はtagを1として、presentを上へ
-        if ((sender as AnyObject).tag)! == 1 {
-            presentUp(present: present1)
-            // 下向矢印はtagを2として、presentを上へ
-        } else if ((sender as AnyObject).tag)! == 2 {
-            presentDown(present: present1)
-        }
-
-        // どちらの得点か判定
-        whosePresent(present: present1, btnLine: btnLine1)
-    }
-
-    @IBAction func movePresent2(_ sender: Any) {
-        if ((sender as AnyObject).tag)! == 1 {
-            presentUp(present: present2)
-
-        } else if ((sender as AnyObject).tag)! == 2 {
-            presentDown(present: present2)
-        }
-
-        whosePresent(present: present2, btnLine: btnLine2)
-    }
-
-    @IBAction func movePresent3(_ sender: Any) {
-        if ((sender as AnyObject).tag)! == 1 {
-            presentUp(present: present3)
-
-        } else if ((sender as AnyObject).tag)! == 2 {
-            presentDown(present: present3)
-        }
-
-        whosePresent(present: present3, btnLine: btnLine3)
-    }
-
-    @IBAction func movePresent4(_ sender: Any) {
-        if ((sender as AnyObject).tag)! == 1 {
-            presentUp(present: present4)
-
-        } else if ((sender as AnyObject).tag)! == 2 {
-            presentDown(present: present4)
-        }
-
-        whosePresent(present: present4, btnLine: btnLine4)
-    }
-
-    @IBAction func movePresent5(_ sender: Any) {
-        if ((sender as AnyObject).tag)! == 1 {
-            presentUp(present: present5)
-
-        } else if ((sender as AnyObject).tag)! == 2 {
-            presentDown(present: present5)
-        }
-
-        whosePresent(present: present5, btnLine: btnLine5)
-    }
-
-    func presentUp(present: UIImageView) {
+    
+    //上向矢印Btnを左から0,1,2...とタグを打ち、その番号に該当するpresetnViewArrayのArrayを上に移動
+    @IBAction func movePresentToUpside(_ sender: Any) {
+        
+        //タグを取得
+        let tag = ((sender as AnyObject).tag)!
+                
         //conveyorを9等分し、上から下まで9マスあるイメージ。初期位置はその5マス目。
-        present.center.y -= conveyorHeight/9
+        presentViewArray[tag].center.y -= conveyorHeight/9
+        
+        // どちらの得点か判定
+        whosePresent(present: presentViewArray[tag], btnLine: btnLineArray[tag])
+        
     }
-
-    func presentDown(present: UIImageView) {
-        present.center.y += conveyorHeight/9
+    
+    //下向矢印Btnを左から0,1,2...とタグを打ち、その番号に該当するpresetnViewArrayのArrayを下に移動
+    @IBAction func movePresentToDownside(_ sender: Any) {
+        
+        let tag = ((sender as AnyObject).tag)!
+        
+        presentViewArray[tag].center.y += conveyorHeight/9
+        
+        // どちらの得点か判定
+        whosePresent(present: presentViewArray[tag], btnLine: btnLineArray[tag])
+        
     }
-
+    
+ 
     // どちらの得点か判定
     func whosePresent(present: UIImageView, btnLine: [UIButton]) {
         // 得点の数字を入れる箱を用意
