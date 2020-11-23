@@ -303,7 +303,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
     @IBAction func startAgain(_: Any) {
         gameStart()
-        playDecideSound()
+        sounds.playSound(fileName: "decide", extentionName: "mp3")
         againBtn.isHidden = true
         homeBtn.isHidden = true
         callLabel.isHidden = false
@@ -334,8 +334,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         whosePresent(present: presentViewArray[tag], btnLine: btnLineArray[tag])
         
     }
-    
- 
+
     // どちらの得点か判定
     func whosePresent(present: UIImageView, btnLine: [UIButton]) {
         // 得点の数字を入れる箱を用意
@@ -355,8 +354,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                 
-                self.addPoint(getPoint, &self.pointNum1, self.pointLabel1)
-
+                self.pointNum1 += getPoint
+                
+                self.pointLabel1.text = "\(self.pointNum1)pt"
+                
                 // presentのviewを初期位置に、新しいpresentをランダムにセット
                 present.center.y = self.height/2
                 
@@ -375,8 +376,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
             btnLineStatus(btnLine: btnLine, status: false)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+
+                self.pointNum2 += getPoint
                 
-                self.addPoint(getPoint, &self.pointNum2, self.pointLabel2)
+                self.pointLabel2.text = "\(self.pointNum2)pt"
+                
 
                 present.center.y = self.height/2
                 
@@ -390,7 +394,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func playSoundByTypeOfPresent(_ getpoint: Int){
-
         //presentが爆弾なら爆発音、それ以外なら得点
         if getpoint == presentNameAndPoint["bomb"] {
             sounds.playSound(fileName: "bomb", extentionName: "mp3")
@@ -398,14 +401,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
             sounds.playSound(fileName: "getPoint", extentionName: "mp3")
            }
     }
-    
-    func addPoint(_ getPoint:Int,_ whosePoint: inout Int, _ label: UILabel){
-        
-        whosePoint += getPoint
-        label.text = "\(whosePoint)pt"
-
-    }
-
+ 
     // presentをランダムにセット
     func setPresent(present: UIImageView) {
         let presentNameArray = Array(presentNameAndPoint.keys)
@@ -422,21 +418,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
 
-    func playDecideSound() {
-        sounds.playSound(fileName: "decide", extentionName: "mp3")
-    }
+    
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toStart" {
-            playDecideSound()
+            sounds.playSound(fileName: "decide", extentionName: "mp3")
             let startVC = segue.destination as! StartViewController
             startVC.settingTime = settingTime
         }
     }
 }
 
-extension UIImageView {
-    func getFileName() -> String? {
-        return image?.accessibilityIdentifier
-    }
-}
