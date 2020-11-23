@@ -9,7 +9,8 @@
 import AVFoundation
 import UIKit
 
-class MainViewController: UIViewController, AVAudioPlayerDelegate {
+class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
+    
     
     @IBOutlet var conveyor1: UIImageView!
     @IBOutlet var conveyor2: UIImageView!
@@ -17,44 +18,15 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet var conveyor4: UIImageView!
     @IBOutlet var conveyor5: UIImageView!
 
-    @IBOutlet var pullBtn11: UIButton!
-    @IBOutlet var pullBtn12: UIButton!
-    @IBOutlet var pullBtn13: UIButton!
-    @IBOutlet var pullBtn14: UIButton!
-    @IBOutlet var pullBtn15: UIButton!
-
-    @IBOutlet var pushBtn11: UIButton!
-    @IBOutlet var pushBtn12: UIButton!
-    @IBOutlet var pushBtn13: UIButton!
-    @IBOutlet var pushBtn14: UIButton!
-    @IBOutlet var pushBtn15: UIButton!
-
-    @IBOutlet var pullBtn21: UIButton!
-    @IBOutlet var pullBtn22: UIButton!
-    @IBOutlet var pullBtn23: UIButton!
-    @IBOutlet var pullBtn24: UIButton!
-    @IBOutlet var pullBtn25: UIButton!
-
-    @IBOutlet var pushBtn21: UIButton!
-    @IBOutlet var pushBtn22: UIButton!
-    @IBOutlet var pushBtn23: UIButton!
-    @IBOutlet var pushBtn24: UIButton!
-    @IBOutlet var pushBtn25: UIButton!
-
-    @IBOutlet var pointLabel1: UILabel!
-    @IBOutlet var pointLabel2: UILabel!
-
-    @IBOutlet var timerLabel1: UILabel!
-    @IBOutlet var timerLabel2: UILabel!
-
-    @IBOutlet var winLoseLabel1: UILabel!
-    @IBOutlet var winLoseLabel2: UILabel!
-
     @IBOutlet var callLabel: UILabel!
 
     @IBOutlet var againBtn: UIButton!
     @IBOutlet var homeBtn: UIButton!
-
+    
+    
+    @IBOutlet weak var ViewOfPlayer1: CustomView!
+    @IBOutlet weak var ViewOfPlayer2: CustomView!
+    
     var sounds = Sounds()
 
     var present1 = UIImageView()
@@ -96,12 +68,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        btnLine1 = [pullBtn11, pushBtn11, pushBtn21, pullBtn21]
-        btnLine2 = [pullBtn12, pushBtn12, pushBtn22, pullBtn22]
-        btnLine3 = [pullBtn13, pushBtn13, pushBtn23, pullBtn23]
-        btnLine4 = [pullBtn14, pushBtn14, pushBtn24, pullBtn24]
-        btnLine5 = [pullBtn15, pushBtn15, pushBtn25, pullBtn25]
+        //Btnを一列毎に管理
+        btnLine1 = [ViewOfPlayer2.upBtn0,ViewOfPlayer2.downBtn0,ViewOfPlayer1.upBtn0,ViewOfPlayer1.downBtn0]
+        btnLine2 = [ViewOfPlayer2.upBtn1,ViewOfPlayer2.downBtn1,ViewOfPlayer1.upBtn1,ViewOfPlayer1.downBtn1]
+        btnLine3 = [ViewOfPlayer2.upBtn2,ViewOfPlayer2.downBtn2,ViewOfPlayer1.upBtn2,ViewOfPlayer1.downBtn2]
+        btnLine4 = [ViewOfPlayer2.upBtn3,ViewOfPlayer2.downBtn3,ViewOfPlayer1.upBtn3,ViewOfPlayer1.downBtn3]
+        btnLine5 = [ViewOfPlayer2.upBtn4,ViewOfPlayer2.downBtn4,ViewOfPlayer1.upBtn4,ViewOfPlayer1.downBtn4]
         
+        //btnLineを一括管理
         btnLineArray = [btnLine1, btnLine2, btnLine3, btnLine4, btnLine5]
 
         presentViewArray = [present1, present2, present3, present4, present5]
@@ -126,14 +100,12 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         present5.frame = CGRect(x: width*0.790, y: 0, width:presentLenght, height:presentLenght)
 
         // timerに丸枠線を設定
-        timerLabel1.layer.borderWidth = 1
-        timerLabel1.layer.cornerRadius = 1.5/32
+        ViewOfPlayer1.timerLabel.layer.borderWidth = 1
+        ViewOfPlayer2.timerLabel.layer.borderWidth = 1
 
-        timerLabel2.layer.borderWidth = 1
-        timerLabel2.layer.cornerRadius = 1.5/32
         // timerLabelに残り時間を反映
-        timerLabel1.text = String(restTime)
-        timerLabel2.text = String(restTime)
+        ViewOfPlayer1.timerLabel.text = String(restTime)
+        ViewOfPlayer2.timerLabel.text = String(restTime)
 
         againBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         homeBtn.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -145,9 +117,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         }
 
         // player1側のLabelは180度回転させる
-        rotate(pointLabel1, 180)
-        rotate(timerLabel1, 180)
-        rotate(winLoseLabel1, 180)
+        rotate(ViewOfPlayer1, 180)
+        rotate(ViewOfPlayer1.BtnSV, 180)
 
         // game開始
         gameStart()
@@ -168,18 +139,18 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         restTime = settingTime
 
         // 勝ち負けLabelを非表示
-        winLoseLabel1.isHidden = true
-        winLoseLabel2.isHidden = true
+        ViewOfPlayer1.winOrLoseLabel.isHidden = true
+        ViewOfPlayer2.winOrLoseLabel.isHidden = true
 
         // timerLabelに残り時間を反映
-        timerLabel1.text = String(restTime)
-        timerLabel2.text = String(restTime)
-
+        ViewOfPlayer1.timerLabel.text = "\(restTime)"
+        ViewOfPlayer2.timerLabel.text = "\(restTime)"
+        
         // pointを0にセット
         pointNum1 = 0
         pointNum2 = 0
-        pointLabel1.text = String(pointNum1) + "pt"
-        pointLabel2.text = String(pointNum2) + "pt"
+        ViewOfPlayer1.pointLabel.text = "\(pointNum2)pt"
+        ViewOfPlayer2.pointLabel.text = "\(pointNum2)pt"
 
         // 始まりのカウントダウン開始
         callLabel.text = "③"
@@ -233,8 +204,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
             if self.restTime > 0 {
                 // 残り時間を減らしていく
                 self.restTime -= 1
-                self.timerLabel1.text = "\(self.restTime)"
-                self.timerLabel2.text = "\(self.restTime)"
+                self.ViewOfPlayer1.timerLabel.text = "\(self.restTime)"
+                self.ViewOfPlayer2.timerLabel.text = "\(self.restTime)"
+                
             } else if self.restTime == 0 {
                 // タイマーを無効化にし、ゲーム終了時の挙動へ
                 timer.invalidate()
@@ -277,26 +249,29 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
     
     func comparePoint(){
         
-        winLoseLabel1.isHidden = false
-        winLoseLabel2.isHidden = false
+        ViewOfPlayer1.winOrLoseLabel.isHidden = false
+        ViewOfPlayer2.winOrLoseLabel.isHidden = false
     
         if pointNum1 > pointNum2 {
-            winLoseLabel1.text = "Win! "
-            winLoseLabel1.textColor = UIColor.red
-            winLoseLabel2.text = "...Lose"
-            winLoseLabel2.textColor = UIColor.blue
+            
+            ViewOfPlayer1.winOrLoseLabel.text = "Win! "
+            ViewOfPlayer1.winOrLoseLabel.textColor = UIColor.red
+            ViewOfPlayer2.winOrLoseLabel.text = "...Lose"
+            ViewOfPlayer2.winOrLoseLabel.textColor = UIColor.blue
             
         } else if pointNum1 < pointNum2 {
-            winLoseLabel1.text = "...Lose"
-            winLoseLabel1.textColor = UIColor.blue
-            winLoseLabel2.text = "Win! "
-            winLoseLabel2.textColor = UIColor.red
+
+            ViewOfPlayer1.winOrLoseLabel.text = "...Lose"
+            ViewOfPlayer1.winOrLoseLabel.textColor = UIColor.blue
+            ViewOfPlayer2.winOrLoseLabel.text = "Win! "
+            ViewOfPlayer2.winOrLoseLabel.textColor = UIColor.red
             
         } else {
-            winLoseLabel1.text = "Draw!"
-            winLoseLabel1.textColor = UIColor.black
-            winLoseLabel2.text = "Draw!"
-            winLoseLabel2.textColor = UIColor.black
+
+            ViewOfPlayer1.winOrLoseLabel.text = "Draw!"
+            ViewOfPlayer1.winOrLoseLabel.textColor = UIColor.black
+            ViewOfPlayer2.winOrLoseLabel.text = "Draw!"
+            ViewOfPlayer2.winOrLoseLabel.textColor = UIColor.black
         }
  
     }
@@ -334,6 +309,23 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         whosePresent(present: presentViewArray[tag], btnLine: btnLineArray[tag])
         
     }
+    
+    func Up(_ tag: Int) {
+        
+        presentViewArray[tag].center.y -= conveyorHeight/9
+        
+        // どちらの得点か判定
+        whosePresent(present: presentViewArray[tag], btnLine: btnLineArray[tag])
+    }
+    
+    func Down(_ tag: Int) {
+        
+        presentViewArray[tag].center.y += conveyorHeight/9
+        
+        // どちらの得点か判定
+        whosePresent(present: presentViewArray[tag], btnLine: btnLineArray[tag])
+        
+    }
 
     // どちらの得点か判定
     func whosePresent(present: UIImageView, btnLine: [UIButton]) {
@@ -356,9 +348,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
                 
                 self.pointNum1 += getPoint
                 
-                self.pointLabel1.text = "\(self.pointNum1)pt"
+                self.ViewOfPlayer1.pointLabel.text = "\(self.pointNum1)pt"
                 
-                // presentのviewを初期位置に、新しいpresentをランダムにセット
+                //presentのviewを初期位置に、新しいpresentをランダムにセット
                 present.center.y = self.height/2
                 
                 self.setPresent(present: present)
@@ -379,7 +371,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
                 self.pointNum2 += getPoint
                 
-                self.pointLabel2.text = "\(self.pointNum2)pt"
+                self.ViewOfPlayer2.pointLabel.text = "\(self.pointNum2)pt"
                 
 
                 present.center.y = self.height/2
