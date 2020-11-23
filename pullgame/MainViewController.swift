@@ -428,4 +428,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
 }
+//
+//extension UIImageView {
+//    func getFileName() -> String? {
+//        return image?.accessibilityIdentifier
+//    }
+//}
 
