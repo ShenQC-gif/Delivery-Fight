@@ -358,10 +358,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ViewOfPlayer1" destination="dmn-RD-peT" id="Jdc-rf-K1r"/>
-                        <outlet property="ViewOfPlayer2" destination="RON-hy-x0B" id="LTA-yx-rbO"/>
                         <outlet property="againBtn" destination="es3-E2-yiq" id="AgU-3P-PWe"/>
                         <outlet property="callLabel" destination="PYW-Ga-x81" id="eKK-ss-bau"/>
+                        <outlet property="consoleView1" destination="dmn-RD-peT" id="OUm-et-24M"/>
+                        <outlet property="consoleView2" destination="RON-hy-x0B" id="PN2-Iq-aED"/>
                         <outlet property="conveyor1" destination="Xgz-5x-B6Z" id="DD0-Yj-FSX"/>
                         <outlet property="conveyor2" destination="eSq-qt-jqE" id="jou-6h-U7z"/>
                         <outlet property="conveyor3" destination="n2D-aJ-YDG" id="mZ8-kd-Cj1"/>
