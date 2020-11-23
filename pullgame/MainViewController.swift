@@ -109,10 +109,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
         presentNameAndPoint = ["apple":10, "grape":20, "melon":30, "peach":40, "banana":50, "cherry":60, "diamond":100, "bomb":-50]
 
         // 以下各座標を設定
-        
-        conveyorHeight = height*0.35
-        conveyorTop = height/2 - conveyorHeight/2
-        conveyorButtom = height/2 + conveyorHeight/2
+        conveyorHeight = height*0.35  //ベルトコンベアの高さは画面の0.35
+        conveyorTop = height/2 - conveyorHeight/2  //ベルトコンベアの上端の座標
+        conveyorButtom = height/2 + conveyorHeight/2  //ベルトコンベアの下端の座標
         
         //presetnは正方形で、一辺の長さはwidth*0.16
         let presentLenght = width*0.16
@@ -144,8 +143,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
             view.addSubview(presentView)
             rotate(presentView, 90)
         }
-
-       
 
         // player1側のLabelは180度回転させる
         rotate(pointLabel1, 180)
@@ -215,8 +212,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate {
 
         // 各presentの位置を初期位置に、ランダムにセットして表示
         for presentView in presentViewArray {
-            //y座標はconveyorの中点、つまりheightの中点。
-            presentView.center.y = height/2
+            presentView.center.y = height/2  //y座標はconveyorの中点、つまりheightの中点。
             setPresent(present: presentView)
             presentView.isHidden = false
         }
