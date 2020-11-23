@@ -50,6 +50,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     var timer = Timer()
 
+    
     // btnを1列ごとに管理
     var btnLine1: [UIButton] = []
     var btnLine2: [UIButton] = []
