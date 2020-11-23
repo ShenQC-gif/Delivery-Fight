@@ -36,7 +36,7 @@ This is a simple PvP app.
 シンプルですが、反応速度が試され、駆け引き要素も入っています。  
 It's important to make decision and react quickly.  
 
-お家時間が増えたこの時期に遊んでみては如何でしょうか。
+お家時間が増えたこの時期に遊んでみては如何でしょうか。              
 You can play with your family or friends to kill time. Hope you can enjoy it.  
 
 # Author
