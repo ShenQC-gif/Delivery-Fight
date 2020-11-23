@@ -3,6 +3,7 @@ Delivery-Fightは、ランダムに現れるのアイテムをより早く自分
 Delivery-Fight is PvP. Get items and send bomb to the opponent.
 
 # DEMO
+![Videotogif](https://user-images.githubusercontent.com/66754677/99961624-12fec280-2dd2-11eb-8b3f-af2c42137fbf.gif)
 
 
 # HOW TO PLAY
