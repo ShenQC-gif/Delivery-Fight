@@ -9,6 +9,11 @@
 import AVFoundation
 import UIKit
 
+struct Location {
+    var x : Int
+    var y : Int
+}
+
 class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     
     
@@ -26,6 +31,44 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     
     @IBOutlet weak var consoleView1: CustomView!
     @IBOutlet weak var consoleView2: CustomView!
+    
+    @IBOutlet weak var imageView1: UIImageView!
+    @IBOutlet weak var imageView2: UIImageView!
+    @IBOutlet weak var imageView3: UIImageView!
+    @IBOutlet weak var imageView4: UIImageView!
+    @IBOutlet weak var imageView5: UIImageView!
+    @IBOutlet weak var imageView6: UIImageView!
+    @IBOutlet weak var imageView7: UIImageView!
+    @IBOutlet weak var imageView8: UIImageView!
+    @IBOutlet weak var imageView9: UIImageView!
+    @IBOutlet weak var imageView10: UIImageView!
+    @IBOutlet weak var imageView11: UIImageView!
+    @IBOutlet weak var imageView12: UIImageView!
+    @IBOutlet weak var imageView13: UIImageView!
+    @IBOutlet weak var imageView14: UIImageView!
+    @IBOutlet weak var imageView15: UIImageView!
+    @IBOutlet weak var imageView16: UIImageView!
+    @IBOutlet weak var imageView17: UIImageView!
+    @IBOutlet weak var imageView18: UIImageView!
+    @IBOutlet weak var imageView19: UIImageView!
+    @IBOutlet weak var imageView20: UIImageView!
+    @IBOutlet weak var imageView21: UIImageView!
+    @IBOutlet weak var imageView22: UIImageView!
+    @IBOutlet weak var imageView23: UIImageView!
+    @IBOutlet weak var imageView24: UIImageView!
+    @IBOutlet weak var imageView25: UIImageView!
+    @IBOutlet weak var imageView26: UIImageView!
+    @IBOutlet weak var imageView27: UIImageView!
+    @IBOutlet weak var imageView28: UIImageView!
+    @IBOutlet weak var imageView29: UIImageView!
+    @IBOutlet weak var imageView30: UIImageView!
+    @IBOutlet weak var imageView31: UIImageView!
+    @IBOutlet weak var imageView32: UIImageView!
+    @IBOutlet weak var imageView33: UIImageView!
+    @IBOutlet weak var imageView34: UIImageView!
+    @IBOutlet weak var imageView35: UIImageView!
+    
+    
     
     var sounds = Sounds()
 
@@ -57,6 +100,16 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     var btnLine3: [UIButton] = []
     var btnLine4: [UIButton] = []
     var btnLine5: [UIButton] = []
+    
+    var gameState = [
+        ["","","","",""],
+        ["","","","",""],
+        ["","","","",""],
+        ["","","","",""],
+        ["","","","",""],
+        ["","","","",""],
+        ["","","","",""],
+    ]
     
     // btnLineを一括管理
     var btnLineArray : [[UIButton]] = []
@@ -123,6 +176,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
         // game開始
         gameStart()
+        
     }
     
     func rotate(_ UIView: UIView, _ angle: CGFloat){
@@ -131,6 +185,59 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         
         UIView.transform = CGAffineTransform(rotationAngle: CGFloat(oneDegree*angle))
         
+    }
+    
+    func loadGameState(){
+        
+        imageView1.image = UIImage(named: gameState[0][0])
+        imageView2.image = UIImage(named: gameState[0][1])
+        imageView3.image = UIImage(named: gameState[0][2])
+        imageView4.image = UIImage(named: gameState[0][3])
+        imageView5.image = UIImage(named: gameState[0][4])
+        imageView6.image = UIImage(named: gameState[1][0])
+        imageView7.image = UIImage(named: gameState[1][1])
+        imageView8.image = UIImage(named: gameState[1][2])
+        imageView9.image = UIImage(named: gameState[1][3])
+        imageView10.image = UIImage(named: gameState[1][4])
+        imageView11.image = UIImage(named: gameState[2][0])
+        imageView12.image = UIImage(named: gameState[2][1])
+        imageView13.image = UIImage(named: gameState[2][2])
+        imageView14.image = UIImage(named: gameState[2][3])
+        imageView15.image = UIImage(named: gameState[2][4])
+        imageView16.image = UIImage(named: gameState[3][0])
+        imageView17.image = UIImage(named: gameState[3][1])
+        imageView18.image = UIImage(named: gameState[3][2])
+        imageView19.image = UIImage(named: gameState[3][3])
+        imageView20.image = UIImage(named: gameState[3][4])
+        imageView21.image = UIImage(named: gameState[4][0])
+        imageView22.image = UIImage(named: gameState[4][1])
+        imageView23.image = UIImage(named: gameState[4][2])
+        imageView24.image = UIImage(named: gameState[4][3])
+        imageView25.image = UIImage(named: gameState[4][4])
+        imageView26.image = UIImage(named: gameState[5][0])
+        imageView27.image = UIImage(named: gameState[5][1])
+        imageView28.image = UIImage(named: gameState[5][2])
+        imageView29.image = UIImage(named: gameState[5][3])
+        imageView30.image = UIImage(named: gameState[5][4])
+        imageView31.image = UIImage(named: gameState[6][0])
+        imageView32.image = UIImage(named: gameState[6][1])
+        imageView33.image = UIImage(named: gameState[6][2])
+        imageView34.image = UIImage(named: gameState[6][3])
+        imageView35.image = UIImage(named: gameState[6][4])
+
+
+        
+    }
+    
+    func findLocation(tag: Int) -> Location {
+        
+        for (x,col) in gameState.enumerated(){
+            if col[tag] != ""{
+                return Location(x:x, y:tag)
+            }
+        }
+        assertionFailure("Present is missing😢")
+        abort()
     }
     
 
@@ -181,13 +288,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     // 画面の初期状態
     func initailState() {
-
-        // 各presentの位置を初期位置に、ランダムにセットして表示
-        for presentView in presentViewArray {
-            presentView.center.y = height/2  //y座標はconveyorの中点、つまりheightの中点。
-            setPresent(present: presentView)
-            presentView.isHidden = false
+        
+        for y in 0..<gameState[3].count {
+            
+            gameState[3][y] = RondomPresent()
+            
         }
+        
+        loadGameState()
        
         // Btn有効化
         for btnLine in btnLineArray {
@@ -285,82 +393,111 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         callLabel.isHidden = false
     }
     
+    func RondomPresent() -> String{
+        let presentNameArray = Array(presentNameAndPoint.keys)
+        let n = Int.random(in: 1 ... presentNameArray.count)
+        let nextPresent = presentNameArray[n-1]
+        return nextPresent
+        
+    }
+    
     //delegateメソッド
     func Up(_ tag: Int) {
         
-        presentViewArray[tag].center.y -= conveyorHeight/9
+        var location = findLocation(tag: tag)
         
-        // どちらの得点か判定
-        whosePresent(present: presentViewArray[tag], btnLine: btnLineArray[tag])
+        let presentName = gameState[location.x][location.y]
+        
+        gameState[location.x][location.y] = ""
+        
+        switch location.x {
+        case 1:
+            location.x = 0
+        case 2:
+            location.x = 1
+        case 3:
+            location.x = 2
+        case 4:
+            location.x = 3
+        case 5:
+            location.x = 4
+        case 6:
+            location.x = 5
+        default:
+            break
+        }
+        
+        if location.x == 0{
+            
+            let getPoint = presentNameAndPoint[presentName] ?? 0
+            
+            pointNum1 += getPoint
+            
+            consoleView1.pointLabel.text = "\(self.pointNum1)pt"
+            
+            btnLineStatus(btnLine: btnLineArray[tag], status: false)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.gameState[3][location.y] = self.RondomPresent()
+                self.loadGameState()
+                
+                self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+            }
+        }else{
+            gameState[location.x][location.y] = presentName
+            loadGameState()
+        }
     }
     
     //delegateメソッド
     func Down(_ tag: Int) {
         
-        presentViewArray[tag].center.y += conveyorHeight/9
+        var location = findLocation(tag: tag)
         
-        // どちらの得点か判定
-        whosePresent(present: presentViewArray[tag], btnLine: btnLineArray[tag])
+        let presentName = gameState[location.x][location.y]
         
-    }
-
-    // どちらの得点か判定
-    func whosePresent(present: UIImageView, btnLine: [UIButton]) {
-        // 得点の数字を入れる箱を用意
-        var getPoint = 0
+        gameState[location.x][location.y] = ""
         
-        //presentの名前を取得し、それに応じて点数を計算する
-        if let presentName = present.image?.accessibilityIdentifier{
-            getPoint = presentNameAndPoint[presentName] ?? 0
+        switch location.x {
+        case 0:
+            location.x = 1
+        case 1:
+            location.x = 2
+        case 2:
+            location.x = 3
+        case 3:
+            location.x = 4
+        case 4:
+            location.x = 5
+        case 5:
+            location.x = 6
+        default:
+            break
         }
-
-        // presentがplayer1側に届いた時
-        if present.center.y < conveyorTop {
+        
+        if location.x == 6{
             
-            playSoundByTypeOfPresent(getPoint)
-            // 一旦Btn無効化
-            btnLineStatus(btnLine: btnLine, status: false)
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            let getPoint = presentNameAndPoint[presentName] ?? 0
+            
+            pointNum2 += getPoint
+            
+            consoleView2.pointLabel.text = "\(self.pointNum2)pt"
+            
+            btnLineStatus(btnLine: btnLineArray[tag], status: false)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.gameState[3][location.y] = self.RondomPresent()
+                self.loadGameState()
                 
-                self.pointNum1 += getPoint
-                
-                self.consoleView1.pointLabel.text = "\(self.pointNum1)pt"
-                
-                //presentのviewを初期位置に、新しいpresentをランダムにセット
-                present.center.y = self.height/2
-                
-                self.setPresent(present: present)
-
-                // Btn有効化
-                self.btnLineStatus(btnLine: btnLine, status: true)
+                self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
             }
+        }else{
+            gameState[location.x][location.y] = presentName
+            loadGameState()
         }
-
-        // presentがplayer2側に届いた時
-        if present.center.y  > conveyorButtom {
-           
-            playSoundByTypeOfPresent(getPoint)
-
-            btnLineStatus(btnLine: btnLine, status: false)
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-
-                self.pointNum2 += getPoint
-                
-                self.consoleView2.pointLabel.text = "\(self.pointNum2)pt"
-                
-
-                present.center.y = self.height/2
-                
-                self.setPresent(present: present)
-
-                self.btnLineStatus(btnLine: btnLine, status: true)
-
-                
-            }
-        }
+        
     }
+
     
     func playSoundByTypeOfPresent(_ getpoint: Int){
         //presentが爆弾なら爆発音、それ以外なら得点
@@ -369,15 +506,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         } else {
             sounds.playSound(fileName: "getPoint", extentionName: "mp3")
            }
-    }
- 
-    // presentをランダムにセット
-    func setPresent(present: UIImageView) {
-        let presentNameArray = Array(presentNameAndPoint.keys)
-        let n = Int.random(in: 1 ... presentNameArray.count)
-        let nextPresent = presentNameArray[n-1]
-        present.image = UIImage(named: nextPresent)
-        present.image?.accessibilityIdentifier = nextPresent
     }
 
     // btnLineの有効化/無効化を管理
@@ -397,10 +525,3 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         }
     }
 }
-//
-//extension UIImageView {
-//    func getFileName() -> String? {
-//        return image?.accessibilityIdentifier
-//    }
-//}
-
