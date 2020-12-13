@@ -67,24 +67,13 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     @IBOutlet weak var imageView33: UIImageView!
     @IBOutlet weak var imageView34: UIImageView!
     @IBOutlet weak var imageView35: UIImageView!
-    
-    
+
     
     var sounds = Sounds()
 
-    var present1 = UIImageView()
-    var present2 = UIImageView()
-    var present3 = UIImageView()
-    var present4 = UIImageView()
-    var present5 = UIImageView()
-
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
-
-    var conveyorTop : CGFloat = 0
-    var conveyorButtom : CGFloat = 0
-    var conveyorHeight : CGFloat = 0
-    
+   
     var pointNum1 = 0
     var pointNum2 = 0
 
@@ -132,26 +121,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         //btnLineを一括管理
         btnLineArray = [btnLine1, btnLine2, btnLine3, btnLine4, btnLine5]
 
-        presentViewArray = [present1, present2, present3, present4, present5]
-
         presentNameAndPoint = ["apple":10, "grape":20, "melon":30, "peach":40, "banana":50, "cherry":60, "diamond":100, "bomb":-50]
-
-        // 以下各座標を設定
-        conveyorHeight = height*0.35  //conveyorの高さは画面の0.35
-        conveyorTop = height/2 - conveyorHeight/2  //conveyorの上端の座標
-        conveyorButtom = height/2 + conveyorHeight/2  //conveyorの下端の座標
-        
-        //presetnは正方形で、一辺の長さはwidth*0.16
-        let presentLenght = width*0.16
-        
-        //conveyor全体の幅はauto layoutでwidth*0.9と設定している。従いpresent1のx座標はwidth*0.1/2。
-        //presetn3の中点のx座標はwidthの中点と同じ。そこから一辺の長さの半分がそのx座標。
-        //上記二点から他のpresetnのx座標を算出。
-        present1.frame = CGRect(x: width*0.050, y: 0, width:presentLenght, height:presentLenght)
-        present2.frame = CGRect(x: width*0.235, y: 0, width:presentLenght, height:presentLenght)
-        present3.frame = CGRect(x: width*0.420, y: 0, width:presentLenght, height:presentLenght)
-        present4.frame = CGRect(x: width*0.605, y: 0, width:presentLenght, height:presentLenght)
-        present5.frame = CGRect(x: width*0.790, y: 0, width:presentLenght, height:presentLenght)
 
         // timerに丸枠線を設定
         consoleView1.timerLabel.layer.borderWidth = 1
@@ -164,13 +134,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         againBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         homeBtn.titleLabel?.adjustsFontSizeToFitWidth = true
 
-        // 画面にimageviewを貼り付け、90度回転させる
-        for presentView in presentViewArray{
-            view.addSubview(presentView)
-            rotate(presentView, 90)
-        }
-
-        // player1側のLabelは180度回転させる
+      // player1側のLabelは180度回転させる
         rotate(consoleView1, 180)
         rotate(consoleView1.BtnSV, 180)
 
@@ -304,6 +268,19 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         
     }
     
+    func getEmptyGameState() -> [[String]]{
+        return
+            [
+            ["","","","",""],
+            ["","","","",""],
+            ["","","","",""],
+            ["","","","",""],
+            ["","","","",""],
+            ["","","","",""],
+            ["","","","",""],
+            ]
+    }
+    
     
     func timerStart(){
         
@@ -332,10 +309,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         callLabel.isHidden = false
         callLabel.text = "Finish!!"
 
-        // presentを非表示
-        for presentView in presentViewArray {
-            presentView.isHidden = true
-        }
+        gameState = getEmptyGameState()
+        loadGameState()
 
         // Btn無効化
         for btnLine in btnLineArray {
@@ -348,6 +323,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             self.comparePoint()
         }
 
+        //メニュー表示
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             self.callLabel.isHidden = true
             self.againBtn.isHidden = false
@@ -356,6 +332,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         
     }
     
+    //点数比較
     func comparePoint(){
         
         consoleView1.winOrLoseLabel.isHidden = false
@@ -427,9 +404,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             break
         }
         
+        gameState[location.x][location.y] = presentName
+        loadGameState()
+        
         if location.x == 0{
-            
+
             let getPoint = presentNameAndPoint[presentName] ?? 0
+            
+            playSoundByTypeOfPresent(getPoint)
             
             pointNum1 += getPoint
             
@@ -438,16 +420,18 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             btnLineStatus(btnLine: btnLineArray[tag], status: false)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.gameState[3][location.y] = self.RondomPresent()
-                self.loadGameState()
-                
+                self.resetPresent(location: location)
                 self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
             }
-        }else{
-            gameState[location.x][location.y] = presentName
-            loadGameState()
         }
     }
+    
+    func resetPresent(location: Location){
+        gameState[location.x][location.y] = ""
+        gameState[3][location.y] = RondomPresent()
+        loadGameState()
+    }
+    
     
     //delegateメソッド
     func Down(_ tag: Int) {
@@ -475,9 +459,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             break
         }
         
+        gameState[location.x][location.y] = presentName
+        loadGameState()
+        
         if location.x == 6{
             
             let getPoint = presentNameAndPoint[presentName] ?? 0
+            
+            playSoundByTypeOfPresent(getPoint)
             
             pointNum2 += getPoint
             
@@ -486,14 +475,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             btnLineStatus(btnLine: btnLineArray[tag], status: false)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.gameState[3][location.y] = self.RondomPresent()
-                self.loadGameState()
-                
+                self.resetPresent(location: location)
                 self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
             }
-        }else{
-            gameState[location.x][location.y] = presentName
-            loadGameState()
         }
         
     }
