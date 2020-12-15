@@ -9,13 +9,12 @@
 import AVFoundation
 import UIKit
 
-struct Location {
-    var x : Int
-    var y : Int
-}
+
 
 class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     
+    var sounds = Sounds()
+    var presentLocation = PresentLocation()
     
     @IBOutlet var conveyor1: UIImageView!
     @IBOutlet var conveyor2: UIImageView!
@@ -67,21 +66,13 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     @IBOutlet weak var imageView33: UIImageView!
     @IBOutlet weak var imageView34: UIImageView!
     @IBOutlet weak var imageView35: UIImageView!
-
-    
-    var sounds = Sounds()
-
-    let width = UIScreen.main.bounds.size.width
-    let height = UIScreen.main.bounds.size.height
    
     var pointNum1 = 0
     var pointNum2 = 0
 
+    var timer = Timer()
     var settingTime = 0
     var restTime = 0
-
-    var timer = Timer()
-
     
     // btnを1列ごとに管理
     var btnLine1: [UIButton] = []
@@ -90,23 +81,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     var btnLine4: [UIButton] = []
     var btnLine5: [UIButton] = []
     
-    var gameState = [
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-    ]
-    
     // btnLineを一括管理
     var btnLineArray : [[UIButton]] = []
 
     // present名を管理
     var presentNameAndPoint = [String:Int]()
-    
-    var presentViewArray: [UIImageView] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,106 +102,36 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
         presentNameAndPoint = ["apple":10, "grape":20, "melon":30, "peach":40, "banana":50, "cherry":60, "diamond":100, "bomb":-50]
 
-        // timerに丸枠線を設定
+        // timerに枠線を設定
         consoleView1.timerLabel.layer.borderWidth = 1
         consoleView2.timerLabel.layer.borderWidth = 1
-
-        // timerLabelに残り時間を反映
-        consoleView1.timerLabel.text = String(restTime)
-        consoleView2.timerLabel.text = String(restTime)
-
+        
         againBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         homeBtn.titleLabel?.adjustsFontSizeToFitWidth = true
 
-      // player1側のLabelは180度回転させる
+        // player1側のLabelは180度回転させる
         rotate(consoleView1, 180)
+        //ボタンだけは元に戻す
         rotate(consoleView1.BtnSV, 180)
+        
+        // timerLabelに残り時間を反映
+        loadTime(settingTime)
 
         // game開始
         gameStart()
         
     }
     
+    // Viewを回転させる
     func rotate(_ UIView: UIView, _ angle: CGFloat){
         
         let oneDegree = CGFloat.pi/180
-        
         UIView.transform = CGAffineTransform(rotationAngle: CGFloat(oneDegree*angle))
         
     }
     
-    func loadGameState(){
-        
-        imageView1.image = UIImage(named: gameState[0][0])
-        imageView2.image = UIImage(named: gameState[0][1])
-        imageView3.image = UIImage(named: gameState[0][2])
-        imageView4.image = UIImage(named: gameState[0][3])
-        imageView5.image = UIImage(named: gameState[0][4])
-        imageView6.image = UIImage(named: gameState[1][0])
-        imageView7.image = UIImage(named: gameState[1][1])
-        imageView8.image = UIImage(named: gameState[1][2])
-        imageView9.image = UIImage(named: gameState[1][3])
-        imageView10.image = UIImage(named: gameState[1][4])
-        imageView11.image = UIImage(named: gameState[2][0])
-        imageView12.image = UIImage(named: gameState[2][1])
-        imageView13.image = UIImage(named: gameState[2][2])
-        imageView14.image = UIImage(named: gameState[2][3])
-        imageView15.image = UIImage(named: gameState[2][4])
-        imageView16.image = UIImage(named: gameState[3][0])
-        imageView17.image = UIImage(named: gameState[3][1])
-        imageView18.image = UIImage(named: gameState[3][2])
-        imageView19.image = UIImage(named: gameState[3][3])
-        imageView20.image = UIImage(named: gameState[3][4])
-        imageView21.image = UIImage(named: gameState[4][0])
-        imageView22.image = UIImage(named: gameState[4][1])
-        imageView23.image = UIImage(named: gameState[4][2])
-        imageView24.image = UIImage(named: gameState[4][3])
-        imageView25.image = UIImage(named: gameState[4][4])
-        imageView26.image = UIImage(named: gameState[5][0])
-        imageView27.image = UIImage(named: gameState[5][1])
-        imageView28.image = UIImage(named: gameState[5][2])
-        imageView29.image = UIImage(named: gameState[5][3])
-        imageView30.image = UIImage(named: gameState[5][4])
-        imageView31.image = UIImage(named: gameState[6][0])
-        imageView32.image = UIImage(named: gameState[6][1])
-        imageView33.image = UIImage(named: gameState[6][2])
-        imageView34.image = UIImage(named: gameState[6][3])
-        imageView35.image = UIImage(named: gameState[6][4])
-
-
-        
-    }
-    
-    func findLocation(tag: Int) -> Location {
-        
-        for (x,col) in gameState.enumerated(){
-            if col[tag] != ""{
-                return Location(x:x, y:tag)
-            }
-        }
-        assertionFailure("Present is missing😢")
-        abort()
-    }
-    
-
     // game開始時の挙動
     func gameStart() {
-        
-        restTime = settingTime
-
-        // 勝ち負けLabelを非表示
-       consoleView1.winOrLoseLabel.isHidden = true
-       consoleView2.winOrLoseLabel.isHidden = true
-
-       // timerLabelに残り時間を反映
-       consoleView1.timerLabel.text = "\(restTime)"
-       consoleView2.timerLabel.text = "\(restTime)"
-       
-       // pointを0にセット
-       pointNum1 = 0
-       pointNum2 = 0
-       consoleView1.pointLabel.text = "\(pointNum2)pt"
-       consoleView2.pointLabel.text = "\(pointNum2)pt"
 
         // 始まりのカウントダウン開始
         callLabel.text = "③"
@@ -253,36 +162,81 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     // 画面の初期状態
     func initailState() {
         
-        for y in 0..<gameState[3].count {
-            
-            gameState[3][y] = RondomPresent()
-            
+        //presentを初期位置にセット
+        for y in 0..<presentLocation.state[3].count {
+            presentLocation.state[3][y] = RondomPresent()
         }
-        
-        loadGameState()
+        loadState()
        
         // Btn有効化
         for btnLine in btnLineArray {
             btnLineStatus(btnLine: btnLine, status: true)
         }
         
+        // 勝ち負けLabelを非表示
+       consoleView1.winOrLoseLabel.isHidden = true
+       consoleView2.winOrLoseLabel.isHidden = true
+        
+        // timerLabelに残り時間を反映
+        loadTime(settingTime)
+        
+       // pointを0にセット
+       pointNum1 = 0
+       pointNum2 = 0
+       consoleView1.pointLabel.text = "\(pointNum2)pt"
+       consoleView2.pointLabel.text = "\(pointNum2)pt"
     }
     
-    func getEmptyGameState() -> [[String]]{
-        return
-            [
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ]
+    func RondomPresent() -> String{
+        let presentNameArray = Array(presentNameAndPoint.keys)
+        let n = Int.random(in: 1 ... presentNameArray.count)
+        let newPresent = presentNameArray[n-1]
+        return newPresent
     }
     
-    
+    // presentの位置情報を読み込む
+    func loadState(){
+        
+        imageView1.image = UIImage(named: presentLocation.state[0][0])
+        imageView2.image = UIImage(named: presentLocation.state[0][1])
+        imageView3.image = UIImage(named: presentLocation.state[0][2])
+        imageView4.image = UIImage(named: presentLocation.state[0][3])
+        imageView5.image = UIImage(named: presentLocation.state[0][4])
+        imageView6.image = UIImage(named: presentLocation.state[1][0])
+        imageView7.image = UIImage(named: presentLocation.state[1][1])
+        imageView8.image = UIImage(named: presentLocation.state[1][2])
+        imageView9.image = UIImage(named: presentLocation.state[1][3])
+        imageView10.image = UIImage(named: presentLocation.state[1][4])
+        imageView11.image = UIImage(named: presentLocation.state[2][0])
+        imageView12.image = UIImage(named: presentLocation.state[2][1])
+        imageView13.image = UIImage(named: presentLocation.state[2][2])
+        imageView14.image = UIImage(named: presentLocation.state[2][3])
+        imageView15.image = UIImage(named: presentLocation.state[2][4])
+        imageView16.image = UIImage(named: presentLocation.state[3][0])
+        imageView17.image = UIImage(named: presentLocation.state[3][1])
+        imageView18.image = UIImage(named: presentLocation.state[3][2])
+        imageView19.image = UIImage(named: presentLocation.state[3][3])
+        imageView20.image = UIImage(named: presentLocation.state[3][4])
+        imageView21.image = UIImage(named: presentLocation.state[4][0])
+        imageView22.image = UIImage(named: presentLocation.state[4][1])
+        imageView23.image = UIImage(named: presentLocation.state[4][2])
+        imageView24.image = UIImage(named: presentLocation.state[4][3])
+        imageView25.image = UIImage(named: presentLocation.state[4][4])
+        imageView26.image = UIImage(named: presentLocation.state[5][0])
+        imageView27.image = UIImage(named: presentLocation.state[5][1])
+        imageView28.image = UIImage(named: presentLocation.state[5][2])
+        imageView29.image = UIImage(named: presentLocation.state[5][3])
+        imageView30.image = UIImage(named: presentLocation.state[5][4])
+        imageView31.image = UIImage(named: presentLocation.state[6][0])
+        imageView32.image = UIImage(named: presentLocation.state[6][1])
+        imageView33.image = UIImage(named: presentLocation.state[6][2])
+        imageView34.image = UIImage(named: presentLocation.state[6][3])
+        imageView35.image = UIImage(named: presentLocation.state[6][4])
+    }
+
     func timerStart(){
+        
+        restTime = settingTime
         
         // タイマーを作動
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
@@ -290,8 +244,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             if self.restTime > 0 {
                 // 残り時間を減らしていく
                 self.restTime -= 1
-                self.consoleView1.timerLabel.text = "\(self.restTime)"
-                self.consoleView2.timerLabel.text = "\(self.restTime)"
+                self.loadTime(self.restTime)
                 
             } else if self.restTime == 0 {
                 // タイマーを無効化にし、ゲーム終了時の挙動へ
@@ -300,23 +253,28 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             }
         })
     }
+    
+    func loadTime(_ Time: Int){
+        consoleView1.timerLabel.text = "\(Time)"
+        consoleView2.timerLabel.text = "\(Time)"
+    }
 
     // ゲーム終了時の挙動
     func gameFinish() {
         
         sounds.playSound(fileName: "finish", extentionName: "mp3")
-
+        
+        //画面上からpresentを消す
+        presentLocation.state = presentLocation.getEmptyState()
+        loadState()
+    
         callLabel.isHidden = false
         callLabel.text = "Finish!!"
-
-        gameState = getEmptyGameState()
-        loadGameState()
 
         // Btn無効化
         for btnLine in btnLineArray {
             btnLineStatus(btnLine: btnLine, status: false)
         }
-
 
         // 結果発表
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -329,10 +287,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             self.againBtn.isHidden = false
             self.homeBtn.isHidden = false
         }
-        
     }
     
-    //点数比較
+    //点数比較して勝ち負けを表示
     func comparePoint(){
         
         consoleView1.winOrLoseLabel.isHidden = false
@@ -361,32 +318,20 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         }
  
     }
-
-    @IBAction func startAgain(_: Any) {
-        gameStart()
-        sounds.playSound(fileName: "decide", extentionName: "mp3")
-        againBtn.isHidden = true
-        homeBtn.isHidden = true
-        callLabel.isHidden = false
-    }
-    
-    func RondomPresent() -> String{
-        let presentNameArray = Array(presentNameAndPoint.keys)
-        let n = Int.random(in: 1 ... presentNameArray.count)
-        let nextPresent = presentNameArray[n-1]
-        return nextPresent
-        
-    }
     
     //delegateメソッド
     func Up(_ tag: Int) {
         
-        var location = findLocation(tag: tag)
+        //presetnの位置を把握
+        var location = presentLocation.findLocation(tag: tag)
         
-        let presentName = gameState[location.x][location.y]
+        //何のpresentか把握
+        let presentName = presentLocation.state[location.x][location.y]
         
-        gameState[location.x][location.y] = ""
+        //一旦その位置からpresentを削除
+        presentLocation.state[location.x][location.y] = ""
         
+        //表示位置を変更
         switch location.x {
         case 1:
             location.x = 0
@@ -404,43 +349,43 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             break
         }
         
-        gameState[location.x][location.y] = presentName
-        loadGameState()
+        //変更した表示位置に同じpresentを表示
+        presentLocation.state[location.x][location.y] = presentName
+        loadState()
         
+        //player1側にpresentが到着した時
         if location.x == 0{
 
+            //そのプレゼントの得点を取得
             let getPoint = presentNameAndPoint[presentName] ?? 0
             
+            //得点によって音声を再生
             playSoundByTypeOfPresent(getPoint)
             
             pointNum1 += getPoint
             
-            consoleView1.pointLabel.text = "\(self.pointNum1)pt"
+            consoleView1.pointLabel.text = "\(pointNum1)pt"
             
+            //その列のボタンを一旦無効化
             btnLineStatus(btnLine: btnLineArray[tag], status: false)
             
+            //0.5秒後のランダムなpresentを初期位置にセット
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.resetPresent(location: location)
+                //ボタンを有効化
                 self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
             }
         }
     }
     
-    func resetPresent(location: Location){
-        gameState[location.x][location.y] = ""
-        gameState[3][location.y] = RondomPresent()
-        loadGameState()
-    }
-    
-    
     //delegateメソッド
     func Down(_ tag: Int) {
         
-        var location = findLocation(tag: tag)
+        var location = presentLocation.findLocation(tag: tag)
         
-        let presentName = gameState[location.x][location.y]
+        let presentName = presentLocation.state[location.x][location.y]
         
-        gameState[location.x][location.y] = ""
+        presentLocation.state[location.x][location.y] = ""
         
         switch location.x {
         case 0:
@@ -459,8 +404,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             break
         }
         
-        gameState[location.x][location.y] = presentName
-        loadGameState()
+        presentLocation.state[location.x][location.y] = presentName
+        loadState()
         
         if location.x == 6{
             
@@ -470,7 +415,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             
             pointNum2 += getPoint
             
-            consoleView2.pointLabel.text = "\(self.pointNum2)pt"
+            consoleView2.pointLabel.text = "\(pointNum2)pt"
             
             btnLineStatus(btnLine: btnLineArray[tag], status: false)
             
@@ -481,8 +426,22 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         }
         
     }
-
     
+    func resetPresent(location: Location){
+        presentLocation.state[location.x][location.y] = ""
+        presentLocation.state[3][location.y] = RondomPresent()
+        loadState()
+    }
+    
+    @IBAction func startAgain(_: Any) {
+        gameStart()
+        sounds.playSound(fileName: "decide", extentionName: "mp3")
+        againBtn.isHidden = true
+        homeBtn.isHidden = true
+        callLabel.isHidden = false
+    }
+
+    //presentの種類によって音声を再生
     func playSoundByTypeOfPresent(_ getpoint: Int){
         //presentが爆弾なら爆発音、それ以外なら得点
         if getpoint == presentNameAndPoint["bomb"] {
@@ -492,14 +451,12 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
            }
     }
 
-    // btnLineの有効化/無効化を管理
+    // 1列毎のbtnLineの有効化/無効化を管理
     func btnLineStatus(btnLine: [UIButton], status: Bool) {
         for btn in btnLine {
             btn.isEnabled = status
         }
     }
-
-    
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toStart" {

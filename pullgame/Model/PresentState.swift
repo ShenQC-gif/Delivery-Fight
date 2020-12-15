@@ -13,9 +13,9 @@ struct Location {
     var y : Int
 }
 
-class GameState {
+class PresentLocation {
     
-    var gameState = [
+    var state = [
         ["","","","",""],
         ["","","","",""],
         ["","","","",""],
@@ -25,7 +25,7 @@ class GameState {
         ["","","","",""],
     ]
     
-    func getEmptyGameState() -> [[String]]{
+    func getEmptyState() -> [[String]]{
         return
             [
             ["","","","",""],
@@ -36,6 +36,18 @@ class GameState {
             ["","","","",""],
             ["","","","",""],
             ]
+    }
+    
+    ///何行目の、何列目(ボタンのtagで管理)のpresentかを返す
+    func findLocation(tag: Int) -> Location {
+        
+        for (x,col) in state.enumerated(){
+            if col[tag] != ""{
+                return Location(x:x, y:tag)
+            }
+        }
+        assertionFailure("Present is missing😢")
+        abort()
     }
     
     
