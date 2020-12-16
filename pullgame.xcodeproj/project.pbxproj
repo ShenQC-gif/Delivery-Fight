@@ -124,8 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				EA88AB4424F0DE3400FBE689 /* Main.storyboard */,
-				EA88AB4924F0DE3800FBE689 /* LaunchScreen.storyboard */,
 				EA4BC92A256BA2F9000669FD /* CustomView.xib */,
+				EA88AB4924F0DE3800FBE689 /* LaunchScreen.storyboard */,
 				EA5CD445255C02C8001556D8 /* Sounds.swift */,
 				EA5CD42D255AA0F2001556D8 /* Resources */,
 				EA88AB4724F0DE3800FBE689 /* Assets.xcassets */,

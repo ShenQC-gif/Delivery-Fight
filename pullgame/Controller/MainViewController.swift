@@ -132,6 +132,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     
     // game開始時の挙動
     func gameStart() {
+        
+        // 画面を初期化
+        beforeCountDown()
 
         // 始まりのカウントダウン開始
         callLabel.text = "③"
@@ -146,39 +149,29 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
                     self.callLabel.text = "①"
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.callLabel.isHidden = true
-
-                        // 画面を初期化
-                        self.initailState()
-                        
-                        //タイマースタート
-                        self.timerStart()
+                        self.afterCountDown()
                     }
                 }
             }
         }
     }
 
-    // 画面の初期状態
-    func initailState() {
+    // カウントダウン開始時の状態
+    func beforeCountDown() {
         
-        //presentを初期位置にセット
+        //各種表示/非表示切り替え
+        againBtn.isHidden = true
+        homeBtn.isHidden = true
+        callLabel.isHidden = false
+        
+        //presentのロジックを初期状態にセット
         for y in 0..<presentLocation.state[3].count {
             presentLocation.state[3][y] = RondomPresent()
-        }
-        loadState()
-       
-        // Btn有効化
-        for btnLine in btnLineArray {
-            btnLineStatus(btnLine: btnLine, status: true)
         }
         
         // 勝ち負けLabelを非表示
        consoleView1.winOrLoseLabel.isHidden = true
        consoleView2.winOrLoseLabel.isHidden = true
-        
-        // timerLabelに残り時間を反映
-        loadTime(settingTime)
         
        // pointを0にセット
        pointNum1 = 0
@@ -194,9 +187,24 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         return newPresent
     }
     
+    // カウントダウン開始後の状態。
+    func afterCountDown() {
+        
+        callLabel.isHidden = true
+        
+        loadState()
+        
+        //タイマースタート
+        timerStart()
+            
+        // Btn有効化
+        for btnLine in btnLineArray {
+            btnLineStatus(btnLine: btnLine, status: true)
+        }
+    }
+    
     // presentの位置情報を読み込む
     func loadState(){
-        
         imageView1.image = UIImage(named: presentLocation.state[0][0])
         imageView2.image = UIImage(named: presentLocation.state[0][1])
         imageView3.image = UIImage(named: presentLocation.state[0][2])
@@ -237,6 +245,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     func timerStart(){
         
         restTime = settingTime
+        loadTime(restTime)
         
         // タイマーを作動
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
@@ -246,7 +255,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
                 self.restTime -= 1
                 self.loadTime(self.restTime)
                 
-            } else if self.restTime == 0 {
+            }
+            if self.restTime == 0 {
                 // タイマーを無効化にし、ゲーム終了時の挙動へ
                 timer.invalidate()
                 self.gameFinish()
@@ -275,10 +285,20 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         for btnLine in btnLineArray {
             btnLineStatus(btnLine: btnLine, status: false)
         }
+        
 
         // 結果発表
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.comparePoint()
+            
+            //時間差で表示されることがあるため、もう一度
+            //画面上からpresentを消す
+            self.presentLocation.state = self.presentLocation.getEmptyState()
+            self.loadState()
+            // Btn無効化
+            for btnLine in self.btnLineArray {
+                self.btnLineStatus(btnLine: btnLine, status: false)
+            }
         }
 
         //メニュー表示
@@ -319,10 +339,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
  
     }
     
+    
     //delegateメソッド
     func Up(_ tag: Int) {
         
-        //presetnの位置を把握
+        //presentの位置を把握
         var location = presentLocation.findLocation(tag: tag)
         
         //何のpresentか把握
@@ -369,11 +390,13 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             //その列のボタンを一旦無効化
             btnLineStatus(btnLine: btnLineArray[tag], status: false)
             
-            //0.5秒後のランダムなpresentを初期位置にセット
+            //残り時間があれば0.25秒後のランダムなpresentを初期位置にセット
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.resetPresent(location: location)
-                //ボタンを有効化
-                self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+                if self.restTime > 0 {
+                    self.resetPresent(location: location)
+                    //ボタンを有効化
+                    self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+                }
             }
         }
     }
@@ -381,12 +404,16 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     //delegateメソッド
     func Down(_ tag: Int) {
         
+        //presentの位置を把握
         var location = presentLocation.findLocation(tag: tag)
         
+        //何のpresentか把握
         let presentName = presentLocation.state[location.x][location.y]
         
+        //一旦その位置からpresentを削除
         presentLocation.state[location.x][location.y] = ""
         
+        //表示位置を変更
         switch location.x {
         case 0:
             location.x = 1
@@ -404,27 +431,35 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             break
         }
         
+        //変更した表示位置に同じpresentを表示
         presentLocation.state[location.x][location.y] = presentName
         loadState()
         
+        //player2側にpresentが到着した時
         if location.x == 6{
             
+            //そのプレゼントの得点を取得
             let getPoint = presentNameAndPoint[presentName] ?? 0
             
+            //得点によって音声を再生
             playSoundByTypeOfPresent(getPoint)
             
             pointNum2 += getPoint
             
             consoleView2.pointLabel.text = "\(pointNum2)pt"
             
+            //その列のボタンを一旦無効化
             btnLineStatus(btnLine: btnLineArray[tag], status: false)
             
+            //残り時間があれば0.25秒後のランダムなpresentを初期位置にセット
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.resetPresent(location: location)
-                self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+                if self.restTime > 0 {
+                    self.resetPresent(location: location)
+                    //ボタンを有効化
+                    self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+                }
             }
         }
-        
     }
     
     func resetPresent(location: Location){
@@ -436,9 +471,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     @IBAction func startAgain(_: Any) {
         gameStart()
         sounds.playSound(fileName: "decide", extentionName: "mp3")
-        againBtn.isHidden = true
-        homeBtn.isHidden = true
-        callLabel.isHidden = false
     }
 
     //presentの種類によって音声を再生
