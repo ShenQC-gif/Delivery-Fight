@@ -32,12 +32,6 @@
             <rect key="frame" x="0.0" y="0.0" width="453" height="287"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-JF-9rV" userLabel="WinOrLose Label">
-                    <rect key="frame" x="136" y="41" width="181" height="42"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="v9v-BD-3Zf" userLabel="Btn SV">
                     <rect key="frame" x="22.5" y="93" width="408" height="114"/>
                     <subviews>
@@ -126,7 +120,7 @@
                         <constraint firstAttribute="width" secondItem="v9v-BD-3Zf" secondAttribute="height" multiplier="5:1.4" id="wwu-bG-lL5"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD7-ps-mRz" userLabel="Point Label">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0pt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD7-ps-mRz" userLabel="Point Label">
                     <rect key="frame" x="136" y="227" width="181" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Sy8-PU-j4f"/>
@@ -141,6 +135,12 @@
                         <constraint firstAttribute="width" secondItem="azw-Nt-h4X" secondAttribute="height" id="j4i-Wg-k5V"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Win or Lose" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-JF-9rV" userLabel="WinOrLose Label">
+                    <rect key="frame" x="115" y="43" width="222" height="42"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
