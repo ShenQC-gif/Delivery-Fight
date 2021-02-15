@@ -16,7 +16,7 @@ Tap buttons to carry the items to your side.
 ③アイテム毎に得点が決まっています。(※)  
 Each item has a point.(※)
 
-④制限時間が0になって時に、得点が多い方が勝ちです。  
+④制限時間が0になった時に、得点が多い方が勝ちです。  
 When time is over, the player who get the higher point is winner.
 
 (※)  
