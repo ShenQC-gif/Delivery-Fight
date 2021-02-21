@@ -19,7 +19,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
 
     var sounds = Sounds()
 
-    private var time = Time()
+    private var time = Timer()
 //    var settingTime = 30
 
     override func viewDidLoad() {

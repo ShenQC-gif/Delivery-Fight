@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Time : Int {
+enum Timer : Int {
 
     case ten = 10
     case twenty = 20
