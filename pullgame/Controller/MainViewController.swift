@@ -100,11 +100,21 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     // btnLineを一括管理
     var btnLineArray : [[UIButton]] = []
 
+    private var imageArray : [[UIImageView]] = []
+
     // present名を管理
     var presentNameAndPoint = [String:Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        imageArray  = [
+            [imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7],
+            [imageView8, imageView9, imageView10, imageView11, imageView12, imageView13, imageView14],
+            [imageView15, imageView16, imageView17, imageView18, imageView19, imageView20, imageView21],
+            [imageView22, imageView23, imageView24, imageView25, imageView26, imageView27, imageView28],
+            [imageView29, imageView30, imageView31, imageView32, imageView33, imageView34, imageView35]
+        ]
 
         //Btnを一列毎に管理
         btnLine1 = [consoleView1.upBtn0,consoleView1.downBtn0,consoleView2.upBtn0,consoleView2.downBtn0]
