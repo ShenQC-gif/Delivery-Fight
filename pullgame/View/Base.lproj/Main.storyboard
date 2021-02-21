@@ -204,7 +204,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="timeminus:" destination="Jub-5X-46s" eventType="touchUpInside" id="Tgg-6y-6ld"/>
+                                                    <action selector="timeMinus:" destination="Jub-5X-46s" eventType="touchUpInside" id="jmH-aW-jtI"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -232,7 +232,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="timeplus:" destination="Jub-5X-46s" eventType="touchUpInside" id="tDN-96-yll"/>
+                                                    <action selector="timePlus:" destination="Jub-5X-46s" eventType="touchUpInside" id="ld6-YW-oFK"/>
                                                 </connections>
                                             </button>
                                         </subviews>

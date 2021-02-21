@@ -11,16 +11,14 @@ import UIKit
 
 class StartViewController: UIViewController, AVAudioPlayerDelegate {
     
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var startBtn: UIButton!
-    @IBOutlet var timeLabel: UILabel!
-    @IBOutlet var timePlus: UIButton!
-    @IBOutlet var timeMinus: UIButton!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var startBtn: UIButton!
+    @IBOutlet private var timeLabel: UILabel!
+    @IBOutlet private var timePlus: UIButton!
+    @IBOutlet private var timeMinus: UIButton!
 
-    var sounds = Sounds()
-
+    private var sounds = Sounds()
     private var timeLimit = TimeLimit()
-//    var settingTime = 30
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,25 +33,25 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
         checkTime()
     }
 
-    @IBAction func timeplus(_: Any) {
+    @IBAction private func timePlus(_: Any) {
         timeLimit.plus()
         checkTime()
         playDecideSound()
     }
 
-    @IBAction func timeminus(_: Any) {
+    @IBAction private func timeMinus(_: Any) {
         timeLimit.minus()
         checkTime()
         playDecideSound()
     }
 
-    func checkTime() {
+    private func checkTime() {
         timeLabel.text = String(timeLimit.rawValue) + "sec"
         timeMinus.isHidden = timeLimit.ifTimeIsMinOrMax().min
         timePlus.isHidden = timeLimit.ifTimeIsMinOrMax().max
     }
 
-    func playDecideSound() {
+    private func playDecideSound() {
         sounds.playSound(fileName: "decide", extentionName: "mp3")
     }
 
