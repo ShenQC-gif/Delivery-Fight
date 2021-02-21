@@ -23,13 +23,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // フォントサイズの指定
-        startBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-        timePlus.titleLabel?.adjustsFontSizeToFitWidth = true
-        timeMinus.titleLabel?.adjustsFontSizeToFitWidth = true
-
         startBtn.layer.borderWidth = 2
-
         checkTime()
     }
 
