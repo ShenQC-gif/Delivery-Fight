@@ -112,19 +112,8 @@ struct BeltState {
     let itemPosition: ItemPosition
 }
 
-func makeInitialState() -> [BeltState] {
-    [
-        BeltState(item: Apple(), itemPosition: .onBelt(.center)),
-        BeltState(item: Bomb(), itemPosition: .onBelt(.center)),
-        BeltState(item: Apple(), itemPosition: .onBelt(.center)),
-        BeltState(item: Bomb(), itemPosition: .onBelt(.center)),
-        BeltState(item: Apple(), itemPosition: .onBelt(.center)),
-    ]
-}
 
-func configureUI(beltStates: [BeltState]) {
-    // ここでUIを適切に設定する
-}
+
 
 func didTapDown(tappingPlayer: Player, beltState: BeltState) -> BeltState {
     let newItemPosition: ItemPosition

@@ -73,6 +73,22 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     var timer = Timer()
     var settingTime = 0
     var restTime = 0
+
+    static func makeInitialState() -> [BeltState] {
+        [
+            BeltState(item: Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: Bomb(), itemPosition: .onBelt(.center)),
+            BeltState(item: Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: Bomb(), itemPosition: .onBelt(.center)),
+            BeltState(item: Apple(), itemPosition: .onBelt(.center)),
+        ]
+    }
+
+    func configureUI(beltStates: [BeltState]) {
+        // ここでUIを適切に設定する
+
+    }
+
     
     // btnを1列ごとに管理
     var btnLine1: [UIButton] = []
