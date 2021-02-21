@@ -173,7 +173,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         }
     }
 
-    private func didTapUp(_ tag: Int) {
+    func didTapUp(_ tag: Int) {
         var newItemPosition : ItemPosition
         let beltState = beltStates[tag]
 
@@ -191,7 +191,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     }
 
-    private func didTapDown(_ tag: Int) {
+    func didTapDown(_ tag: Int) {
         var newItemPosition : ItemPosition
         let beltState = beltStates[tag]
 
