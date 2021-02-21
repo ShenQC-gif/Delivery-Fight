@@ -49,19 +49,8 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
 
     func checkTime() {
         timeLabel.text = String(timeLimit.rawValue) + "sec"
-
-        if timeLimit.rawValue == 10 {
-            timeMinus.isEnabled = false
-            timeMinus.setTitleColor(UIColor.white, for: .normal)
-        } else if timeLimit.rawValue == 60 {
-            timePlus.isEnabled = false
-            timePlus.setTitleColor(UIColor.white, for: .normal)
-        } else {
-            timeMinus.isEnabled = true
-            timeMinus.setTitleColor(UIColor.black, for: .normal)
-            timePlus.isEnabled = true
-            timePlus.setTitleColor(UIColor.black, for: .normal)
-        }
+        timeMinus.isHidden = timeLimit.ifTimeIsMinOrMax().min
+        timePlus.isHidden = timeLimit.ifTimeIsMinOrMax().max
     }
 
     func playDecideSound() {

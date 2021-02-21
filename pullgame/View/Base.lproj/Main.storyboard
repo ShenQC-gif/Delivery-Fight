@@ -195,10 +195,10 @@
                                 <rect key="frame" x="41.5" y="671.5" width="331" height="89.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwD-Oa-zbB" userLabel="View For Minus">
-                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="89.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="113" height="89.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C3-uZ-R7T">
-                                                <rect key="frame" x="0.0" y="0.0" width="113.5" height="89.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="113" height="89.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="◀︎">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -217,16 +217,16 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="LEP-Zf-aq5">
-                                        <rect key="frame" x="113.5" y="0.0" width="104" height="89.5"/>
+                                        <rect key="frame" x="113" y="0.0" width="105" height="89.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHb-h0-Bnj" userLabel="View For Plus">
-                                        <rect key="frame" x="217.5" y="0.0" width="113.5" height="89.5"/>
+                                        <rect key="frame" x="218" y="0.0" width="113" height="89.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlH-d2-Vvm">
-                                                <rect key="frame" x="0.0" y="0.0" width="113.5" height="89.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="113" height="89.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="▶︎">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
