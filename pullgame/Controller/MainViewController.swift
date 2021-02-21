@@ -12,6 +12,7 @@ import UIKit
 
 
 class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
+
     
     var sounds = Sounds()
     var presentLocation = PresentLocation()
@@ -129,6 +130,15 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             }
         }
     }
+
+    func didTapUp(_ tag: Int) {
+        <#code#>
+    }
+
+    func didTapDown(_ tag: Int) {
+        <#code#>
+    }
+
     
     // btnを1列ごとに管理
     var btnLine1: [UIButton] = []
@@ -142,8 +152,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     private var imageArray : [[UIImageView]] = []
 
-    // present名を管理
-    var presentNameAndPoint = [String:Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,7 +174,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         //btnLineを一括管理
         btnLineArray = [btnLine1, btnLine2, btnLine3, btnLine4, btnLine5]
 
-        presentNameAndPoint = ["apple":10, "grape":20, "melon":30, "peach":40, "banana":50, "cherry":60, "diamond":100, "bomb":-50]
 
         againBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         homeBtn.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -228,10 +235,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         homeBtn.isHidden = true
         callLabel.isHidden = false
         
-        //presentのロジックを初期状態にセット
-        for y in 0..<presentLocation.state[3].count {
-            presentLocation.state[3][y] = RondomPresent()
-        }
+
         
         // 勝ち負けLabelを非表示
        consoleView1.winOrLoseLabel.isHidden = true
@@ -242,13 +246,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         scoreNum2 = 0
        consoleView1.scoreLabel.text = "\(scoreNum1)pt"
        consoleView2.scoreLabel.text = "\(scoreNum2)pt"
-    }
-    
-    func RondomPresent() -> String{
-        let presentNameArray = Array(presentNameAndPoint.keys)
-        let n = Int.random(in: 1 ... presentNameArray.count)
-        let newPresent = presentNameArray[n-1]
-        return newPresent
     }
     
     // カウントダウン開始後の状態。
@@ -405,132 +402,126 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     
     
     //delegateメソッド
-    func didTapUp(_ tag: Int) {
-        
-        //presentの位置を把握
-        var location = presentLocation.findLocation(tag: tag)
-        
-        //何のpresentか把握
-        let presentName = presentLocation.state[location.x][location.y]
-        
-        //一旦その位置からpresentを削除
-        presentLocation.state[location.x][location.y] = ""
-        
-        //表示位置を変更
-        switch location.x {
-        case 1:
-            location.x = 0
-        case 2:
-            location.x = 1
-        case 3:
-            location.x = 2
-        case 4:
-            location.x = 3
-        case 5:
-            location.x = 4
-        case 6:
-            location.x = 5
-        default:
-            break
-        }
-        
-        //変更した表示位置に同じpresentを表示
-        presentLocation.state[location.x][location.y] = presentName
-        loadState()
-        
-        //player1側にpresentが到着した時
-        if location.x == 0{
-
-            //そのプレゼントの得点を取得
-            let getPoint = presentNameAndPoint[presentName] ?? 0
-            
-            //得点によって音声を再生
-            playSoundByTypeOfPresent(getPoint)
-            
-            scoreNum1 += getPoint
-            
-            consoleView1.scoreLabel.text = "\(scoreNum1)pt"
-            
-            //その列のボタンを一旦無効化
-            btnLineStatus(btnLine: btnLineArray[tag], status: false)
-            
-            //残り時間があれば0.25秒後のランダムなpresentを初期位置にセット
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                if self.restTime > 0 {
-                    self.resetPresent(location: location)
-                    //ボタンを有効化
-                    self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
-                }
-            }
-        }
-    }
+//    func didTapUp(_ tag: Int) {
+//
+//        //presentの位置を把握
+//        var location = presentLocation.findLocation(tag: tag)
+//
+//        //何のpresentか把握
+//        let presentName = presentLocation.state[location.x][location.y]
+//
+//        //一旦その位置からpresentを削除
+//        presentLocation.state[location.x][location.y] = ""
+//
+//        //表示位置を変更
+//        switch location.x {
+//        case 1:
+//            location.x = 0
+//        case 2:
+//            location.x = 1
+//        case 3:
+//            location.x = 2
+//        case 4:
+//            location.x = 3
+//        case 5:
+//            location.x = 4
+//        case 6:
+//            location.x = 5
+//        default:
+//            break
+//        }
+//
+//        //変更した表示位置に同じpresentを表示
+//        presentLocation.state[location.x][location.y] = presentName
+//        loadState()
+//
+//        //player1側にpresentが到着した時
+//        if location.x == 0{
+//
+//            //そのプレゼントの得点を取得
+//            let getPoint = presentNameAndPoint[presentName] ?? 0
+//
+//            //得点によって音声を再生
+//            playSoundByTypeOfPresent(getPoint)
+//
+//            scoreNum1 += getPoint
+//
+//            consoleView1.scoreLabel.text = "\(scoreNum1)pt"
+//
+//            //その列のボタンを一旦無効化
+//            btnLineStatus(btnLine: btnLineArray[tag], status: false)
+//
+//            //残り時間があれば0.25秒後のランダムなpresentを初期位置にセット
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                if self.restTime > 0 {
+//                    self.resetPresent(location: location)
+//                    //ボタンを有効化
+//                    self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+//                }
+//            }
+//        }
+//    }
     
     //delegateメソッド
-    func didTapDown(_ tag: Int) {
-        
-        //presentの位置を把握
-        var location = presentLocation.findLocation(tag: tag)
-        
-        //何のpresentか把握
-        let presentName = presentLocation.state[location.x][location.y]
-        
-        //一旦その位置からpresentを削除
-        presentLocation.state[location.x][location.y] = ""
-        
-        //表示位置を変更
-        switch location.x {
-        case 0:
-            location.x = 1
-        case 1:
-            location.x = 2
-        case 2:
-            location.x = 3
-        case 3:
-            location.x = 4
-        case 4:
-            location.x = 5
-        case 5:
-            location.x = 6
-        default:
-            break
-        }
-        
-        //変更した表示位置に同じpresentを表示
-        presentLocation.state[location.x][location.y] = presentName
-        loadState()
-        
-        //player2側にpresentが到着した時
-        if location.x == 6{
-            
-            //そのプレゼントの得点を取得
-            let getPoint = presentNameAndPoint[presentName] ?? 0
-            
-            //得点によって音声を再生
-            playSoundByTypeOfPresent(getPoint)
-            
-            scoreNum2 += getPoint
-            
-            consoleView2.scoreLabel.text = "\(scoreNum2)pt"
-            
-            //その列のボタンを一旦無効化
-            btnLineStatus(btnLine: btnLineArray[tag], status: false)
-            
-            //残り時間があれば0.25秒後のランダムなpresentを初期位置にセット
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                if self.restTime > 0 {
-                    self.resetPresent(location: location)
-                    //ボタンを有効化
-                    self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
-                }
-            }
-        }
-    }
-    
-    func resetPresent(location: Location){
-        presentLocation.state[location.x][location.y] = ""
-        presentLocation.state[3][location.y] = RondomPresent()
-        loadState()
-    }
+//    func didTapDown(_ tag: Int) {
+//
+//        //presentの位置を把握
+//        var location = presentLocation.findLocation(tag: tag)
+//
+//        //何のpresentか把握
+//        let presentName = presentLocation.state[location.x][location.y]
+//
+//        //一旦その位置からpresentを削除
+//        presentLocation.state[location.x][location.y] = ""
+//
+//        //表示位置を変更
+//        switch location.x {
+//        case 0:
+//            location.x = 1
+//        case 1:
+//            location.x = 2
+//        case 2:
+//            location.x = 3
+//        case 3:
+//            location.x = 4
+//        case 4:
+//            location.x = 5
+//        case 5:
+//            location.x = 6
+//        default:
+//            break
+//        }
+//
+//        //変更した表示位置に同じpresentを表示
+//        presentLocation.state[location.x][location.y] = presentName
+//        loadState()
+//
+//        //player2側にpresentが到着した時
+//        if location.x == 6{
+//
+//            //そのプレゼントの得点を取得
+//            let getPoint = presentNameAndPoint[presentName] ?? 0
+//
+//            //得点によって音声を再生
+//            playSoundByTypeOfPresent(getPoint)
+//
+//            scoreNum2 += getPoint
+//
+//            consoleView2.scoreLabel.text = "\(scoreNum2)pt"
+//
+//            //その列のボタンを一旦無効化
+//            btnLineStatus(btnLine: btnLineArray[tag], status: false)
+//
+//            //残り時間があれば0.25秒後のランダムなpresentを初期位置にセット
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                if self.restTime > 0 {
+//                    self.resetPresent(location: location)
+//                    //ボタンを有効化
+//                    self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+//                }
+//            }
+//        }
+//    }
     
     @IBAction func startAgain(_: Any) {
         gameStart()
@@ -538,9 +529,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
 
     //presentの種類によって音声を再生
-    func playSoundByTypeOfPresent(_ getpoint: Int){
+    func playSoundByTypeOfPresent(_ beltState: BeltState){
         //presentが爆弾なら爆発音、それ以外なら得点
-        if getpoint == presentNameAndPoint["bomb"] {
+        if beltState.item.isBomb {
             sounds.playSound(fileName: "bomb", extentionName: "mp3")
         } else {
             sounds.playSound(fileName: "getPoint", extentionName: "mp3")
