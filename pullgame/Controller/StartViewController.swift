@@ -59,8 +59,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toMain" {
             playDecideSound()
-            let playscreen = segue.destination as! MainViewController
-            playscreen.settingTime = timeLimit.rawValue
+            UserDefaults.standard.set(timeLimit.rawValue, forKey: "Time")
         }
     }
 }

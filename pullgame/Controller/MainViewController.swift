@@ -15,6 +15,17 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     private var beltStates = MainViewController.makeInitialState()
     private var sounds = Sounds()
+    private var timeLimit = TimeLimit()
+    static let itemArray:[ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
+    static func makeInitialState() -> [BeltState] {
+        [
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+        ]
+    }
 
     @IBOutlet weak private var consoleView1: CustomView!
     @IBOutlet weak private var consoleView2: CustomView!
@@ -59,23 +70,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     @IBOutlet private var againBtn: UIButton!
     @IBOutlet private var homeBtn: UIButton!
 
-    static let itemArray:[ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
-
-    static func makeInitialState() -> [BeltState] {
-        [
-            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
-            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
-            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
-            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
-            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
-        ]
-    }
-
     private var scoreNum1 = 0
     private var scoreNum2 = 0
 
     private var timer = Timer()
-    var settingTime = 0
     private var restTime = 0
 
     // btnを1列ごとに管理
@@ -93,6 +91,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
+        restTime = timeLimit.rawValue
 
         imageViewArrays  = [
             [imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7],
@@ -122,7 +123,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         rotate(consoleView1.BtnSV, 180)
         
         // timerLabelに残り時間を反映
-        loadTime(settingTime)
+        loadTime(restTime)
 
 
         // game開始
@@ -317,10 +318,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
 
     private func timerStart(){
-        
-        restTime = settingTime
-        loadTime(restTime)
-        
         // タイマーを作動
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
             
@@ -441,8 +438,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toStart" {
             sounds.playSound(fileName: "decide", extentionName: "mp3")
-            let startVC = segue.destination as! StartViewController
-//            startVC.time.r = settingTime
         }
     }
 }
