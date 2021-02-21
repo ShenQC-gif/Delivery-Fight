@@ -194,33 +194,68 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="bls-3U-TeI" userLabel="TimeSetting SV">
                                 <rect key="frame" x="41.5" y="671.5" width="331" height="89.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C3-uZ-R7T">
-                                        <rect key="frame" x="0.0" y="0.0" width="63.5" height="89.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <state key="normal" title="◀︎">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="timeminus:" destination="Jub-5X-46s" eventType="touchUpInside" id="Tgg-6y-6ld"/>
-                                        </connections>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwD-Oa-zbB" userLabel="View For Minus">
+                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="89.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C3-uZ-R7T">
+                                                <rect key="frame" x="0.0" y="0.0" width="113.5" height="89.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <state key="normal" title="◀︎">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="timeminus:" destination="Jub-5X-46s" eventType="touchUpInside" id="Tgg-6y-6ld"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="9C3-uZ-R7T" firstAttribute="centerY" secondItem="VwD-Oa-zbB" secondAttribute="centerY" id="CKw-4y-FAS"/>
+                                            <constraint firstItem="9C3-uZ-R7T" firstAttribute="centerX" secondItem="VwD-Oa-zbB" secondAttribute="centerX" id="Geu-rE-eHD"/>
+                                            <constraint firstItem="9C3-uZ-R7T" firstAttribute="width" secondItem="VwD-Oa-zbB" secondAttribute="width" id="RgD-7L-XCy"/>
+                                            <constraint firstItem="9C3-uZ-R7T" firstAttribute="height" secondItem="VwD-Oa-zbB" secondAttribute="height" id="qVI-Rb-lB2"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="LEP-Zf-aq5">
-                                        <rect key="frame" x="63.5" y="0.0" width="204" height="89.5"/>
+                                        <rect key="frame" x="113.5" y="0.0" width="104" height="89.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlH-d2-Vvm">
-                                        <rect key="frame" x="267.5" y="0.0" width="63.5" height="89.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <state key="normal" title="▶︎">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="timeplus:" destination="Jub-5X-46s" eventType="touchUpInside" id="tDN-96-yll"/>
-                                        </connections>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHb-h0-Bnj" userLabel="View For Plus">
+                                        <rect key="frame" x="217.5" y="0.0" width="113.5" height="89.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlH-d2-Vvm">
+                                                <rect key="frame" x="0.0" y="0.0" width="113.5" height="89.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <state key="normal" title="▶︎">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="timeplus:" destination="Jub-5X-46s" eventType="touchUpInside" id="tDN-96-yll"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="VlH-d2-Vvm" firstAttribute="height" secondItem="eHb-h0-Bnj" secondAttribute="height" id="76a-pE-Jvk"/>
+                                            <constraint firstItem="VlH-d2-Vvm" firstAttribute="width" secondItem="eHb-h0-Bnj" secondAttribute="width" id="7OR-ds-mGR"/>
+                                            <constraint firstItem="VlH-d2-Vvm" firstAttribute="centerX" secondItem="eHb-h0-Bnj" secondAttribute="centerX" id="W0T-iF-5fn"/>
+                                            <constraint firstItem="VlH-d2-Vvm" firstAttribute="centerY" secondItem="eHb-h0-Bnj" secondAttribute="centerY" id="pYS-PN-7Co"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="VwD-Oa-zbB" firstAttribute="trailing" secondItem="LEP-Zf-aq5" secondAttribute="leading" id="0CU-hx-g2G"/>
+                                    <constraint firstItem="eHb-h0-Bnj" firstAttribute="height" secondItem="LEP-Zf-aq5" secondAttribute="height" id="A8y-Vy-pM7"/>
+                                    <constraint firstAttribute="trailing" secondItem="eHb-h0-Bnj" secondAttribute="trailing" id="QuS-kQ-A7X"/>
+                                    <constraint firstItem="LEP-Zf-aq5" firstAttribute="centerY" secondItem="bls-3U-TeI" secondAttribute="centerY" id="Thm-JB-V6d"/>
+                                    <constraint firstItem="LEP-Zf-aq5" firstAttribute="centerX" secondItem="bls-3U-TeI" secondAttribute="centerX" id="Trk-O7-GKz"/>
+                                    <constraint firstItem="eHb-h0-Bnj" firstAttribute="leading" secondItem="LEP-Zf-aq5" secondAttribute="trailing" id="gkR-C7-ztK"/>
+                                    <constraint firstItem="VwD-Oa-zbB" firstAttribute="height" secondItem="bls-3U-TeI" secondAttribute="height" id="l0C-BL-e6R"/>
+                                    <constraint firstItem="VwD-Oa-zbB" firstAttribute="leading" secondItem="bls-3U-TeI" secondAttribute="leading" id="sa0-Df-6ew"/>
+                                    <constraint firstItem="LEP-Zf-aq5" firstAttribute="height" secondItem="bls-3U-TeI" secondAttribute="height" id="zQb-Up-49r"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sTj-DY-pDr"/>
