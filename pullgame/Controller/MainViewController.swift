@@ -132,11 +132,68 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
 
     func didTapUp(_ tag: Int) {
-        <#code#>
+        var newItemPosition : ItemPosition
+        let beltState = beltStates[tag]
+
+        switch beltState.itemPosition {
+
+            case let .onBelt(position):
+                newItemPosition = position.prev().map {ItemPosition.onBelt($0)} ?? ItemPosition.outOfBelt(.player1)
+            case .outOfBelt(_):
+                newItemPosition = ItemPosition.onBelt(.center)
+        }
+
+        beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
+        configureUI(beltStates: beltStates)
+        checkIfOutOfBelt(beltState: beltStates[tag], player: .player1, tag: tag)
+
+
+    }
+
+    func checkIfOutOfBelt(beltState: BeltState, player: Player, tag: Int){
+
+        if beltState.itemPosition == ItemPosition.outOfBelt(player){
+
+            switch player {
+
+                case .player1:
+                    scoreNum1 += beltState.item.score
+                    consoleView1.scoreLabel.text = "\(scoreNum1)pt"
+                case .player2:
+                    scoreNum2 += beltState.item.score
+                    consoleView2.scoreLabel.text = "\(scoreNum2)pt"
+            }
+
+            btnLineStatus(btnLine: btnLineArray[tag], status: false)
+
+            let newItem = MainViewController.itemArray.randomElement() ?? Apple()
+            let newItemPosition = ItemPosition.onBelt(.center)
+            beltStates[tag] = BeltState(item: newItem, itemPosition: newItemPosition)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.configureUI(beltStates: self.beltStates)
+                self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+            }
+        }
+
     }
 
     func didTapDown(_ tag: Int) {
-        <#code#>
+        var newItemPosition : ItemPosition
+        let beltState = beltStates[tag]
+
+        switch beltState.itemPosition {
+
+            case let .onBelt(position):
+                newItemPosition = position.next().map {ItemPosition.onBelt($0)} ?? ItemPosition.outOfBelt(.player2)
+            case .outOfBelt(_):
+                newItemPosition = ItemPosition.onBelt(.center)
+        }
+
+        beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
+        configureUI(beltStates: beltStates)
+        checkIfOutOfBelt(beltState: beltStates[tag], player: .player2, tag: tag)
+
     }
 
     

@@ -38,35 +38,35 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aar-PQ-hDx" userLabel="Push Btn SV">
                             <rect key="frame" x="0.0" y="0.0" width="408" height="54.5"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPL-ee-2ym" userLabel="Up Btn0">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPL-ee-2ym" userLabel="Up Btn0">
                                     <rect key="frame" x="0.0" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
                                         <action selector="presetnUp:" destination="-1" eventType="touchUpInside" id="IzZ-6b-AKU"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6I-lX-ykR" userLabel="Up Btn1">
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6I-lX-ykR" userLabel="Up Btn1">
                                     <rect key="frame" x="82.5" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
                                         <action selector="presetnUp:" destination="-1" eventType="touchUpInside" id="5Hm-bM-LRl"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jva-nE-4lE" userLabel="Up Btn2">
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jva-nE-4lE" userLabel="Up Btn2">
                                     <rect key="frame" x="165" y="0.0" width="78" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
                                         <action selector="presetnUp:" destination="-1" eventType="touchUpInside" id="RAG-oG-YWR"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-tT-03O" userLabel="Up Btn3">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-tT-03O" userLabel="Up Btn3">
                                     <rect key="frame" x="248" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
                                         <action selector="presetnUp:" destination="-1" eventType="touchUpInside" id="BZd-4j-lK3"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fq-8X-dyc" userLabel="Up Btn4">
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fq-8X-dyc" userLabel="Up Btn4">
                                     <rect key="frame" x="330.5" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
@@ -78,35 +78,35 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QqL-aK-u0o" userLabel="Pull Btn SV ">
                             <rect key="frame" x="0.0" y="59.5" width="408" height="54.5"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2f-AB-5lr" userLabel="Down Btn0">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2f-AB-5lr" userLabel="Down Btn0">
                                     <rect key="frame" x="0.0" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>
                                         <action selector="presentDown:" destination="-1" eventType="touchUpInside" id="qlW-Xc-JVc"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyP-ME-pXY" userLabel="Down Btn1">
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyP-ME-pXY" userLabel="Down Btn1">
                                     <rect key="frame" x="82.5" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>
                                         <action selector="presentDown:" destination="-1" eventType="touchUpInside" id="655-Il-ajq"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rn2-UA-lcu" userLabel="Down Btn2">
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rn2-UA-lcu" userLabel="Down Btn2">
                                     <rect key="frame" x="165" y="0.0" width="78" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>
                                         <action selector="presentDown:" destination="-1" eventType="touchUpInside" id="HeD-VU-hv3"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0a-xt-r84" userLabel="Down Btn3">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0a-xt-r84" userLabel="Down Btn3">
                                     <rect key="frame" x="248" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>
                                         <action selector="presentDown:" destination="-1" eventType="touchUpInside" id="qJY-Kr-BP7"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7D-LT-vpq" userLabel="Down Btn4">
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7D-LT-vpq" userLabel="Down Btn4">
                                     <rect key="frame" x="330.5" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>

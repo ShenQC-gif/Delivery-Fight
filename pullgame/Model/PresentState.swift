@@ -138,7 +138,7 @@ enum ItemBeltPosition {
     }
 }
 
-enum ItemPosition {
+enum ItemPosition: Equatable {
     case onBelt(ItemBeltPosition)
     case outOfBelt(Player)
 }
