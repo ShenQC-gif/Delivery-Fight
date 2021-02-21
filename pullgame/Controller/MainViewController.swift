@@ -151,6 +151,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
         if beltState.itemPosition == ItemPosition.outOfBelt(player){
 
+            playSoundByTypeOfPresent(beltState)
             switch player {
 
                 case .player1:
