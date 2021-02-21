@@ -13,65 +13,51 @@ import UIKit
 
 class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
-    
+    private var beltStates = MainViewController.makeInitialState()
     private var sounds = Sounds()
+
+    @IBOutlet weak private var consoleView1: CustomView!
+    @IBOutlet weak private var consoleView2: CustomView!
     
-    @IBOutlet var conveyor1: UIImageView!
-    @IBOutlet var conveyor2: UIImageView!
-    @IBOutlet var conveyor3: UIImageView!
-    @IBOutlet var conveyor4: UIImageView!
-    @IBOutlet var conveyor5: UIImageView!
+    @IBOutlet weak private var imageView1: UIImageView!
+    @IBOutlet weak private var imageView2: UIImageView!
+    @IBOutlet weak private var imageView3: UIImageView!
+    @IBOutlet weak private var imageView4: UIImageView!
+    @IBOutlet weak private var imageView5: UIImageView!
+    @IBOutlet weak private var imageView6: UIImageView!
+    @IBOutlet weak private var imageView7: UIImageView!
+    @IBOutlet weak private var imageView8: UIImageView!
+    @IBOutlet weak private var imageView9: UIImageView!
+    @IBOutlet weak private var imageView10: UIImageView!
+    @IBOutlet weak private var imageView11: UIImageView!
+    @IBOutlet weak private var imageView12: UIImageView!
+    @IBOutlet weak private var imageView13: UIImageView!
+    @IBOutlet weak private var imageView14: UIImageView!
+    @IBOutlet weak private var imageView15: UIImageView!
+    @IBOutlet weak private var imageView16: UIImageView!
+    @IBOutlet weak private var imageView17: UIImageView!
+    @IBOutlet weak private var imageView18: UIImageView!
+    @IBOutlet weak private var imageView19: UIImageView!
+    @IBOutlet weak private var imageView20: UIImageView!
+    @IBOutlet weak private var imageView21: UIImageView!
+    @IBOutlet weak private var imageView22: UIImageView!
+    @IBOutlet weak private var imageView23: UIImageView!
+    @IBOutlet weak private var imageView24: UIImageView!
+    @IBOutlet weak private var imageView25: UIImageView!
+    @IBOutlet weak private var imageView26: UIImageView!
+    @IBOutlet weak private var imageView27: UIImageView!
+    @IBOutlet weak private var imageView28: UIImageView!
+    @IBOutlet weak private var imageView29: UIImageView!
+    @IBOutlet weak private var imageView30: UIImageView!
+    @IBOutlet weak private var imageView31: UIImageView!
+    @IBOutlet weak private var imageView32: UIImageView!
+    @IBOutlet weak private var imageView33: UIImageView!
+    @IBOutlet weak private var imageView34: UIImageView!
+    @IBOutlet weak private var imageView35: UIImageView!
 
-    @IBOutlet weak var consoleView1: CustomView!
-    @IBOutlet weak var consoleView2: CustomView!
-    
-    @IBOutlet weak var imageView1: UIImageView!
-    @IBOutlet weak var imageView2: UIImageView!
-    @IBOutlet weak var imageView3: UIImageView!
-    @IBOutlet weak var imageView4: UIImageView!
-    @IBOutlet weak var imageView5: UIImageView!
-    @IBOutlet weak var imageView6: UIImageView!
-    @IBOutlet weak var imageView7: UIImageView!
-    @IBOutlet weak var imageView8: UIImageView!
-    @IBOutlet weak var imageView9: UIImageView!
-    @IBOutlet weak var imageView10: UIImageView!
-    @IBOutlet weak var imageView11: UIImageView!
-    @IBOutlet weak var imageView12: UIImageView!
-    @IBOutlet weak var imageView13: UIImageView!
-    @IBOutlet weak var imageView14: UIImageView!
-    @IBOutlet weak var imageView15: UIImageView!
-    @IBOutlet weak var imageView16: UIImageView!
-    @IBOutlet weak var imageView17: UIImageView!
-    @IBOutlet weak var imageView18: UIImageView!
-    @IBOutlet weak var imageView19: UIImageView!
-    @IBOutlet weak var imageView20: UIImageView!
-    @IBOutlet weak var imageView21: UIImageView!
-    @IBOutlet weak var imageView22: UIImageView!
-    @IBOutlet weak var imageView23: UIImageView!
-    @IBOutlet weak var imageView24: UIImageView!
-    @IBOutlet weak var imageView25: UIImageView!
-    @IBOutlet weak var imageView26: UIImageView!
-    @IBOutlet weak var imageView27: UIImageView!
-    @IBOutlet weak var imageView28: UIImageView!
-    @IBOutlet weak var imageView29: UIImageView!
-    @IBOutlet weak var imageView30: UIImageView!
-    @IBOutlet weak var imageView31: UIImageView!
-    @IBOutlet weak var imageView32: UIImageView!
-    @IBOutlet weak var imageView33: UIImageView!
-    @IBOutlet weak var imageView34: UIImageView!
-    @IBOutlet weak var imageView35: UIImageView!
-
-
-    @IBOutlet var callLabel: UILabel!
-    @IBOutlet var againBtn: UIButton!
-    @IBOutlet var homeBtn: UIButton!
-
-    var scoreNum1 = 0
-    var scoreNum2 = 0
-
-    var timer = Timer()
-    var settingTime = 0
-    var restTime = 0
+    @IBOutlet private var callLabel: UILabel!
+    @IBOutlet private var againBtn: UIButton!
+    @IBOutlet private var homeBtn: UIButton!
 
     static let itemArray:[ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
 
@@ -85,127 +71,24 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         ]
     }
 
-    private var beltStates = MainViewController.makeInitialState()
+    private var scoreNum1 = 0
+    private var scoreNum2 = 0
 
-    func configureUI(beltStates: [BeltState]) {
-        // ここでUIを適切に設定する
-        for i in 0..<beltStates.count{
-            let name = beltStates[i].item.imageName
-            switch beltStates[i].itemPosition{
-                case let .onBelt(poistion):
-                    switch poistion {
-                        case .pos0:
-                            imageArray[i][1].image = UIImage(named: name)
-                            imageArray[i][2].image = UIImage(named: "")
-                        case .pos1:
-                            imageArray[i][1].image = UIImage(named: "")
-                            imageArray[i][2].image = UIImage(named: name)
-                            imageArray[i][3].image = UIImage(named: "")
-                        case .pos2:
-                            imageArray[i][0].image = UIImage(named: "")
-                            imageArray[i][2].image = UIImage(named: "")
-                            imageArray[i][3].image = UIImage(named: name)
-                            imageArray[i][4].image = UIImage(named: "")
-                            imageArray[i][6].image = UIImage(named: "")
-                        case .pos3:
-                            imageArray[i][3].image = UIImage(named: "")
-                            imageArray[i][4].image = UIImage(named: name)
-                            imageArray[i][5].image = UIImage(named: "")
-                        case .pos4:
-                            imageArray[i][4].image = UIImage(named: "")
-                            imageArray[i][5].image = UIImage(named: name)
-                    }
+    private var timer = Timer()
+    var settingTime = 0
+    private var restTime = 0
 
-                case let .outOfBelt(player):
-                    switch player {
-                        case .player1:
-                            imageArray[i][0].image = UIImage(named: name)
-                            imageArray[i][1].image = UIImage(named: "")
-                        case .player2:
-                            imageArray[i][5].image = UIImage(named: "")
-                            imageArray[i][6].image = UIImage(named: name)
-                    }
-            }
-        }
-    }
-
-    func didTapUp(_ tag: Int) {
-        var newItemPosition : ItemPosition
-        let beltState = beltStates[tag]
-
-        switch beltState.itemPosition {
-
-            case let .onBelt(position):
-                newItemPosition = position.prev().map {ItemPosition.onBelt($0)} ?? ItemPosition.outOfBelt(.player1)
-            case .outOfBelt(_):
-                newItemPosition = ItemPosition.onBelt(.center)
-        }
-
-        beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
-        configureUI(beltStates: beltStates)
-        checkIfOutOfBelt(beltState: beltStates[tag], player: .player1, tag: tag)
-
-    }
-
-    func checkIfOutOfBelt(beltState: BeltState, player: Player, tag: Int){
-
-        if beltState.itemPosition == ItemPosition.outOfBelt(player){
-
-            playSoundByTypeOfPresent(beltState)
-            switch player {
-
-                case .player1:
-                    scoreNum1 += beltState.item.score
-                    consoleView1.scoreLabel.text = "\(scoreNum1)pt"
-                case .player2:
-                    scoreNum2 += beltState.item.score
-                    consoleView2.scoreLabel.text = "\(scoreNum2)pt"
-            }
-
-            btnLineStatus(btnLine: btnLineArray[tag], status: false)
-
-            let newItem = MainViewController.itemArray.randomElement() ?? Apple()
-            let newItemPosition = ItemPosition.onBelt(.center)
-            beltStates[tag] = BeltState(item: newItem, itemPosition: newItemPosition)
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.configureUI(beltStates: self.beltStates)
-                self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
-            }
-        }
-
-    }
-
-    func didTapDown(_ tag: Int) {
-        var newItemPosition : ItemPosition
-        let beltState = beltStates[tag]
-
-        switch beltState.itemPosition {
-
-            case let .onBelt(position):
-                newItemPosition = position.next().map {ItemPosition.onBelt($0)} ?? ItemPosition.outOfBelt(.player2)
-            case .outOfBelt(_):
-                newItemPosition = ItemPosition.onBelt(.center)
-        }
-
-        beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
-        configureUI(beltStates: beltStates)
-        checkIfOutOfBelt(beltState: beltStates[tag], player: .player2, tag: tag)
-
-    }
-
-    
     // btnを1列ごとに管理
-    var btnLine1: [UIButton] = []
-    var btnLine2: [UIButton] = []
-    var btnLine3: [UIButton] = []
-    var btnLine4: [UIButton] = []
-    var btnLine5: [UIButton] = []
+    private var btnLine1 = [UIButton]()
+    private var btnLine2 = [UIButton]()
+    private var btnLine3 = [UIButton]()
+    private var btnLine4 = [UIButton]()
+    private var btnLine5 = [UIButton]()
     
     // btnLineを一括管理
-    var btnLineArray : [[UIButton]] = []
+    private var btnLineArray = [[UIButton]]()
 
-    private var imageArray : [[UIImageView]] = []
+    private var imageArray = [[UIImageView]]()
 
 
     override func viewDidLoad() {
@@ -247,9 +130,120 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 //        gameStart()
         
     }
+
+    private func configureUI(beltStates: [BeltState]) {
+        // ここでUIを適切に設定する
+        for i in 0..<beltStates.count{
+            let name = beltStates[i].item.imageName
+            switch beltStates[i].itemPosition{
+                case let .onBelt(poistion):
+                    switch poistion {
+                        case .pos0:
+                            imageArray[i][1].image = UIImage(named: name)
+                            imageArray[i][2].image = UIImage(named: "")
+                        case .pos1:
+                            imageArray[i][1].image = UIImage(named: "")
+                            imageArray[i][2].image = UIImage(named: name)
+                            imageArray[i][3].image = UIImage(named: "")
+                        case .pos2:
+                            imageArray[i][0].image = UIImage(named: "")
+                            imageArray[i][2].image = UIImage(named: "")
+                            imageArray[i][3].image = UIImage(named: name)
+                            imageArray[i][4].image = UIImage(named: "")
+                            imageArray[i][6].image = UIImage(named: "")
+                        case .pos3:
+                            imageArray[i][3].image = UIImage(named: "")
+                            imageArray[i][4].image = UIImage(named: name)
+                            imageArray[i][5].image = UIImage(named: "")
+                        case .pos4:
+                            imageArray[i][4].image = UIImage(named: "")
+                            imageArray[i][5].image = UIImage(named: name)
+                    }
+
+                case let .outOfBelt(player):
+                    switch player {
+                        case .player1:
+                            imageArray[i][0].image = UIImage(named: name)
+                            imageArray[i][1].image = UIImage(named: "")
+                        case .player2:
+                            imageArray[i][5].image = UIImage(named: "")
+                            imageArray[i][6].image = UIImage(named: name)
+                    }
+            }
+        }
+    }
+
+    private func didTapUp(_ tag: Int) {
+        var newItemPosition : ItemPosition
+        let beltState = beltStates[tag]
+
+        switch beltState.itemPosition {
+
+            case let .onBelt(position):
+                newItemPosition = position.prev().map {ItemPosition.onBelt($0)} ?? ItemPosition.outOfBelt(.player1)
+            case .outOfBelt(_):
+                newItemPosition = ItemPosition.onBelt(.center)
+        }
+
+        beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
+        configureUI(beltStates: beltStates)
+        checkIfOutOfBelt(beltState: beltStates[tag], player: .player1, tag: tag)
+
+    }
+
+    private func didTapDown(_ tag: Int) {
+        var newItemPosition : ItemPosition
+        let beltState = beltStates[tag]
+
+        switch beltState.itemPosition {
+
+            case let .onBelt(position):
+                newItemPosition = position.next().map {ItemPosition.onBelt($0)} ?? ItemPosition.outOfBelt(.player2)
+            case .outOfBelt(_):
+                newItemPosition = ItemPosition.onBelt(.center)
+        }
+
+        beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
+        configureUI(beltStates: beltStates)
+        checkIfOutOfBelt(beltState: beltStates[tag], player: .player2, tag: tag)
+
+    }
+
+    private func checkIfOutOfBelt(beltState: BeltState, player: Player, tag: Int){
+        if beltState.itemPosition == ItemPosition.outOfBelt(player){
+            playSoundByTypeOfPresent(beltState)
+            updateScore(beltState: beltState, player: player)
+            resetBeltState(tag)
+        }
+    }
+
+    private func updateScore(beltState: BeltState, player:Player){
+        switch player {
+
+            case .player1:
+                scoreNum1 += beltState.item.score
+                consoleView1.scoreLabel.text = "\(scoreNum1)pt"
+            case .player2:
+                scoreNum2 += beltState.item.score
+                consoleView2.scoreLabel.text = "\(scoreNum2)pt"
+        }
+    }
+
+    private func resetBeltState(_ tag: Int){
+        btnLineStatus(btnLine: btnLineArray[tag], status: false)
+
+        let newItem = MainViewController.itemArray.randomElement() ?? Apple()
+        let newItemPosition = ItemPosition.onBelt(.center)
+        beltStates[tag] = BeltState(item: newItem, itemPosition: newItemPosition)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.configureUI(beltStates: self.beltStates)
+            self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+        }
+    }
     
     // Viewを回転させる
-    func rotate(_ UIView: UIView, _ angle: CGFloat){
+    private func rotate(_ UIView: UIView, _ angle: CGFloat){
         
         let oneDegree = CGFloat.pi/180
         UIView.transform = CGAffineTransform(rotationAngle: CGFloat(oneDegree*angle))
@@ -257,7 +251,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
     
     // game開始時の挙動
-    func gameStart() {
+    private func gameStart() {
         
         // 画面を初期化
         beforeCountDown()
@@ -283,7 +277,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
 
     // カウントダウン開始時の状態
-    func beforeCountDown() {
+    private func beforeCountDown() {
         
         //各種表示/非表示切り替え
         againBtn.isHidden = true
@@ -304,7 +298,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
     
     // カウントダウン開始後の状態。
-    func afterCountDown() {
+    private func afterCountDown() {
         
         callLabel.isHidden = true
 
@@ -317,7 +311,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         }
     }
 
-    func timerStart(){
+    private func timerStart(){
         
         restTime = settingTime
         loadTime(restTime)
@@ -339,13 +333,13 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         })
     }
     
-    func loadTime(_ Time: Int){
+    private func loadTime(_ Time: Int){
         consoleView1.timerLabel.text = "\(Time)"
         consoleView2.timerLabel.text = "\(Time)"
     }
 
     // ゲーム終了時の挙動
-    func gameFinish() {
+    private func gameFinish() {
         
         sounds.playSound(fileName: "finish", extentionName: "mp3")
         
@@ -382,7 +376,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
     
     //点数比較して勝ち負けを表示
-    func comparePoint(){
+    private func comparePoint(){
         
         consoleView1.winOrLoseLabel.isHidden = false
         consoleView2.winOrLoseLabel.isHidden = false
@@ -412,13 +406,13 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
     
 
-    @IBAction func startAgain(_: Any) {
+    @IBAction private func startAgain(_: Any) {
         gameStart()
         sounds.playSound(fileName: "decide", extentionName: "mp3")
     }
 
     //presentの種類によって音声を再生
-    func playSoundByTypeOfPresent(_ beltState: BeltState){
+    private func playSoundByTypeOfPresent(_ beltState: BeltState){
         //presentが爆弾なら爆発音、それ以外なら得点
         if beltState.item.isBomb {
             sounds.playSound(fileName: "bomb", extentionName: "mp3")
@@ -428,7 +422,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
 
     // 1列毎のbtnLineの有効化/無効化を管理
-    func btnLineStatus(btnLine: [UIButton], status: Bool) {
+    private func btnLineStatus(btnLine: [UIButton], status: Bool) {
         for btn in btnLine {
             btn.isEnabled = status
         }

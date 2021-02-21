@@ -501,11 +501,6 @@
                         <outlet property="callLabel" destination="PYW-Ga-x81" id="eKK-ss-bau"/>
                         <outlet property="consoleView1" destination="dmn-RD-peT" id="OUm-et-24M"/>
                         <outlet property="consoleView2" destination="RON-hy-x0B" id="PN2-Iq-aED"/>
-                        <outlet property="conveyor1" destination="Xgz-5x-B6Z" id="DD0-Yj-FSX"/>
-                        <outlet property="conveyor2" destination="eSq-qt-jqE" id="jou-6h-U7z"/>
-                        <outlet property="conveyor3" destination="n2D-aJ-YDG" id="mZ8-kd-Cj1"/>
-                        <outlet property="conveyor4" destination="Wea-76-D5W" id="Xh2-D1-M4O"/>
-                        <outlet property="conveyor5" destination="ojm-Nz-3tg" id="s6V-nz-TzB"/>
                         <outlet property="homeBtn" destination="oA9-xa-KrY" id="CHd-83-7gb"/>
                         <outlet property="imageView1" destination="XhS-wg-ftj" id="hCd-Kf-HXA"/>
                         <outlet property="imageView10" destination="SO2-Kk-eRD" id="14a-ys-m8p"/>
