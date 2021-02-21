@@ -341,7 +341,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     
     
     //delegateメソッド
-    func Up(_ tag: Int) {
+    func didTapUp(_ tag: Int) {
         
         //presentの位置を把握
         var location = presentLocation.findLocation(tag: tag)
@@ -402,7 +402,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
     
     //delegateメソッド
-    func Down(_ tag: Int) {
+    func didTapDown(_ tag: Int) {
         
         //presentの位置を把握
         var location = presentLocation.findLocation(tag: tag)

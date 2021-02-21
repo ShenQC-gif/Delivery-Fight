@@ -10,9 +10,9 @@ import UIKit
 
 @objc protocol BtnAction {
 
-    func Up(_ tag: Int)
+    func didTapUp(_ tag: Int)
     
-    func Down(_ tag: Int)
+    func didTapDown(_ tag: Int)
 }
 
 class CustomView: UIView {
@@ -60,7 +60,7 @@ class CustomView: UIView {
         
         let tag = ((sender as AnyObject).tag)!
         
-        BtnActionDelegate?.Up(tag)
+        BtnActionDelegate?.didTapUp(tag)
         
     }
     
@@ -68,7 +68,7 @@ class CustomView: UIView {
         
         let tag = ((sender as AnyObject).tag)!
         
-        BtnActionDelegate?.Down(tag)
+        BtnActionDelegate?.didTapDown(tag)
         
     }
     
