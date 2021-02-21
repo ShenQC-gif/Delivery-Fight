@@ -134,29 +134,24 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     private func configureUI(beltStates: [BeltState]) {
         // ここでUIを適切に設定する
         for i in 0..<beltStates.count{
+
             let name = beltStates[i].item.imageName
+
+            for imageView in imageViewArrays[i]{
+                imageView.image = UIImage(named: "")
+            }
             switch beltStates[i].itemPosition{
                 case let .onBelt(poistion):
                     switch poistion {
                         case .pos0:
                             imageViewArrays[i][1].image = UIImage(named: name)
-                            imageViewArrays[i][2].image = UIImage(named: "")
                         case .pos1:
-                            imageViewArrays[i][1].image = UIImage(named: "")
                             imageViewArrays[i][2].image = UIImage(named: name)
-                            imageViewArrays[i][3].image = UIImage(named: "")
                         case .pos2:
-                            imageViewArrays[i][0].image = UIImage(named: "")
-                            imageViewArrays[i][2].image = UIImage(named: "")
                             imageViewArrays[i][3].image = UIImage(named: name)
-                            imageViewArrays[i][4].image = UIImage(named: "")
-                            imageViewArrays[i][6].image = UIImage(named: "")
                         case .pos3:
-                            imageViewArrays[i][3].image = UIImage(named: "")
                             imageViewArrays[i][4].image = UIImage(named: name)
-                            imageViewArrays[i][5].image = UIImage(named: "")
                         case .pos4:
-                            imageViewArrays[i][4].image = UIImage(named: "")
                             imageViewArrays[i][5].image = UIImage(named: name)
                     }
 
@@ -164,9 +159,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
                     switch player {
                         case .player1:
                             imageViewArrays[i][0].image = UIImage(named: name)
-                            imageViewArrays[i][1].image = UIImage(named: "")
                         case .player2:
-                            imageViewArrays[i][5].image = UIImage(named: "")
                             imageViewArrays[i][6].image = UIImage(named: name)
                     }
             }
