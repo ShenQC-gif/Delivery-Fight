@@ -130,10 +130,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
         presentNameAndPoint = ["apple":10, "grape":20, "melon":30, "peach":40, "banana":50, "cherry":60, "diamond":100, "bomb":-50]
 
-        // timerに枠線を設定
-        consoleView1.timerLabel.layer.borderWidth = 1
-        consoleView2.timerLabel.layer.borderWidth = 1
-        
         againBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         homeBtn.titleLabel?.adjustsFontSizeToFitWidth = true
 

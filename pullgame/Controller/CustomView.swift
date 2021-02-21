@@ -54,6 +54,8 @@ class CustomView: UIView {
         let view = Bundle.main.loadNibNamed("CustomView", owner: self, options: nil)?.first as! UIView
         view.frame = self.bounds
         self.addSubview(view)
+        // timerに枠線を設定
+        timerLabel.layer.borderWidth = 1
     }
     
     @IBAction func presetnUp(_ sender: Any) {
