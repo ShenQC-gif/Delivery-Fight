@@ -74,13 +74,15 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     var settingTime = 0
     var restTime = 0
 
+    static let itemArray:[ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
+
     static func makeInitialState() -> [BeltState] {
         [
-            BeltState(item: Apple(), itemPosition: .onBelt(.center)),
-            BeltState(item: Bomb(), itemPosition: .onBelt(.center)),
-            BeltState(item: Apple(), itemPosition: .onBelt(.center)),
-            BeltState(item: Bomb(), itemPosition: .onBelt(.center)),
-            BeltState(item: Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
         ]
     }
 
