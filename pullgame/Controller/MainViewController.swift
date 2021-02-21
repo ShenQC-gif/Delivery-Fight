@@ -29,7 +29,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     @IBOutlet weak private var consoleView1: CustomView!
     @IBOutlet weak private var consoleView2: CustomView!
-    
+
+    private var imageViewArrays = [[UIImageView]]()
     @IBOutlet weak private var imageView1: UIImageView!
     @IBOutlet weak private var imageView2: UIImageView!
     @IBOutlet weak private var imageView3: UIImageView!
@@ -82,18 +83,16 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     private var btnLine3 = [UIButton]()
     private var btnLine4 = [UIButton]()
     private var btnLine5 = [UIButton]()
-    
     // btnLineを一括管理
     private var btnLineArrays = [[UIButton]]()
 
-    private var imageViewArrays = [[UIImageView]]()
-
-
+    /*-------------------画面読込-------------------*/
     override func viewDidLoad() {
         super.viewDidLoad()
 
         timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
         restTime = timeLimit.rawValue
+        loadTime(restTime)
 
         imageViewArrays  = [
             [imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7],
@@ -121,50 +120,116 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         rotate(consoleView1, 180)
         //ボタンだけは元に戻す
         rotate(consoleView1.BtnSV, 180)
-        
-        // timerLabelに残り時間を反映
-        loadTime(restTime)
-
 
         // game開始
         gameStart()
         
     }
 
-    private func configureUI(beltStates: [BeltState]) {
-        // ここでUIを適切に設定する
-        for i in 0..<beltStates.count{
+    // Viewを回転させる
+    private func rotate(_ UIView: UIView, _ angle: CGFloat){
 
-            let name = beltStates[i].item.imageName
+        let oneDegree = CGFloat.pi/180
+        UIView.transform = CGAffineTransform(rotationAngle: CGFloat(oneDegree*angle))
 
-            for imageView in imageViewArrays[i]{
-                imageView.image = UIImage(named: "")
+    }
+
+    private func timerStart(){
+        // タイマーを作動
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
+
+            if self.restTime > 0 {
+                // 残り時間を減らしていく
+                self.restTime -= 1
+                self.loadTime(self.restTime)
+
             }
-            switch beltStates[i].itemPosition{
-                case let .onBelt(poistion):
-                    switch poistion {
-                        case .pos0:
-                            imageViewArrays[i][1].image = UIImage(named: name)
-                        case .pos1:
-                            imageViewArrays[i][2].image = UIImage(named: name)
-                        case .pos2:
-                            imageViewArrays[i][3].image = UIImage(named: name)
-                        case .pos3:
-                            imageViewArrays[i][4].image = UIImage(named: name)
-                        case .pos4:
-                            imageViewArrays[i][5].image = UIImage(named: name)
-                    }
+            if self.restTime == 0 {
+                // タイマーを無効化にし、ゲーム終了時の挙動へ
+                timer.invalidate()
+                self.gameFinish()
+            }
+        })
+    }
 
-                case let .outOfBelt(player):
-                    switch player {
-                        case .player1:
-                            imageViewArrays[i][0].image = UIImage(named: name)
-                        case .player2:
-                            imageViewArrays[i][6].image = UIImage(named: name)
+    private func loadTime(_ time: Int){
+        consoleView1.timerLabel.text = "\(time)"
+        consoleView2.timerLabel.text = "\(time)"
+    }
+
+    /*-------------------game開始時の挙動-------------------*/
+
+    //game開始(再開)
+    private func gameStart() {
+
+        // 画面初期化
+        beforeCountDown()
+
+        // カウントダウン開始
+        callLabel.text = "③"
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.sounds.playSound(fileName: "countDown", extentionName: "mp3")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.callLabel.text = "②"
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.callLabel.text = "①"
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.afterCountDown()
                     }
+                }
             }
         }
     }
+
+    //画面初期化
+    private func beforeCountDown() {
+
+        //各種表示/非表示切り替え
+        againBtn.isHidden = true
+        homeBtn.isHidden = true
+        callLabel.isHidden = false
+
+        // 勝ち負けLabelを非表示
+       consoleView1.winOrLoseLabel.isHidden = true
+       consoleView2.winOrLoseLabel.isHidden = true
+
+       // pointを0にセット
+        scoreNum1 = 0
+        scoreNum2 = 0
+       consoleView1.scoreLabel.text = "\(scoreNum1)pt"
+       consoleView2.scoreLabel.text = "\(scoreNum2)pt"
+    }
+
+    // カウントダウン終了後の状態
+    private func afterCountDown() {
+
+        callLabel.isHidden = true
+
+        // Btn有効化
+        for btnLine in btnLineArrays {
+            btnLineStatus(btnLine: btnLine, status: true)
+        }
+
+        //imageViewを表示
+        for imageArray in imageViewArrays{
+            for image in imageArray{
+                image.isHidden = false
+            }
+        }
+
+        beltStates = MainViewController.makeInitialState()
+        configureUI(beltStates: beltStates)
+
+        //タイマースタート
+        timerStart()
+
+    }
+
+    /*-------------------game中の操作-------------------*/
 
     func didTapUp(_ tag: Int) {
         var newItemPosition : ItemPosition
@@ -202,6 +267,42 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     }
 
+    private func configureUI(beltStates: [BeltState]) {
+        // ここでUIを適切に設定する
+        for i in 0..<beltStates.count{
+
+            let name = beltStates[i].item.imageName
+
+            for imageView in imageViewArrays[i]{
+                imageView.image = UIImage(named: "")
+            }
+
+            switch beltStates[i].itemPosition{
+                case let .onBelt(poistion):
+                    switch poistion {
+                        case .pos0:
+                            imageViewArrays[i][1].image = UIImage(named: name)
+                        case .pos1:
+                            imageViewArrays[i][2].image = UIImage(named: name)
+                        case .pos2:
+                            imageViewArrays[i][3].image = UIImage(named: name)
+                        case .pos3:
+                            imageViewArrays[i][4].image = UIImage(named: name)
+                        case .pos4:
+                            imageViewArrays[i][5].image = UIImage(named: name)
+                    }
+
+                case let .outOfBelt(player):
+                    switch player {
+                        case .player1:
+                            imageViewArrays[i][0].image = UIImage(named: name)
+                        case .player2:
+                            imageViewArrays[i][6].image = UIImage(named: name)
+                    }
+            }
+        }
+    }
+
     private func checkIfOutOfBelt(beltState: BeltState, player: Player, tag: Int){
         if beltState.itemPosition == ItemPosition.outOfBelt(player){
             playSoundByTypeOfPresent(beltState)
@@ -234,134 +335,35 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             self.btnLineStatus(btnLine: self.btnLineArrays[tag], status: true)
         }
     }
-    
-    // Viewを回転させる
-    private func rotate(_ UIView: UIView, _ angle: CGFloat){
-        
-        let oneDegree = CGFloat.pi/180
-        UIView.transform = CGAffineTransform(rotationAngle: CGFloat(oneDegree*angle))
-        
-    }
-    
-    // game開始時の挙動
-    private func gameStart() {
-        
-        // 画面を初期化
-        beforeCountDown()
 
-        // 始まりのカウントダウン開始
-        callLabel.text = "③"
+    /*-------------------game終了後の挙動-------------------*/
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.sounds.playSound(fileName: "countDown", extentionName: "mp3")
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.callLabel.text = "②"
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.callLabel.text = "①"
-
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.afterCountDown()
-                    }
-                }
-            }
-        }
-    }
-
-    // カウントダウン開始時の状態
-    private func beforeCountDown() {
-        
-        //各種表示/非表示切り替え
-        againBtn.isHidden = true
-        homeBtn.isHidden = true
-        callLabel.isHidden = false
-
-        // 勝ち負けLabelを非表示
-       consoleView1.winOrLoseLabel.isHidden = true
-       consoleView2.winOrLoseLabel.isHidden = true
-        
-       // pointを0にセット
-        scoreNum1 = 0
-        scoreNum2 = 0
-       consoleView1.scoreLabel.text = "\(scoreNum1)pt"
-       consoleView2.scoreLabel.text = "\(scoreNum2)pt"
-    }
-    
-    // カウントダウン開始後の状態。
-    private func afterCountDown() {
-        
-        callLabel.isHidden = true
-
-        for imageArray in imageViewArrays{
-            for image in imageArray{
-                image.isHidden = false
-            }
-        }
-        beltStates = MainViewController.makeInitialState()
-        configureUI(beltStates: beltStates)
-
-        //タイマースタート
-        timerStart()
-            
-        // Btn有効化
-        for btnLine in btnLineArrays {
-            btnLineStatus(btnLine: btnLine, status: true)
-        }
-    }
-
-    private func timerStart(){
-        // タイマーを作動
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
-            
-            if self.restTime > 0 {
-                // 残り時間を減らしていく
-                self.restTime -= 1
-                self.loadTime(self.restTime)
-                
-            }
-            if self.restTime == 0 {
-                // タイマーを無効化にし、ゲーム終了時の挙動へ
-                timer.invalidate()
-                self.gameFinish()
-            }
-        })
-    }
-    
-    private func loadTime(_ time: Int){
-        consoleView1.timerLabel.text = "\(time)"
-        consoleView2.timerLabel.text = "\(time)"
-    }
-
-    // ゲーム終了時の挙動
+    // game終了
     private func gameFinish() {
         
         sounds.playSound(fileName: "finish", extentionName: "mp3")
         
-        //画面上からpresentを消す
+        //画面上からimageViewを消す
         for imageArray in imageViewArrays{
             for image in imageArray{
                 image.isHidden = true
             }
         }
 
-        callLabel.isHidden = false
-        callLabel.text = "Finish!!"
-
         // Btn無効化
         for btnLine in btnLineArrays {
             btnLineStatus(btnLine: btnLine, status: false)
         }
-        
+
+        callLabel.isHidden = false
+        callLabel.text = "Finish!!"
 
         // 結果発表
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+
             self.comparePoint()
             
-            //時間差で表示されることがあるため、もう一度
-            //画面上からpresentを消す
-
-            // Btn無効化
+            //時間差で表示されることがあるため、もう一度Btn無効化
             for btnLine in self.btnLineArrays {
                 self.btnLineStatus(btnLine: btnLine, status: false)
             }
@@ -411,6 +413,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         sounds.playSound(fileName: "decide", extentionName: "mp3")
     }
 
+    /*-------------------その他共通-------------------*/
     //presentの種類によって音声を再生
     private func playSoundByTypeOfPresent(_ beltState: BeltState){
         //presentが爆弾なら爆発音、それ以外なら得点
