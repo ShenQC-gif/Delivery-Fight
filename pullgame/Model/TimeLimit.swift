@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Timer : Int {
+enum TimeLimit : Int {
 
     case ten = 10
     case twenty = 20
@@ -24,14 +24,14 @@ enum Timer : Int {
 
     mutating func plus(){
 
-        if let time = Time(rawValue: rawValue + 10){
+        if let time = TimeLimit(rawValue: rawValue + 10){
             self = time
         }
     }
 
     mutating func minus(){
 
-        if let time = Time(rawValue: rawValue - 10){
+        if let time = TimeLimit(rawValue: rawValue - 10){
             self = time
         }
 

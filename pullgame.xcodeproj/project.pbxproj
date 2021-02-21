@@ -25,7 +25,7 @@
 		EA88AB5624F0DE3800FBE689 /* pullgameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88AB5524F0DE3800FBE689 /* pullgameTests.swift */; };
 		EA88AB6124F0DE3800FBE689 /* pullgameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88AB6024F0DE3800FBE689 /* pullgameUITests.swift */; };
 		EA88AB6F24F26B6700FBE689 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88AB6E24F26B6700FBE689 /* StartViewController.swift */; };
-		EAE1475D25E2926F00818650 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1475C25E2926E00818650 /* Timer.swift */; };
+		EAE1475D25E2926F00818650 /* TimeLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1475C25E2926E00818650 /* TimeLimit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +70,7 @@
 		EA88AB6024F0DE3800FBE689 /* pullgameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pullgameUITests.swift; sourceTree = "<group>"; };
 		EA88AB6224F0DE3800FBE689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA88AB6E24F26B6700FBE689 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		EAE1475C25E2926E00818650 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		EAE1475C25E2926E00818650 /* TimeLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLimit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				EA6D419B258967100077E786 /* PresentState.swift */,
-				EAE1475C25E2926E00818650 /* Timer.swift */,
+				EAE1475C25E2926E00818650 /* TimeLimit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,7 +337,7 @@
 				EA4BC926256BA2E9000669FD /* CustomView.swift in Sources */,
 				EA88AB6F24F26B6700FBE689 /* StartViewController.swift in Sources */,
 				EA88AB4124F0DE3400FBE689 /* SceneDelegate.swift in Sources */,
-				EAE1475D25E2926F00818650 /* Timer.swift in Sources */,
+				EAE1475D25E2926F00818650 /* TimeLimit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
