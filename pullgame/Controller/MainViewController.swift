@@ -86,11 +86,49 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         ]
     }
 
+    private var beltStates = MainViewController.makeInitialState()
+
     func configureUI(beltStates: [BeltState]) {
         // ここでUIを適切に設定する
+        for i in 0..<beltStates.count{
+            let name = beltStates[i].item.imageName
+            switch beltStates[i].itemPosition{
+                case let .onBelt(poistion):
+                    switch poistion {
+                        case .pos0:
+                            imageArray[i][1].image = UIImage(named: name)
+                            imageArray[i][2].image = UIImage(named: "")
+                        case .pos1:
+                            imageArray[i][1].image = UIImage(named: "")
+                            imageArray[i][2].image = UIImage(named: name)
+                            imageArray[i][3].image = UIImage(named: "")
+                        case .pos2:
+                            imageArray[i][0].image = UIImage(named: "")
+                            imageArray[i][2].image = UIImage(named: "")
+                            imageArray[i][3].image = UIImage(named: name)
+                            imageArray[i][4].image = UIImage(named: "")
+                            imageArray[i][6].image = UIImage(named: "")
+                        case .pos3:
+                            imageArray[i][3].image = UIImage(named: "")
+                            imageArray[i][4].image = UIImage(named: name)
+                            imageArray[i][5].image = UIImage(named: "")
+                        case .pos4:
+                            imageArray[i][4].image = UIImage(named: "")
+                            imageArray[i][5].image = UIImage(named: name)
+                    }
 
+                case let .outOfBelt(player):
+                    switch player {
+                        case .player1:
+                            imageArray[i][0].image = UIImage(named: name)
+                            imageArray[i][1].image = UIImage(named: "")
+                        case .player2:
+                            imageArray[i][5].image = UIImage(named: "")
+                            imageArray[i][6].image = UIImage(named: name)
+                    }
+            }
+        }
     }
-
     
     // btnを1列ごとに管理
     var btnLine1: [UIButton] = []
@@ -141,8 +179,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         // timerLabelに残り時間を反映
         loadTime(settingTime)
 
+        configureUI(beltStates: beltStates)
+
         // game開始
-        gameStart()
+//        gameStart()
         
     }
     
