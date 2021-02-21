@@ -86,15 +86,15 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     private var btnLine5 = [UIButton]()
     
     // btnLineを一括管理
-    private var btnLineArray = [[UIButton]]()
+    private var btnLineArrays = [[UIButton]]()
 
-    private var imageArray = [[UIImageView]]()
+    private var imageViewArrays = [[UIImageView]]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imageArray  = [
+        imageViewArrays  = [
             [imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7],
             [imageView8, imageView9, imageView10, imageView11, imageView12, imageView13, imageView14],
             [imageView15, imageView16, imageView17, imageView18, imageView19, imageView20, imageView21],
@@ -110,7 +110,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         btnLine5 = [consoleView1.upBtn4,consoleView1.downBtn4,consoleView2.upBtn4,consoleView2.downBtn4]
         
         //btnLineを一括管理
-        btnLineArray = [btnLine1, btnLine2, btnLine3, btnLine4, btnLine5]
+        btnLineArrays = [btnLine1, btnLine2, btnLine3, btnLine4, btnLine5]
 
 
         againBtn.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -124,10 +124,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         // timerLabelに残り時間を反映
         loadTime(settingTime)
 
-        configureUI(beltStates: beltStates)
 
         // game開始
-//        gameStart()
+        gameStart()
         
     }
 
@@ -139,35 +138,35 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
                 case let .onBelt(poistion):
                     switch poistion {
                         case .pos0:
-                            imageArray[i][1].image = UIImage(named: name)
-                            imageArray[i][2].image = UIImage(named: "")
+                            imageViewArrays[i][1].image = UIImage(named: name)
+                            imageViewArrays[i][2].image = UIImage(named: "")
                         case .pos1:
-                            imageArray[i][1].image = UIImage(named: "")
-                            imageArray[i][2].image = UIImage(named: name)
-                            imageArray[i][3].image = UIImage(named: "")
+                            imageViewArrays[i][1].image = UIImage(named: "")
+                            imageViewArrays[i][2].image = UIImage(named: name)
+                            imageViewArrays[i][3].image = UIImage(named: "")
                         case .pos2:
-                            imageArray[i][0].image = UIImage(named: "")
-                            imageArray[i][2].image = UIImage(named: "")
-                            imageArray[i][3].image = UIImage(named: name)
-                            imageArray[i][4].image = UIImage(named: "")
-                            imageArray[i][6].image = UIImage(named: "")
+                            imageViewArrays[i][0].image = UIImage(named: "")
+                            imageViewArrays[i][2].image = UIImage(named: "")
+                            imageViewArrays[i][3].image = UIImage(named: name)
+                            imageViewArrays[i][4].image = UIImage(named: "")
+                            imageViewArrays[i][6].image = UIImage(named: "")
                         case .pos3:
-                            imageArray[i][3].image = UIImage(named: "")
-                            imageArray[i][4].image = UIImage(named: name)
-                            imageArray[i][5].image = UIImage(named: "")
+                            imageViewArrays[i][3].image = UIImage(named: "")
+                            imageViewArrays[i][4].image = UIImage(named: name)
+                            imageViewArrays[i][5].image = UIImage(named: "")
                         case .pos4:
-                            imageArray[i][4].image = UIImage(named: "")
-                            imageArray[i][5].image = UIImage(named: name)
+                            imageViewArrays[i][4].image = UIImage(named: "")
+                            imageViewArrays[i][5].image = UIImage(named: name)
                     }
 
                 case let .outOfBelt(player):
                     switch player {
                         case .player1:
-                            imageArray[i][0].image = UIImage(named: name)
-                            imageArray[i][1].image = UIImage(named: "")
+                            imageViewArrays[i][0].image = UIImage(named: name)
+                            imageViewArrays[i][1].image = UIImage(named: "")
                         case .player2:
-                            imageArray[i][5].image = UIImage(named: "")
-                            imageArray[i][6].image = UIImage(named: name)
+                            imageViewArrays[i][5].image = UIImage(named: "")
+                            imageViewArrays[i][6].image = UIImage(named: name)
                     }
             }
         }
@@ -230,7 +229,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     }
 
     private func resetBeltState(_ tag: Int){
-        btnLineStatus(btnLine: btnLineArray[tag], status: false)
+        btnLineStatus(btnLine: btnLineArrays[tag], status: false)
 
         let newItem = MainViewController.itemArray.randomElement() ?? Apple()
         let newItemPosition = ItemPosition.onBelt(.center)
@@ -238,7 +237,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.configureUI(beltStates: self.beltStates)
-            self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
+            self.btnLineStatus(btnLine: self.btnLineArrays[tag], status: true)
         }
     }
     
@@ -300,11 +299,19 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         
         callLabel.isHidden = true
 
+        for imageArray in imageViewArrays{
+            for image in imageArray{
+                image.isHidden = false
+            }
+        }
+        beltStates = MainViewController.makeInitialState()
+        configureUI(beltStates: beltStates)
+
         //タイマースタート
         timerStart()
             
         // Btn有効化
-        for btnLine in btnLineArray {
+        for btnLine in btnLineArrays {
             btnLineStatus(btnLine: btnLine, status: true)
         }
     }
@@ -342,12 +349,17 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         sounds.playSound(fileName: "finish", extentionName: "mp3")
         
         //画面上からpresentを消す
+        for imageArray in imageViewArrays{
+            for image in imageArray{
+                image.isHidden = true
+            }
+        }
 
         callLabel.isHidden = false
         callLabel.text = "Finish!!"
 
         // Btn無効化
-        for btnLine in btnLineArray {
+        for btnLine in btnLineArrays {
             btnLineStatus(btnLine: btnLine, status: false)
         }
         
@@ -360,7 +372,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             //画面上からpresentを消す
 
             // Btn無効化
-            for btnLine in self.btnLineArray {
+            for btnLine in self.btnLineArrays {
                 self.btnLineStatus(btnLine: btnLine, status: false)
             }
         }
