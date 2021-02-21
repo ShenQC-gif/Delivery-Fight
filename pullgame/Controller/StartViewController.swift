@@ -19,7 +19,8 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
 
     var sounds = Sounds()
 
-    var settingTime = 30
+    private var time = Time()
+//    var settingTime = 30
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,24 +36,24 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     @IBAction func timeplus(_: Any) {
-        settingTime += 10
+        time.plus()
         checkTime()
         playDecideSound()
     }
 
     @IBAction func timeminus(_: Any) {
-        settingTime -= 10
+        time.minus()
         checkTime()
         playDecideSound()
     }
 
     func checkTime() {
-        timeLabel.text = String(settingTime) + "sec"
+        timeLabel.text = String(time.rawValue) + "sec"
 
-        if settingTime == 10 {
+        if time.rawValue == 10 {
             timeMinus.isEnabled = false
             timeMinus.setTitleColor(UIColor.white, for: .normal)
-        } else if settingTime == 60 {
+        } else if time.rawValue == 60 {
             timePlus.isEnabled = false
             timePlus.setTitleColor(UIColor.white, for: .normal)
         } else {
@@ -72,7 +73,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
         if segue.identifier == "toMain" {
             playDecideSound()
             let playscreen = segue.destination as! MainViewController
-            playscreen.settingTime = settingTime
+            playscreen.settingTime = time.rawValue
         }
     }
 }

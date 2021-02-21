@@ -442,7 +442,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         if segue.identifier == "toStart" {
             sounds.playSound(fileName: "decide", extentionName: "mp3")
             let startVC = segue.destination as! StartViewController
-            startVC.settingTime = settingTime
+//            startVC.time.r = settingTime
         }
     }
 }
