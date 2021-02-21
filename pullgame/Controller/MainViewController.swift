@@ -283,9 +283,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         againBtn.isHidden = true
         homeBtn.isHidden = true
         callLabel.isHidden = false
-        
 
-        
         // 勝ち負けLabelを非表示
        consoleView1.winOrLoseLabel.isHidden = true
        consoleView2.winOrLoseLabel.isHidden = true
@@ -333,9 +331,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         })
     }
     
-    private func loadTime(_ Time: Int){
-        consoleView1.timerLabel.text = "\(Time)"
-        consoleView2.timerLabel.text = "\(Time)"
+    private func loadTime(_ time: Int){
+        consoleView1.timerLabel.text = "\(time)"
+        consoleView2.timerLabel.text = "\(time)"
     }
 
     // ゲーム終了時の挙動
