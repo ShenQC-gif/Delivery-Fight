@@ -37,7 +37,7 @@ class CustomView: UIView {
     
     @IBOutlet weak var winOrLoseLabel: UILabel!
     
-    @IBOutlet weak var pointLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

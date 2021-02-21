@@ -67,8 +67,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     @IBOutlet weak var imageView34: UIImageView!
     @IBOutlet weak var imageView35: UIImageView!
    
-    var pointNum1 = 0
-    var pointNum2 = 0
+    var scoreNum1 = 0
+    var scoreNum2 = 0
 
     var timer = Timer()
     var settingTime = 0
@@ -200,10 +200,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
        consoleView2.winOrLoseLabel.isHidden = true
         
        // pointを0にセット
-       pointNum1 = 0
-       pointNum2 = 0
-       consoleView1.pointLabel.text = "\(pointNum2)pt"
-       consoleView2.pointLabel.text = "\(pointNum2)pt"
+        scoreNum1 = 0
+        scoreNum2 = 0
+       consoleView1.scoreLabel.text = "\(scoreNum1)pt"
+       consoleView2.scoreLabel.text = "\(scoreNum2)pt"
     }
     
     func RondomPresent() -> String{
@@ -341,14 +341,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         consoleView1.winOrLoseLabel.isHidden = false
         consoleView2.winOrLoseLabel.isHidden = false
    
-        if pointNum1 > pointNum2 {
+        if scoreNum1 > scoreNum2 {
            
            consoleView1.winOrLoseLabel.text = "Win! "
            consoleView1.winOrLoseLabel.textColor = UIColor.red
            consoleView2.winOrLoseLabel.text = "...Lose"
            consoleView2.winOrLoseLabel.textColor = UIColor.blue
            
-       } else if pointNum1 < pointNum2 {
+       } else if scoreNum1 < scoreNum2 {
 
            consoleView1.winOrLoseLabel.text = "...Lose"
            consoleView1.winOrLoseLabel.textColor = UIColor.blue
@@ -409,9 +409,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             //得点によって音声を再生
             playSoundByTypeOfPresent(getPoint)
             
-            pointNum1 += getPoint
+            scoreNum1 += getPoint
             
-            consoleView1.pointLabel.text = "\(pointNum1)pt"
+            consoleView1.scoreLabel.text = "\(scoreNum1)pt"
             
             //その列のボタンを一旦無効化
             btnLineStatus(btnLine: btnLineArray[tag], status: false)
@@ -470,9 +470,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             //得点によって音声を再生
             playSoundByTypeOfPresent(getPoint)
             
-            pointNum2 += getPoint
+            scoreNum2 += getPoint
             
-            consoleView2.pointLabel.text = "\(pointNum2)pt"
+            consoleView2.scoreLabel.text = "\(scoreNum2)pt"
             
             //その列のボタンを一旦無効化
             btnLineStatus(btnLine: btnLineArray[tag], status: false)

@@ -17,7 +17,7 @@
                 <outlet property="downBtn2" destination="Rn2-UA-lcu" id="reM-vQ-9AF"/>
                 <outlet property="downBtn3" destination="u0a-xt-r84" id="Zst-dT-sVr"/>
                 <outlet property="downBtn4" destination="n7D-LT-vpq" id="4wb-F5-hOR"/>
-                <outlet property="pointLabel" destination="dD7-ps-mRz" id="8KV-GH-tgC"/>
+                <outlet property="scoreLabel" destination="dD7-ps-mRz" id="Gpa-mD-v8G"/>
                 <outlet property="timerLabel" destination="azw-Nt-h4X" id="aSa-cQ-Avg"/>
                 <outlet property="upBtn0" destination="pPL-ee-2ym" id="7FO-1b-fJw"/>
                 <outlet property="upBtn1" destination="f6I-lX-ykR" id="fmr-mB-gTl"/>
@@ -120,7 +120,7 @@
                         <constraint firstAttribute="width" secondItem="v9v-BD-3Zf" secondAttribute="height" multiplier="5:1.4" id="wwu-bG-lL5"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0pt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD7-ps-mRz" userLabel="Point Label">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0pt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD7-ps-mRz" userLabel="Score Label">
                     <rect key="frame" x="136" y="227" width="181" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Sy8-PU-j4f"/>
