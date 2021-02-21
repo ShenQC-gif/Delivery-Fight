@@ -14,8 +14,7 @@ import UIKit
 class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     
-    var sounds = Sounds()
-    var presentLocation = PresentLocation()
+    private var sounds = Sounds()
     
     @IBOutlet var conveyor1: UIImageView!
     @IBOutlet var conveyor2: UIImageView!
@@ -23,12 +22,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     @IBOutlet var conveyor4: UIImageView!
     @IBOutlet var conveyor5: UIImageView!
 
-    @IBOutlet var callLabel: UILabel!
-
-    @IBOutlet var againBtn: UIButton!
-    @IBOutlet var homeBtn: UIButton!
-    
-    
     @IBOutlet weak var consoleView1: CustomView!
     @IBOutlet weak var consoleView2: CustomView!
     
@@ -67,7 +60,12 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     @IBOutlet weak var imageView33: UIImageView!
     @IBOutlet weak var imageView34: UIImageView!
     @IBOutlet weak var imageView35: UIImageView!
-   
+
+
+    @IBOutlet var callLabel: UILabel!
+    @IBOutlet var againBtn: UIButton!
+    @IBOutlet var homeBtn: UIButton!
+
     var scoreNum1 = 0
     var scoreNum2 = 0
 
@@ -146,7 +144,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
         configureUI(beltStates: beltStates)
         checkIfOutOfBelt(beltState: beltStates[tag], player: .player1, tag: tag)
-
 
     }
 
@@ -309,9 +306,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     func afterCountDown() {
         
         callLabel.isHidden = true
-        
-        loadState()
-        
+
         //タイマースタート
         timerStart()
             
@@ -319,45 +314,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         for btnLine in btnLineArray {
             btnLineStatus(btnLine: btnLine, status: true)
         }
-    }
-    
-    // presentの位置情報を読み込む
-    func loadState(){
-        imageView1.image = UIImage(named: presentLocation.state[0][0])
-        imageView2.image = UIImage(named: presentLocation.state[0][1])
-        imageView3.image = UIImage(named: presentLocation.state[0][2])
-        imageView4.image = UIImage(named: presentLocation.state[0][3])
-        imageView5.image = UIImage(named: presentLocation.state[0][4])
-        imageView6.image = UIImage(named: presentLocation.state[1][0])
-        imageView7.image = UIImage(named: presentLocation.state[1][1])
-        imageView8.image = UIImage(named: presentLocation.state[1][2])
-        imageView9.image = UIImage(named: presentLocation.state[1][3])
-        imageView10.image = UIImage(named: presentLocation.state[1][4])
-        imageView11.image = UIImage(named: presentLocation.state[2][0])
-        imageView12.image = UIImage(named: presentLocation.state[2][1])
-        imageView13.image = UIImage(named: presentLocation.state[2][2])
-        imageView14.image = UIImage(named: presentLocation.state[2][3])
-        imageView15.image = UIImage(named: presentLocation.state[2][4])
-        imageView16.image = UIImage(named: presentLocation.state[3][0])
-        imageView17.image = UIImage(named: presentLocation.state[3][1])
-        imageView18.image = UIImage(named: presentLocation.state[3][2])
-        imageView19.image = UIImage(named: presentLocation.state[3][3])
-        imageView20.image = UIImage(named: presentLocation.state[3][4])
-        imageView21.image = UIImage(named: presentLocation.state[4][0])
-        imageView22.image = UIImage(named: presentLocation.state[4][1])
-        imageView23.image = UIImage(named: presentLocation.state[4][2])
-        imageView24.image = UIImage(named: presentLocation.state[4][3])
-        imageView25.image = UIImage(named: presentLocation.state[4][4])
-        imageView26.image = UIImage(named: presentLocation.state[5][0])
-        imageView27.image = UIImage(named: presentLocation.state[5][1])
-        imageView28.image = UIImage(named: presentLocation.state[5][2])
-        imageView29.image = UIImage(named: presentLocation.state[5][3])
-        imageView30.image = UIImage(named: presentLocation.state[5][4])
-        imageView31.image = UIImage(named: presentLocation.state[6][0])
-        imageView32.image = UIImage(named: presentLocation.state[6][1])
-        imageView33.image = UIImage(named: presentLocation.state[6][2])
-        imageView34.image = UIImage(named: presentLocation.state[6][3])
-        imageView35.image = UIImage(named: presentLocation.state[6][4])
     }
 
     func timerStart(){
@@ -393,9 +349,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         sounds.playSound(fileName: "finish", extentionName: "mp3")
         
         //画面上からpresentを消す
-        presentLocation.state = presentLocation.getEmptyState()
-        loadState()
-    
+
         callLabel.isHidden = false
         callLabel.text = "Finish!!"
 
@@ -411,8 +365,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             
             //時間差で表示されることがあるため、もう一度
             //画面上からpresentを消す
-            self.presentLocation.state = self.presentLocation.getEmptyState()
-            self.loadState()
+
             // Btn無効化
             for btnLine in self.btnLineArray {
                 self.btnLineStatus(btnLine: btnLine, status: false)
@@ -457,129 +410,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
  
     }
     
-    
-    //delegateメソッド
-//    func didTapUp(_ tag: Int) {
-//
-//        //presentの位置を把握
-//        var location = presentLocation.findLocation(tag: tag)
-//
-//        //何のpresentか把握
-//        let presentName = presentLocation.state[location.x][location.y]
-//
-//        //一旦その位置からpresentを削除
-//        presentLocation.state[location.x][location.y] = ""
-//
-//        //表示位置を変更
-//        switch location.x {
-//        case 1:
-//            location.x = 0
-//        case 2:
-//            location.x = 1
-//        case 3:
-//            location.x = 2
-//        case 4:
-//            location.x = 3
-//        case 5:
-//            location.x = 4
-//        case 6:
-//            location.x = 5
-//        default:
-//            break
-//        }
-//
-//        //変更した表示位置に同じpresentを表示
-//        presentLocation.state[location.x][location.y] = presentName
-//        loadState()
-//
-//        //player1側にpresentが到着した時
-//        if location.x == 0{
-//
-//            //そのプレゼントの得点を取得
-//            let getPoint = presentNameAndPoint[presentName] ?? 0
-//
-//            //得点によって音声を再生
-//            playSoundByTypeOfPresent(getPoint)
-//
-//            scoreNum1 += getPoint
-//
-//            consoleView1.scoreLabel.text = "\(scoreNum1)pt"
-//
-//            //その列のボタンを一旦無効化
-//            btnLineStatus(btnLine: btnLineArray[tag], status: false)
-//
-//            //残り時間があれば0.25秒後のランダムなpresentを初期位置にセット
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                if self.restTime > 0 {
-//                    self.resetPresent(location: location)
-//                    //ボタンを有効化
-//                    self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
-//                }
-//            }
-//        }
-//    }
-    
-    //delegateメソッド
-//    func didTapDown(_ tag: Int) {
-//
-//        //presentの位置を把握
-//        var location = presentLocation.findLocation(tag: tag)
-//
-//        //何のpresentか把握
-//        let presentName = presentLocation.state[location.x][location.y]
-//
-//        //一旦その位置からpresentを削除
-//        presentLocation.state[location.x][location.y] = ""
-//
-//        //表示位置を変更
-//        switch location.x {
-//        case 0:
-//            location.x = 1
-//        case 1:
-//            location.x = 2
-//        case 2:
-//            location.x = 3
-//        case 3:
-//            location.x = 4
-//        case 4:
-//            location.x = 5
-//        case 5:
-//            location.x = 6
-//        default:
-//            break
-//        }
-//
-//        //変更した表示位置に同じpresentを表示
-//        presentLocation.state[location.x][location.y] = presentName
-//        loadState()
-//
-//        //player2側にpresentが到着した時
-//        if location.x == 6{
-//
-//            //そのプレゼントの得点を取得
-//            let getPoint = presentNameAndPoint[presentName] ?? 0
-//
-//            //得点によって音声を再生
-//            playSoundByTypeOfPresent(getPoint)
-//
-//            scoreNum2 += getPoint
-//
-//            consoleView2.scoreLabel.text = "\(scoreNum2)pt"
-//
-//            //その列のボタンを一旦無効化
-//            btnLineStatus(btnLine: btnLineArray[tag], status: false)
-//
-//            //残り時間があれば0.25秒後のランダムなpresentを初期位置にセット
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                if self.restTime > 0 {
-//                    self.resetPresent(location: location)
-//                    //ボタンを有効化
-//                    self.btnLineStatus(btnLine: self.btnLineArray[tag], status: true)
-//                }
-//            }
-//        }
-//    }
-    
+
     @IBAction func startAgain(_: Any) {
         gameStart()
         sounds.playSound(fileName: "decide", extentionName: "mp3")

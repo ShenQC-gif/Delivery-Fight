@@ -8,51 +8,6 @@
 
 import Foundation
 
-struct Location {
-    var x : Int
-    var y : Int
-}
-
-class PresentLocation {
-    
-    var state = [
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-    ]
-    
-    func getEmptyState() -> [[String]]{
-        return
-            [
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ]
-    }
-    
-    ///何行目の、何列目(ボタンのtagで管理)のpresentかを返す
-    func findLocation(tag: Int) -> Location {
-        
-        for (x,col) in state.enumerated(){
-            if col[tag] != ""{
-                return Location(x:x, y:tag)
-            }
-        }
-        assertionFailure("Present is missing😢")
-        abort()
-    }
-    
-    
-}
-
 protocol ItemType {
     var imageName: String { get }
     var score: Int { get }
@@ -148,25 +103,3 @@ struct BeltState {
     let itemPosition: ItemPosition
 }
 
-
-
-
-func didTapDown(tappingPlayer: Player, beltState: BeltState) -> BeltState {
-    let newItemPosition: ItemPosition
-    
-    switch beltState.itemPosition {
-    case let .onBelt(position):
-        switch tappingPlayer {
-        case .player1:
-            newItemPosition = position.next().map { ItemPosition.onBelt($0) }
-                  ?? ItemPosition.outOfBelt(.player1)
-        case .player2:
-            newItemPosition = position.prev().map { ItemPosition.onBelt($0) }
-                  ?? ItemPosition.outOfBelt(.player2)
-        }
-    case .outOfBelt:
-        newItemPosition = beltState.itemPosition
-    }
-
-    return BeltState(item: beltState.item, itemPosition: newItemPosition)
-}
