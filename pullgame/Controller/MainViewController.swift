@@ -180,7 +180,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
         restTime = timeLimit.rawValue
         loadTime(restTime)
-        
+
     }
 
     // カウントダウン終了後の状態
@@ -332,9 +332,12 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         let newItemPosition = ItemPosition.onBelt(.center)
         beltStates[tag] = BeltState(item: newItem, itemPosition: newItemPosition)
 
+        //0.5秒後に、残り時間がまだあればItemを再セット
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.configureUI(beltStates: self.beltStates)
-            self.btnLineStatus(btnLine: self.btnLineArrays[tag], status: true)
+            if self.restTime > 0 {
+                self.configureUI(beltStates: self.beltStates)
+                self.btnLineStatus(btnLine: self.btnLineArrays[tag], status: true)
+            }
         }
     }
 
