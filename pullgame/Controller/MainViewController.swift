@@ -71,11 +71,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     @IBOutlet private var againBtn: UIButton!
     @IBOutlet private var homeBtn: UIButton!
 
-    private var scoreNum1 = 0
-    private var scoreNum2 = 0
-
     private var timer = Timer()
-    private var restTime = 0
+    private var restTime = Int()
 
     // btnを1列ごとに管理
     private var btnLine1 = [UIButton]()
@@ -168,14 +165,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         callLabel.isHidden = false
 
         // 勝ち負けLabelを非表示
-       consoleView1.winOrLoseLabel.isHidden = true
-       consoleView2.winOrLoseLabel.isHidden = true
+        consoleView1.resultLabel.isHidden = true
+        consoleView2.resultLabel.isHidden = true
 
-       // pointを0にセット
-        scoreNum1 = 0
-        scoreNum2 = 0
-       consoleView1.scoreLabel.text = "\(scoreNum1)pt"
-       consoleView2.scoreLabel.text = "\(scoreNum2)pt"
+        consoleView1.scoreLabel.text = "\(consoleView1.scoreNum)pt"
+        consoleView2.scoreLabel.text = "\(consoleView2.scoreNum)pt"
 
         timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
         restTime = timeLimit.rawValue
@@ -317,11 +311,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         switch player {
 
             case .player1:
-                scoreNum1 += beltState.item.score
-                consoleView1.scoreLabel.text = "\(scoreNum1)pt"
+                consoleView1.scoreNum += beltState.item.score
+                consoleView1.scoreLabel.text = "\(consoleView1.scoreNum)pt"
             case .player2:
-                scoreNum2 += beltState.item.score
-                consoleView2.scoreLabel.text = "\(scoreNum2)pt"
+                consoleView2.scoreNum += beltState.item.score
+                consoleView2.scoreLabel.text = "\(consoleView2.scoreNum)pt"
         }
     }
 
@@ -385,31 +379,27 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     //点数比較して勝ち負けを表示
     private func comparePoint(){
         
-        consoleView1.winOrLoseLabel.isHidden = false
-        consoleView2.winOrLoseLabel.isHidden = false
-   
-        if scoreNum1 > scoreNum2 {
-           
-           consoleView1.winOrLoseLabel.text = "Win! "
-           consoleView1.winOrLoseLabel.textColor = UIColor.red
-           consoleView2.winOrLoseLabel.text = "...Lose"
-           consoleView2.winOrLoseLabel.textColor = UIColor.blue
-           
-       } else if scoreNum1 < scoreNum2 {
+        consoleView1.resultLabel.isHidden = false
+        consoleView2.resultLabel.isHidden = false
 
-           consoleView1.winOrLoseLabel.text = "...Lose"
-           consoleView1.winOrLoseLabel.textColor = UIColor.blue
-           consoleView2.winOrLoseLabel.text = "Win! "
-           consoleView2.winOrLoseLabel.textColor = UIColor.red
-           
-       } else {
+        if consoleView1.scoreNum > consoleView2.scoreNum {
+            consoleView1.resultLabel.text = Result.returnResult(.win)().text
+            consoleView1.resultLabel.textColor = Result.returnResult(.win)().color
+            consoleView2.resultLabel.text = Result.returnResult(.lose)().text
+            consoleView2.resultLabel.textColor = Result.returnResult(.lose)().color
 
-           consoleView1.winOrLoseLabel.text = "Draw!"
-           consoleView1.winOrLoseLabel.textColor = UIColor.black
-           consoleView2.winOrLoseLabel.text = "Draw!"
-           consoleView2.winOrLoseLabel.textColor = UIColor.black
+        } else if consoleView1.scoreNum < consoleView2.scoreNum {
+            consoleView1.resultLabel.text = Result.returnResult(.lose)().text
+            consoleView1.resultLabel.textColor = Result.returnResult(.lose)().color
+            consoleView2.resultLabel.text = Result.returnResult(.win)().text
+            consoleView2.resultLabel.textColor = Result.returnResult(.win)().color
+        } else {
+            consoleView1.resultLabel.text = Result.returnResult(.draw)().text
+            consoleView1.resultLabel.textColor = Result.returnResult(.draw)().color
+            consoleView2.resultLabel.text = Result.returnResult(.draw)().text
+            consoleView2.resultLabel.textColor = Result.returnResult(.draw)().color
         }
- 
+
     }
     
 
@@ -426,7 +416,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
             sounds.playSound(fileName: "bomb", extentionName: "mp3")
         } else {
             sounds.playSound(fileName: "getPoint", extentionName: "mp3")
-           }
+        }
     }
 
     // 1列毎のbtnLineの有効化/無効化を管理
