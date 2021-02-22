@@ -43,5 +43,3 @@ enum ItemPosition: Equatable {
     case onBelt(ItemBeltPosition)
     case outOfBelt(Player)
 }
-
-

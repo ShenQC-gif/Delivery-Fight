@@ -10,7 +10,6 @@ import AVFoundation
 import UIKit
 
 class StartViewController: UIViewController, AVAudioPlayerDelegate {
-    
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var startBtn: UIButton!
     @IBOutlet private var timeLabel: UILabel!

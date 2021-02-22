@@ -61,7 +61,3 @@ struct Bomb: ItemType {
     let score = -50
     var isBomb = true
 }
-
-
-
-

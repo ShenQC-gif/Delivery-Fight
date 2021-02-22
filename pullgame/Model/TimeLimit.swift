@@ -8,8 +8,7 @@
 
 import Foundation
 
-enum TimeLimit : Int {
-
+enum TimeLimit: Int {
     case ten = 10
     case twenty = 20
     case thirty = 30
@@ -17,37 +16,35 @@ enum TimeLimit : Int {
     case fifty = 50
     case sixty = 60
 
-    init(){
+    init() {
         self = .thirty
     }
 
-    mutating func plus(){
-
-        if let time = TimeLimit(rawValue: rawValue + 10){
+    mutating func plus() {
+        if let time = TimeLimit(rawValue: rawValue + 10) {
             self = time
         }
     }
 
-    mutating func minus(){
-
-        if let time = TimeLimit(rawValue: rawValue - 10){
+    mutating func minus() {
+        if let time = TimeLimit(rawValue: rawValue - 10) {
             self = time
         }
     }
 
-    struct TimeLimitOption{
-        let min : Bool
-        let max : Bool
+    struct TimeLimitOption {
+        let min: Bool
+        let max: Bool
     }
 
     func ifTimeIsMinOrMax() -> TimeLimitOption {
         switch self {
-            case .ten:
-                return TimeLimitOption(min: true, max: false)
-            case .twenty, .thirty, .forty, .fifty:
-                return TimeLimitOption(min: false, max: false)
-            case .sixty:
-                return TimeLimitOption(min: false, max: true)
+        case .ten:
+            return TimeLimitOption(min: true, max: false)
+        case .twenty, .thirty, .forty, .fifty:
+            return TimeLimitOption(min: false, max: false)
+        case .sixty:
+            return TimeLimitOption(min: false, max: true)
         }
     }
 }
