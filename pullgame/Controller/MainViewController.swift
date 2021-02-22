@@ -338,7 +338,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
         // 結果発表
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.comparePoint()
+            self.compareScore()
 
             // 時間差で表示されることがあるため、もう一度Btn無効化
             for btnLine in self.btnLineArrays {
@@ -355,7 +355,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     }
 
     // 点数比較して勝ち負けを表示
-    private func comparePoint() {
+    private func compareScore() {
         consoleView1.resultLabel.isHidden = false
         consoleView2.resultLabel.isHidden = false
 
