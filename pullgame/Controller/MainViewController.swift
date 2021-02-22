@@ -90,9 +90,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
-        restTime = timeLimit.rawValue
-        loadTime(restTime)
+
 
         imageViewArrays  = [
             [imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7],
@@ -128,33 +126,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
 
     // Viewを回転させる
     private func rotate(_ UIView: UIView, _ angle: CGFloat){
-
         let oneDegree = CGFloat.pi/180
         UIView.transform = CGAffineTransform(rotationAngle: CGFloat(oneDegree*angle))
 
-    }
-
-    private func timerStart(){
-        // タイマーを作動
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
-
-            if self.restTime > 0 {
-                // 残り時間を減らしていく
-                self.restTime -= 1
-                self.loadTime(self.restTime)
-
-            }
-            if self.restTime == 0 {
-                // タイマーを無効化にし、ゲーム終了時の挙動へ
-                timer.invalidate()
-                self.gameFinish()
-            }
-        })
-    }
-
-    private func loadTime(_ time: Int){
-        consoleView1.timerLabel.text = "\(time)"
-        consoleView2.timerLabel.text = "\(time)"
     }
 
     /*-------------------game開始時の挙動-------------------*/
@@ -202,6 +176,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         scoreNum2 = 0
        consoleView1.scoreLabel.text = "\(scoreNum1)pt"
        consoleView2.scoreLabel.text = "\(scoreNum2)pt"
+
+        timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
+        restTime = timeLimit.rawValue
+        loadTime(restTime)
+        
     }
 
     // カウントダウン終了後の状態
@@ -227,6 +206,29 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction{
         //タイマースタート
         timerStart()
 
+    }
+
+    private func timerStart(){
+        // タイマーを作動
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
+
+            if self.restTime > 0 {
+                // 残り時間を減らしていく
+                self.restTime -= 1
+                self.loadTime(self.restTime)
+
+            }
+            if self.restTime == 0 {
+                // タイマーを無効化にし、ゲーム終了時の挙動へ
+                timer.invalidate()
+                self.gameFinish()
+            }
+        })
+    }
+
+    private func loadTime(_ time: Int){
+        consoleView1.timerLabel.text = "\(time)"
+        consoleView2.timerLabel.text = "\(time)"
     }
 
     /*-------------------game中の操作-------------------*/
