@@ -87,6 +87,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        consoleView1.delegate = self
+        consoleView2.delegate = self
+
         imageViewArrays = [
             [imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7],
             [imageView8, imageView9, imageView10, imageView11, imageView12, imageView13, imageView14],

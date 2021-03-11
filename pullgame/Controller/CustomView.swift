@@ -15,7 +15,7 @@ import UIKit
 }
 
 class CustomView: UIView {
-    @IBOutlet var BtnActionDelegate: BtnAction?
+    weak var delegate: BtnAction?
 
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var BtnSV: UIStackView!
@@ -57,43 +57,43 @@ class CustomView: UIView {
     }
 
     @IBAction func didTapUpButton0(_ sender: Any) {
-        BtnActionDelegate?.didTapUp(0)
+        delegate?.didTapUp(0)
     }
 
     @IBAction func didTapUpButton1(_ sender: Any) {
-        BtnActionDelegate?.didTapUp(1)
+        delegate?.didTapUp(1)
     }
 
     @IBAction func didTapUpButton2(_ sender: Any) {
-        BtnActionDelegate?.didTapUp(2)
+        delegate?.didTapUp(2)
     }
 
     @IBAction func didTapUpButton3(_ sender: Any) {
-        BtnActionDelegate?.didTapUp(3)
+        delegate?.didTapUp(3)
     }
 
     @IBAction func didTapUpButton4(_ sender: Any) {
-        BtnActionDelegate?.didTapUp(4)
+        delegate?.didTapUp(4)
     }
 
     @IBAction func didTapDownButton0(_ sender: Any) {
-        BtnActionDelegate?.didTapDown(0)
+        delegate?.didTapDown(0)
     }
 
     @IBAction func didTapDownButton1(_ sender: Any) {
-        BtnActionDelegate?.didTapDown(1)
+        delegate?.didTapDown(1)
     }
 
     @IBAction func didTapDownButton2(_ sender: Any) {
-        BtnActionDelegate?.didTapDown(2)
+        delegate?.didTapDown(2)
     }
 
     @IBAction func didTapDownButton3(_ sender: Any) {
-        BtnActionDelegate?.didTapDown(3)
+        delegate?.didTapDown(3)
     }
 
     @IBAction func didTapDownButton4(_ sender: Any) {
-        BtnActionDelegate?.didTapDown(4)
+        delegate?.didTapDown(4)
     }
 }
 
