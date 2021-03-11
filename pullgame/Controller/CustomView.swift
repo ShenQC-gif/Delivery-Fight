@@ -95,4 +95,38 @@ class CustomView: UIView {
     @IBAction func didTapDownButton4(_ sender: Any) {
         delegate?.didTapDown(4)
     }
+
+    func configureResultUI(gameResult: GameResult) {
+        resultLabel.isHidden = false
+
+        switch gameResult {
+        case .win:
+            resultLabel.text = GameResult.returnResult(.win)().text
+            resultLabel.textColor = GameResult.returnResult(.win)().color
+        case .lose:
+            resultLabel.text = GameResult.returnResult(.lose)().text
+            resultLabel.textColor = GameResult.returnResult(.lose)().color
+        case .draw:
+            resultLabel.text = GameResult.returnResult(.draw)().text
+            resultLabel.textColor = GameResult.returnResult(.draw)().color
+        }
+    }
+}
+
+private struct ResultLabelProperty {
+    let text: String
+    let color: UIColor
+}
+
+private extension GameResult {
+    func returnResult() -> ResultLabelProperty {
+        switch self {
+        case .win:
+            return ResultLabelProperty(text: "Win!", color: .red)
+        case .lose:
+            return ResultLabelProperty(text: "...Lose", color: .blue)
+        case .draw:
+            return ResultLabelProperty(text: "Draw!", color: .black)
+        }
+    }
 }

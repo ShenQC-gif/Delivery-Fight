@@ -364,25 +364,15 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     // 点数比較して勝ち負けを表示
     private func compareScore() {
-        consoleView1.resultLabel.isHidden = false
-        consoleView2.resultLabel.isHidden = false
-
         if consoleView1.scoreNum > consoleView2.scoreNum {
-            consoleView1.resultLabel.text = GameResult.returnResult(.win)().text
-            consoleView1.resultLabel.textColor = GameResult.returnResult(.win)().color
-            consoleView2.resultLabel.text = GameResult.returnResult(.lose)().text
-            consoleView2.resultLabel.textColor = GameResult.returnResult(.lose)().color
-
+            consoleView1.configureResultUI(gameResult: .win)
+            consoleView2.configureResultUI(gameResult: .lose)
         } else if consoleView1.scoreNum < consoleView2.scoreNum {
-            consoleView1.resultLabel.text = GameResult.returnResult(.lose)().text
-            consoleView1.resultLabel.textColor = GameResult.returnResult(.lose)().color
-            consoleView2.resultLabel.text = GameResult.returnResult(.win)().text
-            consoleView2.resultLabel.textColor = GameResult.returnResult(.win)().color
+            consoleView1.configureResultUI(gameResult: .lose)
+            consoleView2.configureResultUI(gameResult: .win)
         } else {
-            consoleView1.resultLabel.text = GameResult.returnResult(.draw)().text
-            consoleView1.resultLabel.textColor = GameResult.returnResult(.draw)().color
-            consoleView2.resultLabel.text = GameResult.returnResult(.draw)().text
-            consoleView2.resultLabel.textColor = GameResult.returnResult(.draw)().color
+            consoleView1.configureResultUI(gameResult: .draw)
+            consoleView2.configureResultUI(gameResult: .draw)
         }
     }
 
@@ -412,24 +402,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toStart" {
             sounds.playSound(fileName: "decide", extentionName: "mp3")
-        }
-    }
-}
-
-private struct ResultLabelProperty {
-    let text: String
-    let color: UIColor
-}
-
-private extension GameResult {
-    func returnResult() -> ResultLabelProperty {
-        switch self {
-        case .win:
-            return ResultLabelProperty(text: "Win!", color: .red)
-        case .lose:
-            return ResultLabelProperty(text: "...Lose", color: .blue)
-        case .draw:
-            return ResultLabelProperty(text: "Draw!", color: .black)
         }
     }
 }
