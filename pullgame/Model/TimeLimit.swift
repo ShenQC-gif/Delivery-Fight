@@ -20,31 +20,11 @@ enum TimeLimit: Int {
         self = .thirty
     }
 
-    mutating func plus() {
-        if let time = TimeLimit(rawValue: rawValue + 10) {
-            self = time
-        }
+    func plus() -> TimeLimit? {
+        TimeLimit(rawValue: rawValue + 10)
     }
 
-    mutating func minus() {
-        if let time = TimeLimit(rawValue: rawValue - 10) {
-            self = time
-        }
-    }
-
-    struct TimeLimitOption {
-        let min: Bool
-        let max: Bool
-    }
-
-    func ifTimeIsMinOrMax() -> TimeLimitOption {
-        switch self {
-        case .ten:
-            return TimeLimitOption(min: true, max: false)
-        case .twenty, .thirty, .forty, .fifty:
-            return TimeLimitOption(min: false, max: false)
-        case .sixty:
-            return TimeLimitOption(min: false, max: true)
-        }
+    func minus() -> TimeLimit? {
+        TimeLimit(rawValue: rawValue - 10)
     }
 }
