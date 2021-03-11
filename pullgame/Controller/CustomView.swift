@@ -102,7 +102,7 @@ struct ResultLabelProperty {
     let color: UIColor
 }
 
-enum Result {
+enum GameResult {
     case win
     case lose
     case draw

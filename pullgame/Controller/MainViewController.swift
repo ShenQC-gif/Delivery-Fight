@@ -368,21 +368,21 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         consoleView2.resultLabel.isHidden = false
 
         if consoleView1.scoreNum > consoleView2.scoreNum {
-            consoleView1.resultLabel.text = Result.returnResult(.win)().text
-            consoleView1.resultLabel.textColor = Result.returnResult(.win)().color
-            consoleView2.resultLabel.text = Result.returnResult(.lose)().text
-            consoleView2.resultLabel.textColor = Result.returnResult(.lose)().color
+            consoleView1.resultLabel.text = GameResult.returnResult(.win)().text
+            consoleView1.resultLabel.textColor = GameResult.returnResult(.win)().color
+            consoleView2.resultLabel.text = GameResult.returnResult(.lose)().text
+            consoleView2.resultLabel.textColor = GameResult.returnResult(.lose)().color
 
         } else if consoleView1.scoreNum < consoleView2.scoreNum {
-            consoleView1.resultLabel.text = Result.returnResult(.lose)().text
-            consoleView1.resultLabel.textColor = Result.returnResult(.lose)().color
-            consoleView2.resultLabel.text = Result.returnResult(.win)().text
-            consoleView2.resultLabel.textColor = Result.returnResult(.win)().color
+            consoleView1.resultLabel.text = GameResult.returnResult(.lose)().text
+            consoleView1.resultLabel.textColor = GameResult.returnResult(.lose)().color
+            consoleView2.resultLabel.text = GameResult.returnResult(.win)().text
+            consoleView2.resultLabel.textColor = GameResult.returnResult(.win)().color
         } else {
-            consoleView1.resultLabel.text = Result.returnResult(.draw)().text
-            consoleView1.resultLabel.textColor = Result.returnResult(.draw)().color
-            consoleView2.resultLabel.text = Result.returnResult(.draw)().text
-            consoleView2.resultLabel.textColor = Result.returnResult(.draw)().color
+            consoleView1.resultLabel.text = GameResult.returnResult(.draw)().text
+            consoleView1.resultLabel.textColor = GameResult.returnResult(.draw)().color
+            consoleView2.resultLabel.text = GameResult.returnResult(.draw)().text
+            consoleView2.resultLabel.textColor = GameResult.returnResult(.draw)().color
         }
     }
 
