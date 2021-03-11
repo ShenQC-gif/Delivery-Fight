@@ -266,29 +266,33 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
                 imageView.image = nil
             }
 
-            switch beltStates[i].itemPosition {
-            case let .onBelt(poistion):
-                switch poistion {
-                case .pos0:
-                    imageViewArrays[i][1].image = UIImage(named: name)
-                case .pos1:
-                    imageViewArrays[i][2].image = UIImage(named: name)
-                case .pos2:
-                    imageViewArrays[i][3].image = UIImage(named: name)
-                case .pos3:
-                    imageViewArrays[i][4].image = UIImage(named: name)
-                case .pos4:
-                    imageViewArrays[i][5].image = UIImage(named: name)
-                }
+            func targetImageView() -> UIImageView {
+                switch beltStates[i].itemPosition {
+                case let .onBelt(poistion):
+                    switch poistion {
+                    case .pos0:
+                        return imageViewArrays[i][1]
+                    case .pos1:
+                        return imageViewArrays[i][2]
+                    case .pos2:
+                        return imageViewArrays[i][3]
+                    case .pos3:
+                        return imageViewArrays[i][4]
+                    case .pos4:
+                        return imageViewArrays[i][5]
+                    }
 
-            case let .outOfBelt(player):
-                switch player {
-                case .player1:
-                    imageViewArrays[i][0].image = UIImage(named: name)
-                case .player2:
-                    imageViewArrays[i][6].image = UIImage(named: name)
+                case let .outOfBelt(player):
+                    switch player {
+                    case .player1:
+                        return imageViewArrays[i][0]
+                    case .player2:
+                        return imageViewArrays[i][6]
+                    }
                 }
             }
+
+            targetImageView().image = UIImage(named: name)
         }
     }
 
