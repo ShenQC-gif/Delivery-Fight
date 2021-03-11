@@ -15,7 +15,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     private var beltStates = MainViewController.makeInitialState()
     private var sounds = Sounds()
-    private var timeLimit = TimeLimit()
+    private var timeLimit = TimeLimit.thirty
     static let itemArray: [ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
     static func makeInitialState() -> [BeltState] {
         [
