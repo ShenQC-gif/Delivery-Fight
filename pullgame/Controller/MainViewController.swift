@@ -368,16 +368,22 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     // 点数比較して勝ち負けを表示
     private func compareScore() {
-        if consoleView1.scoreNum > consoleView2.scoreNum {
-            consoleView1.configureResultUI(gameResult: .win)
-            consoleView2.configureResultUI(gameResult: .lose)
-        } else if consoleView1.scoreNum < consoleView2.scoreNum {
-            consoleView1.configureResultUI(gameResult: .lose)
-            consoleView2.configureResultUI(gameResult: .win)
-        } else {
-            consoleView1.configureResultUI(gameResult: .draw)
-            consoleView2.configureResultUI(gameResult: .draw)
+        func judgePlayer1() -> GameResult {
+            if consoleView1.scoreNum > consoleView2.scoreNum {
+                return .win
+            } else if consoleView1.scoreNum < consoleView2.scoreNum {
+                return .lose
+            } else {
+                return .draw
+            }
         }
+
+        func judgePlayer2() -> GameResult {
+            judgePlayer1().enemyResult
+        }
+
+        consoleView1.configureResultUI(gameResult: judgePlayer1())
+        consoleView2.configureResultUI(gameResult: judgePlayer2())
     }
 
     @IBAction private func startAgain(_: Any) {
