@@ -259,7 +259,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
             let name = beltStates[i].item.imageName
 
             for imageView in imageViewArrays[i] {
-                imageView.image = UIImage(named: "")
+                imageView.image = nil
             }
 
             switch beltStates[i].itemPosition {
