@@ -9,9 +9,9 @@
 import UIKit
 
 @objc protocol BtnAction {
-    func didTapUp(_ tag: Int)
+    func didTapUp(_ index: Int)
 
-    func didTapDown(_ tag: Int)
+    func didTapDown(_ index: Int)
 }
 
 class CustomView: UIView {
@@ -56,16 +56,44 @@ class CustomView: UIView {
         scoreNum = 0
     }
 
-    @IBAction func presetnUp(_ sender: Any) {
-        let tag = ((sender as AnyObject).tag)!
-
-        BtnActionDelegate?.didTapUp(tag)
+    @IBAction func didTapUpButton0(_ sender: Any) {
+        BtnActionDelegate?.didTapUp(0)
     }
 
-    @IBAction func presentDown(_ sender: Any) {
-        let tag = ((sender as AnyObject).tag)!
+    @IBAction func didTapUpButton1(_ sender: Any) {
+        BtnActionDelegate?.didTapUp(1)
+    }
 
-        BtnActionDelegate?.didTapDown(tag)
+    @IBAction func didTapUpButton2(_ sender: Any) {
+        BtnActionDelegate?.didTapUp(2)
+    }
+
+    @IBAction func didTapUpButton3(_ sender: Any) {
+        BtnActionDelegate?.didTapUp(3)
+    }
+
+    @IBAction func didTapUpButton4(_ sender: Any) {
+        BtnActionDelegate?.didTapUp(4)
+    }
+
+    @IBAction func didTapDownButton0(_ sender: Any) {
+        BtnActionDelegate?.didTapDown(0)
+    }
+
+    @IBAction func didTapDownButton1(_ sender: Any) {
+        BtnActionDelegate?.didTapDown(1)
+    }
+
+    @IBAction func didTapDownButton2(_ sender: Any) {
+        BtnActionDelegate?.didTapDown(2)
+    }
+
+    @IBAction func didTapDownButton3(_ sender: Any) {
+        BtnActionDelegate?.didTapDown(3)
+    }
+
+    @IBAction func didTapDownButton4(_ sender: Any) {
+        BtnActionDelegate?.didTapDown(4)
     }
 }
 

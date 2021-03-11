@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,35 +42,35 @@
                                     <rect key="frame" x="0.0" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
-                                        <action selector="presetnUp:" destination="-1" eventType="touchUpInside" id="IzZ-6b-AKU"/>
+                                        <action selector="didTapUpButton0:" destination="-1" eventType="touchUpInside" id="40z-NJ-hfy"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6I-lX-ykR" userLabel="Up Btn1">
                                     <rect key="frame" x="82.5" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
-                                        <action selector="presetnUp:" destination="-1" eventType="touchUpInside" id="5Hm-bM-LRl"/>
+                                        <action selector="didTapUpButton1:" destination="-1" eventType="touchUpInside" id="qhd-8g-Rus"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jva-nE-4lE" userLabel="Up Btn2">
                                     <rect key="frame" x="165" y="0.0" width="78" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
-                                        <action selector="presetnUp:" destination="-1" eventType="touchUpInside" id="RAG-oG-YWR"/>
+                                        <action selector="didTapUpButton2:" destination="-1" eventType="touchUpInside" id="tkD-x0-KTj"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-tT-03O" userLabel="Up Btn3">
                                     <rect key="frame" x="248" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
-                                        <action selector="presetnUp:" destination="-1" eventType="touchUpInside" id="BZd-4j-lK3"/>
+                                        <action selector="didTapUpButton3:" destination="-1" eventType="touchUpInside" id="Lii-F0-LWz"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fq-8X-dyc" userLabel="Up Btn4">
                                     <rect key="frame" x="330.5" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="upbtn"/>
                                     <connections>
-                                        <action selector="presetnUp:" destination="-1" eventType="touchUpInside" id="KqX-H1-tME"/>
+                                        <action selector="didTapUpButton4:" destination="-1" eventType="touchUpInside" id="2r7-iE-0EN"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -82,35 +82,35 @@
                                     <rect key="frame" x="0.0" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>
-                                        <action selector="presentDown:" destination="-1" eventType="touchUpInside" id="qlW-Xc-JVc"/>
+                                        <action selector="didTapDownButton0:" destination="-1" eventType="touchUpInside" id="qKd-gx-UXz"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyP-ME-pXY" userLabel="Down Btn1">
                                     <rect key="frame" x="82.5" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>
-                                        <action selector="presentDown:" destination="-1" eventType="touchUpInside" id="655-Il-ajq"/>
+                                        <action selector="didTapDownButton1:" destination="-1" eventType="touchUpInside" id="Egv-dm-Ulr"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rn2-UA-lcu" userLabel="Down Btn2">
                                     <rect key="frame" x="165" y="0.0" width="78" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>
-                                        <action selector="presentDown:" destination="-1" eventType="touchUpInside" id="HeD-VU-hv3"/>
+                                        <action selector="didTapDownButton2:" destination="-1" eventType="touchUpInside" id="Vy3-l4-ylS"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0a-xt-r84" userLabel="Down Btn3">
                                     <rect key="frame" x="248" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>
-                                        <action selector="presentDown:" destination="-1" eventType="touchUpInside" id="qJY-Kr-BP7"/>
+                                        <action selector="didTapDownButton3:" destination="-1" eventType="touchUpInside" id="efn-il-Wtk"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7D-LT-vpq" userLabel="Down Btn4">
                                     <rect key="frame" x="330.5" y="0.0" width="77.5" height="54.5"/>
                                     <state key="normal" image="downbtn"/>
                                     <connections>
-                                        <action selector="presentDown:" destination="-1" eventType="touchUpInside" id="9Pf-GB-4xb"/>
+                                        <action selector="didTapDownButton4:" destination="-1" eventType="touchUpInside" id="PHb-T7-KP8"/>
                                     </connections>
                                 </button>
                             </subviews>
