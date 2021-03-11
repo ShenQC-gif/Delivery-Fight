@@ -99,34 +99,41 @@ class CustomView: UIView {
     func configureResultUI(gameResult: GameResult) {
         resultLabel.isHidden = false
 
-        switch gameResult {
-        case .win:
-            resultLabel.text = GameResult.returnResult(.win)().text
-            resultLabel.textColor = GameResult.returnResult(.win)().color
-        case .lose:
-            resultLabel.text = GameResult.returnResult(.lose)().text
-            resultLabel.textColor = GameResult.returnResult(.lose)().color
-        case .draw:
-            resultLabel.text = GameResult.returnResult(.draw)().text
-            resultLabel.textColor = GameResult.returnResult(.draw)().color
-        }
+        let appearance = gameResult.appearance
+        resultLabel.text = appearance.text
+        resultLabel.textColor = appearance.color
     }
-}
-
-private struct ResultLabelProperty {
-    let text: String
-    let color: UIColor
 }
 
 private extension GameResult {
-    func returnResult() -> ResultLabelProperty {
+    var appearance: ResultAppearance {
         switch self {
         case .win:
-            return ResultLabelProperty(text: "Win!", color: .red)
+            return WinAppearance()
         case .lose:
-            return ResultLabelProperty(text: "...Lose", color: .blue)
+            return LoseAppearance()
         case .draw:
-            return ResultLabelProperty(text: "Draw!", color: .black)
+            return DrawAppearance()
         }
     }
+}
+
+protocol ResultAppearance {
+    var text: String { get }
+    var color: UIColor { get }
+}
+
+struct WinAppearance: ResultAppearance {
+    let text = "Win!"
+    let color: UIColor  = .red
+}
+
+struct LoseAppearance: ResultAppearance {
+    let text = "...Lose"
+    let color: UIColor  = .blue
+}
+
+struct DrawAppearance: ResultAppearance {
+    let text = "Draw!"
+    let color: UIColor  = .black
 }
