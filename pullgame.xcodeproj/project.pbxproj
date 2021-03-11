@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5C1297525FA2A93005E4967 /* TimeLimitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1297425FA2A93005E4967 /* TimeLimitRepository.swift */; };
 		EA4BC926256BA2E9000669FD /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BC925256BA2E9000669FD /* CustomView.swift */; };
 		EA4BC92B256BA2F9000669FD /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4BC92A256BA2F9000669FD /* CustomView.xib */; };
 		EA5CD43E255BFD46001556D8 /* finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5CD43D255BFD46001556D8 /* finish.mp3 */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E5C1297425FA2A93005E4967 /* TimeLimitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLimitRepository.swift; sourceTree = "<group>"; };
 		EA4BC925256BA2E9000669FD /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		EA4BC92A256BA2F9000669FD /* CustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
 		EA5CD43D255BFD46001556D8 /* finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = finish.mp3; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				EAE1476725E3C16C00818650 /* Player.swift */,
 				EAE1476C25E3C19700818650 /* BeltState.swift */,
 				EAE1475C25E2926E00818650 /* TimeLimit.swift */,
+				E5C1297425FA2A93005E4967 /* TimeLimitRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6D419C258967100077E786 /* Item.swift in Sources */,
+				E5C1297525FA2A93005E4967 /* TimeLimitRepository.swift in Sources */,
 				EA88AB4324F0DE3400FBE689 /* MainViewController.swift in Sources */,
 				EA88AB3F24F0DE3400FBE689 /* AppDelegate.swift in Sources */,
 				EA5CD446255C02C8001556D8 /* Sounds.swift in Sources */,

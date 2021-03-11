@@ -10,6 +10,9 @@ import AVFoundation
 import UIKit
 
 class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
+
+    private let timeLimitRepository = TimeLimitRepository()
+
     private var beltStates = MainViewController.makeInitialState()
     private var sounds = Sounds()
     private var timeLimit = TimeLimit()
@@ -161,7 +164,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         consoleView1.scoreLabel.text = "\(consoleView1.scoreNum)pt"
         consoleView2.scoreLabel.text = "\(consoleView2.scoreNum)pt"
 
-        timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
+        timeLimit = timeLimitRepository.load() ?? .thirty
         restTime = timeLimit.rawValue
         loadTime(restTime)
     }
