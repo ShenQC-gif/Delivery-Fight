@@ -8,13 +8,28 @@
 
 import UIKit
 
-@objc protocol BtnAction {
-    func didTapUp(_ index: Int)
-
-    func didTapDown(_ index: Int)
+protocol BtnAction: AnyObject {
+    func didTapUp(button: CustomView.UpButton)
+    func didTapDown(button: CustomView.DownButton)
 }
 
 class CustomView: UIView {
+    enum UpButton {
+        case up0
+        case up1
+        case up2
+        case up3
+        case up4
+    }
+
+    enum DownButton {
+        case down0
+        case down1
+        case down2
+        case down3
+        case down4
+    }
+
     weak var delegate: BtnAction?
 
     @IBOutlet var timerLabel: UILabel!
@@ -57,43 +72,43 @@ class CustomView: UIView {
     }
 
     @IBAction func didTapUpButton0(_ sender: Any) {
-        delegate?.didTapUp(0)
+        delegate?.didTapUp(button: .up0)
     }
 
     @IBAction func didTapUpButton1(_ sender: Any) {
-        delegate?.didTapUp(1)
+        delegate?.didTapUp(button: .up1)
     }
 
     @IBAction func didTapUpButton2(_ sender: Any) {
-        delegate?.didTapUp(2)
+        delegate?.didTapUp(button: .up2)
     }
 
     @IBAction func didTapUpButton3(_ sender: Any) {
-        delegate?.didTapUp(3)
+        delegate?.didTapUp(button: .up3)
     }
 
     @IBAction func didTapUpButton4(_ sender: Any) {
-        delegate?.didTapUp(4)
+        delegate?.didTapUp(button: .up4)
     }
 
     @IBAction func didTapDownButton0(_ sender: Any) {
-        delegate?.didTapDown(0)
+        delegate?.didTapDown(button: .down0)
     }
 
     @IBAction func didTapDownButton1(_ sender: Any) {
-        delegate?.didTapDown(1)
+        delegate?.didTapDown(button: .down1)
     }
 
     @IBAction func didTapDownButton2(_ sender: Any) {
-        delegate?.didTapDown(2)
+        delegate?.didTapDown(button: .down2)
     }
 
     @IBAction func didTapDownButton3(_ sender: Any) {
-        delegate?.didTapDown(3)
+        delegate?.didTapDown(button: .down3)
     }
 
     @IBAction func didTapDownButton4(_ sender: Any) {
-        delegate?.didTapDown(4)
+        delegate?.didTapDown(button: .down4)
     }
 
     func configureResultUI(gameResult: GameResult) {

@@ -219,7 +219,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     /*-------------------game中の操作-------------------*/
 
-    func didTapUp(_ index: Int) {
+    func didTapUp(button: CustomView.UpButton) {
+        let index = button.beltStatesIndex
+
         let beltState = beltStates[index]
 
         let newItemPosition: ItemPosition = {
@@ -236,7 +238,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         checkIfOutOfBelt(beltState: beltStates[index], player: .player1, index: index)
     }
 
-    func didTapDown(_ index: Int) {
+    func didTapDown(button: CustomView.DownButton) {
+        let index = button.beltStatesIndex
+        
         let beltState = beltStates[index]
 
         let newItemPosition: ItemPosition = {
@@ -402,6 +406,30 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toStart" {
             sounds.playSound(fileName: "decide", extentionName: "mp3")
+        }
+    }
+}
+
+private extension CustomView.UpButton {
+    var beltStatesIndex: Int {
+        switch self {
+        case .up0: return 0
+        case .up1: return 1
+        case .up2: return 2
+        case .up3: return 3
+        case .up4: return 4
+        }
+    }
+}
+
+private extension CustomView.DownButton {
+    var beltStatesIndex: Int {
+        switch self {
+        case .down0: return 0
+        case .down1: return 1
+        case .down2: return 2
+        case .down3: return 3
+        case .down4: return 4
         }
     }
 }
