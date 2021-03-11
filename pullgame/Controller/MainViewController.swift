@@ -415,3 +415,21 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         }
     }
 }
+
+private struct ResultLabelProperty {
+    let text: String
+    let color: UIColor
+}
+
+private extension GameResult {
+    func returnResult() -> ResultLabelProperty {
+        switch self {
+        case .win:
+            return ResultLabelProperty(text: "Win!", color: .red)
+        case .lose:
+            return ResultLabelProperty(text: "...Lose", color: .blue)
+        case .draw:
+            return ResultLabelProperty(text: "Draw!", color: .black)
+        }
+    }
+}
