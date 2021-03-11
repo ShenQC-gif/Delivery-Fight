@@ -13,6 +13,10 @@ protocol BtnAction: AnyObject {
     func didTapDown(button: CustomView.DownButton)
 }
 
+/// 責務
+/// - 5つのUpボタンを表示する
+/// - 5つのDownボタンを表示する
+/// - ゲームの結果を表示する
 class CustomView: UIView {
     enum UpButton {
         case up0
