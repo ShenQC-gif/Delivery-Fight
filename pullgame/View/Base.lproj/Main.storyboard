@@ -490,7 +490,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Jub-5X-46s" kind="presentation" identifier="toStart" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="PLO-rw-Vy4"/>
+                                            <segue destination="8ke-gB-E5k" kind="unwind" unwindAction="exitFromMainViewControllerWithSegue:" id="eLW-5S-5yN"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -569,6 +569,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="8ke-gB-E5k" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1184.0579710144928" y="105.80357142857143"/>
         </scene>

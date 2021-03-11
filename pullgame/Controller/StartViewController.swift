@@ -57,4 +57,8 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
             timeLimitRepository.save(timeLimit: timeLimit)
         }
     }
+
+    @IBAction func exitFromMainViewController(segue: UIStoryboardSegue) {
+        // Do nothing
+    }
 }
