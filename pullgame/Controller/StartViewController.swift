@@ -27,21 +27,21 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     @IBAction private func timePlus(_: Any) {
-        timeLimit.plus()
+        timeLimit = timeLimit.plus() ?? timeLimit
         checkTime()
         playDecideSound()
     }
 
     @IBAction private func timeMinus(_: Any) {
-        timeLimit.minus()
+        timeLimit = timeLimit.minus() ?? timeLimit
         checkTime()
         playDecideSound()
     }
 
     private func checkTime() {
         timeLabel.text = String(timeLimit.rawValue) + "sec"
-        timeMinus.isHidden = timeLimit.ifTimeIsMinOrMax().min
-        timePlus.isHidden = timeLimit.ifTimeIsMinOrMax().max
+        timeMinus.isHidden = timeLimit.minus() == nil
+        timePlus.isHidden = timeLimit.plus() == nil
     }
 
     private func playDecideSound() {
