@@ -158,6 +158,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         consoleView1.resultLabel.isHidden = true
         consoleView2.resultLabel.isHidden = true
 
+        consoleView1.scoreNum = 0
+        consoleView2.scoreNum = 0
         consoleView1.scoreLabel.text = "\(consoleView1.scoreNum)pt"
         consoleView2.scoreLabel.text = "\(consoleView2.scoreNum)pt"
 
@@ -218,10 +220,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         let beltState = beltStates[tag]
 
         switch beltState.itemPosition {
-        case let .onBelt(position):
-            newItemPosition = position.prev().map { ItemPosition.onBelt($0) } ?? ItemPosition.outOfBelt(.player1)
-        case .outOfBelt:
-            newItemPosition = ItemPosition.onBelt(.center)
+            case let .onBelt(position):
+                newItemPosition = position.prev().map { ItemPosition.onBelt($0) } ?? ItemPosition.outOfBelt(.player1)
+            case .outOfBelt:
+                newItemPosition = ItemPosition.onBelt(.center)
         }
 
         beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
@@ -234,10 +236,10 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         let beltState = beltStates[tag]
 
         switch beltState.itemPosition {
-        case let .onBelt(position):
-            newItemPosition = position.next().map { ItemPosition.onBelt($0) } ?? ItemPosition.outOfBelt(.player2)
-        case .outOfBelt:
-            newItemPosition = ItemPosition.onBelt(.center)
+            case let .onBelt(position):
+                newItemPosition = position.next().map { ItemPosition.onBelt($0) } ?? ItemPosition.outOfBelt(.player2)
+            case .outOfBelt:
+                newItemPosition = ItemPosition.onBelt(.center)
         }
 
         beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
