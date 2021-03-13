@@ -17,7 +17,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet private var timeMinus: UIButton!
 
     private var sounds = Sounds()
-    private var timeLimit = TimeLimit()
+    private var timeLimit = TimeLimit.thirty
 
     override func viewDidLoad() {
         super.viewDidLoad()
