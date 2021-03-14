@@ -12,8 +12,8 @@ import Foundation
 class Sounds {
     private var player: AVAudioPlayer?
 
-    private func playSound(fileName: String, extentionName: String) {
-        let soundURL = Bundle.main.url(forResource: fileName, withExtension: extentionName)
+    func playSound(rosource:Resource) {
+        let soundURL = Bundle.main.url(forResource: rosource.filename, withExtension: rosource.extentionName)
 
         do {
             player = try AVAudioPlayer(contentsOf: soundURL!)
@@ -24,25 +24,33 @@ class Sounds {
     }
 }
 
-extension Sounds{
-
-    func playDecide(){
-        playSound(fileName: "decide", extentionName: "mp3")
-    }
-
-    func playBomb(){
-        playSound(fileName: "bomb", extentionName: "mp3")
-    }
-
-    func playGetPoint(){
-        playSound(fileName: "getPoint", extentionName: "mp3")
-    }
-
-    func playCountDown(){
-        playSound(fileName: "countDown", extentionName: "mp3")
-    }
-
-    func playFinish(){
-        playSound(fileName: "finish", extentionName: "mp3")
-    }
+protocol Resource {
+    var filename :String {get}
+    var extentionName: String {get}
 }
+
+struct GetBomb :Resource {
+    let filename: String = "bomb"
+    let extentionName: String = "mp3"
+}
+
+struct GetPoint :Resource {
+    let filename: String = "getPoint"
+    let extentionName: String = "mp3"
+}
+
+struct Decide :Resource {
+    let filename: String = "decide"
+    let extentionName: String = "mp3"
+}
+
+struct CountDown :Resource {
+    let filename: String = "countDown"
+    let extentionName: String = "mp3"
+}
+
+struct Finish :Resource {
+    let filename: String = "finish"
+    let extentionName: String = "mp3"
+}
+

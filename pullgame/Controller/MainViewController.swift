@@ -135,7 +135,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         callLabel.text = "③"
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.sounds.playCountDown()
+            self.sounds.playSound(rosource: CountDown())
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.callLabel.text = "②"
@@ -330,7 +330,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     // game終了
     private func gameFinish() {
-        sounds.playFinish()
+        sounds.playSound(rosource: Finish())
 
         // 画面上からimageViewを消す
         for imageArray in imageViewArrays {
@@ -389,12 +389,12 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     @IBAction private func startAgain(_: Any) {
         gameStart()
-        sounds.playDecide()
+        sounds.playSound(rosource: Decide())
     }
 
     @IBAction func home(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        sounds.playDecide()
+        sounds.playSound(rosource: Decide())
     }
 
     /*-------------------その他共通-------------------*/
@@ -402,9 +402,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     private func playSoundByTypeOfPresent(_ beltState: BeltState) {
         // presentが爆弾なら爆発音、それ以外なら得点
         if beltState.item.isBomb {
-            sounds.playBomb()
+            sounds.playSound(rosource: GetBomb())
         } else {
-            sounds.playGetPoint()
+            sounds.playSound(rosource: GetPoint())
         }
     }
 

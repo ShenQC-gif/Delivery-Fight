@@ -46,7 +46,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     private func playDecideSound() {
-        sounds.playDecide()
+        sounds.playSound(rosource: Decide())
     }
 
     // gameover画面に遷移する際のデータの受け渡し
