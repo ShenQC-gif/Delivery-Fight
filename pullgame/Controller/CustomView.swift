@@ -9,9 +9,9 @@
 import UIKit
 
 protocol BtnAction: AnyObject {
-    func didTapUp(index: Int)
+    func didTapUp(button: CustomView.UpButton)
 
-    func didTapDown(index: Int)
+    func didTapDown(button: CustomView.DownButton)
 }
 
 class CustomView: UIView {
@@ -34,6 +34,22 @@ class CustomView: UIView {
     @IBOutlet var downBtn2: UIButton!
     @IBOutlet var downBtn3: UIButton!
     @IBOutlet var downBtn4: UIButton!
+
+    enum UpButton{
+        case upButton0
+        case upButton1
+        case upButton2
+        case upButton3
+        case upButton4
+    }
+
+    enum DownButton{
+        case downButton0
+        case downButton1
+        case downButton2
+        case downButton3
+        case downButton4
+    }
 
     var scoreNum = Int()
 
@@ -59,43 +75,43 @@ class CustomView: UIView {
 
 
     @IBAction func didTapUpButton0(_ sender: Any) {
-        delegate?.didTapUp(index:0)
+        delegate?.didTapUp(button:.upButton0)
     }
 
     @IBAction func didTapUpButton1(_ sender: Any) {
-        delegate?.didTapUp(index:1)
+        delegate?.didTapUp(button:.upButton1)
     }
 
     @IBAction func didTapUpButton2(_ sender: Any) {
-        delegate?.didTapUp(index:2)
+        delegate?.didTapUp(button:.upButton2)
     }
 
     @IBAction func didTapUpButton3(_ sender: Any) {
-        delegate?.didTapUp(index:3)
+        delegate?.didTapUp(button:.upButton3)
     }
 
     @IBAction func didTapUpButton4(_ sender: Any) {
-        delegate?.didTapUp(index:4)
+        delegate?.didTapUp(button:.upButton4)
     }
 
     @IBAction func didTapDownButton0(_ sender: Any) {
-        delegate?.didTapDown(index:0)
+        delegate?.didTapDown(button:.downButton0)
     }
 
     @IBAction func didTapDownButton1(_ sender: Any) {
-        delegate?.didTapDown(index:1)
+        delegate?.didTapDown(button:.downButton1)
     }
 
     @IBAction func didTapDownButton2(_ sender: Any) {
-        delegate?.didTapDown(index:2)
+        delegate?.didTapDown(button:.downButton2)
     }
 
     @IBAction func didTapDownButton3(_ sender: Any) {
-        delegate?.didTapDown(index:3)
+        delegate?.didTapDown(button:.downButton3)
     }
 
     @IBAction func didTapDownButton4(_ sender: Any) {
-        delegate?.didTapDown(index:4)
+        delegate?.didTapDown(button:.downButton4)
     }
 
 

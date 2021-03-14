@@ -214,7 +214,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     /*-------------------game中の操作-------------------*/
 
-    func didTapUp(index: Int) {
+    func didTapUp(button: CustomView.UpButton) {
+
+        let index = button.index
 
         let beltState = beltStates[index]
 
@@ -232,7 +234,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         checkIfOutOfBelt(beltState: beltStates[index], player: .player1, index: index)
     }
 
-    func didTapDown(index: Int) {
+    func didTapDown(button: CustomView.DownButton) {
+
+        let index = button.index
 
         let beltState = beltStates[index]
 
@@ -408,6 +412,42 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     private func btnLineStatus(btnLine: [UIButton], status: Bool) {
         for btn in btnLine {
             btn.isEnabled = status
+        }
+    }
+}
+
+
+private extension CustomView.UpButton {
+    var index : Int {
+        switch self {
+            case .upButton0:
+                return 0
+            case .upButton1:
+                return 1
+            case .upButton2:
+                return 2
+            case .upButton3:
+                return 3
+            case .upButton4:
+                return 4
+        }
+    }
+}
+
+private extension CustomView.DownButton {
+    var index : Int {
+        switch self {
+
+            case .downButton0:
+                return 0
+            case .downButton1:
+                return 1
+            case .downButton2:
+                return 2
+            case .downButton3:
+                return 3
+            case .downButton4:
+                return 4
         }
     }
 }
