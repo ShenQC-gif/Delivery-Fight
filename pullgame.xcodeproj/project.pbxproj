@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EA40678A25FD8FAC0056C318 /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40678925FD8FAC0056C318 /* GameResult.swift */; };
+		EA40679225FDAF790056C318 /* TimeLimitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40679125FDAF790056C318 /* TimeLimitRepository.swift */; };
 		EA4BC926256BA2E9000669FD /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BC925256BA2E9000669FD /* CustomView.swift */; };
 		EA4BC92B256BA2F9000669FD /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4BC92A256BA2F9000669FD /* CustomView.xib */; };
 		EA5CD43E255BFD46001556D8 /* finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5CD43D255BFD46001556D8 /* finish.mp3 */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		EA40678925FD8FAC0056C318 /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
+		EA40679125FDAF790056C318 /* TimeLimitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLimitRepository.swift; sourceTree = "<group>"; };
 		EA4BC925256BA2E9000669FD /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		EA4BC92A256BA2F9000669FD /* CustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
 		EA5CD43D255BFD46001556D8 /* finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = finish.mp3; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				EAE1476C25E3C19700818650 /* BeltState.swift */,
 				EAE1475C25E2926E00818650 /* TimeLimit.swift */,
 				EA40678925FD8FAC0056C318 /* GameResult.swift */,
+				EA40679125FDAF790056C318 /* TimeLimitRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				EA88AB4124F0DE3400FBE689 /* SceneDelegate.swift in Sources */,
 				EAE1476825E3C16C00818650 /* Player.swift in Sources */,
 				EAE1475D25E2926F00818650 /* TimeLimit.swift in Sources */,
+				EA40679225FDAF790056C318 /* TimeLimitRepository.swift in Sources */,
 				EA40678A25FD8FAC0056C318 /* GameResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

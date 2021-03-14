@@ -12,6 +12,7 @@ import UIKit
 class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     private var beltStates = MainViewController.makeInitialState()
     private var sounds = Sounds()
+    private var timeLimitRepository = TimeLimitRepository()
     private var timeLimit = TimeLimit.thirty
     static let itemArray: [ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
     static func makeInitialState() -> [BeltState] {
@@ -164,7 +165,7 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         consoleView1.resetScore()
         consoleView2.resetScore()
 
-        timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
+        timeLimit = timeLimitRepository.load() ?? .thirty
         restTime = timeLimit.rawValue
         consoleView1.loadTime(self.restTime)
         consoleView2.loadTime(self.restTime)

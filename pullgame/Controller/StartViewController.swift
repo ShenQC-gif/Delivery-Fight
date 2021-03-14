@@ -17,6 +17,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet private var timeMinus: UIButton!
 
     private var sounds = Sounds()
+    private var timeLimitRepository = TimeLimitRepository()
     private var timeLimit = TimeLimit.thirty
 
     override func viewDidLoad() {
@@ -52,7 +53,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toMain" {
             playDecideSound()
-            UserDefaults.standard.set(timeLimit.rawValue, forKey: "Time")
+            timeLimitRepository.save(timeLimit: timeLimit)
         }
     }
 }
