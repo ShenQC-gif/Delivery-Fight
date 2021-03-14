@@ -12,7 +12,7 @@ import Foundation
 class Sounds {
     private var player: AVAudioPlayer?
 
-    func playSound(fileName: String, extentionName: String) {
+    private func playSound(fileName: String, extentionName: String) {
         let soundURL = Bundle.main.url(forResource: fileName, withExtension: extentionName)
 
         do {
@@ -21,5 +21,28 @@ class Sounds {
         } catch {
             print("error")
         }
+    }
+}
+
+extension Sounds{
+
+    func playDecide(){
+        playSound(fileName: "decide", extentionName: "mp3")
+    }
+
+    func playBomb(){
+        playSound(fileName: "bomb", extentionName: "mp3")
+    }
+
+    func playGetPoint(){
+        playSound(fileName: "getPoint", extentionName: "mp3")
+    }
+
+    func playCountDown(){
+        playSound(fileName: "countDown", extentionName: "mp3")
+    }
+
+    func playFinish(){
+        playSound(fileName: "finish", extentionName: "mp3")
     }
 }
