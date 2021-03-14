@@ -10,10 +10,10 @@ import AVFoundation
 import Foundation
 
 class Sounds {
-    var player: AVAudioPlayer?
+    private var player: AVAudioPlayer?
 
-    func playSound(fileName: String, extentionName: String) {
-        let soundURL = Bundle.main.url(forResource: fileName, withExtension: extentionName)
+    func playSound(rosource:Resource) {
+        let soundURL = Bundle.main.url(forResource: rosource.filename, withExtension: rosource.extentionName)
 
         do {
             player = try AVAudioPlayer(contentsOf: soundURL!)
@@ -23,3 +23,34 @@ class Sounds {
         }
     }
 }
+
+protocol Resource {
+    var filename :String {get}
+    var extentionName: String {get}
+}
+
+struct GetBomb :Resource {
+    let filename: String = "bomb"
+    let extentionName: String = "mp3"
+}
+
+struct GetPoint :Resource {
+    let filename: String = "getPoint"
+    let extentionName: String = "mp3"
+}
+
+struct Decide :Resource {
+    let filename: String = "decide"
+    let extentionName: String = "mp3"
+}
+
+struct CountDown :Resource {
+    let filename: String = "countDown"
+    let extentionName: String = "mp3"
+}
+
+struct Finish :Resource {
+    let filename: String = "finish"
+    let extentionName: String = "mp3"
+}
+
