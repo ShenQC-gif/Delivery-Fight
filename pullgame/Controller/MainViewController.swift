@@ -383,6 +383,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         sounds.playSound(fileName: "decide", extentionName: "mp3")
     }
 
+    @IBAction func home(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        sounds.playSound(fileName: "decide", extentionName: "mp3")
+    }
+
     /*-------------------その他共通-------------------*/
     // presentの種類によって音声を再生
     private func playSoundByTypeOfPresent(_ beltState: BeltState) {
@@ -398,12 +403,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     private func btnLineStatus(btnLine: [UIButton], status: Bool) {
         for btn in btnLine {
             btn.isEnabled = status
-        }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if segue.identifier == "toStart" {
-            sounds.playSound(fileName: "decide", extentionName: "mp3")
         }
     }
 }
