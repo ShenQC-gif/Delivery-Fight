@@ -17,7 +17,7 @@ import UIKit
 class CustomView: UIView {
     @IBOutlet var BtnActionDelegate: BtnAction?
 
-    @IBOutlet var timerLabel: UILabel!
+    @IBOutlet private var timerLabel: UILabel!
     @IBOutlet var BtnSV: UIStackView!
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
@@ -86,6 +86,10 @@ class CustomView: UIView {
     func resetScore(){
         scoreNum = 0
         scoreLabel.text = "0pt"
+    }
+
+    func loadTime(_ time: Int) {
+        timerLabel.text = "\(time)"
     }
 
 }

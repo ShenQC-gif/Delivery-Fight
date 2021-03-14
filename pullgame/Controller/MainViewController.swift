@@ -157,13 +157,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         // 勝ち負けLabelを非表示
         consoleView1.resultLabel.isHidden = true
         consoleView2.resultLabel.isHidden = true
-        
+
         consoleView1.resetScore()
         consoleView2.resetScore()
 
         timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
         restTime = timeLimit.rawValue
-        loadTime(restTime)
+        consoleView1.loadTime(self.restTime)
+        consoleView2.loadTime(self.restTime)
     }
 
     // カウントダウン終了後の状態
@@ -191,12 +192,13 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     private func timerStart() {
         // タイマーを作動
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [self] timer in
 
             if self.restTime > 0 {
                 // 残り時間を減らしていく
                 self.restTime -= 1
-                self.loadTime(self.restTime)
+                consoleView1.loadTime(self.restTime)
+                consoleView2.loadTime(self.restTime)
             }
             if self.restTime == 0 {
                 // タイマーを無効化にし、ゲーム終了時の挙動へ
@@ -204,11 +206,6 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
                 self.gameFinish()
             }
         })
-    }
-
-    private func loadTime(_ time: Int) {
-        consoleView1.timerLabel.text = "\(time)"
-        consoleView2.timerLabel.text = "\(time)"
     }
 
     /*-------------------game中の操作-------------------*/
