@@ -293,11 +293,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     private func updateScore(beltState: BeltState, player: Player) {
         switch player {
         case .player1:
-            consoleView1.scoreNum += beltState.item.score
-            consoleView1.scoreLabel.text = "\(consoleView1.scoreNum)pt"
+            consoleView1.updateScore(item: beltState.item)
         case .player2:
-            consoleView2.scoreNum += beltState.item.score
-            consoleView2.scoreLabel.text = "\(consoleView2.scoreNum)pt"
+            consoleView2.updateScore(item: beltState.item)
         }
     }
 

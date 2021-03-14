@@ -77,6 +77,12 @@ class CustomView: UIView {
         resultLabel.text = appearance.text
         resultLabel.textColor = appearance.color
     }
+
+    func updateScore(item: ItemType){
+        scoreNum += item.score
+        scoreLabel.text = "\(scoreNum)pt"
+    }
+    
 }
 
 private extension GameResult {
