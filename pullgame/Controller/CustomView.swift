@@ -19,7 +19,7 @@ class CustomView: UIView {
 
     @IBOutlet private var timerLabel: UILabel!
     @IBOutlet var BtnSV: UIStackView!
-    @IBOutlet var resultLabel: UILabel!
+    @IBOutlet private var resultLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
 
     @IBOutlet var upBtn0: UIButton!
@@ -68,6 +68,9 @@ class CustomView: UIView {
         BtnActionDelegate?.didTapDown(tag)
     }
 
+    func hideResultLabel(){
+        resultLabel.isHidden = true
+    }
 
     func configureApperance(gameResult: GameResult){
 

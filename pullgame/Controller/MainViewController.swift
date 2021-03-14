@@ -155,8 +155,8 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         callLabel.isHidden = false
 
         // 勝ち負けLabelを非表示
-        consoleView1.resultLabel.isHidden = true
-        consoleView2.resultLabel.isHidden = true
+        consoleView1.hideResultLabel()
+        consoleView2.hideResultLabel()
 
         consoleView1.resetScore()
         consoleView2.resetScore()
