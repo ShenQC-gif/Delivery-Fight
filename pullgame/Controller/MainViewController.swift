@@ -214,15 +214,17 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     /*-------------------game中の操作-------------------*/
 
     func didTapUp(_ tag: Int) {
-        var newItemPosition: ItemPosition
+
         let beltState = beltStates[tag]
 
-        switch beltState.itemPosition {
-            case let .onBelt(position):
-                newItemPosition = position.prev().map { ItemPosition.onBelt($0) } ?? ItemPosition.outOfBelt(.player1)
-            case .outOfBelt:
-                newItemPosition = ItemPosition.onBelt(.center)
-        }
+        let newItemPosition : ItemPosition = {
+            switch beltState.itemPosition {
+                case let .onBelt(position):
+                    return position.prev().map { ItemPosition.onBelt($0) } ?? ItemPosition.outOfBelt(.player1)
+                case .outOfBelt:
+                    return ItemPosition.onBelt(.center)
+            }
+        }()
 
         beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
         configureUI(beltStates: beltStates)
@@ -230,16 +232,18 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
     }
 
     func didTapDown(_ tag: Int) {
-        var newItemPosition: ItemPosition
+
         let beltState = beltStates[tag]
 
-        switch beltState.itemPosition {
-            case let .onBelt(position):
-                newItemPosition = position.next().map { ItemPosition.onBelt($0) } ?? ItemPosition.outOfBelt(.player2)
-            case .outOfBelt:
-                newItemPosition = ItemPosition.onBelt(.center)
-        }
-
+        let newItemPosition: ItemPosition = {
+            switch beltState.itemPosition {
+                case let .onBelt(position):
+                    return position.next().map { ItemPosition.onBelt($0) } ?? ItemPosition.outOfBelt(.player2)
+                case .outOfBelt:
+                    return ItemPosition.onBelt(.center)
+            }
+        }()
+        
         beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
         configureUI(beltStates: beltStates)
         checkIfOutOfBelt(beltState: beltStates[tag], player: .player2, tag: tag)
