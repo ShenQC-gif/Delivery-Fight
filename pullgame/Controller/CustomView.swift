@@ -82,7 +82,12 @@ class CustomView: UIView {
         scoreNum += item.score
         scoreLabel.text = "\(scoreNum)pt"
     }
-    
+
+    func resetScore(){
+        scoreNum = 0
+        scoreLabel.text = "0pt"
+    }
+
 }
 
 private extension GameResult {

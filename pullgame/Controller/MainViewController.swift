@@ -157,11 +157,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         // 勝ち負けLabelを非表示
         consoleView1.resultLabel.isHidden = true
         consoleView2.resultLabel.isHidden = true
-
-        consoleView1.scoreNum = 0
-        consoleView2.scoreNum = 0
-        consoleView1.scoreLabel.text = "\(consoleView1.scoreNum)pt"
-        consoleView2.scoreLabel.text = "\(consoleView2.scoreNum)pt"
+        
+        consoleView1.resetScore()
+        consoleView2.resetScore()
 
         timeLimit = TimeLimit(rawValue: UserDefaults.standard.integer(forKey: "Time")) ?? .thirty
         restTime = timeLimit.rawValue
