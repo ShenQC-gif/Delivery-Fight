@@ -20,7 +20,7 @@ class CustomView: UIView {
     @IBOutlet private var timerLabel: UILabel!
     @IBOutlet var BtnSV: UIStackView!
     @IBOutlet private var resultLabel: UILabel!
-    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet private var scoreLabel: UILabel!
 
     @IBOutlet var upBtn0: UIButton!
     @IBOutlet var upBtn1: UIButton!
