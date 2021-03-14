@@ -67,26 +67,50 @@ class CustomView: UIView {
 
         BtnActionDelegate?.didTapDown(tag)
     }
+
+
+    func configureApperance(gameResult: GameResult){
+
+        resultLabel.isHidden = false
+
+        let appearance = gameResult.apperance()
+        resultLabel.text = appearance.text
+        resultLabel.textColor = appearance.color
+    }
 }
 
-struct ResultLabelProperty {
-    let text: String
-    let color: UIColor
-}
+private extension GameResult {
 
-enum Result {
-    case win
-    case lose
-    case draw
-
-    func returnResult() -> ResultLabelProperty {
+    func apperance() -> GameResultAppearance {
         switch self {
         case .win:
-            return ResultLabelProperty(text: "Win!", color: .red)
+            return WinAppearance()
         case .lose:
-            return ResultLabelProperty(text: "...Lose", color: .blue)
+            return LoseAppearance()
         case .draw:
-            return ResultLabelProperty(text: "Draw!", color: .black)
+            return DrawAppearance()
         }
     }
 }
+
+protocol GameResultAppearance {
+    var text : String{get}
+    var color : UIColor{get}
+}
+
+struct WinAppearance: GameResultAppearance {
+    var text: String = "Win!"
+    var color: UIColor = .red
+}
+
+struct LoseAppearance: GameResultAppearance {
+    var text: String = "...Lose"
+    var color: UIColor = .blue
+}
+
+
+struct DrawAppearance: GameResultAppearance {
+    var text: String = "Draw!"
+    var color: UIColor = .black
+}
+

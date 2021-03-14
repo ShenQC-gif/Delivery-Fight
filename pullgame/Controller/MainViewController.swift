@@ -358,26 +358,24 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     // 点数比較して勝ち負けを表示
     private func compareScore() {
-        consoleView1.resultLabel.isHidden = false
-        consoleView2.resultLabel.isHidden = false
 
-        if consoleView1.scoreNum > consoleView2.scoreNum {
-            consoleView1.resultLabel.text = Result.returnResult(.win)().text
-            consoleView1.resultLabel.textColor = Result.returnResult(.win)().color
-            consoleView2.resultLabel.text = Result.returnResult(.lose)().text
-            consoleView2.resultLabel.textColor = Result.returnResult(.lose)().color
-
-        } else if consoleView1.scoreNum < consoleView2.scoreNum {
-            consoleView1.resultLabel.text = Result.returnResult(.lose)().text
-            consoleView1.resultLabel.textColor = Result.returnResult(.lose)().color
-            consoleView2.resultLabel.text = Result.returnResult(.win)().text
-            consoleView2.resultLabel.textColor = Result.returnResult(.win)().color
-        } else {
-            consoleView1.resultLabel.text = Result.returnResult(.draw)().text
-            consoleView1.resultLabel.textColor = Result.returnResult(.draw)().color
-            consoleView2.resultLabel.text = Result.returnResult(.draw)().text
-            consoleView2.resultLabel.textColor = Result.returnResult(.draw)().color
+        func judgePlayer1() -> GameResult{
+            if consoleView1.scoreNum > consoleView2.scoreNum {
+                return .win
+            } else if consoleView1.scoreNum < consoleView2.scoreNum {
+                return .lose
+            } else {
+                return .draw
+            }
         }
+
+        func judgePlayer2() -> GameResult{
+            judgePlayer1().opponentResult()
+        }
+
+        consoleView1.configureApperance(gameResult: judgePlayer1())
+        consoleView2.configureApperance(gameResult: judgePlayer2())
+
     }
 
     @IBAction private func startAgain(_: Any) {
