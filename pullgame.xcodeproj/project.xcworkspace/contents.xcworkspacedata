@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:pullgame.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
