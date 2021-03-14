@@ -214,9 +214,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
 
     /*-------------------game中の操作-------------------*/
 
-    func didTapUp(_ tag: Int) {
+    func didTapUp(index: Int) {
 
-        let beltState = beltStates[tag]
+        let beltState = beltStates[index]
 
         let newItemPosition : ItemPosition = {
             switch beltState.itemPosition {
@@ -227,14 +227,14 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
             }
         }()
 
-        beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
+        beltStates[index] = BeltState(item: beltState.item, itemPosition: newItemPosition)
         configureUI(beltStates: beltStates)
-        checkIfOutOfBelt(beltState: beltStates[tag], player: .player1, tag: tag)
+        checkIfOutOfBelt(beltState: beltStates[index], player: .player1, index: index)
     }
 
-    func didTapDown(_ tag: Int) {
+    func didTapDown(index: Int) {
 
-        let beltState = beltStates[tag]
+        let beltState = beltStates[index]
 
         let newItemPosition: ItemPosition = {
             switch beltState.itemPosition {
@@ -245,9 +245,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
             }
         }()
         
-        beltStates[tag] = BeltState(item: beltState.item, itemPosition: newItemPosition)
+        beltStates[index] = BeltState(item: beltState.item, itemPosition: newItemPosition)
         configureUI(beltStates: beltStates)
-        checkIfOutOfBelt(beltState: beltStates[tag], player: .player2, tag: tag)
+        checkIfOutOfBelt(beltState: beltStates[index], player: .player2, index: index)
     }
 
     private func configureUI(beltStates: [BeltState]) {
@@ -289,11 +289,11 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         }
     }
 
-    private func checkIfOutOfBelt(beltState: BeltState, player: Player, tag: Int) {
+    private func checkIfOutOfBelt(beltState: BeltState, player: Player, index: Int) {
         if beltState.itemPosition == ItemPosition.outOfBelt(player) {
             playSoundByTypeOfPresent(beltState)
             updateScore(beltState: beltState, player: player)
-            resetBeltState(tag)
+            resetBeltState(index)
         }
     }
 
@@ -306,18 +306,18 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         }
     }
 
-    private func resetBeltState(_ tag: Int) {
-        btnLineStatus(btnLine: btnLineArrays[tag], status: false)
+    private func resetBeltState(_ index: Int) {
+        btnLineStatus(btnLine: btnLineArrays[index], status: false)
 
         let newItem = MainViewController.itemArray.randomElement() ?? Apple()
         let newItemPosition = ItemPosition.onBelt(.center)
-        beltStates[tag] = BeltState(item: newItem, itemPosition: newItemPosition)
+        beltStates[index] = BeltState(item: newItem, itemPosition: newItemPosition)
 
         // 0.5秒後に、残り時間がまだあればItemを再セット
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if self.restTime > 0 {
                 self.configureUI(beltStates: self.beltStates)
-                self.btnLineStatus(btnLine: self.btnLineArrays[tag], status: true)
+                self.btnLineStatus(btnLine: self.btnLineArrays[index], status: true)
             }
         }
     }

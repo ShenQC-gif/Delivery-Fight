@@ -9,9 +9,9 @@
 import UIKit
 
 protocol BtnAction: AnyObject {
-    func didTapUp(_ tag: Int)
+    func didTapUp(index: Int)
 
-    func didTapDown(_ tag: Int)
+    func didTapDown(index: Int)
 }
 
 class CustomView: UIView {
@@ -57,17 +57,47 @@ class CustomView: UIView {
         scoreNum = 0
     }
 
-    @IBAction func presetnUp(_ sender: Any) {
-        let tag = ((sender as AnyObject).tag)!
 
-        delegate?.didTapUp(tag)
+    @IBAction func didTapUpButton0(_ sender: Any) {
+        delegate?.didTapUp(index:0)
     }
 
-    @IBAction func presentDown(_ sender: Any) {
-        let tag = ((sender as AnyObject).tag)!
-
-        delegate?.didTapDown(tag)
+    @IBAction func didTapUpButton1(_ sender: Any) {
+        delegate?.didTapUp(index:1)
     }
+
+    @IBAction func didTapUpButton2(_ sender: Any) {
+        delegate?.didTapUp(index:2)
+    }
+
+    @IBAction func didTapUpButton3(_ sender: Any) {
+        delegate?.didTapUp(index:3)
+    }
+
+    @IBAction func didTapUpButton4(_ sender: Any) {
+        delegate?.didTapUp(index:4)
+    }
+
+    @IBAction func didTapDownButton0(_ sender: Any) {
+        delegate?.didTapDown(index:0)
+    }
+
+    @IBAction func didTapDownButton1(_ sender: Any) {
+        delegate?.didTapDown(index:1)
+    }
+
+    @IBAction func didTapDownButton2(_ sender: Any) {
+        delegate?.didTapDown(index:2)
+    }
+
+    @IBAction func didTapDownButton3(_ sender: Any) {
+        delegate?.didTapDown(index:3)
+    }
+
+    @IBAction func didTapDownButton4(_ sender: Any) {
+        delegate?.didTapDown(index:4)
+    }
+
 
     func hideResultLabel(){
         resultLabel.isHidden = true
