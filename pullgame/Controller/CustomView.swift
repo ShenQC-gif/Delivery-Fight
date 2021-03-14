@@ -18,9 +18,10 @@ class CustomView: UIView {
     @IBOutlet var BtnActionDelegate: BtnAction?
 
     @IBOutlet private var timerLabel: UILabel!
-    @IBOutlet var BtnSV: UIStackView!
     @IBOutlet private var resultLabel: UILabel!
     @IBOutlet private var scoreLabel: UILabel!
+
+    @IBOutlet var BtnSV: UIStackView!
 
     @IBOutlet var upBtn0: UIButton!
     @IBOutlet var upBtn1: UIButton!
@@ -46,7 +47,7 @@ class CustomView: UIView {
         loadNib()
     }
 
-    func loadNib() {
+    private func loadNib() {
         // CustomViewの部分は各自作成したXibの名前に書き換えてください
         let view = Bundle.main.loadNibNamed("CustomView", owner: self, options: nil)?.first as! UIView
         view.frame = bounds
