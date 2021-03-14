@@ -102,6 +102,9 @@ class MainViewController: UIViewController, AVAudioPlayerDelegate, BtnAction {
         // btnLineを一括管理
         btnLineArrays = [btnLine1, btnLine2, btnLine3, btnLine4, btnLine5]
 
+        consoleView1.delegate = self
+        consoleView2.delegate = self
+
         againBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         homeBtn.titleLabel?.adjustsFontSizeToFitWidth = true
 

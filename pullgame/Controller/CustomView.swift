@@ -8,14 +8,14 @@
 
 import UIKit
 
-@objc protocol BtnAction {
+protocol BtnAction: AnyObject {
     func didTapUp(_ tag: Int)
 
     func didTapDown(_ tag: Int)
 }
 
 class CustomView: UIView {
-    @IBOutlet var BtnActionDelegate: BtnAction?
+    weak var delegate: BtnAction?
 
     @IBOutlet private var timerLabel: UILabel!
     @IBOutlet private var resultLabel: UILabel!
@@ -60,13 +60,13 @@ class CustomView: UIView {
     @IBAction func presetnUp(_ sender: Any) {
         let tag = ((sender as AnyObject).tag)!
 
-        BtnActionDelegate?.didTapUp(tag)
+        delegate?.didTapUp(tag)
     }
 
     @IBAction func presentDown(_ sender: Any) {
         let tag = ((sender as AnyObject).tag)!
 
-        BtnActionDelegate?.didTapDown(tag)
+        delegate?.didTapDown(tag)
     }
 
     func hideResultLabel(){

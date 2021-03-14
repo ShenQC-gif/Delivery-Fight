@@ -302,16 +302,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmn-RD-peT" customClass="CustomView" customModule="Delivery_Fight" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="34" width="414" height="217"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="BtnActionDelegate" destination="BYZ-38-t0r" id="5QV-Jf-MsS"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RON-hy-x0B" customClass="CustomView" customModule="Delivery_Fight" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="645" width="414" height="217"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="BtnActionDelegate" destination="BYZ-38-t0r" id="V0L-bf-JHb"/>
-                                </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mTa-m7-rnq" userLabel="Conveyor SV">
                                 <rect key="frame" x="10.5" y="291" width="393" height="314"/>
