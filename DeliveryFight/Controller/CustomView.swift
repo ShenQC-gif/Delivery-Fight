@@ -1,6 +1,6 @@
 //
 //  CustomView.swift
-//  pullgame
+//  DeliveryFight
 //
 //  Created by ちいつんしん on 2020/11/23.
 //  Copyright © 2020 ちいつんしん. All rights reserved.

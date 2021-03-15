@@ -69,10 +69,10 @@
 		EA88AB4724F0DE3800FBE689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA88AB4A24F0DE3800FBE689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA88AB4C24F0DE3800FBE689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA88AB5124F0DE3800FBE689 /* pullgameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pullgameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA88AB5124F0DE3800FBE689 /* DeliveryFightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliveryFightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA88AB5524F0DE3800FBE689 /* pullgameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pullgameTests.swift; sourceTree = "<group>"; };
 		EA88AB5724F0DE3800FBE689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA88AB5C24F0DE3800FBE689 /* pullgameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pullgameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA88AB5C24F0DE3800FBE689 /* DeliveryFightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliveryFightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA88AB6024F0DE3800FBE689 /* pullgameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pullgameUITests.swift; sourceTree = "<group>"; };
 		EA88AB6224F0DE3800FBE689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA88AB6E24F26B6700FBE689 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -159,9 +159,9 @@
 		EA88AB3224F0DE3400FBE689 = {
 			isa = PBXGroup;
 			children = (
-				EA88AB3D24F0DE3400FBE689 /* pullgame */,
-				EA88AB5424F0DE3800FBE689 /* pullgameTests */,
-				EA88AB5F24F0DE3800FBE689 /* pullgameUITests */,
+				EA88AB3D24F0DE3400FBE689 /* DeliveryFight */,
+				EA88AB5424F0DE3800FBE689 /* DeliveryFightTests */,
+				EA88AB5F24F0DE3800FBE689 /* DeliveryFightUITests */,
 				EA88AB3C24F0DE3400FBE689 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -170,13 +170,13 @@
 			isa = PBXGroup;
 			children = (
 				EA88AB3B24F0DE3400FBE689 /* Delivery Fight.app */,
-				EA88AB5124F0DE3800FBE689 /* pullgameTests.xctest */,
-				EA88AB5C24F0DE3800FBE689 /* pullgameUITests.xctest */,
+				EA88AB5124F0DE3800FBE689 /* DeliveryFightTests.xctest */,
+				EA88AB5C24F0DE3800FBE689 /* DeliveryFightUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EA88AB3D24F0DE3400FBE689 /* pullgame */ = {
+		EA88AB3D24F0DE3400FBE689 /* DeliveryFight */ = {
 			isa = PBXGroup;
 			children = (
 				EA6D419A258966850077E786 /* Model */,
@@ -184,33 +184,33 @@
 				EA6D41982589666C0077E786 /* Controller */,
 				EA88AB4C24F0DE3800FBE689 /* Info.plist */,
 			);
-			path = pullgame;
+			path = DeliveryFight;
 			sourceTree = "<group>";
 		};
-		EA88AB5424F0DE3800FBE689 /* pullgameTests */ = {
+		EA88AB5424F0DE3800FBE689 /* DeliveryFightTests */ = {
 			isa = PBXGroup;
 			children = (
 				EA88AB5524F0DE3800FBE689 /* pullgameTests.swift */,
 				EA88AB5724F0DE3800FBE689 /* Info.plist */,
 			);
-			path = pullgameTests;
+			path = DeliveryFightTests;
 			sourceTree = "<group>";
 		};
-		EA88AB5F24F0DE3800FBE689 /* pullgameUITests */ = {
+		EA88AB5F24F0DE3800FBE689 /* DeliveryFightUITests */ = {
 			isa = PBXGroup;
 			children = (
 				EA88AB6024F0DE3800FBE689 /* pullgameUITests.swift */,
 				EA88AB6224F0DE3800FBE689 /* Info.plist */,
 			);
-			path = pullgameUITests;
+			path = DeliveryFightUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EA88AB3A24F0DE3400FBE689 /* pullgame */ = {
+		EA88AB3A24F0DE3400FBE689 /* DeliveryFight */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA88AB6524F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "pullgame" */;
+			buildConfigurationList = EA88AB6524F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "DeliveryFight" */;
 			buildPhases = (
 				EA88AB3724F0DE3400FBE689 /* Sources */,
 				EA88AB3824F0DE3400FBE689 /* Frameworks */,
@@ -220,14 +220,14 @@
 			);
 			dependencies = (
 			);
-			name = pullgame;
+			name = DeliveryFight;
 			productName = pullgame;
 			productReference = EA88AB3B24F0DE3400FBE689 /* Delivery Fight.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EA88AB5024F0DE3800FBE689 /* pullgameTests */ = {
+		EA88AB5024F0DE3800FBE689 /* DeliveryFightTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA88AB6824F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "pullgameTests" */;
+			buildConfigurationList = EA88AB6824F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "DeliveryFightTests" */;
 			buildPhases = (
 				EA88AB4D24F0DE3800FBE689 /* Sources */,
 				EA88AB4E24F0DE3800FBE689 /* Frameworks */,
@@ -238,14 +238,14 @@
 			dependencies = (
 				EA88AB5324F0DE3800FBE689 /* PBXTargetDependency */,
 			);
-			name = pullgameTests;
+			name = DeliveryFightTests;
 			productName = pullgameTests;
-			productReference = EA88AB5124F0DE3800FBE689 /* pullgameTests.xctest */;
+			productReference = EA88AB5124F0DE3800FBE689 /* DeliveryFightTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EA88AB5B24F0DE3800FBE689 /* pullgameUITests */ = {
+		EA88AB5B24F0DE3800FBE689 /* DeliveryFightUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA88AB6B24F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "pullgameUITests" */;
+			buildConfigurationList = EA88AB6B24F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "DeliveryFightUITests" */;
 			buildPhases = (
 				EA88AB5824F0DE3800FBE689 /* Sources */,
 				EA88AB5924F0DE3800FBE689 /* Frameworks */,
@@ -256,9 +256,9 @@
 			dependencies = (
 				EA88AB5E24F0DE3800FBE689 /* PBXTargetDependency */,
 			);
-			name = pullgameUITests;
+			name = DeliveryFightUITests;
 			productName = pullgameUITests;
-			productReference = EA88AB5C24F0DE3800FBE689 /* pullgameUITests.xctest */;
+			productReference = EA88AB5C24F0DE3800FBE689 /* DeliveryFightUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -284,7 +284,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EA88AB3624F0DE3400FBE689 /* Build configuration list for PBXProject "pullgame" */;
+			buildConfigurationList = EA88AB3624F0DE3400FBE689 /* Build configuration list for PBXProject "DeliveryFight" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -297,9 +297,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA88AB3A24F0DE3400FBE689 /* pullgame */,
-				EA88AB5024F0DE3800FBE689 /* pullgameTests */,
-				EA88AB5B24F0DE3800FBE689 /* pullgameUITests */,
+				EA88AB3A24F0DE3400FBE689 /* DeliveryFight */,
+				EA88AB5024F0DE3800FBE689 /* DeliveryFightTests */,
+				EA88AB5B24F0DE3800FBE689 /* DeliveryFightUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -378,12 +378,12 @@
 /* Begin PBXTargetDependency section */
 		EA88AB5324F0DE3800FBE689 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EA88AB3A24F0DE3400FBE689 /* pullgame */;
+			target = EA88AB3A24F0DE3400FBE689 /* DeliveryFight */;
 			targetProxy = EA88AB5224F0DE3800FBE689 /* PBXContainerItemProxy */;
 		};
 		EA88AB5E24F0DE3800FBE689 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EA88AB3A24F0DE3400FBE689 /* pullgame */;
+			target = EA88AB3A24F0DE3400FBE689 /* DeliveryFight */;
 			targetProxy = EA88AB5D24F0DE3800FBE689 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -529,7 +529,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = B3BY2B57V5;
-				INFOPLIST_FILE = pullgame/Info.plist;
+				INFOPLIST_FILE = DeliveryFight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -549,7 +549,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = B3BY2B57V5;
-				INFOPLIST_FILE = pullgame/Info.plist;
+				INFOPLIST_FILE = DeliveryFight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -579,7 +579,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pullgame.app/pullgame";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeliveryFight.app/DeliveryFight";
 			};
 			name = Debug;
 		};
@@ -600,7 +600,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pullgame.app/pullgame";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeliveryFight.app/DeliveryFight";
 			};
 			name = Release;
 		};
@@ -609,7 +609,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = pullgameUITests/Info.plist;
+				INFOPLIST_FILE = DeliveryFightUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -628,7 +628,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = pullgameUITests/Info.plist;
+				INFOPLIST_FILE = DeliveryFightUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -645,7 +645,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA88AB3624F0DE3400FBE689 /* Build configuration list for PBXProject "pullgame" */ = {
+		EA88AB3624F0DE3400FBE689 /* Build configuration list for PBXProject "DeliveryFight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA88AB6324F0DE3800FBE689 /* Debug */,
@@ -654,7 +654,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA88AB6524F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "pullgame" */ = {
+		EA88AB6524F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "DeliveryFight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA88AB6624F0DE3800FBE689 /* Debug */,
@@ -663,7 +663,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA88AB6824F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "pullgameTests" */ = {
+		EA88AB6824F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "DeliveryFightTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA88AB6924F0DE3800FBE689 /* Debug */,
@@ -672,7 +672,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA88AB6B24F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "pullgameUITests" */ = {
+		EA88AB6B24F0DE3800FBE689 /* Build configuration list for PBXNativeTarget "DeliveryFightUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA88AB6C24F0DE3800FBE689 /* Debug */,

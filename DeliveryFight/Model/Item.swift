@@ -1,6 +1,6 @@
 //
 //  GameState.swift
-//  pullgame
+//  DeliveryFight
 //
 //  Created by ちいつんしん on 2020/12/16.
 //  Copyright © 2020 ちいつんしん. All rights reserved.
