@@ -26,6 +26,7 @@ class PlayScreenViewController: UIViewController {
         ]
     }
 
+    //ここで具体的なBeltの状態(Item,Item位置)を設定
     private var conveyors : [BeltState] = [
         BeltState(item: Apple(), itemPosition: .outOfBelt(Player.player1)),
         BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.pos1)),
@@ -41,6 +42,7 @@ class PlayScreenViewController: UIViewController {
         configureUI()
     }
 
+    //個々のBeltに対して状態を反映させる
     private func configureUI(){
         zip(conveyors, conveyorViews).forEach {
             $1.configure(beltState: $0)

@@ -9,8 +9,8 @@
 import UIKit
 import Foundation
 
+//渡されたBeltのitemPoistionに従ってitem画像を表示
 final class BeltView: UIView {
-
 
     @IBOutlet private weak var fruitImageView0: UIImageView!
     @IBOutlet private weak var fruitImageView1: UIImageView!
@@ -48,7 +48,6 @@ final class BeltView: UIView {
         }
     }
 
-
     private func loadNib() {
 
         let view = Bundle.main.loadNibNamed("BeltView", owner: self, options: nil)?.first as! UIView
@@ -59,6 +58,7 @@ final class BeltView: UIView {
 
     }
 
+    //渡されたbeltのitemPoistionにitem画像を反映させる
     func configure(beltState:BeltState){
         clearImage()
 
@@ -90,7 +90,7 @@ final class BeltView: UIView {
             }
         }
 
-        targetImageView().image = #imageLiteral(resourceName: "melon")
+        targetImageView().image = UIImage(named:  beltState.item.imageName)
     }
 
     private func setRandomItem() -> ItemType{
