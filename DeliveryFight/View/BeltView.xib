@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
+            <connections>
+                <outlet property="fruitImageView0" destination="xnC-9w-UQ4" id="7eI-vL-jXg"/>
+                <outlet property="fruitImageView1" destination="LDM-4R-zHL" id="m52-cy-iig"/>
+                <outlet property="fruitImageView2" destination="vYg-2d-sBp" id="0ri-Sr-0JG"/>
+                <outlet property="fruitImageView3" destination="k8G-GC-bLU" id="PXU-sM-vd5"/>
+                <outlet property="fruitImageView4" destination="e3C-3W-yDA" id="dui-WF-OBI"/>
+                <outlet property="fruitImageView5" destination="qBV-5M-4kh" id="rrb-ir-WRg"/>
+                <outlet property="fruitImageView6" destination="YrD-VC-iOC" id="HMh-ne-bMN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="guW-zr-ejv">
+                    <rect key="frame" x="0.0" y="128" width="414" height="640"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bL6-es-teG">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="melon" translatesAutoresizingMaskIntoConstraints="NO" id="xnC-9w-UQ4" userLabel="player1FruitImageView">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="naO-Ef-2uh">
+                            <rect key="frame" x="0.0" y="128" width="414" height="640"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="melon" translatesAutoresizingMaskIntoConstraints="NO" id="LDM-4R-zHL" userLabel="pos0FruitView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="melon" translatesAutoresizingMaskIntoConstraints="NO" id="vYg-2d-sBp" userLabel="pos1FruitView">
+                                    <rect key="frame" x="0.0" y="128" width="414" height="128"/>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="melon" translatesAutoresizingMaskIntoConstraints="NO" id="k8G-GC-bLU" userLabel="pos2FruitView">
+                                    <rect key="frame" x="0.0" y="256" width="414" height="128"/>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="melon" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-3W-yDA" userLabel="pos3FruitView">
+                                    <rect key="frame" x="0.0" y="384" width="414" height="128"/>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="melon" translatesAutoresizingMaskIntoConstraints="NO" id="qBV-5M-4kh" userLabel="pos4FruitView">
+                                    <rect key="frame" x="0.0" y="512" width="414" height="128"/>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="melon" translatesAutoresizingMaskIntoConstraints="NO" id="YrD-VC-iOC" userLabel="player2FruitImageView">
+                            <rect key="frame" x="0.0" y="768" width="414" height="128"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="YrD-VC-iOC" firstAttribute="height" secondItem="naO-Ef-2uh" secondAttribute="height" multiplier="0.2" id="K5Y-F8-xhK"/>
+                        <constraint firstItem="xnC-9w-UQ4" firstAttribute="height" secondItem="naO-Ef-2uh" secondAttribute="height" multiplier="0.2" id="XAr-ay-wUn"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="guW-zr-ejv" firstAttribute="bottom" secondItem="naO-Ef-2uh" secondAttribute="bottom" id="1xw-VL-jBA"/>
+                <constraint firstAttribute="trailing" secondItem="bL6-es-teG" secondAttribute="trailing" id="4o8-AC-LwE"/>
+                <constraint firstAttribute="bottom" secondItem="bL6-es-teG" secondAttribute="bottom" id="RRP-xX-QUn"/>
+                <constraint firstItem="bL6-es-teG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RZj-ow-MpJ"/>
+                <constraint firstItem="bL6-es-teG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TMt-fF-HrQ"/>
+                <constraint firstItem="guW-zr-ejv" firstAttribute="trailing" secondItem="naO-Ef-2uh" secondAttribute="trailing" id="YBy-4o-Ufi"/>
+                <constraint firstItem="guW-zr-ejv" firstAttribute="leading" secondItem="naO-Ef-2uh" secondAttribute="leading" id="dv5-ym-gwl"/>
+                <constraint firstItem="guW-zr-ejv" firstAttribute="top" secondItem="naO-Ef-2uh" secondAttribute="top" id="nqN-zh-Uoy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="113" y="141"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="conveyor" width="100" height="409"/>
+        <image name="melon" width="225" height="225"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

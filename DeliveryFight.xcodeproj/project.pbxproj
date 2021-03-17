@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		EA40678A25FD8FAC0056C318 /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40678925FD8FAC0056C318 /* GameResult.swift */; };
 		EA40679225FDAF790056C318 /* TimeLimitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40679125FDAF790056C318 /* TimeLimitRepository.swift */; };
+		EA4067C52600169B0056C318 /* PlayScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4067C42600169A0056C318 /* PlayScreenViewController.swift */; };
+		EA4067EF260224C60056C318 /* BeltView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4067EE260224C60056C318 /* BeltView.swift */; };
+		EA4068062602B41C0056C318 /* BeltView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4068052602B41C0056C318 /* BeltView.xib */; };
 		EA4BC926256BA2E9000669FD /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BC925256BA2E9000669FD /* CustomView.swift */; };
 		EA4BC92B256BA2F9000669FD /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4BC92A256BA2F9000669FD /* CustomView.xib */; };
 		EA5CD43E255BFD46001556D8 /* finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5CD43D255BFD46001556D8 /* finish.mp3 */; };
@@ -52,6 +55,9 @@
 /* Begin PBXFileReference section */
 		EA40678925FD8FAC0056C318 /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
 		EA40679125FDAF790056C318 /* TimeLimitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLimitRepository.swift; sourceTree = "<group>"; };
+		EA4067C42600169A0056C318 /* PlayScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScreenViewController.swift; sourceTree = "<group>"; };
+		EA4067EE260224C60056C318 /* BeltView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltView.swift; sourceTree = "<group>"; };
+		EA4068052602B41C0056C318 /* BeltView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeltView.xib; sourceTree = "<group>"; };
 		EA4BC925256BA2E9000669FD /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		EA4BC92A256BA2F9000669FD /* CustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
 		EA5CD43D255BFD46001556D8 /* finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = finish.mp3; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 				EA88AB6E24F26B6700FBE689 /* StartViewController.swift */,
 				EA88AB4224F0DE3400FBE689 /* MainViewController.swift */,
 				EA4BC925256BA2E9000669FD /* CustomView.swift */,
+				EA4067C42600169A0056C318 /* PlayScreenViewController.swift */,
+				EA4067EE260224C60056C318 /* BeltView.swift */,
 				EA88AB3E24F0DE3400FBE689 /* AppDelegate.swift */,
 				EA88AB4024F0DE3400FBE689 /* SceneDelegate.swift */,
 			);
@@ -136,6 +144,7 @@
 				EA88AB4424F0DE3400FBE689 /* Main.storyboard */,
 				EA4BC92A256BA2F9000669FD /* CustomView.xib */,
 				EA88AB4924F0DE3800FBE689 /* LaunchScreen.storyboard */,
+				EA4068052602B41C0056C318 /* BeltView.xib */,
 				EA5CD445255C02C8001556D8 /* Sounds.swift */,
 				EA5CD42D255AA0F2001556D8 /* Resources */,
 				EA88AB4724F0DE3800FBE689 /* Assets.xcassets */,
@@ -315,6 +324,7 @@
 				EA6D41A72589687B0077E786 /* decide.mp3 in Resources */,
 				EA6D41A82589687B0077E786 /* bomb.mp3 in Resources */,
 				EA6D41A92589687B0077E786 /* getPoint.mp3 in Resources */,
+				EA4068062602B41C0056C318 /* BeltView.xib in Resources */,
 				EA88AB4824F0DE3800FBE689 /* Assets.xcassets in Resources */,
 				EA4BC92B256BA2F9000669FD /* CustomView.xib in Resources */,
 				EA88AB4624F0DE3400FBE689 /* Main.storyboard in Resources */,
@@ -344,9 +354,11 @@
 			files = (
 				EA6D419C258967100077E786 /* Item.swift in Sources */,
 				EA88AB4324F0DE3400FBE689 /* MainViewController.swift in Sources */,
+				EA4067EF260224C60056C318 /* BeltView.swift in Sources */,
 				EA88AB3F24F0DE3400FBE689 /* AppDelegate.swift in Sources */,
 				EA5CD446255C02C8001556D8 /* Sounds.swift in Sources */,
 				EA4BC926256BA2E9000669FD /* CustomView.swift in Sources */,
+				EA4067C52600169B0056C318 /* PlayScreenViewController.swift in Sources */,
 				EA88AB6F24F26B6700FBE689 /* StartViewController.swift in Sources */,
 				EAE1476D25E3C19700818650 /* BeltState.swift in Sources */,
 				EA88AB4124F0DE3400FBE689 /* SceneDelegate.swift in Sources */,
