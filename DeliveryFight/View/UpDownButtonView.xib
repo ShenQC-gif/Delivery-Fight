@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+            <connections>
+                <outlet property="DownButtonView" destination="Tbi-Jk-gsV" id="fiN-Y9-akJ"/>
+                <outlet property="UpButtonView" destination="h6z-Cg-yxn" id="Ams-h4-28s"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="236" height="474"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6z-Cg-yxn">
+                    <rect key="frame" x="0.0" y="0.0" width="236" height="234.5"/>
+                    <state key="normal" image="upbtn"/>
+                    <connections>
+                        <action selector="didTapUp:" destination="-1" eventType="touchUpInside" id="TKW-I6-uxa"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbi-Jk-gsV">
+                    <rect key="frame" x="0.0" y="239.5" width="236" height="234.5"/>
+                    <state key="normal" image="downbtn"/>
+                    <connections>
+                        <action selector="didTapDown:" destination="-1" eventType="touchUpInside" id="mHV-jm-0QX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="h6z-Cg-yxn" secondAttribute="trailing" id="AQ9-4a-YNU"/>
+                <constraint firstAttribute="trailing" secondItem="Tbi-Jk-gsV" secondAttribute="trailing" id="B1p-dJ-OA7"/>
+                <constraint firstItem="h6z-Cg-yxn" firstAttribute="height" secondItem="Tbi-Jk-gsV" secondAttribute="height" id="GB7-vD-bjW"/>
+                <constraint firstItem="h6z-Cg-yxn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZgW-iL-uNj"/>
+                <constraint firstItem="Tbi-Jk-gsV" firstAttribute="top" secondItem="h6z-Cg-yxn" secondAttribute="bottom" constant="5" id="hCF-JI-Smv"/>
+                <constraint firstAttribute="bottom" secondItem="Tbi-Jk-gsV" secondAttribute="bottom" id="haN-EV-H8r"/>
+                <constraint firstItem="h6z-Cg-yxn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="icc-oY-lT6"/>
+                <constraint firstItem="Tbi-Jk-gsV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ua8-oL-IV5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-423.1884057971015" y="-28.794642857142854"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="downbtn" width="140" height="139"/>
+        <image name="upbtn" width="140" height="140"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

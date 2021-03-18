@@ -12,6 +12,9 @@
 		EA4067C52600169B0056C318 /* PlayScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4067C42600169A0056C318 /* PlayScreenViewController.swift */; };
 		EA4067EF260224C60056C318 /* BeltView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4067EE260224C60056C318 /* BeltView.swift */; };
 		EA4068062602B41C0056C318 /* BeltView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4068052602B41C0056C318 /* BeltView.xib */; };
+		EA4068112603638C0056C318 /* PlayScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA4068102603638C0056C318 /* PlayScreen.storyboard */; };
+		EA406819260365030056C318 /* UpDownButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA406818260365030056C318 /* UpDownButtonView.xib */; };
+		EA40681E260365F90056C318 /* UpDownButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40681D260365F90056C318 /* UpDownButtonView.swift */; };
 		EA4BC926256BA2E9000669FD /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BC925256BA2E9000669FD /* CustomView.swift */; };
 		EA4BC92B256BA2F9000669FD /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4BC92A256BA2F9000669FD /* CustomView.xib */; };
 		EA5CD43E255BFD46001556D8 /* finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5CD43D255BFD46001556D8 /* finish.mp3 */; };
@@ -58,6 +61,9 @@
 		EA4067C42600169A0056C318 /* PlayScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScreenViewController.swift; sourceTree = "<group>"; };
 		EA4067EE260224C60056C318 /* BeltView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltView.swift; sourceTree = "<group>"; };
 		EA4068052602B41C0056C318 /* BeltView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeltView.xib; sourceTree = "<group>"; };
+		EA4068102603638C0056C318 /* PlayScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayScreen.storyboard; sourceTree = "<group>"; };
+		EA406818260365030056C318 /* UpDownButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpDownButtonView.xib; sourceTree = "<group>"; };
+		EA40681D260365F90056C318 /* UpDownButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDownButtonView.swift; sourceTree = "<group>"; };
 		EA4BC925256BA2E9000669FD /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		EA4BC92A256BA2F9000669FD /* CustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
 		EA5CD43D255BFD46001556D8 /* finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = finish.mp3; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 				EA88AB4224F0DE3400FBE689 /* MainViewController.swift */,
 				EA4BC925256BA2E9000669FD /* CustomView.swift */,
 				EA4067C42600169A0056C318 /* PlayScreenViewController.swift */,
+				EA40681D260365F90056C318 /* UpDownButtonView.swift */,
 				EA4067EE260224C60056C318 /* BeltView.swift */,
 				EA88AB3E24F0DE3400FBE689 /* AppDelegate.swift */,
 				EA88AB4024F0DE3400FBE689 /* SceneDelegate.swift */,
@@ -144,6 +151,8 @@
 				EA88AB4424F0DE3400FBE689 /* Main.storyboard */,
 				EA4BC92A256BA2F9000669FD /* CustomView.xib */,
 				EA88AB4924F0DE3800FBE689 /* LaunchScreen.storyboard */,
+				EA406818260365030056C318 /* UpDownButtonView.xib */,
+				EA4068102603638C0056C318 /* PlayScreen.storyboard */,
 				EA4068052602B41C0056C318 /* BeltView.xib */,
 				EA5CD445255C02C8001556D8 /* Sounds.swift */,
 				EA5CD42D255AA0F2001556D8 /* Resources */,
@@ -318,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA4068112603638C0056C318 /* PlayScreen.storyboard in Resources */,
 				EA88AB4B24F0DE3800FBE689 /* LaunchScreen.storyboard in Resources */,
 				EA5CD43E255BFD46001556D8 /* finish.mp3 in Resources */,
 				EA6D41AA2589687B0077E786 /* countDown.mp3 in Resources */,
@@ -326,6 +336,7 @@
 				EA6D41A92589687B0077E786 /* getPoint.mp3 in Resources */,
 				EA4068062602B41C0056C318 /* BeltView.xib in Resources */,
 				EA88AB4824F0DE3800FBE689 /* Assets.xcassets in Resources */,
+				EA406819260365030056C318 /* UpDownButtonView.xib in Resources */,
 				EA4BC92B256BA2F9000669FD /* CustomView.xib in Resources */,
 				EA88AB4624F0DE3400FBE689 /* Main.storyboard in Resources */,
 			);
@@ -352,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA40681E260365F90056C318 /* UpDownButtonView.swift in Sources */,
 				EA6D419C258967100077E786 /* Item.swift in Sources */,
 				EA88AB4324F0DE3400FBE689 /* MainViewController.swift in Sources */,
 				EA4067EF260224C60056C318 /* BeltView.swift in Sources */,

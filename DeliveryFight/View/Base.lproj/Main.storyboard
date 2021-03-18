@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c3l-6N-fa8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -24,7 +24,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="oYa-Dd-oCl"/>
+                                    <segue destination="neK-xi-Z7p" kind="presentation" id="7zv-Pw-AH0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Fight " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="k69-fw-nI1">
@@ -291,61 +291,13 @@
             </objects>
             <point key="canvasLocation" x="-2422" y="96"/>
         </scene>
-        <!--Play Screen View Controller-->
-        <scene sceneID="Tl6-r2-YOW">
+        <!--PlayScreen-->
+        <scene sceneID="sZI-ch-79H">
             <objects>
-                <viewController id="c3l-6N-fa8" customClass="PlayScreenViewController" customModule="Delivery_Fight" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cl8-n5-Oce">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="s5j-AM-nhh">
-                                <rect key="frame" x="0.0" y="269" width="414" height="358"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0G-yE-2uR" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="358"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEk-zT-KIB" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
-                                        <rect key="frame" x="84.5" y="0.0" width="76.5" height="358"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcn-iw-lBp" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
-                                        <rect key="frame" x="169" y="0.0" width="76" height="358"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkF-T6-poC" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
-                                        <rect key="frame" x="253" y="0.0" width="76.5" height="358"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLJ-D3-bu3" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
-                                        <rect key="frame" x="337.5" y="0.0" width="76.5" height="358"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="fna-Ub-KGU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="s5j-AM-nhh" firstAttribute="height" secondItem="cl8-n5-Oce" secondAttribute="height" multiplier="0.4" id="75l-Kn-9ba"/>
-                            <constraint firstItem="fna-Ub-KGU" firstAttribute="trailing" secondItem="s5j-AM-nhh" secondAttribute="trailing" id="EwL-Nh-vUt"/>
-                            <constraint firstItem="s5j-AM-nhh" firstAttribute="centerY" secondItem="cl8-n5-Oce" secondAttribute="centerY" id="PBJ-wo-gOI"/>
-                            <constraint firstItem="s5j-AM-nhh" firstAttribute="leading" secondItem="fna-Ub-KGU" secondAttribute="leading" id="iRf-G8-ga8"/>
-                            <constraint firstItem="s5j-AM-nhh" firstAttribute="centerX" secondItem="cl8-n5-Oce" secondAttribute="centerX" id="q1y-Wy-oJI"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="conveyorView1" destination="g0G-yE-2uR" id="qDp-ja-T1d"/>
-                        <outlet property="conveyorView2" destination="mEk-zT-KIB" id="xb8-6l-62U"/>
-                        <outlet property="conveyorView3" destination="rcn-iw-lBp" id="svQ-q3-FOs"/>
-                        <outlet property="conveyorView4" destination="gkF-T6-poC" id="mhl-bW-VAt"/>
-                        <outlet property="conveyorView5" destination="PLJ-D3-bu3" id="Z6c-22-w4A"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MmU-DS-eiL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="PlayScreen" id="neK-xi-Z7p" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M2B-iB-zpO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1346.376811594203" y="375"/>
+            <point key="canvasLocation" x="-1346" y="206"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -641,9 +593,6 @@
         <image name="peach" width="242" height="209"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

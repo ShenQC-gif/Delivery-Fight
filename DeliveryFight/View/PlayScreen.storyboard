@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vt1-Uv-gps">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Play Screen View Controller-->
+        <scene sceneID="N6n-11-hFX">
+            <objects>
+                <viewController id="Vt1-Uv-gps" customClass="PlayScreenViewController" customModule="Delivery_Fight" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vCF-Bw-IRd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Yl7-HA-e1o" userLabel="Player1 Button SV">
+                                <rect key="frame" x="0.0" y="124.5" width="414" height="89.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVD-jm-zu0" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xf-yX-OwJ" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="84.5" y="0.0" width="76.5" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9b-hD-AN5" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="169" y="0.0" width="76" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lfj-xQ-REj" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="253" y="0.0" width="76.5" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEV-WR-YO6" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="337.5" y="0.0" width="76.5" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0fk-Nq-6Bf" userLabel="Belt SV">
+                                <rect key="frame" x="0.0" y="224" width="414" height="448"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkd-s8-qW1" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="448"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7b-A1-qmw" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="84.5" y="0.0" width="76.5" height="448"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKj-UG-2QD" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="169" y="0.0" width="76" height="448"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCb-eW-Qom" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="253" y="0.0" width="76.5" height="448"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fpe-HZ-U9l" customClass="BeltView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="337.5" y="0.0" width="76.5" height="448"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NLi-Tt-rgX" userLabel="Player2 Button SV">
+                                <rect key="frame" x="0.0" y="682" width="414" height="89.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Po-My-CYm" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TR4-BY-Ddd" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="84.5" y="0.0" width="76.5" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ff8-Tm-SG4" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="169" y="0.0" width="76" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ONL-qc-Bfw" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="253" y="0.0" width="76.5" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbY-oh-vwv" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
+                                        <rect key="frame" x="337.5" y="0.0" width="76.5" height="89.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Sfj-iO-M6r"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NLi-Tt-rgX" firstAttribute="top" secondItem="0fk-Nq-6Bf" secondAttribute="bottom" constant="10" id="0jn-l3-OQ1"/>
+                            <constraint firstItem="0fk-Nq-6Bf" firstAttribute="centerY" secondItem="vCF-Bw-IRd" secondAttribute="centerY" id="310-4h-lqK"/>
+                            <constraint firstItem="Yl7-HA-e1o" firstAttribute="width" secondItem="0fk-Nq-6Bf" secondAttribute="width" id="BFQ-GE-01i"/>
+                            <constraint firstItem="0fk-Nq-6Bf" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="KoQ-uE-g01"/>
+                            <constraint firstItem="Sfj-iO-M6r" firstAttribute="trailing" secondItem="0fk-Nq-6Bf" secondAttribute="trailing" id="P3T-FA-bnX"/>
+                            <constraint firstItem="Yl7-HA-e1o" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="R3c-aM-zIg"/>
+                            <constraint firstItem="Yl7-HA-e1o" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.1" id="bhB-7M-tc2"/>
+                            <constraint firstItem="0fk-Nq-6Bf" firstAttribute="leading" secondItem="Sfj-iO-M6r" secondAttribute="leading" id="eHD-8G-xt8"/>
+                            <constraint firstItem="Yl7-HA-e1o" firstAttribute="bottom" secondItem="0fk-Nq-6Bf" secondAttribute="top" constant="-10" id="ed5-ws-akW"/>
+                            <constraint firstItem="NLi-Tt-rgX" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="fff-Oi-740"/>
+                            <constraint firstItem="0fk-Nq-6Bf" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.5" id="hWT-jL-PTp"/>
+                            <constraint firstItem="NLi-Tt-rgX" firstAttribute="width" secondItem="0fk-Nq-6Bf" secondAttribute="width" id="ocR-EF-L74"/>
+                            <constraint firstItem="NLi-Tt-rgX" firstAttribute="height" secondItem="Yl7-HA-e1o" secondAttribute="height" id="pdZ-5y-XC4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="conveyorView1" destination="bkd-s8-qW1" id="NIO-ow-6Ro"/>
+                        <outlet property="conveyorView2" destination="V7b-A1-qmw" id="I9b-Y4-D3v"/>
+                        <outlet property="conveyorView3" destination="vKj-UG-2QD" id="Jsw-yF-Stw"/>
+                        <outlet property="conveyorView4" destination="CCb-eW-Qom" id="SQK-Lz-73u"/>
+                        <outlet property="conveyorView5" destination="Fpe-HZ-U9l" id="xnB-n5-YS6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iai-Mr-3Qv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1107.2463768115942" y="439.95535714285711"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
