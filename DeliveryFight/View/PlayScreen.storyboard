@@ -117,6 +117,11 @@
                         <outlet property="conveyorView3" destination="vKj-UG-2QD" id="Jsw-yF-Stw"/>
                         <outlet property="conveyorView4" destination="CCb-eW-Qom" id="SQK-Lz-73u"/>
                         <outlet property="conveyorView5" destination="Fpe-HZ-U9l" id="xnB-n5-YS6"/>
+                        <outlet property="player2Buttons1" destination="2Po-My-CYm" id="X1p-vW-G0P"/>
+                        <outlet property="player2Buttons2" destination="TR4-BY-Ddd" id="Xtx-W9-7ln"/>
+                        <outlet property="player2Buttons3" destination="ff8-Tm-SG4" id="0Ya-CA-RaK"/>
+                        <outlet property="player2Buttons4" destination="ONL-qc-Bfw" id="NT6-xm-a1i"/>
+                        <outlet property="player2Buttons5" destination="kbY-oh-vwv" id="kRp-Fg-LRC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iai-Mr-3Qv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,10 @@ import UIKit
 
 final class UpDownButtonView: UIView {
 
+    private var didTapUpHandler : () -> Void = {}
+    private var didTapDownHandler : () -> Void = {}
+
+
     @IBOutlet private weak var UpButtonView: UIButton!
     @IBOutlet private weak var DownButtonView: UIButton!
 
@@ -31,11 +35,17 @@ final class UpDownButtonView: UIView {
 
     }
 
-    @IBAction func didTapUp(_ sender: Any) {
+    func configure(didTapUp: @escaping () -> Void, didTapDown: @escaping () -> Void){
+        didTapUpHandler = didTapUp
+        didTapDownHandler = didTapDown
+    }
 
+    @IBAction func didTapUp(_ sender: Any) {
+        didTapUpHandler()
     }
 
     @IBAction func didTapDown(_ sender: Any) {
+        didTapDownHandler()
     }
 
 
