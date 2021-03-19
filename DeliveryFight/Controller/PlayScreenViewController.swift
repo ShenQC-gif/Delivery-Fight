@@ -34,8 +34,6 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player1ScoreLabel: UILabel!
     @IBOutlet private weak var player2ScoreLabel: UILabel!
 
-
-
     private var beltViews : [BeltView] {
         [
             beltView1,
@@ -95,7 +93,7 @@ class PlayScreenViewController: UIViewController {
                 didTapDown: { [weak self] in
                     self?.itemDown(index: offset)
                 }
-        )}
+            )}
 
         player2Buttons.enumerated().forEach { offset, UpDownButtonView in
             UpDownButtonView.configure(
@@ -105,7 +103,7 @@ class PlayScreenViewController: UIViewController {
                 didTapDown: { [weak self] in
                     self?.itemDown(index: offset)
                 }
-        )}
+            )}
 
         player1ScoreLabel.text = "\(player1Score.score) pt"
         player2ScoreLabel.text = "\(player2Score.score) pt"
@@ -150,6 +148,7 @@ class PlayScreenViewController: UIViewController {
     private func checkIfOutOfBelt(index: Int){
         switch beltStates[index].itemPosition {
             case let .outOfBelt(player):
+
                 player1Buttons[index].changeEnabled()
                 player2Buttons[index].changeEnabled()
 
@@ -168,6 +167,7 @@ class PlayScreenViewController: UIViewController {
                     self.beltStates[index] = BeltState(item: self.randomItem(), itemPosition: .onBelt(.center))
                     self.beltViews[index].configure(beltState: self.beltStates[index])
                 }
+
             default:
                 break
         }
