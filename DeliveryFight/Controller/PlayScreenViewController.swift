@@ -149,9 +149,19 @@ class PlayScreenViewController: UIViewController {
 
     private func checkIfOutOfBelt(index: Int){
         switch beltStates[index].itemPosition {
-            case .outOfBelt:
+            case let .outOfBelt(player):
                 player1Buttons[index].changeEnabled()
                 player2Buttons[index].changeEnabled()
+
+                switch player {
+                    case .player1:
+                        player1Score.updateScore(item: beltStates[index].item)
+                        player1ScoreLabel.text = "\(player1Score.score) pt"
+                    case .player2:
+                        player2Score.updateScore(item: beltStates[index].item)
+                        player2ScoreLabel.text = "\(player2Score.score) pt"
+                }
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.player1Buttons[index].changeEnabled()
                     self.player2Buttons[index].changeEnabled()
