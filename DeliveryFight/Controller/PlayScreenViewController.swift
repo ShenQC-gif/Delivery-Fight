@@ -16,17 +16,17 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var beltView4: BeltView!
     @IBOutlet private weak var beltView5: BeltView!
 
-    @IBOutlet weak private var player1Buttons1: UpDownButtonView!
-    @IBOutlet weak private var player1Buttons2: UpDownButtonView!
-    @IBOutlet weak private var player1Buttons3: UpDownButtonView!
-    @IBOutlet weak private var player1Buttons4: UpDownButtonView!
-    @IBOutlet weak private var player1Buttons5: UpDownButtonView!
+    @IBOutlet private weak var player1Buttons1: UpDownButtonView!
+    @IBOutlet private weak var player1Buttons2: UpDownButtonView!
+    @IBOutlet private weak var player1Buttons3: UpDownButtonView!
+    @IBOutlet private weak var player1Buttons4: UpDownButtonView!
+    @IBOutlet private weak var player1Buttons5: UpDownButtonView!
 
-    @IBOutlet weak private var player2Buttons1: UpDownButtonView!
-    @IBOutlet weak private var player2Buttons2: UpDownButtonView!
-    @IBOutlet weak private var player2Buttons3: UpDownButtonView!
-    @IBOutlet weak private var player2Buttons4: UpDownButtonView!
-    @IBOutlet weak private var player2Buttons5: UpDownButtonView!
+    @IBOutlet private weak var player2Buttons1: UpDownButtonView!
+    @IBOutlet private weak var player2Buttons2: UpDownButtonView!
+    @IBOutlet private weak var player2Buttons3: UpDownButtonView!
+    @IBOutlet private weak var player2Buttons4: UpDownButtonView!
+    @IBOutlet private weak var player2Buttons5: UpDownButtonView!
 
     @IBOutlet private weak var player1ScoreView: ScoreView!
     @IBOutlet private weak var player2ScoreView: ScoreView!
