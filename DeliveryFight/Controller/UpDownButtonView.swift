@@ -40,9 +40,9 @@ final class UpDownButtonView: UIView {
         didTapDownHandler = didTapDown
     }
 
-    func changeEnabled(){
-        upButton.isEnabled.toggle()
-        downButton.isEnabled.toggle()
+    func status(isEnabled: Bool){
+        upButton.isEnabled = isEnabled
+        downButton.isEnabled = isEnabled
     }
 
     @IBAction func didTapUp(_ sender: Any) {

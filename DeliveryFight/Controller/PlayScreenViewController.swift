@@ -149,8 +149,8 @@ class PlayScreenViewController: UIViewController {
         switch beltStates[index].itemPosition {
             case let .outOfBelt(player):
 
-                player1Buttons[index].changeEnabled()
-                player2Buttons[index].changeEnabled()
+                player1Buttons[index].status(isEnabled: false)
+                player2Buttons[index].status(isEnabled: false)
 
                 switch player {
                     case .player1:
@@ -162,8 +162,8 @@ class PlayScreenViewController: UIViewController {
                 }
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.player1Buttons[index].changeEnabled()
-                    self.player2Buttons[index].changeEnabled()
+                    self.player1Buttons[index].status(isEnabled: true)
+                    self.player2Buttons[index].status(isEnabled: true)
                     self.beltStates[index] = BeltState(item: self.randomItem(), itemPosition: .onBelt(.center))
                     self.beltViews[index].configure(beltState: self.beltStates[index])
                 }
