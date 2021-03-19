@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8b-cU-SVU" userLabel="Player1 TimerView" customClass="TimerView" customModule="Delivery_Fight" customModuleProvider="target">
-                                <rect key="frame" x="30" y="47" width="62" height="62.5"/>
+                                <rect key="frame" x="30" y="47" width="52" height="52"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="j8b-cU-SVU" secondAttribute="height" id="qQH-iX-b0R"/>
@@ -112,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKO-JI-kr6" userLabel="Player2 TimerView" customClass="TimerView" customModule="Delivery_Fight" customModuleProvider="target">
-                                <rect key="frame" x="322" y="786.5" width="62" height="62.5"/>
+                                <rect key="frame" x="332.5" y="797" width="51.5" height="52"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -141,7 +141,7 @@
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="leading" secondItem="Sfj-iO-M6r" secondAttribute="leading" id="eHD-8G-xt8"/>
                             <constraint firstItem="Yl7-HA-e1o" firstAttribute="bottom" secondItem="0fk-Nq-6Bf" secondAttribute="top" constant="-10" id="ed5-ws-akW"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="fff-Oi-740"/>
-                            <constraint firstItem="j8b-cU-SVU" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.15" id="hFi-Zk-zcF"/>
+                            <constraint firstItem="j8b-cU-SVU" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.125" id="hFi-Zk-zcF"/>
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.5" id="hWT-jL-PTp"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="width" secondItem="0fk-Nq-6Bf" secondAttribute="width" id="ocR-EF-L74"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="height" secondItem="Yl7-HA-e1o" secondAttribute="height" id="pdZ-5y-XC4"/>
@@ -161,12 +161,14 @@
                         <outlet property="player1Buttons4" destination="Lfj-xQ-REj" id="c3T-xM-Ud8"/>
                         <outlet property="player1Buttons5" destination="pEV-WR-YO6" id="6gZ-wP-Hzv"/>
                         <outlet property="player1ScoreLabel" destination="hw0-8P-fqD" id="0aC-7s-kag"/>
+                        <outlet property="player1TimerView" destination="j8b-cU-SVU" id="bt5-Ip-kkG"/>
                         <outlet property="player2Buttons1" destination="2Po-My-CYm" id="X1p-vW-G0P"/>
                         <outlet property="player2Buttons2" destination="TR4-BY-Ddd" id="Xtx-W9-7ln"/>
                         <outlet property="player2Buttons3" destination="ff8-Tm-SG4" id="0Ya-CA-RaK"/>
                         <outlet property="player2Buttons4" destination="ONL-qc-Bfw" id="NT6-xm-a1i"/>
                         <outlet property="player2Buttons5" destination="kbY-oh-vwv" id="kRp-Fg-LRC"/>
                         <outlet property="player2ScoreLabel" destination="Tk4-tE-Cli" id="jjw-4U-aNw"/>
+                        <outlet property="player2TimerView" destination="MKO-JI-kr6" id="50P-yT-rgV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iai-Mr-3Qv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

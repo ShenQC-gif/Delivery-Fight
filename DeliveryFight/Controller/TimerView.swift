@@ -30,7 +30,6 @@ class TimerView: UIView {
     }
 
     func configure(time: TimeLimit){
-        timerLabel.layer.cornerRadius = timerLabel.frame.size.width*0.2
         timerLabel.layer.borderWidth = 1
         setTime(time: time)
     }

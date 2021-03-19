@@ -34,6 +34,13 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player1ScoreLabel: UILabel!
     @IBOutlet private weak var player2ScoreLabel: UILabel!
 
+    @IBOutlet private weak var player1TimerView: TimerView!
+    @IBOutlet private weak var player2TimerView: TimerView!
+
+    private var timeLimitRepository = TimeLimitRepository()
+    private var timeLimit = TimeLimit.thirty
+
+
     private var beltViews : [BeltView] {
         [
             beltView1,
@@ -75,6 +82,7 @@ class PlayScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        timeLimit = timeLimitRepository.load() ?? .thirty
         configureUI()
     }
 
@@ -107,6 +115,9 @@ class PlayScreenViewController: UIViewController {
 
         player1ScoreLabel.text = "\(player1Score.score) pt"
         player2ScoreLabel.text = "\(player2Score.score) pt"
+
+        player1TimerView.configure(time: timeLimit)
+        player2TimerView.configure(time: timeLimit)
     }
 
     private func itemUp(index: Int){
