@@ -36,6 +36,8 @@ class PlayScreenViewController: UIViewController {
 
     private var sounds = Sounds()
 
+    @IBOutlet private weak var announceLabel: UILabel!
+
     private var beltViews : [BeltView] {
         [
             beltView1,
@@ -78,8 +80,7 @@ class PlayScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        player1TimerView.timerStart()
-        player2TimerView.timerStart()
+        gameStart()
     }
 
     //個々のBeltに対して状態を反映させる
@@ -108,6 +109,29 @@ class PlayScreenViewController: UIViewController {
                     self?.itemDown(index: offset)
                 }
             )}
+    }
+
+    // game開始(再開)
+    private func gameStart() {
+        // カウントダウン開始
+        announceLabel.text = "③"
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.sounds.playSound(rosource: CountDown())
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.announceLabel.text = "②"
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.announceLabel.text = "①"
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.player1TimerView.timerStart()
+                        self.player2TimerView.timerStart()
+                    }
+                }
+            }
+        }
     }
 
     private func itemUp(index: Int){
