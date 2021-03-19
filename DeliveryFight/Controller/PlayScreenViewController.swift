@@ -141,12 +141,16 @@ class PlayScreenViewController: UIViewController {
         switch belts[index].itemPosition {
             case .outOfBelt:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.belts[index] = BeltState(item: Melon(), itemPosition: .onBelt(.center))
+                    self.belts[index] = BeltState(item: self.randomItem(), itemPosition: .onBelt(.center))
                     self.beltViews[index].configure(beltState: self.belts[index])
                 }
             default:
                 break
         }
+    }
+
+    private func randomItem() -> ItemType {
+        return MainViewController.itemArray.randomElement() ?? Apple()
     }
 
 }
