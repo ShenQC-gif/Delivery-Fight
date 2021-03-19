@@ -106,9 +106,6 @@ class PlayScreenViewController: UIViewController {
                     self?.itemDown(index: offset)
                 }
             )}
-
-        player1TimerView.configure()
-        player2TimerView.configure()
     }
 
     private func itemUp(index: Int){

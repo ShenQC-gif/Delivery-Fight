@@ -30,12 +30,13 @@ class TimerView: UIView {
         let view = Bundle.main.loadNibNamed("TimerView", owner: self, options: nil)?.first as! UIView
         view.frame = bounds
         addSubview(view)
-        timeLimit = timeLimitRepository.load() ?? .thirty
-        restTime = timeLimit.rawValue
+        configure()
     }
 
-    func configure(){
+    private func configure(){
         timerLabel.layer.borderWidth = 1
+        timeLimit = timeLimitRepository.load() ?? .thirty
+        restTime = timeLimit.rawValue
         setTime(time: restTime)
     }
 
