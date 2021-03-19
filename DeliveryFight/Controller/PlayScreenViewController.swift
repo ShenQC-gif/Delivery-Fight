@@ -62,11 +62,11 @@ class PlayScreenViewController: UIViewController {
 
     //ここで具体的なBeltの状態(Item,Item位置)を設定
     private var belts : [BeltState] = [
-        BeltState(item: Apple(), itemPosition: .outOfBelt(Player.player1)),
-        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.pos1)),
-        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.pos2)),
-        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.pos3)),
-        BeltState(item: Apple(), itemPosition: .outOfBelt(Player.player2))
+        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
+        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
+        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
+        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
+        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center))
     ]
 
     override func viewDidLoad() {
