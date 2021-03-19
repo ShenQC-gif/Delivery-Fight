@@ -112,11 +112,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="conveyorView1" destination="bkd-s8-qW1" id="NIO-ow-6Ro"/>
-                        <outlet property="conveyorView2" destination="V7b-A1-qmw" id="I9b-Y4-D3v"/>
-                        <outlet property="conveyorView3" destination="vKj-UG-2QD" id="Jsw-yF-Stw"/>
-                        <outlet property="conveyorView4" destination="CCb-eW-Qom" id="SQK-Lz-73u"/>
-                        <outlet property="conveyorView5" destination="Fpe-HZ-U9l" id="xnB-n5-YS6"/>
+                        <outlet property="beltView1" destination="bkd-s8-qW1" id="mFx-n2-Jjw"/>
+                        <outlet property="beltView2" destination="V7b-A1-qmw" id="MaB-Rt-ATV"/>
+                        <outlet property="beltView3" destination="vKj-UG-2QD" id="rQn-oh-u7B"/>
+                        <outlet property="beltView4" destination="CCb-eW-Qom" id="A14-ly-Jjv"/>
+                        <outlet property="beltView5" destination="Fpe-HZ-U9l" id="Yc4-cO-VY5"/>
                         <outlet property="player1Buttons1" destination="OVD-jm-zu0" id="xru-zJ-Ndi"/>
                         <outlet property="player1Buttons2" destination="6xf-yX-OwJ" id="fJ5-2V-9bg"/>
                         <outlet property="player1Buttons3" destination="o9b-hD-AN5" id="33t-CJ-DzI"/>

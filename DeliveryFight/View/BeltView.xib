@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conveyor" translatesAutoresizingMaskIntoConstraints="NO" id="guW-zr-ejv">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="belt" translatesAutoresizingMaskIntoConstraints="NO" id="guW-zr-ejv" userLabel="belt">
                     <rect key="frame" x="0.0" y="128" width="414" height="640"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bL6-es-teG">
@@ -81,7 +81,7 @@
         </view>
     </objects>
     <resources>
-        <image name="conveyor" width="100" height="409"/>
+        <image name="belt" width="100" height="409"/>
         <image name="melon" width="225" height="225"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

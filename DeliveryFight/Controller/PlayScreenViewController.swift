@@ -10,11 +10,11 @@ import UIKit
 
 class PlayScreenViewController: UIViewController {
 
-    @IBOutlet private weak var conveyorView1: BeltView!
-    @IBOutlet private weak var conveyorView2: BeltView!
-    @IBOutlet private weak var conveyorView3: BeltView!
-    @IBOutlet private weak var conveyorView4: BeltView!
-    @IBOutlet private weak var conveyorView5: BeltView!
+    @IBOutlet private weak var beltView1: BeltView!
+    @IBOutlet private weak var beltView2: BeltView!
+    @IBOutlet private weak var beltView3: BeltView!
+    @IBOutlet private weak var beltView4: BeltView!
+    @IBOutlet private weak var beltView5: BeltView!
 
     @IBOutlet weak private var player1Buttons1: UpDownButtonView!
     @IBOutlet weak private var player1Buttons2: UpDownButtonView!
@@ -32,11 +32,11 @@ class PlayScreenViewController: UIViewController {
 
     private var beltViews : [BeltView] {
         [
-            conveyorView1,
-            conveyorView2,
-            conveyorView3,
-            conveyorView4,
-            conveyorView5
+            beltView1,
+            beltView2,
+            beltView3,
+            beltView4,
+            beltView5
         ]
     }
 
