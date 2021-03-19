@@ -66,11 +66,11 @@ class PlayScreenViewController: UIViewController {
 
         player2Buttons.enumerated().forEach { offset, UpDownButtonView in
             UpDownButtonView.configure(
-                didTapUp: { [self] in
-                    itemUp(index: offset)
+                didTapUp: { [weak self] in
+                    self?.itemUp(index: offset)
                 },
-                didTapDown: { [self] in
-                    itemDown(index: offset)
+                didTapDown: { [weak self] in
+                    self?.itemDown(index: offset)
                 }
         )}
     }
