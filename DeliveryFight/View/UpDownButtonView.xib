@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpDownButtonView" customModule="Delivery_Fight" customModuleProvider="target">
             <connections>
-                <outlet property="DownButtonView" destination="Tbi-Jk-gsV" id="fiN-Y9-akJ"/>
-                <outlet property="UpButtonView" destination="h6z-Cg-yxn" id="Ams-h4-28s"/>
+                <outlet property="downButton" destination="Tbi-Jk-gsV" id="ah4-Qy-YfQ"/>
+                <outlet property="upButton" destination="h6z-Cg-yxn" id="fHx-2g-cgB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

@@ -14,8 +14,8 @@ final class UpDownButtonView: UIView {
     private var didTapDownHandler : () -> Void = {}
 
 
-    @IBOutlet private weak var UpButtonView: UIButton!
-    @IBOutlet private weak var DownButtonView: UIButton!
+    @IBOutlet private weak var upButton: UIButton!
+    @IBOutlet private weak var downButton: UIButton!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +38,11 @@ final class UpDownButtonView: UIView {
     func configure(didTapUp: @escaping () -> Void, didTapDown: @escaping () -> Void){
         didTapUpHandler = didTapUp
         didTapDownHandler = didTapDown
+    }
+
+    func changeEnabled(){
+        upButton.isEnabled.toggle()
+        downButton.isEnabled.toggle()
     }
 
     @IBAction func didTapUp(_ sender: Any) {
