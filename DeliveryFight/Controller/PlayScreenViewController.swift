@@ -162,15 +162,19 @@ class PlayScreenViewController: UIViewController {
                 }
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.player1Buttons[index].status(isEnabled: true)
-                    self.player2Buttons[index].status(isEnabled: true)
-                    self.beltStates[index] = BeltState(item: self.randomItem(), itemPosition: .onBelt(.center))
-                    self.beltViews[index].configure(beltState: self.beltStates[index])
+                    self.resetBelt(index: index)
                 }
 
             default:
                 break
         }
+    }
+
+    private func resetBelt(index: Int){
+        player1Buttons[index].status(isEnabled: true)
+        player2Buttons[index].status(isEnabled: true)
+        beltStates[index] = BeltState(item: randomItem(), itemPosition: .onBelt(.center))
+        beltViews[index].configure(beltState: beltStates[index])
     }
 
     private func randomItem() -> ItemType {
