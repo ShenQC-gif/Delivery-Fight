@@ -117,6 +117,7 @@ class PlayScreenViewController: UIViewController {
 
         belts[index] = BeltState(item: item, itemPosition: newItemPosition)
         beltViews[index].configure(beltState: belts[index])
+        checkIfOutOfBelt(index: index)
     }
 
     private func itemDown(index: Int){
@@ -136,6 +137,16 @@ class PlayScreenViewController: UIViewController {
         beltViews[index].configure(beltState: belts[index])
     }
 
-
+    private func checkIfOutOfBelt(index: Int){
+        switch belts[index].itemPosition {
+            case .outOfBelt:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.belts[index] = BeltState(item: Melon(), itemPosition: .onBelt(.center))
+                    self.beltViews[index].configure(beltState: self.belts[index])
+                }
+            default:
+                break
+        }
+    }
 
 }
