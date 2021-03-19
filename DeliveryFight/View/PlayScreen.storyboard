@@ -117,6 +117,11 @@
                         <outlet property="conveyorView3" destination="vKj-UG-2QD" id="Jsw-yF-Stw"/>
                         <outlet property="conveyorView4" destination="CCb-eW-Qom" id="SQK-Lz-73u"/>
                         <outlet property="conveyorView5" destination="Fpe-HZ-U9l" id="xnB-n5-YS6"/>
+                        <outlet property="player1Buttons1" destination="OVD-jm-zu0" id="xru-zJ-Ndi"/>
+                        <outlet property="player1Buttons2" destination="6xf-yX-OwJ" id="fJ5-2V-9bg"/>
+                        <outlet property="player1Buttons3" destination="o9b-hD-AN5" id="33t-CJ-DzI"/>
+                        <outlet property="player1Buttons4" destination="Lfj-xQ-REj" id="c3T-xM-Ud8"/>
+                        <outlet property="player1Buttons5" destination="pEV-WR-YO6" id="6gZ-wP-Hzv"/>
                         <outlet property="player2Buttons1" destination="2Po-My-CYm" id="X1p-vW-G0P"/>
                         <outlet property="player2Buttons2" destination="TR4-BY-Ddd" id="Xtx-W9-7ln"/>
                         <outlet property="player2Buttons3" destination="ff8-Tm-SG4" id="0Ya-CA-RaK"/>

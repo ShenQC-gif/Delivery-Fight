@@ -16,6 +16,13 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var conveyorView4: BeltView!
     @IBOutlet private weak var conveyorView5: BeltView!
 
+    @IBOutlet weak private var player1Buttons1: UpDownButtonView!
+    @IBOutlet weak private var player1Buttons2: UpDownButtonView!
+    @IBOutlet weak private var player1Buttons3: UpDownButtonView!
+    @IBOutlet weak private var player1Buttons4: UpDownButtonView!
+    @IBOutlet weak private var player1Buttons5: UpDownButtonView!
+
+
     @IBOutlet weak private var player2Buttons1: UpDownButtonView!
     @IBOutlet weak private var player2Buttons2: UpDownButtonView!
     @IBOutlet weak private var player2Buttons3: UpDownButtonView!
@@ -30,6 +37,16 @@ class PlayScreenViewController: UIViewController {
             conveyorView3,
             conveyorView4,
             conveyorView5
+        ]
+    }
+
+    private var player1Buttons : [UpDownButtonView] {
+        [
+            player1Buttons1,
+            player1Buttons2,
+            player1Buttons3,
+            player1Buttons4,
+            player1Buttons5
         ]
     }
 
@@ -63,6 +80,16 @@ class PlayScreenViewController: UIViewController {
             $1.configure(beltState: $0)
 
         }
+
+        player1Buttons.enumerated().forEach { offset, UpDownButtonView in
+            UpDownButtonView.configure(
+                didTapUp: { [weak self] in
+                    self?.itemUp(index: offset)
+                },
+                didTapDown: { [weak self] in
+                    self?.itemDown(index: offset)
+                }
+        )}
 
         player2Buttons.enumerated().forEach { offset, UpDownButtonView in
             UpDownButtonView.configure(
