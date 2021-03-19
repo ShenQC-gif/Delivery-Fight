@@ -22,12 +22,18 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet weak private var player1Buttons4: UpDownButtonView!
     @IBOutlet weak private var player1Buttons5: UpDownButtonView!
 
-
     @IBOutlet weak private var player2Buttons1: UpDownButtonView!
     @IBOutlet weak private var player2Buttons2: UpDownButtonView!
     @IBOutlet weak private var player2Buttons3: UpDownButtonView!
     @IBOutlet weak private var player2Buttons4: UpDownButtonView!
     @IBOutlet weak private var player2Buttons5: UpDownButtonView!
+
+    private var player1Score = Score()
+    private var player2Score = Score()
+
+    @IBOutlet private weak var player1ScoreLabel: UILabel!
+    @IBOutlet private weak var player2ScoreLabel: UILabel!
+
 
 
     private var beltViews : [BeltView] {
@@ -100,6 +106,9 @@ class PlayScreenViewController: UIViewController {
                     self?.itemDown(index: offset)
                 }
         )}
+
+        player1ScoreLabel.text = "\(player1Score.score) pt"
+        player2ScoreLabel.text = "\(player2Score.score) pt"
     }
 
     private func itemUp(index: Int){

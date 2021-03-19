@@ -15,6 +15,7 @@
 		EA4068112603638C0056C318 /* PlayScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA4068102603638C0056C318 /* PlayScreen.storyboard */; };
 		EA406819260365030056C318 /* UpDownButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA406818260365030056C318 /* UpDownButtonView.xib */; };
 		EA40681E260365F90056C318 /* UpDownButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40681D260365F90056C318 /* UpDownButtonView.swift */; };
+		EA40683C2604C89B0056C318 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40683B2604C89B0056C318 /* Score.swift */; };
 		EA4BC926256BA2E9000669FD /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BC925256BA2E9000669FD /* CustomView.swift */; };
 		EA4BC92B256BA2F9000669FD /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4BC92A256BA2F9000669FD /* CustomView.xib */; };
 		EA5CD43E255BFD46001556D8 /* finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5CD43D255BFD46001556D8 /* finish.mp3 */; };
@@ -64,6 +65,7 @@
 		EA4068102603638C0056C318 /* PlayScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayScreen.storyboard; sourceTree = "<group>"; };
 		EA406818260365030056C318 /* UpDownButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpDownButtonView.xib; sourceTree = "<group>"; };
 		EA40681D260365F90056C318 /* UpDownButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDownButtonView.swift; sourceTree = "<group>"; };
+		EA40683B2604C89B0056C318 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		EA4BC925256BA2E9000669FD /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		EA4BC92A256BA2F9000669FD /* CustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
 		EA5CD43D255BFD46001556D8 /* finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = finish.mp3; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				EAE1475C25E2926E00818650 /* TimeLimit.swift */,
 				EA40678925FD8FAC0056C318 /* GameResult.swift */,
 				EA40679125FDAF790056C318 /* TimeLimitRepository.swift */,
+				EA40683B2604C89B0056C318 /* Score.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			files = (
 				EA40681E260365F90056C318 /* UpDownButtonView.swift in Sources */,
 				EA6D419C258967100077E786 /* Item.swift in Sources */,
+				EA40683C2604C89B0056C318 /* Score.swift in Sources */,
 				EA88AB4324F0DE3400FBE689 /* MainViewController.swift in Sources */,
 				EA4067EF260224C60056C318 /* BeltView.swift in Sources */,
 				EA88AB3F24F0DE3400FBE689 /* AppDelegate.swift in Sources */,

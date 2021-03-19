@@ -17,6 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hw0-8P-fqD" userLabel="Player1 Score Label">
+                                <rect key="frame" x="145" y="47" width="124" height="67.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Yl7-HA-e1o" userLabel="Player1 Button SV">
                                 <rect key="frame" x="0.0" y="124.5" width="414" height="89.5"/>
                                 <subviews>
@@ -92,23 +98,37 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tk4-tE-Cli" userLabel="Player2 Score Label">
+                                <rect key="frame" x="145" y="781.5" width="124" height="67.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sfj-iO-M6r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="top" secondItem="0fk-Nq-6Bf" secondAttribute="bottom" constant="10" id="0jn-l3-OQ1"/>
+                            <constraint firstItem="Tk4-tE-Cli" firstAttribute="width" secondItem="hw0-8P-fqD" secondAttribute="width" id="1Fh-uY-RhV"/>
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="centerY" secondItem="vCF-Bw-IRd" secondAttribute="centerY" id="310-4h-lqK"/>
+                            <constraint firstItem="Tk4-tE-Cli" firstAttribute="top" secondItem="NLi-Tt-rgX" secondAttribute="bottom" constant="10" id="83J-3f-wSN"/>
                             <constraint firstItem="Yl7-HA-e1o" firstAttribute="width" secondItem="0fk-Nq-6Bf" secondAttribute="width" id="BFQ-GE-01i"/>
+                            <constraint firstItem="Tk4-tE-Cli" firstAttribute="height" secondItem="hw0-8P-fqD" secondAttribute="height" id="E7t-JF-6mY"/>
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="KoQ-uE-g01"/>
                             <constraint firstItem="Sfj-iO-M6r" firstAttribute="trailing" secondItem="0fk-Nq-6Bf" secondAttribute="trailing" id="P3T-FA-bnX"/>
                             <constraint firstItem="Yl7-HA-e1o" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="R3c-aM-zIg"/>
+                            <constraint firstItem="hw0-8P-fqD" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.3" id="YrN-KI-6gV"/>
                             <constraint firstItem="Yl7-HA-e1o" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.1" id="bhB-7M-tc2"/>
+                            <constraint firstItem="hw0-8P-fqD" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.075" id="c2F-xy-X4K"/>
+                            <constraint firstItem="Tk4-tE-Cli" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="duT-ec-obU"/>
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="leading" secondItem="Sfj-iO-M6r" secondAttribute="leading" id="eHD-8G-xt8"/>
                             <constraint firstItem="Yl7-HA-e1o" firstAttribute="bottom" secondItem="0fk-Nq-6Bf" secondAttribute="top" constant="-10" id="ed5-ws-akW"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="fff-Oi-740"/>
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.5" id="hWT-jL-PTp"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="width" secondItem="0fk-Nq-6Bf" secondAttribute="width" id="ocR-EF-L74"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="height" secondItem="Yl7-HA-e1o" secondAttribute="height" id="pdZ-5y-XC4"/>
+                            <constraint firstItem="Yl7-HA-e1o" firstAttribute="top" secondItem="hw0-8P-fqD" secondAttribute="bottom" constant="10" id="tlv-dv-b1I"/>
+                            <constraint firstItem="hw0-8P-fqD" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="wss-ZA-7AR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -122,11 +142,13 @@
                         <outlet property="player1Buttons3" destination="o9b-hD-AN5" id="33t-CJ-DzI"/>
                         <outlet property="player1Buttons4" destination="Lfj-xQ-REj" id="c3T-xM-Ud8"/>
                         <outlet property="player1Buttons5" destination="pEV-WR-YO6" id="6gZ-wP-Hzv"/>
+                        <outlet property="player1ScoreLabel" destination="hw0-8P-fqD" id="0aC-7s-kag"/>
                         <outlet property="player2Buttons1" destination="2Po-My-CYm" id="X1p-vW-G0P"/>
                         <outlet property="player2Buttons2" destination="TR4-BY-Ddd" id="Xtx-W9-7ln"/>
                         <outlet property="player2Buttons3" destination="ff8-Tm-SG4" id="0Ya-CA-RaK"/>
                         <outlet property="player2Buttons4" destination="ONL-qc-Bfw" id="NT6-xm-a1i"/>
                         <outlet property="player2Buttons5" destination="kbY-oh-vwv" id="kRp-Fg-LRC"/>
+                        <outlet property="player2ScoreLabel" destination="Tk4-tE-Cli" id="jjw-4U-aNw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iai-Mr-3Qv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
