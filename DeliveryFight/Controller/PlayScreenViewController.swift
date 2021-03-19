@@ -34,6 +34,8 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player1TimerView: TimerView!
     @IBOutlet private weak var player2TimerView: TimerView!
 
+    private var sounds = Sounds()
+
     private var beltViews : [BeltView] {
         [
             beltView1,
@@ -150,6 +152,7 @@ class PlayScreenViewController: UIViewController {
 
                 player1Buttons[index].status(isEnabled: false)
                 player2Buttons[index].status(isEnabled: false)
+                playSoundByTypeOfItem(item: beltStates[index].item)
 
                 switch player {
                     case .player1:
@@ -176,6 +179,16 @@ class PlayScreenViewController: UIViewController {
 
     private func randomItem() -> ItemType {
         return MainViewController.itemArray.randomElement() ?? Apple()
+    }
+
+    // presentの種類によって音声を再生
+    private func playSoundByTypeOfItem(item: ItemType) {
+        // presentが爆弾なら爆発音、それ以外なら得点
+        if item.isBomb {
+            sounds.playSound(rosource: GetBomb())
+        } else {
+            sounds.playSound(rosource: GetPoint())
+        }
     }
 
 }
