@@ -37,10 +37,6 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player1TimerView: TimerView!
     @IBOutlet private weak var player2TimerView: TimerView!
 
-    private var timeLimitRepository = TimeLimitRepository()
-    private var timeLimit = TimeLimit.thirty
-
-
     private var beltViews : [BeltView] {
         [
             beltView1,
@@ -82,8 +78,9 @@ class PlayScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeLimit = timeLimitRepository.load() ?? .thirty
         configureUI()
+        player1TimerView.timerStart()
+        player2TimerView.timerStart()
     }
 
     //個々のBeltに対して状態を反映させる
@@ -116,8 +113,8 @@ class PlayScreenViewController: UIViewController {
         player1ScoreLabel.text = "\(player1Score.score) pt"
         player2ScoreLabel.text = "\(player2Score.score) pt"
 
-        player1TimerView.configure(time: timeLimit)
-        player2TimerView.configure(time: timeLimit)
+        player1TimerView.configure()
+        player2TimerView.configure()
     }
 
     private func itemUp(index: Int){
