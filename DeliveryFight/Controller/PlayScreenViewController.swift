@@ -28,11 +28,8 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet weak private var player2Buttons4: UpDownButtonView!
     @IBOutlet weak private var player2Buttons5: UpDownButtonView!
 
-    private var player1Score = Score()
-    private var player2Score = Score()
-
-    @IBOutlet private weak var player1ScoreLabel: UILabel!
-    @IBOutlet private weak var player2ScoreLabel: UILabel!
+    @IBOutlet private weak var player1ScoreView: ScoreView!
+    @IBOutlet private weak var player2ScoreView: ScoreView!
 
     @IBOutlet private weak var player1TimerView: TimerView!
     @IBOutlet private weak var player2TimerView: TimerView!
@@ -110,9 +107,6 @@ class PlayScreenViewController: UIViewController {
                 }
             )}
 
-        player1ScoreLabel.text = "\(player1Score.score) pt"
-        player2ScoreLabel.text = "\(player2Score.score) pt"
-
         player1TimerView.configure()
         player2TimerView.configure()
     }
@@ -162,11 +156,9 @@ class PlayScreenViewController: UIViewController {
 
                 switch player {
                     case .player1:
-                        player1Score.updateScore(item: beltStates[index].item)
-                        player1ScoreLabel.text = "\(player1Score.score) pt"
+                        player1ScoreView.updateScore(item: beltStates[index].item)
                     case .player2:
-                        player2Score.updateScore(item: beltStates[index].item)
-                        player2ScoreLabel.text = "\(player2Score.score) pt"
+                        player2ScoreView.updateScore(item: beltStates[index].item)
                 }
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
