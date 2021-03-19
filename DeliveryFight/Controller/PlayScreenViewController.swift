@@ -61,7 +61,7 @@ class PlayScreenViewController: UIViewController {
     }
 
     //ここで具体的なBeltの状態(Item,Item位置)を設定
-    private var belts : [BeltState] = [
+    private var beltStates : [BeltState] = [
         BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
         BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
         BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
@@ -76,7 +76,7 @@ class PlayScreenViewController: UIViewController {
 
     //個々のBeltに対して状態を反映させる
     private func configureUI(){
-        zip(belts, beltViews).forEach {
+        zip(beltStates, beltViews).forEach {
             $1.configure(beltState: $0)
 
         }
@@ -104,7 +104,7 @@ class PlayScreenViewController: UIViewController {
 
     private func itemUp(index: Int){
 
-        let belt = belts[index]
+        let belt = beltStates[index]
         let item = belt.item
         let newItemPosition : ItemPosition = {
             switch belt.itemPosition{
@@ -115,14 +115,14 @@ class PlayScreenViewController: UIViewController {
             }
         }()
 
-        belts[index] = BeltState(item: item, itemPosition: newItemPosition)
-        beltViews[index].configure(beltState: belts[index])
+        beltStates[index] = BeltState(item: item, itemPosition: newItemPosition)
+        beltViews[index].configure(beltState: beltStates[index])
         checkIfOutOfBelt(index: index)
     }
 
     private func itemDown(index: Int){
 
-        let belt = belts[index]
+        let belt = beltStates[index]
         let item = belt.item
         let newItemPosition : ItemPosition = {
             switch belt.itemPosition{
@@ -133,16 +133,16 @@ class PlayScreenViewController: UIViewController {
             }
         }()
 
-        belts[index] = BeltState(item: item, itemPosition: newItemPosition)
-        beltViews[index].configure(beltState: belts[index])
+        beltStates[index] = BeltState(item: item, itemPosition: newItemPosition)
+        beltViews[index].configure(beltState: beltStates[index])
     }
 
     private func checkIfOutOfBelt(index: Int){
-        switch belts[index].itemPosition {
+        switch beltStates[index].itemPosition {
             case .outOfBelt:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.belts[index] = BeltState(item: self.randomItem(), itemPosition: .onBelt(.center))
-                    self.beltViews[index].configure(beltState: self.belts[index])
+                    self.beltStates[index] = BeltState(item: self.randomItem(), itemPosition: .onBelt(.center))
+                    self.beltViews[index].configure(beltState: self.beltStates[index])
                 }
             default:
                 break
