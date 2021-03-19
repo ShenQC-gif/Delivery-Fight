@@ -135,6 +135,7 @@ class PlayScreenViewController: UIViewController {
 
         beltStates[index] = BeltState(item: item, itemPosition: newItemPosition)
         beltViews[index].configure(beltState: beltStates[index])
+        checkIfOutOfBelt(index: index)
     }
 
     private func checkIfOutOfBelt(index: Int){
