@@ -36,8 +36,6 @@ class PlayScreenViewController: UIViewController {
 
     private var sounds = Sounds()
 
-    private var gameStatus = GameStatus.firstStatus
-
     @IBOutlet weak var announceView: AnnounceView!
 
     private var beltViews : [BeltView] {
@@ -81,12 +79,13 @@ class PlayScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        gameStart()
+        setUp()
+        configure(gameStatus: .countDownBeforPlay(countDown: .startingStatus))
     }
 
-    //個々のBeltに対して状態を反映させる
-    private func configureUI(){
+    //ゲームを始める前に一度だけ設定すれば良いもの設定
+    private func setUp(){
+
         zip(beltStates, beltViews).forEach {
             $1.configure(beltState: $0)
         }
@@ -112,76 +111,63 @@ class PlayScreenViewController: UIViewController {
             )}
     }
 
+    //ゲーム全体の状態によって表示(内容・方法)が変わるものを規定
     private func configure(gameStatus: GameStatus){
         switch gameStatus {
-
             case .countDownBeforPlay(countDown: let countDown):
                 switch countDown {
                     case .three:
+
+                        sounds.playSound(rosource: CountDown())
+
                         announceView.configure(gameStatus: gameStatus)
+
+                        for button in player1Buttons {
+                            button.status(isEnabled: false)
+                        }
+
+                        for button in player2Buttons {
+                            button.status(isEnabled: false)
+                        }
+
+                        player1ScoreView.resetScore()
+                        player2ScoreView.resetScore()
+
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.configure(gameStatus: .countDownBeforPlay(countDown: .two))
                         }
+
                     case .two:
                         announceView.configure(gameStatus: gameStatus)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.configure(gameStatus: .countDownBeforPlay(countDown: .one))
                         }
+
                     case .one:
                         announceView.configure(gameStatus: gameStatus)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.configure(gameStatus: .onPlay)
                         }
                 }
+
             case .onPlay:
                 announceView.configure(gameStatus: gameStatus)
+
+                for button in player1Buttons {
+                    button.status(isEnabled: true)
+                }
+
+                for button in player2Buttons {
+                    button.status(isEnabled: true)
+                }
+
+                // タイマースタート
+                player1TimerView.timerStart()
+                player2TimerView.timerStart()
+
             case .afterPlay:
                 announceView.configure(gameStatus: gameStatus)
         }
-    }
-
-    // game開始(再開)
-    private func gameStart() {
-
-        beforeCountDown()
-    }
-
-    // 画面初期化
-    private func beforeCountDown() {
-
-        configure(gameStatus: gameStatus)
-
-        // Btn有効化
-        for button in player1Buttons {
-            button.status(isEnabled: false)
-        }
-
-        for button in player2Buttons {
-            button.status(isEnabled: false)
-        }
-
-        player1ScoreView.resetScore()
-        player2ScoreView.resetScore()
-
-    }
-
-    // カウントダウン終了後の状態
-    private func afterCountDown() {
-
-        announceView.configure(gameStatus: .afterPlay)
-
-        // Btn有効化
-        for button in player1Buttons {
-            button.status(isEnabled: true)
-        }
-
-        for button in player2Buttons {
-            button.status(isEnabled: true)
-        }
-
-        // タイマースタート
-        player1TimerView.timerStart()
-        player2TimerView.timerStart()
     }
 
     private func itemUp(index: Int){
