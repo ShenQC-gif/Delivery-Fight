@@ -36,7 +36,9 @@ class PlayScreenViewController: UIViewController {
 
     private var sounds = Sounds()
 
-    @IBOutlet private weak var announceLabel: UILabel!
+    private var gameStatus = GameStatus.firstStatus
+
+    @IBOutlet weak var announceView: AnnounceView!
 
     private var beltViews : [BeltView] {
         [
@@ -87,7 +89,6 @@ class PlayScreenViewController: UIViewController {
     private func configureUI(){
         zip(beltStates, beltViews).forEach {
             $1.configure(beltState: $0)
-
         }
 
         player1Buttons.enumerated().forEach { offset, UpDownButtonView in
@@ -111,35 +112,44 @@ class PlayScreenViewController: UIViewController {
             )}
     }
 
+    private func configure(gameStatus: GameStatus){
+        switch gameStatus {
+
+            case .countDownBeforPlay(countDown: let countDown):
+                switch countDown {
+                    case .three:
+                        announceView.configure(gameStatus: gameStatus)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.configure(gameStatus: .countDownBeforPlay(countDown: .two))
+                        }
+                    case .two:
+                        announceView.configure(gameStatus: gameStatus)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.configure(gameStatus: .countDownBeforPlay(countDown: .one))
+                        }
+                    case .one:
+                        announceView.configure(gameStatus: gameStatus)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.configure(gameStatus: .onPlay)
+                        }
+                }
+            case .onPlay:
+                announceView.configure(gameStatus: gameStatus)
+            case .afterPlay:
+                announceView.configure(gameStatus: gameStatus)
+        }
+    }
+
     // game開始(再開)
     private func gameStart() {
 
         beforeCountDown()
-        // カウントダウン開始
-        announceLabel.text = "③"
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.sounds.playSound(rosource: CountDown())
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.announceLabel.text = "②"
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.announceLabel.text = "①"
-
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.afterCountDown()
-
-                    }
-                }
-            }
-        }
     }
 
     // 画面初期化
     private func beforeCountDown() {
 
-        announceLabel.isHidden = false
+        configure(gameStatus: gameStatus)
 
         // Btn有効化
         for button in player1Buttons {
@@ -157,7 +167,8 @@ class PlayScreenViewController: UIViewController {
 
     // カウントダウン終了後の状態
     private func afterCountDown() {
-        announceLabel.isHidden = true
+
+        announceView.configure(gameStatus: .afterPlay)
 
         // Btn有効化
         for button in player1Buttons {

@@ -20,6 +20,10 @@
 		EA4068462604DC1F0056C318 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4068452604DC1F0056C318 /* TimerView.swift */; };
 		EA40684E260561C00056C318 /* ScoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA40684D260561C00056C318 /* ScoreView.xib */; };
 		EA406853260561E30056C318 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406852260561E30056C318 /* ScoreView.swift */; };
+		EA40685C2605C1450056C318 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40685B2605C1440056C318 /* GameStatus.swift */; };
+		EA4068642605C2020056C318 /* AnnounceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4068632605C2020056C318 /* AnnounceView.xib */; };
+		EA4068692605C26E0056C318 /* AnnounceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4068682605C26E0056C318 /* AnnounceView.swift */; };
+		EA4068712605C5900056C318 /* CountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4068702605C5900056C318 /* CountDown.swift */; };
 		EA4BC926256BA2E9000669FD /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BC925256BA2E9000669FD /* CustomView.swift */; };
 		EA4BC92B256BA2F9000669FD /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4BC92A256BA2F9000669FD /* CustomView.xib */; };
 		EA5CD43E255BFD46001556D8 /* finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5CD43D255BFD46001556D8 /* finish.mp3 */; };
@@ -74,6 +78,10 @@
 		EA4068452604DC1F0056C318 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		EA40684D260561C00056C318 /* ScoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreView.xib; sourceTree = "<group>"; };
 		EA406852260561E30056C318 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		EA40685B2605C1440056C318 /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
+		EA4068632605C2020056C318 /* AnnounceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnounceView.xib; sourceTree = "<group>"; };
+		EA4068682605C26E0056C318 /* AnnounceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceView.swift; sourceTree = "<group>"; };
+		EA4068702605C5900056C318 /* CountDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDown.swift; sourceTree = "<group>"; };
 		EA4BC925256BA2E9000669FD /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		EA4BC92A256BA2F9000669FD /* CustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
 		EA5CD43D255BFD46001556D8 /* finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = finish.mp3; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 				EA88AB3E24F0DE3400FBE689 /* AppDelegate.swift */,
 				EA88AB4024F0DE3400FBE689 /* SceneDelegate.swift */,
 				EA406852260561E30056C318 /* ScoreView.swift */,
+				EA4068682605C26E0056C318 /* AnnounceView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,6 +187,7 @@
 				EA4068402604DC040056C318 /* TimerView.xib */,
 				EA40684D260561C00056C318 /* ScoreView.xib */,
 				EA4068052602B41C0056C318 /* BeltView.xib */,
+				EA4068632605C2020056C318 /* AnnounceView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +202,8 @@
 				EA40678925FD8FAC0056C318 /* GameResult.swift */,
 				EA40679125FDAF790056C318 /* TimeLimitRepository.swift */,
 				EA40683B2604C89B0056C318 /* Score.swift */,
+				EA40685B2605C1440056C318 /* GameStatus.swift */,
+				EA4068702605C5900056C318 /* CountDown.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA4068112603638C0056C318 /* PlayScreen.storyboard in Resources */,
+				EA4068642605C2020056C318 /* AnnounceView.xib in Resources */,
 				EA88AB4B24F0DE3800FBE689 /* LaunchScreen.storyboard in Resources */,
 				EA5CD43E255BFD46001556D8 /* finish.mp3 in Resources */,
 				EA40684E260561C00056C318 /* ScoreView.xib in Resources */,
@@ -388,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA40685C2605C1450056C318 /* GameStatus.swift in Sources */,
 				EA40681E260365F90056C318 /* UpDownButtonView.swift in Sources */,
 				EA6D419C258967100077E786 /* Item.swift in Sources */,
 				EA40683C2604C89B0056C318 /* Score.swift in Sources */,
@@ -398,11 +412,13 @@
 				EA4068462604DC1F0056C318 /* TimerView.swift in Sources */,
 				EA4BC926256BA2E9000669FD /* CustomView.swift in Sources */,
 				EA4067C52600169B0056C318 /* PlayScreenViewController.swift in Sources */,
+				EA4068692605C26E0056C318 /* AnnounceView.swift in Sources */,
 				EA88AB6F24F26B6700FBE689 /* StartViewController.swift in Sources */,
 				EA406853260561E30056C318 /* ScoreView.swift in Sources */,
 				EAE1476D25E3C19700818650 /* BeltState.swift in Sources */,
 				EA88AB4124F0DE3400FBE689 /* SceneDelegate.swift in Sources */,
 				EAE1476825E3C16C00818650 /* Player.swift in Sources */,
+				EA4068712605C5900056C318 /* CountDown.swift in Sources */,
 				EAE1475D25E2926F00818650 /* TimeLimit.swift in Sources */,
 				EA40679225FDAF790056C318 /* TimeLimitRepository.swift in Sources */,
 				EA40678A25FD8FAC0056C318 /* GameResult.swift in Sources */,
