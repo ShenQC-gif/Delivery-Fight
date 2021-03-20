@@ -174,7 +174,22 @@ class PlayScreenViewController: UIViewController {
                 player2TimerView.timerStart()
 
             case .afterPlay:
+                announceLabel.isHidden = false
                 announceLabel.text = "Finish!!"
+
+                sounds.playSound(rosource: Finish())
+
+                for beltView in beltViews {
+                    beltView.hideItem(hide: true)
+                }
+
+                for button in player1Buttons {
+                    button.status(isEnabled: false)
+                }
+
+                for button in player2Buttons {
+                    button.status(isEnabled: false)
+                }
         }
     }
 
