@@ -36,7 +36,8 @@ class PlayScreenViewController: UIViewController {
 
     private var sounds = Sounds()
 
-    @IBOutlet weak var announceView: AnnounceView!
+    @IBOutlet private weak var announceLabel: UILabel!
+
 
     private var beltViews : [BeltView] {
         [
@@ -120,7 +121,7 @@ class PlayScreenViewController: UIViewController {
 
                         sounds.playSound(rosource: CountDown())
 
-                        announceView.configure(gameStatus: gameStatus)
+                        announceLabel.text = "③"
 
                         for button in player1Buttons {
                             button.status(isEnabled: false)
@@ -138,20 +139,20 @@ class PlayScreenViewController: UIViewController {
                         }
 
                     case .two:
-                        announceView.configure(gameStatus: gameStatus)
+                        announceLabel.text = "②"
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.configure(gameStatus: .countDownBeforPlay(countDown: .one))
                         }
 
                     case .one:
-                        announceView.configure(gameStatus: gameStatus)
+                        announceLabel.text = "①"
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.configure(gameStatus: .onPlay)
                         }
                 }
 
             case .onPlay:
-                announceView.configure(gameStatus: gameStatus)
+                announceLabel.isHidden = true
 
                 for button in player1Buttons {
                     button.status(isEnabled: true)
@@ -166,7 +167,7 @@ class PlayScreenViewController: UIViewController {
                 player2TimerView.timerStart()
 
             case .afterPlay:
-                announceView.configure(gameStatus: gameStatus)
+                announceLabel.text = "Finish!!"
         }
     }
 
