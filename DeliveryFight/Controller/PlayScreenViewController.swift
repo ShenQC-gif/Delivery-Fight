@@ -34,6 +34,7 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player1TimerView: TimerView!
     @IBOutlet private weak var player2TimerView: TimerView!
 
+    private var gameStatus = GameStatus.firstStatus
     private var sounds = Sounds()
     private var timeLimitRepository = TimeLimitRepository()
     private var timeLimit = TimeLimit.thirty
@@ -85,7 +86,7 @@ class PlayScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        configure(gameStatus: .firstStatus)
+        configure()
     }
 
     //ゲームを始める前に一度だけ設定すれば良いもの設定
@@ -122,7 +123,7 @@ class PlayScreenViewController: UIViewController {
     }
 
     //ゲーム全体の状態によって表示(内容・方法)が変わるものを規定
-    private func configure(gameStatus: GameStatus){
+    private func configure(){
         switch gameStatus {
             case .countDownBeforPlay(countDown: let countDown):
                 switch countDown {
@@ -147,19 +148,22 @@ class PlayScreenViewController: UIViewController {
                         player2ScoreView.resetScore()
 
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.configure(gameStatus: .countDownBeforPlay(countDown: .two))
+                            self.gameStatus = .countDownBeforPlay(countDown: .two)
+                            self.configure()
                         }
 
                     case .two:
                         announceLabel.text = "②"
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.configure(gameStatus: .countDownBeforPlay(countDown: .one))
+                            self.gameStatus = .countDownBeforPlay(countDown: .one)
+                            self.configure()
                         }
 
                     case .one:
                         announceLabel.text = "①"
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.configure(gameStatus: .onPlay)
+                            self.gameStatus = .onPlay
+                            self.configure()
                         }
                 }
 
@@ -252,8 +256,11 @@ class PlayScreenViewController: UIViewController {
                         player2ScoreView.updateScore(item: beltStates[index].item)
                 }
 
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.resetBelt(index: index)
+                    if self.gameStatus == .onPlay{
+                        self.resetBelt(index: index)
+                    }
                 }
 
             default:
@@ -285,7 +292,8 @@ class PlayScreenViewController: UIViewController {
             if restTime == 0 {
                 // タイマーを無効化にし、ゲーム終了時の挙動へ
                 timer.invalidate()
-                configure(gameStatus: .afterPlay)
+                gameStatus = .afterPlay
+                configure()
             }
         })
     }
