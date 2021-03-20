@@ -113,6 +113,8 @@ class PlayScreenViewController: UIViewController {
 
     // game開始(再開)
     private func gameStart() {
+
+        beforeCountDown()
         // カウントダウン開始
         announceLabel.text = "③"
 
@@ -126,12 +128,49 @@ class PlayScreenViewController: UIViewController {
                     self.announceLabel.text = "①"
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.player1TimerView.timerStart()
-                        self.player2TimerView.timerStart()
+                        self.afterCountDown()
+
                     }
                 }
             }
         }
+    }
+
+    // 画面初期化
+    private func beforeCountDown() {
+
+        announceLabel.isHidden = false
+
+        // Btn有効化
+        for button in player1Buttons {
+            button.status(isEnabled: false)
+        }
+
+        for button in player2Buttons {
+            button.status(isEnabled: false)
+        }
+
+        player1ScoreView.resetScore()
+        player2ScoreView.resetScore()
+
+    }
+
+    // カウントダウン終了後の状態
+    private func afterCountDown() {
+        announceLabel.isHidden = true
+
+        // Btn有効化
+        for button in player1Buttons {
+            button.status(isEnabled: true)
+        }
+
+        for button in player2Buttons {
+            button.status(isEnabled: true)
+        }
+
+        // タイマースタート
+        player1TimerView.timerStart()
+        player2TimerView.timerStart()
     }
 
     private func itemUp(index: Int){
