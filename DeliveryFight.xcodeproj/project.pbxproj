@@ -128,6 +128,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA40685A2605C0BD0056C318 /* Uitility */ = {
+			isa = PBXGroup;
+			children = (
+				EA5CD445255C02C8001556D8 /* Sounds.swift */,
+				EA5CD42D255AA0F2001556D8 /* Resources */,
+				EA88AB4724F0DE3800FBE689 /* Assets.xcassets */,
+			);
+			path = Uitility;
+			sourceTree = "<group>";
+		};
 		EA5CD42D255AA0F2001556D8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,9 +178,6 @@
 				EA4068402604DC040056C318 /* TimerView.xib */,
 				EA40684D260561C00056C318 /* ScoreView.xib */,
 				EA4068052602B41C0056C318 /* BeltView.xib */,
-				EA5CD445255C02C8001556D8 /* Sounds.swift */,
-				EA5CD42D255AA0F2001556D8 /* Resources */,
-				EA88AB4724F0DE3800FBE689 /* Assets.xcassets */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,6 +222,7 @@
 				EA6D419A258966850077E786 /* Model */,
 				EA6D4199258966800077E786 /* View */,
 				EA6D41982589666C0077E786 /* Controller */,
+				EA40685A2605C0BD0056C318 /* Uitility */,
 				EA88AB4C24F0DE3800FBE689 /* Info.plist */,
 			);
 			path = DeliveryFight;
