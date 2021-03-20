@@ -81,7 +81,7 @@ class PlayScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        configure(gameStatus: .countDownBeforPlay(countDown: .startingStatus))
+        configure(gameStatus: .firstStatus)
     }
 
     //ゲームを始める前に一度だけ設定すれば良いもの設定
