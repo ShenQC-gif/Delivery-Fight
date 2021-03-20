@@ -35,6 +35,10 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player2TimerView: TimerView!
 
     private var sounds = Sounds()
+    private var timeLimitRepository = TimeLimitRepository()
+    private var timeLimit = TimeLimit.thirty
+    private var timer = Timer()
+    private var restTime = Int()
 
     @IBOutlet private weak var announceLabel: UILabel!
 
@@ -110,6 +114,11 @@ class PlayScreenViewController: UIViewController {
                     self?.itemDown(index: offset)
                 }
             )}
+
+        timeLimit = timeLimitRepository.load() ?? .thirty
+        restTime = timeLimit.rawValue
+        player1TimerView.setTime(time: restTime)
+        player2TimerView.setTime(time: restTime)
     }
 
     //ゲーム全体の状態によって表示(内容・方法)が変わるものを規定
@@ -169,9 +178,8 @@ class PlayScreenViewController: UIViewController {
                     button.status(isEnabled: true)
                 }
 
-                // タイマースタート
-                player1TimerView.timerStart()
-                player2TimerView.timerStart()
+            // タイマースタート
+            timerStart()
 
             case .afterPlay:
                 announceLabel.isHidden = false
@@ -262,6 +270,23 @@ class PlayScreenViewController: UIViewController {
 
     private func randomItem() -> ItemType {
         return MainViewController.itemArray.randomElement() ?? Apple()
+    }
+
+    private func timerStart() {
+        // タイマーを作動
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [self] timer in
+
+            if restTime > 0 {
+                // 残り時間を減らしていく
+                restTime -= 1
+                player1TimerView.setTime(time:restTime)
+                player2TimerView.setTime(time:restTime)
+            }
+            if restTime == 0 {
+                // タイマーを無効化にし、ゲーム終了時の挙動へ
+                timer.invalidate()
+            }
+        })
     }
 
     // presentの種類によって音声を再生
