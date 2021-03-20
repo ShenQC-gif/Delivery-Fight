@@ -285,6 +285,7 @@ class PlayScreenViewController: UIViewController {
             if restTime == 0 {
                 // タイマーを無効化にし、ゲーム終了時の挙動へ
                 timer.invalidate()
+                configure(gameStatus: .afterPlay)
             }
         })
     }
