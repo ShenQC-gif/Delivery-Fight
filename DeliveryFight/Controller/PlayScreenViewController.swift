@@ -120,8 +120,11 @@ class PlayScreenViewController: UIViewController {
                     case .three:
 
                         sounds.playSound(rosource: CountDown())
-
                         announceLabel.text = "③"
+
+                        for beltView in beltViews {
+                            beltView.hideItem(hide: true)
+                        }
 
                         for button in player1Buttons {
                             button.status(isEnabled: false)
@@ -153,6 +156,10 @@ class PlayScreenViewController: UIViewController {
 
             case .onPlay:
                 announceLabel.isHidden = true
+
+                for beltView in beltViews {
+                    beltView.hideItem(hide: false)
+                }
 
                 for button in player1Buttons {
                     button.status(isEnabled: true)

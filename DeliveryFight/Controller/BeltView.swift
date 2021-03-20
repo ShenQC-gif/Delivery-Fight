@@ -93,6 +93,12 @@ final class BeltView: UIView {
         targetImageView().image = UIImage(named:  beltState.item.imageName)
     }
 
+    func hideItem(hide: Bool){
+        for imageView in fruitImageViews{
+            imageView.isHidden = hide
+        }
+    }
+
     private func setRandomItem() -> ItemType{
         return MainViewController.itemArray.randomElement() ?? Apple()
     }
