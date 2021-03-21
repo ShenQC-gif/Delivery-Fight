@@ -122,8 +122,18 @@ class PlayScreenViewController: UIViewController {
                 }
             )}
 
+        rotate(player1ScoreView, 180)
+        rotate(player1TimerView, 180)
+        rotate(player1ResultView, 180)
+
         timeLimit = timeLimitRepository.load() ?? .thirty
 
+    }
+
+    // Viewを回転させる
+    private func rotate(_ UIView: UIView, _ angle: CGFloat) {
+        let oneDegree = CGFloat.pi / 180
+        UIView.transform = CGAffineTransform(rotationAngle: CGFloat(oneDegree * angle))
     }
 
     //ゲーム全体の状態によって表示(内容・方法)が変わるものを規定
