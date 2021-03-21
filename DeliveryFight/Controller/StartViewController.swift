@@ -51,7 +51,7 @@ class StartViewController: UIViewController, AVAudioPlayerDelegate {
 
     // gameover画面に遷移する際のデータの受け渡し
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if segue.identifier == "toMain" {
+        if segue.identifier == "toPlayScreen" {
             playDecideSound()
             timeLimitRepository.save(timeLimit: timeLimit)
         }

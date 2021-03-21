@@ -138,6 +138,9 @@
                                         <state key="normal" title="Home">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didTapHome:" destination="Vt1-Uv-gps" eventType="touchUpInside" id="UxV-3X-eQy"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

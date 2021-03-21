@@ -326,5 +326,9 @@ class PlayScreenViewController: UIViewController {
         configure()
     }
 
+    @IBAction func didTapHome(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        sounds.playSound(rosource: Decide())
+    }
 
 }
