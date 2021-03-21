@@ -9,9 +9,7 @@
 import UIKit
 
 class TimerView: UIView {
-
-    @IBOutlet private weak var timerLabel: UILabel!
-
+    @IBOutlet private var timerLabel: UILabel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,14 +28,11 @@ class TimerView: UIView {
         configure()
     }
 
-    private func configure(){
+    private func configure() {
         timerLabel.layer.borderWidth = 1
     }
 
-
-    func setTime(time: Int){
+    func setTime(time: Int) {
         timerLabel.text = "\(time)"
     }
-
-
 }

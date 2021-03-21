@@ -9,13 +9,11 @@
 import UIKit
 
 final class UpDownButtonView: UIView {
+    private var didTapUpHandler: () -> Void = {}
+    private var didTapDownHandler: () -> Void = {}
 
-    private var didTapUpHandler : () -> Void = {}
-    private var didTapDownHandler : () -> Void = {}
-
-
-    @IBOutlet private weak var upButton: UIButton!
-    @IBOutlet private weak var downButton: UIButton!
+    @IBOutlet private var upButton: UIButton!
+    @IBOutlet private var downButton: UIButton!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,31 +26,26 @@ final class UpDownButtonView: UIView {
     }
 
     private func loadNib() {
-
         let view = Bundle.main.loadNibNamed("UpDownButtonView", owner: self, options: nil)?.first as! UIView
         view.frame = bounds
         addSubview(view)
-
     }
 
-    func configure(didTapUp: @escaping () -> Void, didTapDown: @escaping () -> Void){
+    func configure(didTapUp: @escaping () -> Void, didTapDown: @escaping () -> Void) {
         didTapUpHandler = didTapUp
         didTapDownHandler = didTapDown
     }
 
-    func status(isEnabled: Bool){
+    func status(isEnabled: Bool) {
         upButton.isEnabled = isEnabled
         downButton.isEnabled = isEnabled
     }
 
-    @IBAction func didTapUp(_ sender: Any) {
+    @IBAction func didTapUp(_: Any) {
         didTapUpHandler()
     }
 
-    @IBAction func didTapDown(_ sender: Any) {
+    @IBAction func didTapDown(_: Any) {
         didTapDownHandler()
     }
-
-
-
 }

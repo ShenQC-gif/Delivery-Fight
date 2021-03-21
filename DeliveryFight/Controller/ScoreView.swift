@@ -9,8 +9,7 @@
 import UIKit
 
 class ScoreView: UIView {
-
-    @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private var scoreLabel: UILabel!
 
     // PlayScreenVCで得点比較するためprivateではない
     var score = Score()
@@ -32,16 +31,13 @@ class ScoreView: UIView {
         scoreLabel.text = "\(score.score) pt"
     }
 
-    func updateScore(item:ItemType){
+    func updateScore(item: ItemType) {
         score.updateScore(item: item)
         scoreLabel.text = "\(score.score) pt"
     }
 
-    func resetScore(){
+    func resetScore() {
         score.resetScore()
         scoreLabel.text = "\(score.score) pt"
     }
-
-    
-
 }

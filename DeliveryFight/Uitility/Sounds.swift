@@ -12,8 +12,7 @@ import Foundation
 class Sounds {
     private var player: AVAudioPlayer?
 
-    func playSound(rosource:Resource) {
-        
+    func playSound(rosource: Resource) {
         let soundURL = Bundle.main.url(forResource: rosource.filename, withExtension: rosource.extentionName)
 
         do {
@@ -26,32 +25,31 @@ class Sounds {
 }
 
 protocol Resource {
-    var filename :String {get}
-    var extentionName: String {get}
+    var filename: String { get }
+    var extentionName: String { get }
 }
 
-struct GetBomb :Resource {
+struct GetBomb: Resource {
     let filename: String = "bomb"
     let extentionName: String = "mp3"
 }
 
-struct GetPoint :Resource {
+struct GetPoint: Resource {
     let filename: String = "getPoint"
     let extentionName: String = "mp3"
 }
 
-struct Decide :Resource {
+struct Decide: Resource {
     let filename: String = "decide"
     let extentionName: String = "mp3"
 }
 
-struct CountDown :Resource {
+struct CountDown: Resource {
     let filename: String = "countDown"
     let extentionName: String = "mp3"
 }
 
-struct Finish :Resource {
+struct Finish: Resource {
     let filename: String = "finish"
     let extentionName: String = "mp3"
 }
-

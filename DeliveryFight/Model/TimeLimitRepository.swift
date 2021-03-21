@@ -9,16 +9,13 @@
 import Foundation
 
 struct TimeLimitRepository {
-
     private static let key = "Time"
 
     func load() -> TimeLimit? {
         return TimeLimit(rawValue: UserDefaults.standard.integer(forKey: Self.key))
     }
 
-    func save(timeLimit:TimeLimit) {
+    func save(timeLimit: TimeLimit) {
         UserDefaults.standard.set(timeLimit.rawValue, forKey: Self.key)
     }
-
-
 }

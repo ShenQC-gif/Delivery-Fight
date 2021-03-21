@@ -9,8 +9,7 @@
 import UIKit
 
 class ResultView: UIView {
-
-    @IBOutlet private weak var resultLabel: UILabel!
+    @IBOutlet private var resultLabel: UILabel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,14 +27,13 @@ class ResultView: UIView {
         addSubview(view)
     }
 
-    func configure(gameResult:GameResult){
+    func configure(gameResult: GameResult) {
         resultLabel.text = gameResult.apperance().text
         resultLabel.textColor = gameResult.apperance().color
     }
 }
 
 private extension GameResult {
-
     func apperance() -> GameResultAppearance {
         switch self {
         case .win:
@@ -49,8 +47,8 @@ private extension GameResult {
 }
 
 protocol GameResultAppearance {
-    var text : String{get}
-    var color : UIColor{get}
+    var text: String { get }
+    var color: UIColor { get }
 }
 
 struct WinAppearance: GameResultAppearance {

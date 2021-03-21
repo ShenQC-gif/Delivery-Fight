@@ -8,48 +8,43 @@
 
 import Foundation
 
-
 struct Location {
-    var x : Int
-    var y : Int
+    var x: Int
+    var y: Int
 }
 
 class PresentLocation {
-    
     var state = [
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
-        ["","","","",""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
     ]
-    
-    func getEmptyState() -> [[String]]{
+
+    func getEmptyState() -> [[String]] {
         return
             [
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
-            ["","","","",""],
+                ["", "", "", "", ""],
+                ["", "", "", "", ""],
+                ["", "", "", "", ""],
+                ["", "", "", "", ""],
+                ["", "", "", "", ""],
+                ["", "", "", "", ""],
+                ["", "", "", "", ""],
             ]
     }
-    
-    ///何行目の、何列目(ボタンのtagで管理)のpresentかを返す
+
+    /// 何行目の、何列目(ボタンのtagで管理)のpresentかを返す
     func findLocation(tag: Int) -> Location {
-        
-        for (x,col) in state.enumerated(){
-            if col[tag] != ""{
-                return Location(x:x, y:tag)
+        for (x, col) in state.enumerated() {
+            if col[tag] != "" {
+                return Location(x: x, y: tag)
             }
         }
         assertionFailure("Present is missing😢")
         abort()
     }
-    
-    
 }

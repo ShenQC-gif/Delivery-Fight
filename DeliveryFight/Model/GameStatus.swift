@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum GameStatus:Equatable{
-    case countDownBeforPlay(countDown:CountDownStatus)
+enum GameStatus: Equatable {
+    case countDownBeforPlay(countDown: CountDownStatus)
     case onPlay
     case afterPlay
 

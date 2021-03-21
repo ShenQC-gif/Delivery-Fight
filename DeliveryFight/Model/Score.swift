@@ -8,19 +8,18 @@
 
 import Foundation
 
-class Score{
-
-    var score : Int
+class Score {
+    var score: Int
 
     init() {
-        self.score = 0
+        score = 0
     }
 
-    func updateScore(item: ItemType){
+    func updateScore(item: ItemType) {
         score += item.score
     }
 
-    func resetScore(){
+    func resetScore() {
         score = 0
     }
 }

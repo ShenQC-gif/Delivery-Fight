@@ -17,12 +17,10 @@ enum TimeLimit: Int {
     case sixty = 60
 
     func plus() -> TimeLimit? {
-        TimeLimit(rawValue: self.rawValue + 10)
+        TimeLimit(rawValue: rawValue + 10)
     }
 
     func minus() -> TimeLimit? {
-        TimeLimit(rawValue: self.rawValue - 10)
+        TimeLimit(rawValue: rawValue - 10)
     }
-
-
 }

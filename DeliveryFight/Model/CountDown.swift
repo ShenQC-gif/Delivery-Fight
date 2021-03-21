@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CountDownStatus : Int{
+enum CountDownStatus: Int {
     case three = 3
     case two = 2
     case one = 1
