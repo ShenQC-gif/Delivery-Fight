@@ -38,6 +38,17 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player2ResultView: ResultView!
 
     static let itemArray: [ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
+    static func makeInitialState() -> [BeltState] {
+        [
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+            BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
+        ]
+    }
+    //ここで具体的なBeltの状態(Item,Item位置)を設定
+    private var beltStates = [BeltState]()
 
     @IBOutlet private weak var menuSV: UIStackView!
 
@@ -81,15 +92,6 @@ class PlayScreenViewController: UIViewController {
         ]
     }
 
-    //ここで具体的なBeltの状態(Item,Item位置)を設定
-    private var beltStates : [BeltState] = [
-        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
-        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
-        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
-        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center)),
-        BeltState(item: Apple(), itemPosition: .onBelt(ItemBeltPosition.center))
-    ]
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
@@ -98,10 +100,6 @@ class PlayScreenViewController: UIViewController {
 
     //ゲームを始める前に一度だけ設定すれば良いもの設定
     private func setUp(){
-
-        zip(beltStates, beltViews).forEach {
-            $1.configure(beltState: $0)
-        }
 
         player1Buttons.enumerated().forEach { offset, UpDownButtonView in
             UpDownButtonView.configure(
@@ -195,6 +193,10 @@ class PlayScreenViewController: UIViewController {
 
             case .onPlay:
                 announceLabel.isHidden = true
+                beltStates = PlayScreenViewController.makeInitialState()
+                zip(beltStates, beltViews).forEach {
+                    $1.configure(beltState: $0)
+                }
 
                 for beltView in beltViews {
                     beltView.hideItem(hide: false)
