@@ -127,6 +127,9 @@
                                         <state key="normal" title="Again">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didTapAgain:" destination="Vt1-Uv-gps" eventType="touchUpInside" id="yNc-6r-hnw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgX-Wt-X0v">
                                         <rect key="frame" x="0.0" y="137" width="248" height="87"/>

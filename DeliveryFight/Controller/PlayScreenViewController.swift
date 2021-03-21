@@ -119,9 +119,7 @@ class PlayScreenViewController: UIViewController {
             )}
 
         timeLimit = timeLimitRepository.load() ?? .thirty
-        restTime = timeLimit.rawValue
-        player1TimerView.setTime(time: restTime)
-        player2TimerView.setTime(time: restTime)
+
     }
 
     //ゲーム全体の状態によって表示(内容・方法)が変わるものを規定
@@ -132,7 +130,13 @@ class PlayScreenViewController: UIViewController {
                     case .three:
 
                         sounds.playSound(rosource: CountDown())
+
+                        announceLabel.isHidden = false
                         announceLabel.text = "③"
+
+                        restTime = timeLimit.rawValue
+                        player1TimerView.setTime(time: restTime)
+                        player2TimerView.setTime(time: restTime)
 
                         for beltView in beltViews {
                             beltView.hideItem(hide: true)
@@ -316,5 +320,11 @@ class PlayScreenViewController: UIViewController {
             sounds.playSound(rosource: GetPoint())
         }
     }
+
+    @IBAction func didTapAgain(_ sender: Any) {
+        gameStatus = .countDownBeforPlay(countDown: .startingStatus)
+        configure()
+    }
+
 
 }
