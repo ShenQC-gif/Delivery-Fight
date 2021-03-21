@@ -55,7 +55,7 @@ class PlayScreenViewController: UIViewController {
     }
 
     // 具体的なBeltの状態(Itemの種類と位置)を設定
-    private var beltStatus = [BeltState]()
+    private var beltStates = [BeltState]()
 
     private var beltViews: [BeltView] {
         [
@@ -203,9 +203,9 @@ class PlayScreenViewController: UIViewController {
 
             announceLabel.isHidden = true
 
-            // beltViewにbeltStatusを渡し、itemの情報を反映
-            beltStatus = PlayScreenViewController.makeInitialState()
-            zip(beltStatus, beltViews).forEach {
+            // beltViewにbeltStatuを渡し、itemの情報を反映
+            beltStates = PlayScreenViewController.makeInitialState()
+            zip(beltStates, beltViews).forEach {
                 $1.configure(beltState: $0)
             }
 
@@ -282,7 +282,7 @@ class PlayScreenViewController: UIViewController {
     }
 
     private func itemUp(index: Int) {
-        let belt = beltStatus[index]
+        let belt = beltStates[index]
         let item = belt.item
         let newItemPosition: ItemPosition = {
             switch belt.itemPosition {
@@ -293,13 +293,13 @@ class PlayScreenViewController: UIViewController {
             }
         }()
 
-        beltStatus[index] = BeltState(item: item, itemPosition: newItemPosition)
-        beltViews[index].configure(beltState: beltStatus[index])
+        beltStates[index] = BeltState(item: item, itemPosition: newItemPosition)
+        beltViews[index].configure(beltState: beltStates[index])
         checkIfOutOfBelt(index: index)
     }
 
     private func itemDown(index: Int) {
-        let belt = beltStatus[index]
+        let belt = beltStates[index]
         let item = belt.item
         let newItemPosition: ItemPosition = {
             switch belt.itemPosition {
@@ -310,15 +310,15 @@ class PlayScreenViewController: UIViewController {
             }
         }()
 
-        beltStatus[index] = BeltState(item: item, itemPosition: newItemPosition)
-        beltViews[index].configure(beltState: beltStatus[index])
+        beltStates[index] = BeltState(item: item, itemPosition: newItemPosition)
+        beltViews[index].configure(beltState: beltStates[index])
         checkIfOutOfBelt(index: index)
     }
 
     // itemがbeltの外(player側)に落ちたの時の処理
     private func checkIfOutOfBelt(index: Int) {
 
-        switch beltStatus[index].itemPosition {
+        switch beltStates[index].itemPosition {
 
             //itemがbeltの外(player側)に落ちたの時
         case let .outOfBelt(player):
@@ -327,14 +327,14 @@ class PlayScreenViewController: UIViewController {
             player2Buttons[index].status(isEnabled: false)
 
             //音を再生
-            playSoundByTypeOfItem(item: beltStatus[index].item)
+            playSoundByTypeOfItem(item: beltStates[index].item)
 
             //itemが落ちたplayerのスコアを更新
             switch player {
             case .player1:
-                player1ScoreView.updateScore(item: beltStatus[index].item)
+                player1ScoreView.updateScore(item: beltStates[index].item)
             case .player2:
-                player2ScoreView.updateScore(item: beltStatus[index].item)
+                player2ScoreView.updateScore(item: beltStates[index].item)
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -354,8 +354,8 @@ class PlayScreenViewController: UIViewController {
 
     //ベルトを初期化
     private func resetBelt(index: Int) {
-        beltStatus[index] = BeltState(item: randomItem(), itemPosition: .onBelt(.center))
-        beltViews[index].configure(beltState: beltStatus[index])
+        beltStates[index] = BeltState(item: randomItem(), itemPosition: .onBelt(.center))
+        beltViews[index].configure(beltState: beltStates[index])
     }
 
     private func randomItem() -> ItemType {
