@@ -323,6 +323,7 @@ class PlayScreenViewController: UIViewController {
 
     @IBAction func didTapAgain(_ sender: Any) {
         gameStatus = .countDownBeforPlay(countDown: .startingStatus)
+        sounds.playSound(rosource: Decide())
         configure()
     }
 
