@@ -312,12 +312,19 @@ class PlayScreenViewController: UIViewController {
 
     // itemがbeltの外(player側)に落ちたの時の処理
     private func checkIfOutOfBelt(index: Int) {
+
         switch beltStates[index].itemPosition {
+
+            //itemがbeltの外(player側)に落ちたの時
         case let .outOfBelt(player):
+            //一旦ボタン無効化
             player1Buttons[index].status(isEnabled: false)
             player2Buttons[index].status(isEnabled: false)
+
+            //音を再生
             playSoundByTypeOfItem(item: beltStates[index].item)
 
+            //itemが落ちたplayerのスコアを更新
             switch player {
             case .player1:
                 player1ScoreView.updateScore(item: beltStates[index].item)
@@ -326,7 +333,11 @@ class PlayScreenViewController: UIViewController {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                //0.5秒後にまだゲーム中ならボタンを有効化してベルトを初期化
                 if self.gameStatus == .onPlay {
+                    //ボタン有効化
+                    self.player1Buttons[index].status(isEnabled: true)
+                    self.player2Buttons[index].status(isEnabled: true)
                     self.resetBelt(index: index)
                 }
             }
@@ -336,9 +347,8 @@ class PlayScreenViewController: UIViewController {
         }
     }
 
+    //ベルトを初期化
     private func resetBelt(index: Int) {
-        player1Buttons[index].status(isEnabled: true)
-        player2Buttons[index].status(isEnabled: true)
         beltStates[index] = BeltState(item: randomItem(), itemPosition: .onBelt(.center))
         beltViews[index].configure(beltState: beltStates[index])
     }
