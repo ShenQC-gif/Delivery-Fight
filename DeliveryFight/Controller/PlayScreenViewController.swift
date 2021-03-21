@@ -34,6 +34,8 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player1TimerView: TimerView!
     @IBOutlet private weak var player2TimerView: TimerView!
 
+    @IBOutlet private weak var menuSV: UIStackView!
+
     private var gameStatus = GameStatus.firstStatus
     private var sounds = Sounds()
     private var timeLimitRepository = TimeLimitRepository()
@@ -147,6 +149,8 @@ class PlayScreenViewController: UIViewController {
                         player1ScoreView.resetScore()
                         player2ScoreView.resetScore()
 
+                        menuSV.isHidden = true
+
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.gameStatus = .countDownBeforPlay(countDown: .two)
                             self.configure()
@@ -201,6 +205,11 @@ class PlayScreenViewController: UIViewController {
 
                 for button in player2Buttons {
                     button.status(isEnabled: false)
+                }
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.announceLabel.isHidden = true
+                    self.menuSV.isHidden = false
                 }
         }
     }

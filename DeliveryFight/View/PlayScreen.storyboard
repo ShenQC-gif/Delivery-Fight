@@ -117,6 +117,27 @@
                                 <rect key="frame" x="332.5" y="797" width="51.5" height="52"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="f0Y-UN-E3K" userLabel="Menu SV">
+                                <rect key="frame" x="83" y="336" width="248" height="224"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuQ-DY-JBV">
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="87"/>
+                                        <color key="backgroundColor" white="0.01533069349" alpha="0.84705882349999995" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <state key="normal" title="Again">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgX-Wt-X0v">
+                                        <rect key="frame" x="0.0" y="137" width="248" height="87"/>
+                                        <color key="backgroundColor" white="0.01533069349" alpha="0.84705882349999995" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <state key="normal" title="Home">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sfj-iO-M6r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -134,6 +155,7 @@
                             <constraint firstItem="Sfj-iO-M6r" firstAttribute="trailing" secondItem="0fk-Nq-6Bf" secondAttribute="trailing" id="P3T-FA-bnX"/>
                             <constraint firstItem="j8b-cU-SVU" firstAttribute="top" secondItem="LVH-h0-qt0" secondAttribute="top" id="P8Q-qO-dVC"/>
                             <constraint firstItem="Yl7-HA-e1o" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="R3c-aM-zIg"/>
+                            <constraint firstItem="f0Y-UN-E3K" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="RXq-Tg-a1r"/>
                             <constraint firstItem="MKO-JI-kr6" firstAttribute="bottom" secondItem="sue-Pe-xtz" secondAttribute="bottom" id="T4U-qe-D9a"/>
                             <constraint firstItem="MKO-JI-kr6" firstAttribute="trailing" secondItem="vCF-Bw-IRd" secondAttribute="trailing" constant="-30" id="TuW-Ja-h4G"/>
                             <constraint firstItem="MKO-JI-kr6" firstAttribute="width" secondItem="j8b-cU-SVU" secondAttribute="width" id="XDF-6t-gB6"/>
@@ -146,12 +168,15 @@
                             <constraint firstItem="LVH-h0-qt0" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="gwX-u6-SHA"/>
                             <constraint firstItem="j8b-cU-SVU" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.125" id="hFi-Zk-zcF"/>
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.5" id="hWT-jL-PTp"/>
+                            <constraint firstItem="f0Y-UN-E3K" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.6" id="i1M-6C-5cl"/>
                             <constraint firstItem="sue-Pe-xtz" firstAttribute="top" secondItem="NLi-Tt-rgX" secondAttribute="bottom" constant="10" id="iSy-YC-Fhl"/>
+                            <constraint firstItem="f0Y-UN-E3K" firstAttribute="centerY" secondItem="vCF-Bw-IRd" secondAttribute="centerY" id="knW-it-ade"/>
                             <constraint firstItem="4f2-z2-DqO" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.8" id="mwP-15-3i3"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="width" secondItem="0fk-Nq-6Bf" secondAttribute="width" id="ocR-EF-L74"/>
                             <constraint firstItem="LVH-h0-qt0" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.4" id="p7k-BX-aH4"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="height" secondItem="Yl7-HA-e1o" secondAttribute="height" id="pdZ-5y-XC4"/>
                             <constraint firstItem="sue-Pe-xtz" firstAttribute="height" secondItem="LVH-h0-qt0" secondAttribute="height" id="ucw-yS-1Ao"/>
+                            <constraint firstItem="f0Y-UN-E3K" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.25" id="wCp-ni-Ona"/>
                             <constraint firstItem="4f2-z2-DqO" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.4" id="zYu-MK-XaV"/>
                         </constraints>
                     </view>
@@ -162,6 +187,7 @@
                         <outlet property="beltView3" destination="vKj-UG-2QD" id="rQn-oh-u7B"/>
                         <outlet property="beltView4" destination="CCb-eW-Qom" id="A14-ly-Jjv"/>
                         <outlet property="beltView5" destination="Fpe-HZ-U9l" id="Yc4-cO-VY5"/>
+                        <outlet property="menuSV" destination="f0Y-UN-E3K" id="rel-pC-mpd"/>
                         <outlet property="player1Buttons1" destination="OVD-jm-zu0" id="xru-zJ-Ndi"/>
                         <outlet property="player1Buttons2" destination="6xf-yX-OwJ" id="fJ5-2V-9bg"/>
                         <outlet property="player1Buttons3" destination="o9b-hD-AN5" id="33t-CJ-DzI"/>
