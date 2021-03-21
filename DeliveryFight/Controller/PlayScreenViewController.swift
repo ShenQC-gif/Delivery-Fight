@@ -57,6 +57,7 @@ class PlayScreenViewController: UIViewController {
     // 具体的なBeltの状態(Itemの種類と位置)を設定
     private var beltStates = [BeltState]()
 
+    
     private var beltViews: [BeltView] {
         [
             beltView1,
