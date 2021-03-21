@@ -123,9 +123,9 @@ class CustomView: UIView {
 
         resultLabel.isHidden = false
 
-        let appearance = gameResult.apperance()
-        resultLabel.text = appearance.text
-        resultLabel.textColor = appearance.color
+//        let appearance = gameResult.apperance()
+//        resultLabel.text = appearance.text
+//        resultLabel.textColor = appearance.color
     }
 
     func updateScore(item: ItemType){
@@ -144,38 +144,38 @@ class CustomView: UIView {
 
 }
 
-private extension GameResult {
-
-    func apperance() -> GameResultAppearance {
-        switch self {
-        case .win:
-            return WinAppearance()
-        case .lose:
-            return LoseAppearance()
-        case .draw:
-            return DrawAppearance()
-        }
-    }
-}
-
-protocol GameResultAppearance {
-    var text : String{get}
-    var color : UIColor{get}
-}
-
-struct WinAppearance: GameResultAppearance {
-    var text: String = "Win!"
-    var color: UIColor = .red
-}
-
-struct LoseAppearance: GameResultAppearance {
-    var text: String = "...Lose"
-    var color: UIColor = .blue
-}
-
-
-struct DrawAppearance: GameResultAppearance {
-    var text: String = "Draw!"
-    var color: UIColor = .black
-}
+//private extension GameResult {
+//
+//    func apperance() -> GameResultAppearance {
+//        switch self {
+//        case .win:
+//            return WinAppearance()
+//        case .lose:
+//            return LoseAppearance()
+//        case .draw:
+//            return DrawAppearance()
+//        }
+//    }
+//}
+//
+//protocol GameResultAppearance {
+//    var text : String{get}
+//    var color : UIColor{get}
+//}
+//
+//struct WinAppearance: GameResultAppearance {
+//    var text: String = "Win!"
+//    var color: UIColor = .red
+//}
+//
+//struct LoseAppearance: GameResultAppearance {
+//    var text: String = "...Lose"
+//    var color: UIColor = .blue
+//}
+//
+//
+//struct DrawAppearance: GameResultAppearance {
+//    var text: String = "Draw!"
+//    var color: UIColor = .black
+//}
 

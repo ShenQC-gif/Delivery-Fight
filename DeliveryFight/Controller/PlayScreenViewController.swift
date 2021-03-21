@@ -34,6 +34,10 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player1TimerView: TimerView!
     @IBOutlet private weak var player2TimerView: TimerView!
 
+    @IBOutlet private weak var player1ResultView: ResultView!
+    @IBOutlet private weak var player2ResultView: ResultView!
+
+
     @IBOutlet private weak var menuSV: UIStackView!
 
     private var gameStatus = GameStatus.firstStatus
@@ -132,6 +136,8 @@ class PlayScreenViewController: UIViewController {
                         sounds.playSound(rosource: CountDown())
 
                         announceLabel.isHidden = false
+                        player1ResultView.isHidden = true
+                        player2ResultView.isHidden = true
                         announceLabel.text = "③"
 
                         restTime = timeLimit.rawValue
@@ -212,10 +218,35 @@ class PlayScreenViewController: UIViewController {
                 }
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.announceLabel.isHidden = true
-                    self.menuSV.isHidden = false
+                    self.player1ResultView.isHidden = false
+                    self.player2ResultView.isHidden = false
+                    self.showResult()
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.announceLabel.isHidden = true
+                        self.menuSV.isHidden = false
+                    }
                 }
         }
+    }
+
+    private func showResult(){
+        func player1Result() -> GameResult{
+            if player1ScoreView.score.score > player2ScoreView.score.score{
+                return .win
+            }else if player1ScoreView.score.score < player2ScoreView.score.score {
+                return .lose
+            }else{
+                return .draw
+            }
+        }
+
+        func player2Result() -> GameResult{
+            GameResult.opponentResult(player1Result())()
+        }
+
+        player1ResultView.configure(gameResult: player1Result())
+        player2ResultView.configure(gameResult: player2Result())
     }
 
     private func itemUp(index: Int){

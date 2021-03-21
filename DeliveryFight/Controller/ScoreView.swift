@@ -11,7 +11,9 @@ import UIKit
 class ScoreView: UIView {
 
     @IBOutlet private weak var scoreLabel: UILabel!
-    private var score = Score()
+
+    // PlayScreenVCで得点比較するためprivateではない
+    var score = Score()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

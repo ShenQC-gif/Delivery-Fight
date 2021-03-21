@@ -84,6 +84,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tam-2c-ueV" userLabel="Player1 ResultView" customClass="ResultView" customModule="Delivery_Fight" customModuleProvider="target">
+                                <rect key="frame" x="103.5" y="224" width="207" height="64"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0As-Au-1UM" userLabel="Player2 ResultView" customClass="ResultView" customModule="Delivery_Fight" customModuleProvider="target">
+                                <rect key="frame" x="103.5" y="608" width="207" height="64"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NLi-Tt-rgX" userLabel="Player2 Button SV">
                                 <rect key="frame" x="0.0" y="682" width="414" height="89.5"/>
                                 <subviews>
@@ -148,15 +156,20 @@
                         <viewLayoutGuide key="safeArea" id="Sfj-iO-M6r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="0As-Au-1UM" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="0En-TB-wDg"/>
                             <constraint firstItem="4f2-z2-DqO" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="0ZC-lP-wea"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="top" secondItem="0fk-Nq-6Bf" secondAttribute="bottom" constant="10" id="0jn-l3-OQ1"/>
                             <constraint firstItem="sue-Pe-xtz" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="2rH-Uz-STD"/>
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="centerY" secondItem="vCF-Bw-IRd" secondAttribute="centerY" id="310-4h-lqK"/>
                             <constraint firstItem="4f2-z2-DqO" firstAttribute="centerY" secondItem="vCF-Bw-IRd" secondAttribute="centerY" id="4pY-Ng-Cxf"/>
+                            <constraint firstItem="0As-Au-1UM" firstAttribute="bottom" secondItem="0fk-Nq-6Bf" secondAttribute="bottom" id="5Zr-s7-pTK"/>
                             <constraint firstItem="LVH-h0-qt0" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.075" id="7ow-Ox-tS1"/>
                             <constraint firstItem="LVH-h0-qt0" firstAttribute="bottom" secondItem="Yl7-HA-e1o" secondAttribute="top" constant="-10" id="8SD-TK-OxQ"/>
                             <constraint firstItem="j8b-cU-SVU" firstAttribute="leading" secondItem="vCF-Bw-IRd" secondAttribute="leading" constant="30" id="AZ8-zR-IND"/>
+                            <constraint firstItem="0As-Au-1UM" firstAttribute="height" secondItem="Tam-2c-ueV" secondAttribute="height" id="B6B-AZ-lnh"/>
                             <constraint firstItem="Yl7-HA-e1o" firstAttribute="width" secondItem="0fk-Nq-6Bf" secondAttribute="width" id="BFQ-GE-01i"/>
+                            <constraint firstItem="Tam-2c-ueV" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.5" id="DCe-cV-9eA"/>
+                            <constraint firstItem="0As-Au-1UM" firstAttribute="width" secondItem="Tam-2c-ueV" secondAttribute="width" id="IP0-5d-Thd"/>
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="KoQ-uE-g01"/>
                             <constraint firstItem="Sfj-iO-M6r" firstAttribute="trailing" secondItem="0fk-Nq-6Bf" secondAttribute="trailing" id="P3T-FA-bnX"/>
                             <constraint firstItem="j8b-cU-SVU" firstAttribute="top" secondItem="LVH-h0-qt0" secondAttribute="top" id="P8Q-qO-dVC"/>
@@ -172,15 +185,18 @@
                             <constraint firstItem="Yl7-HA-e1o" firstAttribute="bottom" secondItem="0fk-Nq-6Bf" secondAttribute="top" constant="-10" id="ed5-ws-akW"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="fff-Oi-740"/>
                             <constraint firstItem="LVH-h0-qt0" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="gwX-u6-SHA"/>
+                            <constraint firstItem="Tam-2c-ueV" firstAttribute="top" secondItem="0fk-Nq-6Bf" secondAttribute="top" id="hDV-pJ-ulx"/>
                             <constraint firstItem="j8b-cU-SVU" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.125" id="hFi-Zk-zcF"/>
                             <constraint firstItem="0fk-Nq-6Bf" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.5" id="hWT-jL-PTp"/>
                             <constraint firstItem="f0Y-UN-E3K" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.6" id="i1M-6C-5cl"/>
                             <constraint firstItem="sue-Pe-xtz" firstAttribute="top" secondItem="NLi-Tt-rgX" secondAttribute="bottom" constant="10" id="iSy-YC-Fhl"/>
+                            <constraint firstItem="Tam-2c-ueV" firstAttribute="centerX" secondItem="vCF-Bw-IRd" secondAttribute="centerX" id="idS-JO-Pne"/>
                             <constraint firstItem="f0Y-UN-E3K" firstAttribute="centerY" secondItem="vCF-Bw-IRd" secondAttribute="centerY" id="knW-it-ade"/>
                             <constraint firstItem="4f2-z2-DqO" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.8" id="mwP-15-3i3"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="width" secondItem="0fk-Nq-6Bf" secondAttribute="width" id="ocR-EF-L74"/>
                             <constraint firstItem="LVH-h0-qt0" firstAttribute="width" secondItem="vCF-Bw-IRd" secondAttribute="width" multiplier="0.4" id="p7k-BX-aH4"/>
                             <constraint firstItem="NLi-Tt-rgX" firstAttribute="height" secondItem="Yl7-HA-e1o" secondAttribute="height" id="pdZ-5y-XC4"/>
+                            <constraint firstItem="Tam-2c-ueV" firstAttribute="height" secondItem="0fk-Nq-6Bf" secondAttribute="height" multiplier="1/7" id="qDf-pa-cfV"/>
                             <constraint firstItem="sue-Pe-xtz" firstAttribute="height" secondItem="LVH-h0-qt0" secondAttribute="height" id="ucw-yS-1Ao"/>
                             <constraint firstItem="f0Y-UN-E3K" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.25" id="wCp-ni-Ona"/>
                             <constraint firstItem="4f2-z2-DqO" firstAttribute="height" secondItem="vCF-Bw-IRd" secondAttribute="height" multiplier="0.4" id="zYu-MK-XaV"/>
@@ -199,6 +215,7 @@
                         <outlet property="player1Buttons3" destination="o9b-hD-AN5" id="33t-CJ-DzI"/>
                         <outlet property="player1Buttons4" destination="Lfj-xQ-REj" id="c3T-xM-Ud8"/>
                         <outlet property="player1Buttons5" destination="pEV-WR-YO6" id="6gZ-wP-Hzv"/>
+                        <outlet property="player1ResultView" destination="Tam-2c-ueV" id="hY3-P2-h4g"/>
                         <outlet property="player1ScoreView" destination="LVH-h0-qt0" id="aHR-Sk-PLM"/>
                         <outlet property="player1TimerView" destination="j8b-cU-SVU" id="bt5-Ip-kkG"/>
                         <outlet property="player2Buttons1" destination="2Po-My-CYm" id="X1p-vW-G0P"/>
@@ -206,6 +223,7 @@
                         <outlet property="player2Buttons3" destination="ff8-Tm-SG4" id="0Ya-CA-RaK"/>
                         <outlet property="player2Buttons4" destination="ONL-qc-Bfw" id="NT6-xm-a1i"/>
                         <outlet property="player2Buttons5" destination="kbY-oh-vwv" id="kRp-Fg-LRC"/>
+                        <outlet property="player2ResultView" destination="0As-Au-1UM" id="zWs-6H-2o5"/>
                         <outlet property="player2ScoreView" destination="sue-Pe-xtz" id="clJ-As-6AM"/>
                         <outlet property="player2TimerView" destination="MKO-JI-kr6" id="50P-yT-rgV"/>
                     </connections>
@@ -224,6 +242,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
