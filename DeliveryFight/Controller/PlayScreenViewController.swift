@@ -42,10 +42,6 @@ class PlayScreenViewController: UIViewController {
     private var gameStatus = GameStatus.firstStatus
     private var sounds = Sounds()
 
-    private var timeLimitRepository = TimeLimitRepository()
-    private var timeLimit = TimeLimit.thirty
-    private var timer = Timer()
-    private var restTime = Int()
 
     static let itemArray: [ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
     static func makeInitialState() -> [BeltState] {
@@ -127,13 +123,23 @@ class PlayScreenViewController: UIViewController {
         rotate(player1TimerView, 180)
         rotate(player1ResultView, 180)
 
-        timeLimit = timeLimitRepository.load() ?? .thirty
+        //残り時間が0になった時の挙動をplayer1のみに渡す(どちらか一つに渡せばよくplayer2にも渡す必要なし)
+        player1TimerView.configure(timeOverHandler: { [weak self] in
+            self?.changeGameStatus()
+        })
+        player2TimerView.configure(timeOverHandler: nil)
+
     }
 
     // Viewを回転させる
     private func rotate(_ UIView: UIView, _ angle: CGFloat) {
         let oneDegree = CGFloat.pi / 180
         UIView.transform = CGAffineTransform(rotationAngle: CGFloat(oneDegree * angle))
+    }
+
+    private func changeGameStatus(){
+        gameStatus = .afterPlay
+        configure()
     }
 
     // ゲーム全体の状態によって表示(内容・方法)が変わるものを規定
@@ -146,16 +152,13 @@ class PlayScreenViewController: UIViewController {
 
                 sounds.playSound(rosource: CountDown())
 
+                menuSV.isHidden = true
+
                 announceLabel.isHidden = false
                 announceLabel.text = "③"
 
                 player1ResultView.isHidden = true
                 player2ResultView.isHidden = true
-
-                // タイマーをセット
-                restTime = timeLimit.rawValue
-                player1TimerView.setTime(time: restTime)
-                player2TimerView.setTime(time: restTime)
 
                 // ボタンを無効化
                 for button in player1Buttons {
@@ -169,7 +172,8 @@ class PlayScreenViewController: UIViewController {
                 player1ScoreView.resetScore()
                 player2ScoreView.resetScore()
 
-                menuSV.isHidden = true
+                player1TimerView.setInitialTime()
+                player2TimerView.setInitialTime()
 
                 // 1秒後に次のカウントダウンへ
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -219,7 +223,8 @@ class PlayScreenViewController: UIViewController {
             }
 
             // タイマースタート
-            timerStart()
+            player1TimerView.timerStart()
+            player2TimerView.timerStart()
 
         // ゲーム終了時
         case .afterPlay:
@@ -357,24 +362,7 @@ class PlayScreenViewController: UIViewController {
         return PlayScreenViewController.itemArray.randomElement() ?? Apple()
     }
 
-    private func timerStart() {
-        // タイマーを作動
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [self] timer in
 
-            if restTime > 0 {
-                // 残り時間を減らしていく
-                restTime -= 1
-                player1TimerView.setTime(time: restTime)
-                player2TimerView.setTime(time: restTime)
-            }
-            if restTime == 0 {
-                // タイマーを無効化にし、ゲーム終了時の挙動へ
-                timer.invalidate()
-                gameStatus = .afterPlay
-                configure()
-            }
-        })
-    }
 
     // itemの種類によって音声を再生
     private func playSoundByTypeOfItem(item: ItemType) {
