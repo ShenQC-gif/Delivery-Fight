@@ -147,9 +147,10 @@ class PlayScreenViewController: UIViewController {
                         sounds.playSound(rosource: CountDown())
 
                         announceLabel.isHidden = false
+                        announceLabel.text = "③"
+
                         player1ResultView.isHidden = true
                         player2ResultView.isHidden = true
-                        announceLabel.text = "③"
 
                         restTime = timeLimit.rawValue
                         player1TimerView.setTime(time: restTime)
