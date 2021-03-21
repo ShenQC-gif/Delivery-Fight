@@ -37,6 +37,7 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player1ResultView: ResultView!
     @IBOutlet private weak var player2ResultView: ResultView!
 
+    static let itemArray: [ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
 
     @IBOutlet private weak var menuSV: UIStackView!
 
@@ -330,7 +331,7 @@ class PlayScreenViewController: UIViewController {
     }
 
     private func randomItem() -> ItemType {
-        return MainViewController.itemArray.randomElement() ?? Apple()
+        return PlayScreenViewController.itemArray.randomElement() ?? Apple()
     }
 
     private func timerStart() {
