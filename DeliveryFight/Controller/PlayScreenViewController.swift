@@ -37,6 +37,17 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private weak var player1ResultView: ResultView!
     @IBOutlet private weak var player2ResultView: ResultView!
 
+    @IBOutlet private weak var announceLabel: UILabel!
+    @IBOutlet private weak var menuSV: UIStackView!
+
+    private var gameStatus = GameStatus.firstStatus
+    private var sounds = Sounds()
+
+    private var timeLimitRepository = TimeLimitRepository()
+    private var timeLimit = TimeLimit.thirty
+    private var timer = Timer()
+    private var restTime = Int()
+
     static let itemArray: [ItemType] = [Apple(), Grape(), Melon(), Peach(), Banana(), Cherry(), Bomb()]
     static func makeInitialState() -> [BeltState] {
         [
@@ -47,20 +58,8 @@ class PlayScreenViewController: UIViewController {
             BeltState(item: itemArray.randomElement() ?? Apple(), itemPosition: .onBelt(.center)),
         ]
     }
-    //ここで具体的なBeltの状態(Item,Item位置)を設定
+    //具体的なBeltの状態(Itemの種類と位置)を設定
     private var beltStates = [BeltState]()
-
-    @IBOutlet private weak var menuSV: UIStackView!
-
-    private var gameStatus = GameStatus.firstStatus
-    private var sounds = Sounds()
-    private var timeLimitRepository = TimeLimitRepository()
-    private var timeLimit = TimeLimit.thirty
-    private var timer = Timer()
-    private var restTime = Int()
-
-    @IBOutlet private weak var announceLabel: UILabel!
-
 
     private var beltViews : [BeltView] {
         [
@@ -101,6 +100,7 @@ class PlayScreenViewController: UIViewController {
     //ゲームを始める前に一度だけ設定すれば良いもの設定
     private func setUp(){
 
+        //各ボタンを押した時の処理を実装
         player1Buttons.enumerated().forEach { offset, UpDownButtonView in
             UpDownButtonView.configure(
                 didTapUp: { [weak self] in
@@ -121,6 +121,7 @@ class PlayScreenViewController: UIViewController {
                 }
             )}
 
+        //player1側のviewを反転
         rotate(player1ScoreView, 180)
         rotate(player1TimerView, 180)
         rotate(player1ResultView, 180)
@@ -137,7 +138,10 @@ class PlayScreenViewController: UIViewController {
 
     //ゲーム全体の状態によって表示(内容・方法)が変わるものを規定
     private func configure(){
+
         switch gameStatus {
+
+            //ゲーム前のカウントダウン時
             case .countDownBeforPlay(countDown: let countDown):
                 switch countDown {
                     case .three:
@@ -150,27 +154,26 @@ class PlayScreenViewController: UIViewController {
                         player1ResultView.isHidden = true
                         player2ResultView.isHidden = true
 
+                        //タイマーをセット
                         restTime = timeLimit.rawValue
                         player1TimerView.setTime(time: restTime)
                         player2TimerView.setTime(time: restTime)
 
-                        for beltView in beltViews {
-                            beltView.hideItem(hide: true)
-                        }
-
+                        //ボタンを無効化
                         for button in player1Buttons {
                             button.status(isEnabled: false)
                         }
-
                         for button in player2Buttons {
                             button.status(isEnabled: false)
                         }
 
+                        //scoreをリセット
                         player1ScoreView.resetScore()
                         player2ScoreView.resetScore()
 
                         menuSV.isHidden = true
 
+                        //1秒後に次のカウントダウンへ
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.gameStatus = .countDownBeforPlay(countDown: .two)
                             self.configure()
@@ -178,6 +181,7 @@ class PlayScreenViewController: UIViewController {
 
                     case .two:
                         announceLabel.text = "②"
+                        //1秒後に次のカウントダウンへ
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.gameStatus = .countDownBeforPlay(countDown: .one)
                             self.configure()
@@ -185,27 +189,33 @@ class PlayScreenViewController: UIViewController {
 
                     case .one:
                         announceLabel.text = "①"
+                        //1秒後に次のゲーム中のステータスへ
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.gameStatus = .onPlay
                             self.configure()
                         }
                 }
 
+            //ゲーム中
             case .onPlay:
+
                 announceLabel.isHidden = true
+
+                //beltViewにbeltStatuを渡し、itemの情報を反映
                 beltStates = PlayScreenViewController.makeInitialState()
                 zip(beltStates, beltViews).forEach {
                     $1.configure(beltState: $0)
                 }
 
+                //itemを表示
                 for beltView in beltViews {
                     beltView.hideItem(hide: false)
                 }
 
+                //ボタンを有効化
                 for button in player1Buttons {
                     button.status(isEnabled: true)
                 }
-
                 for button in player2Buttons {
                     button.status(isEnabled: true)
                 }
@@ -213,29 +223,34 @@ class PlayScreenViewController: UIViewController {
                 // タイマースタート
                 timerStart()
 
+            //ゲーム終了時
             case .afterPlay:
+
                 announceLabel.isHidden = false
                 announceLabel.text = "Finish!!"
 
                 sounds.playSound(rosource: Finish())
 
+                //item非表示
                 for beltView in beltViews {
                     beltView.hideItem(hide: true)
                 }
 
+                //ボタンを無効化
                 for button in player1Buttons {
                     button.status(isEnabled: false)
                 }
-
                 for button in player2Buttons {
                     button.status(isEnabled: false)
                 }
 
+                //2秒後に結果を表示
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.player1ResultView.isHidden = false
                     self.player2ResultView.isHidden = false
                     self.showResult()
 
+                    //更に2秒後にmenu表示
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         self.announceLabel.isHidden = true
                         self.menuSV.isHidden = false
@@ -299,10 +314,11 @@ class PlayScreenViewController: UIViewController {
         checkIfOutOfBelt(index: index)
     }
 
+    //itemがbeltの外(player側)に落ちたの時の処理
     private func checkIfOutOfBelt(index: Int){
+
         switch beltStates[index].itemPosition {
             case let .outOfBelt(player):
-
                 player1Buttons[index].status(isEnabled: false)
                 player2Buttons[index].status(isEnabled: false)
                 playSoundByTypeOfItem(item: beltStates[index].item)
@@ -313,7 +329,6 @@ class PlayScreenViewController: UIViewController {
                     case .player2:
                         player2ScoreView.updateScore(item: beltStates[index].item)
                 }
-
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     if self.gameStatus == .onPlay{
@@ -356,7 +371,7 @@ class PlayScreenViewController: UIViewController {
         })
     }
 
-    // presentの種類によって音声を再生
+    // itemの種類によって音声を再生
     private func playSoundByTypeOfItem(item: ItemType) {
         // presentが爆弾なら爆発音、それ以外なら得点
         if item.isBomb {
