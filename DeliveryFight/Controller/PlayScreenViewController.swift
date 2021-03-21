@@ -39,7 +39,7 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet private var announceLabel: UILabel!
     @IBOutlet private var menuSV: UIStackView!
 
-    private var gameStatus = GameStatus.firstStatus
+    private var gameStatus = GameStatus.initialStatus
     private var sounds = Sounds()
 
 

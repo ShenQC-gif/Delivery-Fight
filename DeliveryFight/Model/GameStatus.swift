@@ -13,5 +13,5 @@ enum GameStatus: Equatable {
     case onPlay
     case afterPlay
 
-    static let firstStatus = GameStatus.countDownBeforPlay(countDown: .startingStatus)
+    static let initialStatus = GameStatus.countDownBeforPlay(countDown: .startingStatus)
 }
