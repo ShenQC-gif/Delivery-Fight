@@ -190,8 +190,8 @@ class PlayScreenViewController: UIViewController {
                     button.status(isEnabled: true)
                 }
 
-            // タイマースタート
-            timerStart()
+                // タイマースタート
+                timerStart()
 
             case .afterPlay:
                 announceLabel.isHidden = false
