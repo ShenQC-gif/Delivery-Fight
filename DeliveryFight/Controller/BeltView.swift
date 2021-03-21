@@ -94,7 +94,4 @@ final class BeltView: UIView {
         }
     }
 
-    private func setRandomItem() -> ItemType {
-        return MainViewController.itemArray.randomElement() ?? Apple()
-    }
 }
